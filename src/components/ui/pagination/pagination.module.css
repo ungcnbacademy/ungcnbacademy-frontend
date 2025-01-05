@@ -1,0 +1,44 @@
+.main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+
+	.button {
+		cursor: pointer;
+		background-color: var(--background-dashboard);
+		padding: 9px 15px;
+		border-radius: var(--global-border-radius);
+		transition: all 0.3s ease-in-out;
+		border: solid 1px rgba(199, 199, 199, 0.498);
+		color: var(--foreground);
+		transition: all 0.6s ease-in-out;
+    font-size: .8rem;
+    display: flex;
+    align-items: center;
+
+		&:hover {
+			box-shadow: 0 2px 12px rgba(128, 128, 128, 0.1);
+			border: solid 1px var(--accent2);
+		}
+    &:disabled{
+      cursor: not-allowed;
+      background-color: var(--background-disabled);
+      &:hover{
+        box-shadow: none;
+        border: solid 1px var(--background-disabled);
+      }
+      .icon{
+        color: white;
+      }
+    }
+	}
+	.active {
+		background-color: var(--accent2);
+		color: var(--foreground-white);
+	}
+  .hidden{
+    background-color: red;
+    display: none;
+  }
+}

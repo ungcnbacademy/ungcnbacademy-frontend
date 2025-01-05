@@ -1,0 +1,29 @@
+.main {
+  width: 100%;
+  min-height: 100vh;
+  padding-inline: var(--global-padding-inline);
+  display: flex;
+  gap: 10px;
+}
+
+/* Sticky sidebar */
+.userMenu {
+  height: fit-content; /* Important for sticky behavior */
+  position: sticky;
+  top: 10px;
+  margin-block: 10px;
+  flex: 0 0 200px; /* Change to flex-shrink: 0 to prevent shrinking */
+  max-width: 200px;
+  border-radius: var(--global-border-radius);
+  align-self: flex-start; /* Important for sticky behavior */
+}
+
+/* Main content area */
+.content {
+  flex: 1;
+  min-height: 80vh;
+  margin-block: 10px;
+  background: var(--background-dashboard);
+  padding: 10px;
+  border-radius: var(--global-border-radius);
+}

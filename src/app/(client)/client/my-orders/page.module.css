@@ -1,0 +1,34 @@
+.main {
+	padding: 20px;
+}
+.pageTitle {
+	font-size: 1.4rem;
+	font-weight: 600;
+}
+.title {
+	font-size: 0.8rem;
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+.orderInfoContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.card {
+	padding: 20px 15px;
+	border-radius: var(--global-border-radius);
+	background-color: var(--background);
+	font-size: 0.9rem;
+	transition: all 0.6s ease-in-out;
+	border: solid 1px var(--background);
+	.orderId {
+		color: var(--foreground-light);
+		font-size: 0.8rem;
+		margin-bottom: 5px;
+	}
+	&:hover {
+		cursor: pointer;
+		border: solid 1px rgb(214, 214, 214);
+	}
+}

@@ -1,0 +1,53 @@
+.main {
+  font-size: 0.85rem;
+  padding-inline: var(--global-padding-inline);
+  padding-top: 100px;
+  padding-bottom: 100px;
+  width: 100%;
+}
+
+.main h2 {
+  margin-bottom: 10px;
+}
+
+.date {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.container h3 {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.container p {
+  margin-bottom: 6px;
+}
+
+.container li {
+  margin-left: 24px;
+  margin-bottom: 8px;
+}
+
+.questions {
+  margin: 10px 0 10px 0;
+}
+
+.questions li {
+  color: dodgerblue;
+  cursor: pointer;
+  margin-top: 14px;
+  text-decoration-line: underline;
+}
+
+.questions li:hover {
+  color: rgb(149, 149, 252);
+}
+
+.section p {
+  margin-bottom: 6px;
+}
+
+.para {
+  color: rgb(113, 171, 224);
+}

@@ -1,0 +1,31 @@
+.input {
+	width: 100%;
+	border: none;
+	font-size: 0.9rem;
+	outline: none;
+	border: none;
+	background-color: rgba(255, 255, 255, 0);
+
+	&:user-invalid {
+		color: red;
+	}
+	&:disabled {
+		background-color: var(--background-disabled);
+		border: solid 1px var(--background-disabled);
+		cursor: not-allowed;
+	}
+}
+.primary {
+	border-bottom: rgb(204, 204, 204) solid 1px;
+	padding: 15px 10px 15px 5px;
+}
+.secondary {
+	border: solid 1px #ededed;
+	padding: 15px 10px;
+	background-color: #ededed;
+}
+.outLined {
+	border: solid 1px rgb(189, 189, 189);
+	padding: 10px;
+	border-radius: var(--global-border-radius);
+}

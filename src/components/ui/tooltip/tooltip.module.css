@@ -1,0 +1,49 @@
+.tooltipContainer {
+  display: inline-block;
+  position: relative;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 1000;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: white;
+  background-color: #1f2937;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.arrow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #1f2937;
+  transform: rotate(45deg);
+}
+
+.arrow[data-placement="top"] {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%) rotate(45deg);
+}
+
+.arrow[data-placement="bottom"] {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.arrow[data-placement="left"] {
+  right: 0;
+  top: 50%;
+  transform: translate(50%, -50%) rotate(45deg);
+}
+
+.arrow[data-placement="right"] {
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
