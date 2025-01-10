@@ -1,3 +1,4 @@
+import { companyInfo } from "@/constants/constants";
 import styles from "./page.module.css";
 
 const page = () => {
@@ -7,7 +8,7 @@ const page = () => {
       <div className={styles.container}>
         <p>
           Please read these Terms of Sale carefully before ordering Products
-          online from the The Label Platform.
+          online from the {companyInfo.companyName} Platform.
         </p>
         <br />
         <p>
@@ -22,22 +23,22 @@ const page = () => {
         <br />
         <p>
           You are reading these Terms of Sale (&apos;Terms of Sale&apos;)
-          because you are using a The Label website, digital experience, social
+          because you are using a {companyInfo.companyName} website, digital experience, social
           media platform, mobile app, wearable technology, or one of our other
-          products or services, all of which are part of The Label&apos;s Platform
+          products or services, all of which are part of {companyInfo.companyName}&apos;s Platform
           (&apos;Platform&apos;). These Terms of Sale create a legally binding
-          agreement between you and The Label and its affiliates (which we may
-          refer to as &apos;The Label&apos;, &apos;we&apos;, &apos;us&apos;, or
+          agreement between you and {companyInfo.companyName} and its affiliates (which we may
+          refer to as &apos;{companyInfo.companyName}&apos;, &apos;we&apos;, &apos;us&apos;, or
           &apos;our&apos;) regarding orders placed for products available on the
           Platform. Please review our <b>List of Local Entities</b> for the name
-          of the The Label entity responsible for providing the Platform to you
-          and the appropriate contact information. The Label may revise these
+          of the {companyInfo.companyName} entity responsible for providing the Platform to you
+          and the appropriate contact information. {companyInfo.companyName} may revise these
           Terms of Sale without notice by posting revised Terms of Sale on its
           Platform. The Terms of Sale posted on the Platform at the time you
           place your order on the Platform will govern that purchase. Please
           read these terms carefully and check that the details of your order
           are complete and accurate before submitting your order. Your use of
-          the Platform is also governed by The Label&apos;s Terms of Use and
+          the Platform is also governed by {companyInfo.companyName}&apos;s Terms of Use and
           Privacy Policy. The Terms of Use are incorporated herein by this
           reference.
         </p>
@@ -49,18 +50,18 @@ const page = () => {
         <p>
           To place an order on the Platform, you must be at least 16 years old,
           or older if that is required under applicable law to enter into an
-          agreement with The Label, and a be consumer - not a reseller.
+          agreement with {companyInfo.companyName}, and a be consumer - not a reseller.
         </p>
         <br />
         <p>NO PURCHASE FOR RESALE</p>
         <br />
         <p>
-          The Platform is intended solely for The Label to sell The Label products
+          The Platform is intended solely for {companyInfo.companyName} to sell {companyInfo.companyName} products
           direct to end consumers, and therefore purchase of products for resale
           is strictly prohibited. Purchase for resale means the purchase of
-          The Label product by someone who resells, or intends to resell, the
-          The Label product to others (consumers, businesses or any third party).
-          If The Label believes you are involved in purchase for resale, The Label
+          {companyInfo.companyName} product by someone who resells, or intends to resell, the
+          {companyInfo.companyName} product to others (consumers, businesses or any third party).
+          If {companyInfo.companyName} believes you are involved in purchase for resale, {companyInfo.companyName}
           reserves the right to take any action against you, including, without
           limitation, to restrict sales to you, cancel your orders, and/or
           suspend or close your account.
@@ -109,7 +110,7 @@ const page = () => {
           </li>
           <li>
             you are under 16, or under an older age if an older age is permitted
-            under applicable law to enter into an agreement with The Label;
+            under applicable law to enter into an agreement with {companyInfo.companyName};
           </li>
           <li>you are a reseller;</li>
           <li>there was an error in the price displayed on the Platform; or</li>
@@ -134,7 +135,7 @@ const page = () => {
         <br />
         <p>
           You can find the available payment methods for each country in the
-          help section of The Label.co.uk (the &apos;Website&apos;). We do not
+          help section of {companyInfo.companyName}.co.uk (the &apos;Website&apos;). We do not
           accept any method of payment other than those listed in the help
           section. Please do not try to pay by any other way than specified
           there. If you do, we will not be liable for loss of the payment or any
@@ -276,7 +277,7 @@ const page = () => {
           message that appears on your creation. We reserve the right in our
           sole discretion to decline an ID, for example because it contains a
           trademark belonging to third party, or the names of sports teams,
-          athletes or celebrities that you (or The Label) do not have the right to
+          athletes or celebrities that you (or {companyInfo.companyName}) do not have the right to
           use, or because it contains material that we consider inappropriate.
           If we reject your ID you will be notified as soon as possible by
           email.
@@ -527,7 +528,7 @@ const page = () => {
         <br />
         <p>
           You agree that the Platform, Terms of Sale, and any dispute between
-          you and The Label shall be governed in all respects by Dutch law,
+          you and {companyInfo.companyName} shall be governed in all respects by Dutch law,
           without regard to choice of law provisions, and not by the 1980 U.N.
           Convention on Contracts for the International Sale of Goods.
         </p>

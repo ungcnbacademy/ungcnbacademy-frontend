@@ -1,0 +1,54 @@
+.main {
+	background-color: var(--footer-bg);
+	padding-inline: var(--global-padding-inline);
+	padding-block: 30px;
+}
+
+.container {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 20px;
+	> .section {
+		flex: 1 250px;
+		font-size: 0.8rem;
+		display: flex;
+		flex-direction: column;
+		> .title {
+			margin-bottom: 12px;
+			font-size: .8rem;
+			font-weight: 500;
+		}
+		> .link {
+			color: var(--foreground-light);
+			font-size: 0.8rem;
+			margin-bottom: 8px;
+			transition: all 0.6s ease-in-out;
+			&:hover {
+				color: var(--accent1);
+			}
+		}
+		.icon {
+			font-size: 1.3rem;
+			margin-right: 10px;
+			color: var(--foreground-light);
+			cursor: pointer;
+			transition: all 0.6s ease-in-out;
+			&:hover {
+				color: var(--accent1);
+			}
+		}
+	}
+}
+
+.line {
+	background-color: rgb(195, 195, 195);
+	height: 1px;
+}
+
+.copyright {
+	font-size: 0.65rem;
+	color: var(--foreground-light);
+	padding-block: 20px;
+	color: var(--foreground-light2);
+}

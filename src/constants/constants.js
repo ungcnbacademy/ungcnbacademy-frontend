@@ -22,8 +22,8 @@ export const userRoles = {
 };
 
 export const companyInfo = {
-	companyName: 'Foodstreet',
-	websiteName: 'Foodstreet',
+	companyName: 'ESG edTech',
+	websiteName: 'ESG edTech',
 	developer: {
 		name: 'ContentPro.',
 		url: 'https://contentprobd.com',

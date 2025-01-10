@@ -1,12 +1,14 @@
+import { companyInfo } from "@/constants/constants";
 import styles from "./page.module.css";
 
 const page = () => {
+
   return (
     <div className={styles.main}>
       <h2>COOKIES and Pixel Tags</h2>
       <div className={styles.container}>
         <p>
-          The Label collects information, which may include personal data, from
+          {companyInfo.companyName} collects information, which may include personal data, from
           your browser when you use our Platform. We use a variety of methods,
           such as cookies and pixel tags to collect this information, which may
           include your (i) IP address; (ii) unique cookie identifier, cookie
@@ -48,12 +50,12 @@ const page = () => {
           <li>
             <b>Personalised Experiences</b>: Allows use of behavioral data,
             using cookies and other technologies, to improve your experience and
-            provide relevant content on The Label platforms and in communications.
+            provide relevant content on {companyInfo.companyName} platforms and in communications.
           </li>
           <li>
             <b>Performance & Analytics</b>: Allows use of behavioural data to
             optimise performance, review how you interact with our sites and
-            apps, and improve The Label experiences.
+            apps, and improve {companyInfo.companyName} experiences.
           </li>
           <li>
             <b>Personalised Advertising</b>: Allows sharing of behavioural data
@@ -91,7 +93,7 @@ const page = () => {
         <br />
         <p>
           For a comprehensive and up-to-date summary of every third-party
-          accessing your web browser (through The Label Platform or otherwise), we
+          accessing your web browser (through {companyInfo.companyName} Platform or otherwise), we
           recommend installing a web browser plugin built for this purpose. You
           can also choose to have your computer warn you each time a cookie is
           being sent, or you can choose to turn off all cookies. You do this
@@ -119,7 +121,7 @@ const page = () => {
         <br />
         <br />
         <br />
-        <h3>USING The Label Platform with Third-Party Products and Services</h3>
+        <h3>USING {companyInfo.companyName} Platform with Third-Party Products and Services</h3>
         <br />
         <p>
           Our Platform allows you to interact with a wide variety of other
@@ -129,14 +131,14 @@ const page = () => {
         </p>
         <br />
         <p>
-          If you choose to connect your The Label account with a third-party
+          If you choose to connect your {companyInfo.companyName} account with a third-party
           device or account, your privacy rights on third-party platforms will
           be governed by their respective policies. For example, if you choose
-          to share your The Label activity on third-party social media platforms,
+          to share your {companyInfo.companyName} activity on third-party social media platforms,
           if you browse our website while being authenticated on third-party
           platforms and you turned on certain ads personalization services, or
-          if you ask us to link your The Label account with your membership
-          accounts with The Label&apos;s Partners, the policies of those
+          if you ask us to link your {companyInfo.companyName} account with your membership
+          accounts with {companyInfo.companyName}&apos;s Partners, the policies of those
           third-party platforms and Partners govern the data that resides there.
         </p>
         <br />
@@ -173,13 +175,13 @@ const page = () => {
         <p>
           If you wish to provide feedback or if you have questions or concerns
           or wish to exercise your rights related to your personal data, please
-          use our The Label Privacy Webform
+          use our {companyInfo.companyName} Privacy Webform
         </p>
         <br />
         <p>
-          Our Data Protection Officer&apos;s contact details are: The Label
-          Privacy Office, The Label Retail B.V., Colosseum 1, 1213NL Hilversum,
-          The Netherlands or privacy@The Label.co.uk.
+          Our Data Protection Officer&apos;s contact details are: {companyInfo.companyName}
+          Privacy Office, {companyInfo.companyName} Retail B.V., Colosseum 1, 1213NL Hilversum,
+          The Netherlands or privacy@{companyInfo.companyName}.co.uk.
         </p>
         <br />
         <p>

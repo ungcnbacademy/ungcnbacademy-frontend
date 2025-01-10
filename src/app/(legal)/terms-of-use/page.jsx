@@ -1,3 +1,4 @@
+import { companyInfo } from "@/constants/constants";
 import styles from "./page.module.css";
 
 const page = () => {
@@ -9,13 +10,13 @@ const page = () => {
       <div className={styles.container}>
         <h3>
           PLEASE READ THESE TERMS OF USE (&apos;TERMS&apos;) CAREFULLY BEFORE
-          USING ANY The Label PLATFORM.
+          USING ANY {companyInfo.companyName} PLATFORM.
         </h3>
         <p>
-          Welcome to the The Label community! You are reading these Terms because
-          you are using a The Label website, digital experience, social media
+          Welcome to the {companyInfo.companyName} community! You are reading these Terms because
+          you are using a {companyInfo.companyName} website, digital experience, social media
           platform, or one of our other products or services, all of which are
-          part of The Label&apos;s Platform (&apos;Platform&apos;). You may access
+          part of {companyInfo.companyName}&apos;s Platform (&apos;Platform&apos;). You may access
           the Platform through a computer, mobile phone, tablet, console or
           other technology, which we refer to here as a &apos;Device&apos;. Your
           service provider&apos;s normal rates and fees apply to your Device.
@@ -24,11 +25,11 @@ const page = () => {
         <p>
           <b>
             These Terms create a legally binding agreement between you and
-            The Label and its affiliates (which we may refer to as
-            &apos;The Label&apos;, &apos;we&apos;, &apos;us&apos; or
+            {' '} {companyInfo.companyName} and its affiliates (which we may refer to as
+            &apos;{companyInfo.companyName}&apos;, &apos;we&apos;, &apos;us&apos; or
             &apos;our&apos;) regarding your use of the Platform.
           </b>
-          Please review our List of Local Entities for the name of the The Label
+          Please review our List of Local Entities for the name of the {companyInfo.companyName} {' '}
           entity responsible for providing the Platform to you and the
           appropriate contact information. A few important points:
         </p>
@@ -65,7 +66,7 @@ const page = () => {
           </li>
           <li>
             <b>
-              The Label is not responsible or liable for your use of the Platform
+              {companyInfo.companyName} is not responsible or liable for your use of the Platform
               resulting in your ineligibility as an amateur athlete.
             </b>
           </li>
@@ -92,7 +93,7 @@ const page = () => {
           </li>
           <li>
             <b>Be You:</b> Keep your registration personal. Do not register for
-            more than one The Label account, register a The Label account on behalf
+            more than one {companyInfo.companyName} account, register a {companyInfo.companyName} account on behalf
             of someone else, or transfer your account.
           </li>
           <li>
@@ -100,11 +101,11 @@ const page = () => {
             credentials secure and do not allow anyone else to use your account.
           </li>
           <li>
-            <b>Be Responsible:</b> Inform The Label immediately of any
-            unauthorised use of your The Label account. You are responsible for
-            anything that happens through your The Label account – with or without
+            <b>Be Responsible:</b> Inform {companyInfo.companyName} immediately of any
+            unauthorised use of your {companyInfo.companyName} account. You are responsible for
+            anything that happens through your {companyInfo.companyName} account – with or without
             your permission. TO THE MAXIMUM EXTENT ALLOWED BY APPLICABLE LAW,
-            The Label IS NOT RESPONSIBLE FOR ANY LOSS OR ACTIVITY THAT RESULTS
+            {companyInfo.companyName} IS NOT RESPONSIBLE FOR ANY LOSS OR ACTIVITY THAT RESULTS
             FROM THE UNAUTHORISED USE OF YOUR ACCOUNT.
           </li>
         </ul>
@@ -116,17 +117,17 @@ const page = () => {
           Platform – including text, software, scripts, code, designs, graphics,
           photos, sounds, music, videos, applications, interactive features,
           articles, news stories, sketches, animations, stickers, general
-          artwork and other content (&apos;Content&apos;) – is owned by The Label
+          artwork and other content (&apos;Content&apos;) – is owned by {companyInfo.companyName}
           or others we license Content from, and is protected by copyright,
-          trademark, patent and other laws. The Label reserves all rights not
+          trademark, patent and other laws. {companyInfo.companyName} reserves all rights not
           expressly described in these Terms.
         </p>
         <br />
         <ul>
           <li>
-            All trademarks, service marks and trade names (e.g. the The Label name
+            All trademarks, service marks and trade names (e.g. the {companyInfo.companyName} name
             and the Swoosh design) are owned, registered and/or licensed by
-            The Label. You do not acquire a licence or any ownership rights to any
+            {companyInfo.companyName}. You do not acquire a licence or any ownership rights to any
             trademarks, service marks, or trade names through your access or use
             of the Platform or Content.
           </li>
@@ -135,29 +136,29 @@ const page = () => {
             materials downloaded or printed from the Platform.
           </li>
           <li>
-            To the extent The Label approves the download or use of Content
-            comprised of copyrights or copyrightable works, The Label grants you a
+            To the extent {companyInfo.companyName} approves the download or use of Content
+            comprised of copyrights or copyrightable works, {companyInfo.companyName} grants you a
             limited, personal, non-transferable, non-sublicensable, and
             revocable licence to access and use such copyrights or copyrightable
             works solely for their intended purpose and solely for as long as
-            The Label makes such Content generally available to the public. You do
+            {companyInfo.companyName} makes such Content generally available to the public. You do
             not acquire any ownership rights in the Content (including any
             trademarks or other intellectual property included in the Content),
             and all such Content is intended for personal, non-commercial use.
-            The Label reserves the right to monitor your use and to alter or
+            {companyInfo.companyName} reserves the right to monitor your use and to alter or
             revoke this licence or your access to the Content at any time and
-            for any reason. The Label reserves the right to take down any Content
-            in violation of these terms or The Label&apos;s intellectual property
-            rights. The Label allowing you this limited use does not constitute a
-            waiver of any of The Label&apos;s rights to the Content.
+            for any reason. {companyInfo.companyName} reserves the right to take down any Content
+            in violation of these terms or {companyInfo.companyName}&apos;s intellectual property
+            rights. {companyInfo.companyName} allowing you this limited use does not constitute a
+            waiver of any of {companyInfo.companyName}&apos;s rights to the Content.
           </li>
           <li>
-            Outside of the specific usage rights granted to you by The Label in
+            Outside of the specific usage rights granted to you by {companyInfo.companyName} in
             connection with the Platform, you agree not to use, copy, edit,
             translate, display, distribute, download, transmit, sell, create
             derivative works of, or in any way exploit any Content, including
             User Content (unless it is your own User Content that you legally
-            post on the Platform), without The Label&apos;s prior written consent.
+            post on the Platform), without {companyInfo.companyName}&apos;s prior written consent.
             Unauthorised use of the Content may constitute a breach of
             copyright, trademark or other intellectual property laws and may
             subject you to criminal or civil charges and penalties.
@@ -169,16 +170,16 @@ const page = () => {
         <p>
           <b>User Content Licence.</b> Some parts of the Platform allow you to
           post photos, videos, comments, and other content, which we refer to as
-          &apos;User Content&apos;. The Label is not responsible for User Content
+          &apos;User Content&apos;. {companyInfo.companyName} is not responsible for User Content
           others post to the Platform. User Content is owned by you or whoever
-          created it, but when you post User Content you license it to The Label
+          created it, but when you post User Content you license it to {companyInfo.companyName}
           as described below:
         </p>
         <br />
         <ul>
           <li>
             You represent that you have the right to post your User Content, and
-            you grant The Label a non-exclusive, perpetual, transferable,
+            you grant {companyInfo.companyName} a non-exclusive, perpetual, transferable,
             sub-licensable, royalty-free, worldwide licence to use any of the
             User Content that you post on or in connection with the Platform,
             including the likeness of any person that appears in the User
@@ -186,12 +187,12 @@ const page = () => {
             Content, for any purpose, including commercial use, which includes
             the right to translate, display, reproduce, modify, create
             derivative works, sublicense, distribute and assign these rights.
-            The Label may, in its sole discretion, remove any User Content at any
+            {companyInfo.companyName} may, in its sole discretion, remove any User Content at any
             time.
           </li>
           <li>
             You understand that deleted User Content may persist in
-            The Label&apos;s systems and on the Platform to the extent your User
+            {companyInfo.companyName}&apos;s systems and on the Platform to the extent your User
             Content has been publicly posted or shared with others who have not
             deleted it, unless you or the relevant individual request deletion
             or blocking of personal data in accordance with applicable law.
@@ -200,7 +201,7 @@ const page = () => {
         <p>
           LICENCE TO USE COMMENTS, FEEDBACK AND IDEAS. You understand that any
           comments, feedback or ideas you send us are provided on a
-          non-confidential basis and you grant to The Label a perpetual, worldwide
+          non-confidential basis and you grant to {companyInfo.companyName} a perpetual, worldwide
           licence to use all comments, feedback and ideas you may share with us,
           without notice, compensation or acknowledgement to you, for any
           purposes whatsoever, including, but not limited to, developing,
@@ -211,7 +212,7 @@ const page = () => {
         <h3>4. USER CODE OF CONDUCT</h3>
         <br />
         <p>
-          We&apos;re excited to have you contribute to the The Label community.
+          We&apos;re excited to have you contribute to the {companyInfo.companyName} community.
           Here are a few basic rules:
         </p>
         <br />
@@ -226,7 +227,7 @@ const page = () => {
             <b>Be Safe.</b>
           </li>
           <li>
-            Do not do anything that may expose The Label or its users to any type
+            Do not do anything that may expose {companyInfo.companyName} or its users to any type
             of harm, including anything that may disrupt, damage, disable,
             tamper with, overburden or limit the functionality of the Platform.
           </li>
@@ -264,12 +265,12 @@ const page = () => {
             Content, link to a website, or do anything that is illegal,
             misleading, malicious, harassing, inaccurate, discriminatory or
             otherwise objectionable or inappropriate or which violates any
-            applicable laws. The Label has the right to prescreen, monitor or
+            applicable laws. {companyInfo.companyName} has the right to prescreen, monitor or
             remove User Content – but we have no obligation to do so.
           </li>
           <li>
             <b>Be Yourself.</b> Do not impersonate any person or organisation,
-            including athletes or The Label employees.
+            including athletes or {companyInfo.companyName} employees.
           </li>
           <li>HAVE FUN!</li>
         </ul>
@@ -278,7 +279,7 @@ const page = () => {
         <br />
         <p>
           Please consult your legal adviser before filing a notice with us
-          because there may be penalties for false claims. The Label may terminate
+          because there may be penalties for false claims. {companyInfo.companyName} may terminate
           the accounts of Platform users found to infringe third party
           copyrights.
         </p>
@@ -321,16 +322,16 @@ const page = () => {
         <h3>6. PARTNERS ON THE PLATFORM</h3>
         <br />
         <p>
-          From time to time, The Label may link to or partner with third-party
+          From time to time, {companyInfo.companyName} may link to or partner with third-party
           websites, social media platforms, mobile apps, and other products and
           services (&apos;Third Parties&apos;). You may be able to connect with
           these Third Parties through the Platform, but this does not mean
-          The Label endorses, monitors or has any control over these Third Parties
+          {companyInfo.companyName} endorses, monitors or has any control over these Third Parties
           or their activities, which are subject to separate terms of use and
           privacy policies. You should carefully review any Third Party&apos;s
           sites and terms of use and privacy policy.{" "}
           <b>
-            The Label is not responsible for the content, policies or activities
+            {companyInfo.companyName} is not responsible for the content, policies or activities
             of Third Parties and you interact with Third Parties at your own
             risk.
           </b>
@@ -355,7 +356,7 @@ const page = () => {
             because of something you have viewed on the Platform.
           </li>
           <li>
-            TO THE MAXIMUM EXTENT ALLOWED BY APPLICABLE LAW, The Label IS NOT
+            TO THE MAXIMUM EXTENT ALLOWED BY APPLICABLE LAW, {companyInfo.companyName} IS NOT
             RESPONSIBLE OR LIABLE FOR ANY INJURIES OR DAMAGES YOU MAY SUSTAIN
             THAT RESULT FROM YOUR USE OF, OR INABILITY TO USE, THE FEATURES ON
             THE PLATFORM.
@@ -375,7 +376,7 @@ const page = () => {
             users (including users you do not know) on the Platform. Before you
             meet another person face-to-face, consider investigating, bringing a
             friend, choosing public locations and letting someone know where you
-            will be. The Label is under no obligation to become involved with any
+            will be. {companyInfo.companyName} is under no obligation to become involved with any
             user dispute but may do so at its own discretion.
           </li>
         </ul>
@@ -394,16 +395,16 @@ const page = () => {
             Platform are provided &apos;AS IS&apos;. We aren&apos;t making any
             promises of any kind, including about the Platform&apos;s accuracy,
             adequacy, usefulness, reliability or otherwise. TO THE MAXIMUM
-            EXTENT ALLOWED BY APPLICABLE LAW, The Label IS NOT RESPONSIBLE OR
+            EXTENT ALLOWED BY APPLICABLE LAW, {companyInfo.companyName} IS NOT RESPONSIBLE OR
             LIABLE FOR ANY USER CONTENT POSTED ON THE PLATFORM.{" "}
           </li>
           <li>
-            The Label does not guarantee that the Platform will be uninterrupted
+            {companyInfo.companyName} does not guarantee that the Platform will be uninterrupted
             or error-free, that any defects will be corrected, or that the
             Platform is free of viruses or anything else harmful.
           </li>
           <li>
-            To the fullest extent permitted by law, The Label disclaims all
+            To the fullest extent permitted by law, {companyInfo.companyName} disclaims all
             warranties, express or implied, regarding the Platform, Content,
             User Content and any products or services you may obtain or access
             through the Platform, including, but not limited to, implied
@@ -424,15 +425,15 @@ const page = () => {
         <h3>8. TERMINATION</h3>
         <br />
         <p>
-          The Label may terminate or modify any The Label Platform, member
+          {companyInfo.companyName} may terminate or modify any {companyInfo.companyName} Platform, member
           programme, product or service at any time without notice.
         </p>
         <br />
         <p>
-          The Label may terminate or suspend your account, delete your profile or
+          {companyInfo.companyName} may terminate or suspend your account, delete your profile or
           any of your User Content, and restrict your use of all or any part of
           the Platform at any time and for any reason, without any liability to
-          The Label, subject to applicable law.
+          {companyInfo.companyName}, subject to applicable law.
         </p>
         <br />
         <ul>
@@ -452,7 +453,7 @@ const page = () => {
         <h3>9. INDEMNIFICATION/LIMITATION OF LIABILITY</h3>
         <br />
         <p>
-          We want you to enjoy our Platform, but The Label must also protect
+          We want you to enjoy our Platform, but {companyInfo.companyName} must also protect
           itself from any damages you may cause.
         </p>
         <br />
@@ -460,9 +461,9 @@ const page = () => {
           Indemnification and RELEASE. Some jurisdictions do not permit certain
           limitations or exclusions on liabilities, legal warranties and
           remedies, so these exclusions limitations may not apply to you. You
-          agree to indemnify, defend, and hold harmless The Label Inc., its
+          agree to indemnify, defend, and hold harmless {companyInfo.companyName} Inc., its
           affiliates, officers, directors, employees, agents, licensors and
-          suppliers (the &apos;The Label Parties&apos;) from and against all
+          suppliers (the &apos;{companyInfo.companyName} Parties&apos;) from and against all
           claims, losses, liabilities, expenses, damages and costs, including,
           without limitation, legal fees, arising from or relating in any way to
           your User Content, your use of Content, your use of the Platform, your
@@ -470,7 +471,7 @@ const page = () => {
           or any violation of these Terms of Use, any law or the rights of any
           third party. You, for yourself and on behalf of your heirs, estate,
           insurers, successors and assigns, hereby fully and forever release and
-          discharge the The Label Parties from any and all claims or causes of
+          discharge the {companyInfo.companyName} Parties from any and all claims or causes of
           action you may have for damages relating in any way to your use of the
           Platform.
         </p>
@@ -492,7 +493,7 @@ const page = () => {
         <ul>
           <li>
             You agree that the Platform, Terms, Privacy Policy and any dispute
-            between you and The Label shall be governed in all respects by UK law,
+            between you and {companyInfo.companyName} shall be governed in all respects by UK law,
             without regard to choice of law provisions, and not by the 1980 UN
             Convention on Contracts for the International Sale of Goods.
           </li>
@@ -501,7 +502,7 @@ const page = () => {
             any statutory rights for consumers, you agree that all disputes,
             claims and legal proceedings directly or indirectly arising out of
             or relating to the Platform (including but not limited to the
-            purchase of The Label products) shall be resolved individually,
+            purchase of {companyInfo.companyName} products) shall be resolved individually,
             without resort to any form of class action.
           </li>
           <li>
@@ -523,11 +524,11 @@ const page = () => {
         <ul>
           <li>
             By using the Platform, you agree to receive certain electronic
-            communications from The Label, subject to applicable law.
+            communications from {companyInfo.companyName}, subject to applicable law.
           </li>
           <li>
             You agree that any notice, agreement, disclosure or other
-            communication that The Label sends you electronically will satisfy any
+            communication that {companyInfo.companyName} sends you electronically will satisfy any
             legal communication requirements, including that such communications
             be in writing.
           </li>
@@ -539,15 +540,15 @@ const page = () => {
         <br />
         <ul>
           <li>
-            The Label may assign its rights and duties under these Terms to any
+            {companyInfo.companyName} may assign its rights and duties under these Terms to any
             party at any time without notice to you, unless notice to you is
             required by applicable law, but this will not affect your rights or
             our obligations under these Terms.
           </li>
           <li>
-            The Label&apos;s failure to insist upon or enforce strict performance
+            {companyInfo.companyName}&apos;s failure to insist upon or enforce strict performance
             of these Terms is not a waiver of any of these Terms or
-            The Label&apos;s rights. Users should always assume these Terms apply.
+            {companyInfo.companyName}&apos;s rights. Users should always assume these Terms apply.
           </li>
           <li>
             If any provision in these Terms is held invalid or unenforceable,

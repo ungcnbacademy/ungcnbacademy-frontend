@@ -1,0 +1,74 @@
+.transparent {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	z-index: 1;
+	color: var(--foreground-white);
+
+	.link:hover {
+		color: var(--accent2);
+	}
+	.active {
+		color: var(--accent2);
+	}
+}
+.accentColor {
+	background-color: var(--accent2);
+	color: var(--foreground-white);
+	.link:hover {
+		color: var(--foreground);
+	}
+	.active {
+		color: var(--foreground);
+	}
+}
+.white {
+	background-color: white;
+	color: var(--foreground);
+	.link:hover {
+		color: var(--foreground);
+	}
+	.active {
+		color: var(--foreground);
+	}
+}
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-inline: var(--global-padding-inline);
+	padding-block: 10px;
+}
+.scrolled {
+	background: hsla(151, 94%, 39%);
+	background: linear-gradient(
+		to bottom,
+		hsla(151, 94%, 39%),
+		hsla(151, 94%, 39%, 0.9)
+	);
+	backdrop-filter: blur(3px);
+	box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+	.active{
+		color: var(--foreground);
+	}
+	.link:hover {
+		color: var(--foreground);
+	}
+	.active {
+		color: var(--foreground);
+	}
+}
+.linkContainer {
+	display: flex;
+	gap: 15px;
+	.link {
+		font-size: 0.85rem;
+		transition: all 0.3s ease-in-out;
+	}
+}
+.logoLink {
+	display: flex;
+	align-items: center;
+}

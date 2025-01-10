@@ -1,3 +1,4 @@
+import { companyInfo } from "@/constants/constants";
 import styles from "./page.module.css";
 
 const page = () => {
@@ -10,21 +11,21 @@ const page = () => {
       <div className={styles.container}>
         <h3>PRIVACY POLICY</h3>
         <p>
-          The Label has recently updated its privacy policy to clarify our
+          {companyInfo.companyName} has recently updated its privacy policy to clarify our
           personal information practices in the UK. Residents of UK may have
           additional personal information rights and notices.
         </p>
         <br />
         <h3>Introduction and Scope of this Privacy Policy</h3>
         <p>
-          This Privacy Policy (the &apos;Policy&apos;) describes how The Label UK,
-          Inc. (&apos;The Label&apos; or &apos;we&apos;, &apos;us&apos;, or
+          This Privacy Policy (the &apos;Policy&apos;) describes how {companyInfo.companyName} UK,
+          Inc. (&apos;{companyInfo.companyName}&apos; or &apos;we&apos;, &apos;us&apos;, or
           &apos;our&apos;) collects, uses, and discloses personal information.
-          This Policy applies to those The Label UK websites and applications that
+          This Policy applies to those {companyInfo.companyName} UK websites and applications that
           display or link to this Policy (referred to in this Policy as the
           &apos;Website&apos;). This Policy also applies to other UK services,
           including retail stores, that display or link to these terms. It does
-          not apply to those The Label sites, services and products that have
+          not apply to those {companyInfo.companyName} sites, services and products that have
           their own privacy policies. This privacy policy outlines the
           following:
         </p>
@@ -62,7 +63,7 @@ const page = () => {
             </li>
             <li>
               <a href="#section7">
-                How Can You Contact The Label About Privacy Questions?
+                How Can You Contact {companyInfo.companyName} About Privacy Questions?
               </a>
             </li>
             <li>
@@ -120,7 +121,7 @@ const page = () => {
           <p className={styles.para}>LOCATION</p>
           <p>
             Information that indicates, directly or indirectly, where you are,
-            real time or otherwise, for example, if you use our The Label Running
+            real time or otherwise, for example, if you use our {companyInfo.companyName} Running
             app or if you participate in certain hype events. Examples: current
             log-in location (IP address), real-time device location information
             via device signals (if your device settings allow us to collect that
@@ -165,7 +166,7 @@ const page = () => {
             Information about you we obtain through different social media
             channels such as Facebook, Instagram, Google, etc., when we use
             these channels for consumer engagement, advertising, sales, or
-            analytics purposes or to enrich your customer profile with The Label.
+            analytics purposes or to enrich your customer profile with {companyInfo.companyName}.
             Examples: publicly available social media information, and photos
             and posts you send to us by mentioning us or following our social
             media posts by using &apos;handles&apos; or &apos;hashtags.&apos;
@@ -195,7 +196,7 @@ const page = () => {
           <p className={styles.para}>FITNESS ACTIVITY</p>
           <p>
             Information connected to your fitness activity, if you choose to
-            track this activity using our Website (including The Label Running and
+            track this activity using our Website (including {companyInfo.companyName} Running and
             Training). Examples: activity type, distance, exercise duration,
             fitness score, pace and speed.
           </p>
@@ -223,7 +224,7 @@ const page = () => {
           <p className={styles.para}>FROM THIRD PARTIES</p>
           <p>We receive information about you from third parties. Examples:</p>
           <ul>
-            <li>Our affiliate companies in the The Label Group.</li>
+            <li>Our affiliate companies in the {companyInfo.companyName} Group.</li>
             <li>
               Our service providers, contractors and vendors (such as
               advertising networks, fraud prevention companies and analytics
@@ -232,7 +233,7 @@ const page = () => {
             <li>
               Online platforms and social media networks you use to interact
               with our ads, to interact with our influencers, or to log into
-              your The Label account and shop for our products.
+              your {companyInfo.companyName} account and shop for our products.
             </li>
             <li>
               Business partners who have your permission to share your data with
@@ -275,7 +276,7 @@ const page = () => {
           <p className={styles.para}>OPERATE THE WEBSITE</p>
           <ul>
             <li>
-              Authenticate users across all participating The Label platforms
+              Authenticate users across all participating {companyInfo.companyName} platforms
               globally.
             </li>
             <li>
@@ -383,7 +384,7 @@ const page = () => {
               campaign communications under a license agreement in our terms and
               conditions, which you should read and agree to prior to providing
               us with such images
-              (https://www.The Label.co.uk/help/uk-company-information/what-is-yesraveeda).
+              (https://www.{companyInfo.companyName}.co.uk/help/uk-company-information/what-is-yesraveeda).
             </li>
           </ul>
 
@@ -401,7 +402,7 @@ const page = () => {
               check-out time.
             </li>
             <li>
-              Provide adiClub members with access to the The Label running and
+              Provide adiClub members with access to the {companyInfo.companyName} running and
               training app.
             </li>
           </ul>
@@ -477,10 +478,10 @@ const page = () => {
               We may access and use your personal information, including the
               content of your communications, in order to: (a) comply with the
               law or respond to lawful requests or legal process; (b) protect
-              the rights or property of The Label or our customers, including the
+              the rights or property of {companyInfo.companyName} or our customers, including the
               enforcement of our agreements or policies governing your use of
               our Websites and services; or (c) to protect the personal safety
-              of The Label employees, customers or the public.
+              of {companyInfo.companyName} employees, customers or the public.
             </li>
             <li>
               We may need to keep some personal information as evidence in case
@@ -492,7 +493,7 @@ const page = () => {
           <p className={styles.para}>OTHER BUSINESS PURPOSES</p>
           <ul>
             <li>
-              We may collect CCTV video in The Label stores to limit fraud and
+              We may collect CCTV video in {companyInfo.companyName} stores to limit fraud and
               investigate crimes.
             </li>
             <li>
@@ -553,7 +554,7 @@ const page = () => {
             prefer to opt out of having your information used for cookie-based
             ad targeting activities and you reside in certain states, you can
             visit the &apos;Your Privacy Choices&apos; link at the bottom of our
-            websites. And, if you are on an The Label app, you can opt out by
+            websites. And, if you are on an {companyInfo.companyName} app, you can opt out by
             clicking the settings icon and going to &apos;Manage Account&apos;
             under &apos;App Settings.&apos;
           </p>
@@ -562,15 +563,15 @@ const page = () => {
           <h3>5. How Do We Disclose Your Personal Information?</h3>
           <p>
             Except as described in this Policy, we will not disclose your
-            personal information outside of The Label and the The Label Group
+            personal information outside of {companyInfo.companyName} and the {companyInfo.companyName} Group
             without your consent.
           </p>
 
           <br />
-          <p className={styles.para}>The Label GROUP</p>
+          <p className={styles.para}>{companyInfo.companyName} GROUP</p>
           <p>
             We disclose your data to our affiliates (described in
-            http://www.The Label.co.uk). This helps us implement our global single
+            http://www.{companyInfo.companyName}.co.uk). This helps us implement our global single
             sign-on and other centralized functions.
           </p>
 
@@ -585,10 +586,10 @@ const page = () => {
           <br />
           <p className={styles.para}>CO-BRANDED SITES</p>
           <p>
-            Some The Label services are co-branded by The Label and another company,
-            with the privacy policies of both The Label and the other company
+            Some {companyInfo.companyName} services are co-branded by {companyInfo.companyName} and another company,
+            with the privacy policies of both {companyInfo.companyName} and the other company
             displayed on the website. The information you provide, such as on
-            registration forms, is collected by both The Label and the other
+            registration forms, is collected by both {companyInfo.companyName} and the other
             company, subject to both privacy policies.
           </p>
 
@@ -705,11 +706,11 @@ const page = () => {
             information, and (3) request correction of inaccurate personal
             information. To request access or deletion of your personal
             information, please click the &apos;Your Privacy Choices&apos; link
-            at the bottom of our website. From within an The Label app, you can
+            at the bottom of our website. From within an {companyInfo.companyName} app, you can
             make a request by navigating to &apos;Manage Account&apos; under the
             &apos;Settings&apos; tab. You may also make a request by calling
             customer service at 1-888-694-6364. To make a correction request,
-            log into your The Label account (if you have an account) and make
+            log into your {companyInfo.companyName} account (if you have an account) and make
             changes there, or call customer service at 1-888-694-6364. We may
             verify your request by asking you to provide information related to
             your recent interactions with us, such as your name, email address,
@@ -722,7 +723,7 @@ const page = () => {
             As described in the &apos;How Do We Use Cookies and Other Tracking
             Technologies?&apos; section, we process (and allow others to
             process) personal information to show you targeted ads on
-            non-The Label websites and applications. We do this via cookies and
+            non-{companyInfo.companyName} websites and applications. We do this via cookies and
             other tracking technologies, or in some cases, we disclose certain
             information (such as your email address or phone number) to our
             advertising partners, who then translate this information into a
@@ -731,12 +732,12 @@ const page = () => {
             Depending on where you reside, you may have the right to opt out of
             having your information used for targeted advertising purposes by
             visiting the &apos;Your Privacy Choices&apos; link at the bottom of
-            our websites. And, if you are on an The Label app, you can opt out by
+            our websites. And, if you are on an {companyInfo.companyName} app, you can opt out by
             clicking the settings icon and going to “Manage Account&apos; under
             “App Settings.&apos; Please note that you will need to renew your
-            opt-out choice at each The Label-branded Website you visit, if you
+            opt-out choice at each {companyInfo.companyName}-branded Website you visit, if you
             visit our Website with another device or browser, or if you clear
-            your cookies. You may still see ads for The Label on third-party
+            your cookies. You may still see ads for {companyInfo.companyName} on third-party
             websites and services, but they may be less relevant because they
             aren&apos;t based on your interests.
           </p>
@@ -749,15 +750,15 @@ const page = () => {
           </p>
         </div>
         <div className={styles.section} id="section7">
-          <h3>7. How Can You Contact The Label?</h3>
+          <h3>7. How Can You Contact {companyInfo.companyName}?</h3>
           <br />
           <p>
             If you have questions or comments about our privacy practices,
-            please contact us by e-mail privacy.policy@The Label.co.uk or by mail
+            please contact us by e-mail privacy.policy@{companyInfo.companyName}.co.uk or by mail
             at the following address
           </p>
           <p>
-            The Label UK Attn: Legal Privacy Policy 5055 N Greeley Ave Portland,
+            {companyInfo.companyName} UK Attn: Legal Privacy Policy 5055 N Greeley Ave Portland,
             OR 97217
           </p>
           <br />
@@ -782,10 +783,10 @@ const page = () => {
           </p>
           <p>
             The Website that links to this Policy is intended for users in the
-            United Kingdom. If you choose to provide The Label with your
+            United Kingdom. If you choose to provide {companyInfo.companyName} with your
             information, you consent to the transfer and storage of that
             information on our servers located in the United Kingdom and around
-            the world. The information collected by The Label may be subject to
+            the world. The information collected by {companyInfo.companyName} may be subject to
             international and UK state and federal law. If you are accessing our
             Website from outside the UK, please be advised that you are
             transferring your personal information to us in the United Kingdom
@@ -805,7 +806,7 @@ const page = () => {
             information collected at our Website is stored in reasonably secure
             operating environments that are not available to the public. In
             order to help protect your personal information, you should be
-            careful about providing your The Label account password to others. If
+            careful about providing your {companyInfo.companyName} account password to others. If
             you wish to cancel your raveedaClub account, log into your account
             online, select Account, then Personal Information, then Delete
             Account. If you become aware of any loss, theft or unauthorized use
