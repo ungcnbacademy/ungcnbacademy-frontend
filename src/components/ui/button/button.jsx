@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import styles from './button.module.css';
 import Spinner from '../spinner/spinner';
@@ -9,6 +10,7 @@ export default function Button({
 	onClick = () => {},
 	loading = false,
 	className = '',
+	style = {},
 }) {
 	//variants - primary, secondary, outLined
 	return (
@@ -17,6 +19,7 @@ export default function Button({
 			className={`${styles.button} ${styles[variant]} ${className}`}
 			disabled={disabled}
 			onClick={onClick}
+			style={style}
 		>
 			{loading ? <div className={styles.loading}><Spinner size='15px' /> <span>loading</span> </div> : text}
 		</button>

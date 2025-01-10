@@ -42,22 +42,22 @@
 	padding-block: 10px;
 }
 .scrolled {
-	background: hsla(151, 94%, 39%);
+	background: rgb(215, 215, 215);
 	background: linear-gradient(
 		to bottom,
-		hsla(151, 94%, 39%),
-		hsla(151, 94%, 39%, 0.9)
+		rgba(56, 56, 56, 0.4),
+		hsla(0, 0%, 0%, 0.1)
 	);
-	backdrop-filter: blur(3px);
+	backdrop-filter: blur(5px);
 	box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-	.active{
-		color: var(--foreground);
+	.active {
+		color: var(--accent2);
 	}
 	.link:hover {
-		color: var(--foreground);
+		color: var(--accent2);
 	}
 	.active {
-		color: var(--foreground);
+		color: var(--accent2);
 	}
 }
 .linkContainer {
