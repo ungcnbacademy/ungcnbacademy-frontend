@@ -21,6 +21,12 @@ export const userRoles = {
 	},
 };
 
+export const allAdminRoles = [
+	userRoles.admin.admin.role,
+	userRoles.admin.subAdmin.role,
+	userRoles.admin.moderator.role,
+]
+
 export const companyInfo = {
 	companyName: 'ESG edTech',
 	websiteName: 'ESG edTech',

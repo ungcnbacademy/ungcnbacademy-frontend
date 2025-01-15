@@ -43,7 +43,7 @@ export default function Navbar({ variant = 'transparent' }) {
 		},
 		{
 			name: 'Login',
-			link: '/login/client' ,
+			link: '/login' ,
 			active: pathParam.startsWith('/login') ,
 		},
 		{

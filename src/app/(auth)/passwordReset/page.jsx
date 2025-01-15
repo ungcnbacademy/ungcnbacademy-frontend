@@ -5,8 +5,8 @@ import styles from './page.module.css';
 import useAxios from '@/hooks/useAxios';
 import { configuration } from '@/configuration/configuration';
 import Button from '@/components/ui/button/button';
-import Input from '../../../../components/ui/input/input';
-import Message from '../../../../components/ui/message/message';
+import Input from '../../../components/ui/input/input';
+import Message from '../../../components/ui/message/message';
 import { loginUserRoles } from '@/utility/constants';
 export default function PasswordReset({params}) {
 	const [identifier, setIdentifier] = useState('');
