@@ -61,7 +61,15 @@ export default function Login() {
 
 	return (
 		<div className={styles.main}>
-			<Image src={'/logoBlack.svg'} alt="Logo" width={160} height={50} />
+			<Link href="/">
+				<Image
+					src={'/logoBlack.svg'}
+					alt="Logo"
+					width={160}
+					height={50}
+				/>
+			</Link>
+
 			<form onSubmit={onLoginSubmitHandlerAsync} className={styles.form}>
 				<label className={styles.label}>Email</label>
 				<Input
