@@ -1,53 +1,77 @@
 .main {
 	width: 100%;
-	min-height: 80vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
 	padding: 10px;
 
-	.container {
-		border-radius: 10px;
-		padding: clamp(5%, 10%, 50px);
-		box-shadow: 0 1px 12px rgba(128, 128, 128, 0.348);
+	> .form {
 		display: flex;
 		flex-direction: column;
-
-		> .title {
-			font-size: 1.1rem;
-			font-weight: bold;
+		gap: 10px;
+		width: clamp(250px, 30vw, 350px);
+		margin-top: 20px;
+		> .label {
+			font-size: 0.8rem;
+			font-weight: 300;
 		}
-
-		> .img {
-			width: 140px;
+		> .input {
+			background-color: white;
+			border: solid 1px rgba(199, 199, 199, 0.498);
 		}
-		> .form {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			width: clamp(250px, 30vw, 350px);
-			margin-bottom: 20px;
-			> .input {
-				padding: 15px 10px;
-				width: 100%;
-				border: none;
-				background: #ffffff03;
-				font-size: 0.9rem;
-				outline: none;
-				border: none;
-				border-bottom: rgb(204, 204, 204) solid 1px;
-				padding-left: 2px;
+		> .forgotPasswordLink {
+			font-size: 0.8rem;
+			text-align: right;
+			color: var(--foreground-light);
+			text-decoration: none;
+			text-decoration: underline;
+			transition: color 0.6s ease-in-out;
+			&:hover {
+				color: var(--foreground);
+			}
+		}
+		> .button {
+			background-color: var(--accent1);
+			color: white;
+			width: 100%;
+			font-weight: 300;
+			margin-block: 20px 5px;
+		}
+	}
+	.or {
+		color: var(--foreground-light);
+		font-size: 0.8rem;
+		margin-top: 10px;
+	}
+	.googleButton {
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		margin-top: 20px;
+		> .googleText {
+			margin-left: 10px;
+			font-size: 0.8rem;
+
+			color: var(--foreground-light);
+			transition: color 0.6s ease-in-out;
+		}
+		&:hover {
+			> .googleText {
+				color: var(--foreground);
 			}
 		}
 	}
-
+	.small {
+		color: var(--foreground-light);
+		margin-top: 30px;
+	}
 	.link {
-		color: var(--accent2);
 		transition: all 0.6s ease-in-out;
 		text-decoration: none;
+		text-decoration: underline;
 	}
 	.link:hover {
-		text-decoration: underline;
+		color: var(--accent2);
 	}
 }

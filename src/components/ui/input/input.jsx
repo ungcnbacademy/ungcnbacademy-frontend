@@ -12,6 +12,7 @@ export default function Input({
 	style = {},
 	variant = 'primary',
 	defaultValue,
+	className = '',
 }) {
 	// If no value is provided, the input will manage its own state internally
   const isControlled = value !== undefined;
@@ -33,7 +34,7 @@ export default function Input({
 			placeholder={placeholder}
 			onChange={handleChange}
 			{...(isControlled ? { value } : {defaultValue})}
-			className={`${styles.input} ${styles[variant]}`}
+			className={`${styles.input} ${styles[variant]} ${className}`}
 			name={name}
 			required={required}
 			disabled={disabled}

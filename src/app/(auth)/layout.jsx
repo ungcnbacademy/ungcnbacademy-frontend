@@ -1,12 +1,9 @@
-import Footer from '@/components/footer/footer';
-import Navbar from '@/components/navbar/navbar';
-
+import styles from './layout.module.css';
 export default function Layout({ children }) {
 	return (
-		<>
-			<Navbar variant='white'/>
-			{children}
-			<Footer />
-		</>
+		<div className={styles.main}>
+			<div className={styles.left}></div>
+			<div className={styles.right}>{children}</div>
+		</div>
 	);
 }
