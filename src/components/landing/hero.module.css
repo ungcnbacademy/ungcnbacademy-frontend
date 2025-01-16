@@ -17,12 +17,12 @@
 			padding-inline: var(--global-padding-inline);
 			bottom: 50px;
 
-			> h1 {
+			>.title {
 				font-size: clamp(1.5rem, 5vw, 2rem);
 				margin-bottom: 5px;
 				max-width: 1100px;
 			}
-			> p {
+			> .description {
 				font-size: 0.9rem;
 			}
 			.button {

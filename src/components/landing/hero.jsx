@@ -10,11 +10,11 @@ export default function Hero() {
 			</video>
 			<div className={styles.overlay}>
 				<div className={styles.container}>
-					<h1>
+					<h1 className={styles.title}>
 						Lorem ipsum dolor sit amet consectetur. Massa risus
 						scelerisque etiam vulputate iaculis volutpat.
 					</h1>
-					<p>
+					<p className={styles.description}>
 						Lorem ipsum dolor sit amet consectetur. Massa risus
 						scelerisque etiam vulputate iaculis volutpat.
 					</p>
