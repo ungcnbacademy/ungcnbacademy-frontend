@@ -12,6 +12,7 @@ import Message from '../../../components/ui/message/message';
 
 import { allAdminRoles, userRoles } from '@/constants/constants';
 import Image from 'next/image';
+import GoogleSignUp from '@/components/auth/googleSignUp';
 
 export default function Login() {
 	const [data, setData] = useState({});
@@ -105,16 +106,7 @@ export default function Login() {
 				/>
 			</form>
 			{error?.message && <Message text={error?.message} type="error" />}
-			<small className={styles.or}>or</small>
-			<div className={styles.googleButton}>
-				<Image
-					src="/icons/google.svg"
-					alt="Google"
-					width={20}
-					height={20}
-				/>
-				<p className={styles.googleText}>Sign in with google</p>
-			</div>
+			<GoogleSignUp/>
 			<small className={styles.small}>
 				Don't have account?{' '}
 				<Link href="/signup" className={styles.link}>

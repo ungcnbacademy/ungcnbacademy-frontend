@@ -42,28 +42,6 @@
 			margin-block: 20px 5px;
 		}
 	}
-	.or {
-		color: var(--foreground-light);
-		font-size: 0.8rem;
-		margin-top: 10px;
-	}
-	.googleButton {
-		display: flex;
-		align-items: center;
-		cursor: pointer;
-		margin-top: 20px;
-		> .googleText {
-			margin-left: 10px;
-			font-size: 0.8rem;
-			color: var(--foreground-light);
-			transition: color 0.6s ease-in-out;
-		}
-		&:hover {
-			> .googleText {
-				color: var(--foreground);
-			}
-		}
-	}
 	.small {
 		color: var(--foreground-light);
 		margin-top: 30px;

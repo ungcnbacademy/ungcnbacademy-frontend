@@ -8,6 +8,7 @@ import Button from '@/components/ui/button/button';
 import Input from '../../../components/ui/input/input';
 import Message from '../../../components/ui/message/message';
 import Image from 'next/image';
+import GoogleSignUp from '@/components/auth/googleSignUp';
 export default function Signup() {
 	const [data, setData] = useState({});
 	const [btnDisabled, setBtnDisabled] = useState(true);
@@ -137,16 +138,7 @@ export default function Signup() {
 				/>
 			</form>
 			{error?.message && <Message text={error?.message} type="error" />}
-			<small className={styles.or}>or</small>
-			<div className={styles.googleButton}>
-				<Image
-					src="/icons/google.svg"
-					alt="Google"
-					width={20}
-					height={20}
-				/>
-				<p className={styles.googleText}>Sign up with google</p>
-			</div>
+			<GoogleSignUp/>
 			<small className={styles.small}>
 				Already have an account?{' '}
 				<Link href="/login" className={styles.link}>
