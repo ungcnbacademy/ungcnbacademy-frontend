@@ -111,6 +111,7 @@ export default function PasswordReset() {
 					disabled={!identifier}
 					text="Forgot Password"
 					type="submit"
+					variant="outLined"
 					onClick={requestOTPHandler}
 					className={styles.button}
 				/>
@@ -153,7 +154,7 @@ export default function PasswordReset() {
 							disabled={!otp || !newPassword || !confirmPassword}
 							text="Reset Password"
 							type="submit"
-							variant="primary"
+							variant="outLined"
 							onClick={passwordResetHandler}
 							className={styles.button}
 						/>

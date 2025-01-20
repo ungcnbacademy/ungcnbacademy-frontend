@@ -100,7 +100,7 @@ export default function Login() {
 					disabled={btnDisabled || loading}
 					text="Login"
 					type="submit"
-					variant="primary"
+					variant="outLined"
 					loading={loading}
 					className={styles.button}
 				/>

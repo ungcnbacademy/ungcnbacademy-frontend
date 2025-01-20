@@ -35,7 +35,7 @@
 			}
 		}
 		> .button {
-			background-color: var(--accent1);
+			background: var(--accent1);
 			color: white;
 			width: 100%;
 			font-weight: 300;

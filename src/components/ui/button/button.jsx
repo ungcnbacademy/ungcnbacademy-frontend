@@ -21,7 +21,7 @@ export default function Button({
 			onClick={onClick}
 			style={style}
 		>
-			{loading ? <div className={styles.loading}><Spinner size='15px' /> <span>loading</span> </div> : text}
+			{loading ? <div className={styles.loading}><Spinner size='15px' /> <span>loading...</span> </div> : text}
 		</button>
 	);
 }
