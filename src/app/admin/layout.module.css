@@ -1,0 +1,17 @@
+.main {
+	display: flex;
+	> .sidebar {
+		width: fit-content;
+		background-color: var(--background-dashboard);
+		height: 100vh;
+		overflow-y: auto;
+	}
+	> .content {
+		height: 100vh;
+		flex: 1;
+		overflow-y: auto;
+		.container {
+			padding: 20px;
+		}
+	}
+}

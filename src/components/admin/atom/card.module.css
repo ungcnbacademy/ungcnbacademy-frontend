@@ -1,0 +1,31 @@
+.main {
+	width: 100%;
+	min-width: 200px;
+	border-radius: var(--global-border-radius);
+	background-color: var(--background-dashboard);
+	padding: 20px;
+	background-color: var(--background-dashboard);
+	border: solid 1px rgba(0, 128, 0, 0.178);
+	position: relative;
+	overflow: hidden;
+	.title {
+		font-size: 0.75rem;
+		color: var(--foreground-light);
+		margin-top: 5px;
+	}
+	.data {
+		font-size: 1rem;
+		font-weight: 500;
+		margin-top: 10px;
+		color: var(--foreground);
+	}
+	.icon {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		font-size: 1.8rem;
+		color: var(--accent2);
+		opacity: 0.5;
+		z-index: 0;
+	}
+}
