@@ -11,7 +11,7 @@ export default function Footer() {
 		<div className={styles.main}>
 			<div className={styles.topContainer}>
 				<Image
-					src="/logoBlack.svg"
+					src="/logo.svg"
 					alt="Logo"
 					width={150}
 					height={50}
