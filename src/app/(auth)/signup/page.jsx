@@ -9,10 +9,13 @@ import Input from '../../../components/ui/input/input';
 import Message from '../../../components/ui/message/message';
 import Image from 'next/image';
 import GoogleSignUp from '@/components/auth/googleSignUp';
+import { redirect } from 'next/navigation';
+import { allAdminRoles, userRoles } from '@/constants/constants';
+
 export default function Signup() {
 	const [data, setData] = useState({});
 	const [btnDisabled, setBtnDisabled] = useState(true);
-	const [confirmPassword, setConfirmPassword] = useState('');
+	//const [confirmPassword, setConfirmPassword] = useState('');
 	const [response, error, loading, axiosFetch] = useAxios();
 	const [message, setMessage] = useState('');
 
@@ -23,39 +26,64 @@ export default function Signup() {
 
 	const onSignupSubmitHandlerAsync = async (e) => {
 		e.preventDefault();
-		if (data?.password !== confirmPassword) {
+		if (data?.password !== data?.confirmPassword) {
 			setMessage('Passwords do not match');
 			return;
 		}
 		axiosFetch({
 			method: 'Post',
-			url: configuration.registerUser,
+			url: configuration.client.clientSignup,
 			requestConfig: data,
 		});
 	};
 
+	//setting message on successful signup
 	useEffect(() => {
 		if (response?.message && !error) {
 			setMessage(response?.message);
-			setData({});
-			setConfirmPassword('');
-			setIsModalOpen(true);
+		}
+	}, [response?.message]);
+
+	//password confirmation check
+	useEffect(() => {
+		if (data.password) {
+			if (data?.password !== data?.confirmPassword) {
+				setMessage('Passwords do not match');
+			}
+			if (data?.password?.length < 6 || data?.confirmPassword?.length < 6) {
+				setMessage('Password should be at least 6 characters long');
+			}
+			if (data?.password === data?.confirmPassword) {
+				setMessage('');
+				setBtnDisabled(false);
+			}
+		}
+	}, [data?.password, data?.confirmPassword]);
+
+	//setting token on successful login
+	useEffect(() => {
+		if (response?.data) {
+			localStorage.setItem('user', JSON.stringify(response));
+			if (response?.data?.status !== 401) {
+				window.location.reload();
+			}
 		}
 	}, [response?.data]);
 
+	//redirecting user based on role
 	useEffect(() => {
-		if (data.password) {
-			if (data?.password !== confirmPassword) {
-				setMessage('Passwords do not match');
-			}
-			if (data?.password?.length < 6 || confirmPassword?.length < 6) {
-				setMessage('Password should be at least 6 characters long');
-			}
-			if (data?.password === confirmPassword) {
-				setMessage('');
-			}
+		const userDetails = JSON.parse(localStorage.getItem('user'));
+		if (!userDetails?.token || error) return;
+		if (userDetails.user?.role === userRoles.client.role) {
+			redirect('/client/my-courses');
+		} else if (allAdminRoles.includes(userDetails.user?.role)) {
+			redirect('/admin/dashboard');
+		} else {
+			redirect('/');
 		}
-	}, [data, confirmPassword]);
+	}, []);
+
+	console.log(response)
 
 	return (
 		<div className={styles.main}>
@@ -116,13 +144,10 @@ export default function Signup() {
 				<Input
 					type="password"
 					placeholder="Confirm your password"
-					name="password"
-					onChange={(e) => {
-						setConfirmPassword(e.target.value);
-						setBtnDisabled(e.target.value !== data?.password);
-					}}
+					name="confirmPassword"
+					onChange={handleChange}
 					variant="outLined"
-					value={confirmPassword}
+					value={data?.confirmPassword || ''}
 					required
 					className={styles.input}
 				/>
@@ -138,7 +163,7 @@ export default function Signup() {
 				/>
 			</form>
 			{error?.message && <Message text={error?.message} type="error" />}
-			<GoogleSignUp/>
+			<GoogleSignUp />
 			<small className={styles.small}>
 				Already have an account?{' '}
 				<Link href="/login" className={styles.link}>

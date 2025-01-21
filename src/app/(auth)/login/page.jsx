@@ -41,22 +41,26 @@ export default function Login() {
 		}
 	}, [data?.email, data?.password]);
 
+	//setting token on successful login
 	useEffect(() => {
 		if (response?.data) {
-			localStorage.setItem('user', JSON.stringify(response?.data));
+			localStorage.setItem('user', JSON.stringify(response));
 			if (response?.data?.status !== 401) {
 				window.location.reload();
 			}
 		}
 	}, [response?.data]);
 
+	//redirecting user based on role
 	useEffect(() => {
 		const userDetails = JSON.parse(localStorage.getItem('user'));
 		if (!userDetails?.token || error) return;
 		if (userDetails.user?.role === userRoles.client.role) {
-			redirect('/');
+			redirect('/client/my-courses');
 		} else if (allAdminRoles.includes(userDetails.user?.role)) {
 			redirect('/admin/dashboard');
+		} else {
+			redirect('/');
 		}
 	}, []);
 
