@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import styles from './page.module.css';
 import Drawer from '@/components/ui/drawer/drawer';
 import AllAdministration from '@/components/admin/admininstrators/allAdministration';
+import CreateAdmin from '@/components/admin/admininstrators/createAdmin';
 export default function AllAdmins() {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
   const drawerRender = () => {
@@ -14,7 +15,7 @@ export default function AllAdmins() {
 						title="Create Admin"
 						closeFunction={() => setIsOpenDrawer(false)}
 					>
-						{/* <CreateRechargerAdmin/> */}
+						<CreateAdmin/>
 					</Drawer>
 				)}
 			</>

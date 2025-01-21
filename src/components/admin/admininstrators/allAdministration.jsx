@@ -60,7 +60,8 @@ export default function AllAdministration() {
 		{
 			title: 'Created at',
 			dataIndex: 'createdAt',
-			render: (createdAt) => moment(createdAt).format('DD-MM-YYYY'),
+			render: (createdAt) =>
+				moment(createdAt).format('DD-MM-YYYY HH:mm A'),
 		},
 	];
 
@@ -75,12 +76,15 @@ export default function AllAdministration() {
 						/>
 					</Tooltip>
 					<Tag loading={loading}>
-						<p>Total Admins: {response?.data?.pagination?.totalUsers || 0}</p>
+						<p>
+							Total Admins:{' '}
+							{response?.data?.pagination?.totalUsers || 0}
+						</p>
 					</Tag>
 				</div>
 				<Pagination
-					currentPage={response?.data?.currentPage || 1}
-					totalPage={response?.data?.totalPages || 1}
+					currentPage={response?.data?.pagination?.currentPage || 1}
+					totalPage={response?.data?.pagination?.totalPages || 1}
 					setCurrentPage={(page) => {
 						getAllAdmins(page, tableDefaultItemLimit);
 					}}
