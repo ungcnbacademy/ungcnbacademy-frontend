@@ -74,9 +74,9 @@ export default function Signup() {
 	useEffect(() => {
 		const userDetails = JSON.parse(localStorage.getItem('user'));
 		if (!userDetails?.token || error) return;
-		if (userDetails.user?.role === userRoles.client.role) {
+		if (userDetails.data?.role === userRoles.client.role) {
 			redirect('/client/my-courses');
-		} else if (allAdminRoles.includes(userDetails.user?.role)) {
+		} else if (allAdminRoles.includes(userDetails.data?.role)) {
 			redirect('/admin/dashboard');
 		} else {
 			redirect('/');
