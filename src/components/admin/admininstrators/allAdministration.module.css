@@ -1,0 +1,25 @@
+.main {
+	.tableHeader {
+		margin-block: 10px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 10px;
+    .tableHeaderLeft{
+      display: flex;
+
+      gap: 10px;
+    }
+		.refreshIcon {
+			font-size: 2.2rem;
+			background-color: var(--background-dashboard);
+			cursor: pointer;
+			padding: 5px;
+			border-radius: var(--global-border-radius);
+			box-shadow: 0 1px 12px rgba(128, 128, 128, 0.1);
+		}
+	}
+	.image{
+		border-radius: var(--global-border-radius);
+	}
+}

@@ -5,10 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { HiOutlineMenuAlt4 } from 'react-icons/hi';
 import { MdSpaceDashboard } from 'react-icons/md';
-import { HiDatabase } from 'react-icons/hi';
+import { FaFileAlt } from "react-icons/fa";
 import { useState } from 'react';
-import { FaStoreAlt } from 'react-icons/fa';
-import { GrUserWorker } from 'react-icons/gr';
 import { RiAdminFill } from 'react-icons/ri';
 import Tooltip from '@/components/ui/tooltip/tooltip';
 
@@ -29,29 +27,14 @@ export default function DashboardMenu() {
 			icon: <MdSpaceDashboard />,
 		},
 		{
-			name: 'Stores',
-			link: '/admin/stores',
-			icon: <FaStoreAlt />,
+			name: 'Courses',
+			link: '/admin/courses',
+			icon: <FaFileAlt />,
 		},
 		{
-			name: 'Recharger Admin',
-			link: '/admin/recharger-admin',
+			name: 'Admins',
+			link: '/admin/all-admins',
 			icon: <RiAdminFill />,
-		},
-		{
-			name: 'Recharger',
-			link: '/admin/recharger',
-			icon: <RiAdminFill />,
-		},
-		{
-			name: 'Customer',
-			link: '/admin/customer',
-			icon: <GrUserWorker />,
-		},
-		{
-			name: 'Create Orders',
-			link: '/admin/create-order',
-			icon: <HiDatabase />,
 		},
 	];
 	return (
