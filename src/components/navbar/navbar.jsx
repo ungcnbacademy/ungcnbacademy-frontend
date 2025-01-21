@@ -59,8 +59,8 @@ export default function Navbar({ variant = 'transparent' }) {
 			active: pathParam === '/',
 		},
 		{
-			name: 'Profile',
-			link: '/client/profile',
+			name: 'My Learning',
+			link: '/client/my-courses',
 			active: pathParam === '/client/profile',
 		},
 		{
@@ -87,7 +87,7 @@ export default function Navbar({ variant = 'transparent' }) {
 			active: pathParam === '/logout',
 		},
 	]
-	const authLinks = userDetails?.customer ? authCustomerLinks : authAdminLinks;
+	const authLinks = userDetails?.data?.role === 'user' ? authCustomerLinks : authAdminLinks;
 	const links = userDetails ? authLinks : nonAuthLinks;
 	return (
 		<nav

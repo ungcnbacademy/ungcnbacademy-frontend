@@ -10,7 +10,7 @@ export default function Courses() {
 			</div>
 			<div className={styles.main}>
 				<div className={styles.filter}>
-					<p className={styles.text}>Filter</p>
+					<p className={styles.text}></p>
 					<Input
 						type="search"
 						placeholder="Search"
