@@ -43,8 +43,8 @@ export default function Navbar({ variant = 'transparent' }) {
 		},
 		{
 			name: 'Login',
-			link: '/login' ,
-			active: pathParam.startsWith('/login') ,
+			link: '/login',
+			active: pathParam.startsWith('/login'),
 		},
 		{
 			name: 'Signup',
@@ -59,9 +59,14 @@ export default function Navbar({ variant = 'transparent' }) {
 			active: pathParam === '/',
 		},
 		{
-			name: 'My Learning',
-			link: '/client/my-courses',
+			name: 'Profile',
+			link: '/client/profile',
 			active: pathParam === '/client/profile',
+		},
+		{
+			name: 'Learning',
+			link: '/client/my-courses',
+			active: pathParam === '/client//my-courses',
 		},
 		{
 			name: 'Logout',
@@ -86,8 +91,9 @@ export default function Navbar({ variant = 'transparent' }) {
 			link: '/logout',
 			active: pathParam === '/logout',
 		},
-	]
-	const authLinks = userDetails?.data?.role === 'user' ? authCustomerLinks : authAdminLinks;
+	];
+	const authLinks =
+		userDetails?.data?.role === 'user' ? authCustomerLinks : authAdminLinks;
 	const links = userDetails ? authLinks : nonAuthLinks;
 	return (
 		<nav
