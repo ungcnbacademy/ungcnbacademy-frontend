@@ -1,7 +1,6 @@
 import Table from '@/components/ui/table/table';
 import useAxios from '@/hooks/useAxios';
 import { configuration } from '@/configuration/configuration';
-
 import React, { useEffect, useState } from 'react';
 import { BiRefresh } from 'react-icons/bi';
 import styles from './allAdministration.module.css';
@@ -42,20 +41,28 @@ export default function AllAdministration() {
 			title: 'Verified',
 			dataIndex: 'isEmailVerified',
 			render: (isEmailVerified) => {
-				return <>{isEmailVerified ? 'Verified' : 'Not Verified'}</>;
+				return (
+					<>
+						{isEmailVerified ? (
+							<p className={styles.verified}>Verified</p>
+						) : (
+							<p className={styles.notVerified}>Not Verified</p>
+						)}
+					</>
+				);
 			},
 		},
 		{
 			title: 'Role',
 			dataIndex: 'role',
-			// render: (role) => {
-			// 	return (
-			// 		<>
-			// 			{role === userRoles.admin.rechargerAdmin.role &&
-			// 				userRoles.admin.rechargerAdmin.title}
-			// 		</>
-			// 	);
-			// },
+			render: (role) => {
+				return (
+					<>
+						{userRoles?.admin[role]?.title ||
+							userRoles?.client.title}
+					</>
+				);
+			},
 		},
 		{
 			title: 'Created at',
