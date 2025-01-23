@@ -23,6 +23,7 @@ export default function Section3() {
 					</p>
 					<br />
 					<Button text="Our Courses" variant="outLined" />
+					<br />
 				</div>
 			</div>
 			<div className={styles.right}>

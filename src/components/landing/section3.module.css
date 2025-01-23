@@ -1,12 +1,14 @@
 .main {
 	display: flex;
 	flex-wrap: wrap;
-	height: clamp(500px, 50vh, 800px);
+	height: clamp(fit-content, 40vh, 500px);
+
 	background-image: url('/assets/landing-bg.png');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-
+	padding-inline: var(--global-padding-inline);
+	padding-block: 30px;
 	.left {
 		flex: 1 300px;
 		display: flex;
