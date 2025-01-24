@@ -9,13 +9,15 @@
 		padding: 5%;
 		border-radius: var(--global-border-radius);
 		display: flex;
-    flex-wrap: wrap;
+		flex-wrap: wrap-reverse;
 		align-items: center;
 		justify-content: space-between;
 		.left {
 			min-height: fit-content;
-			height: 50vh;
 			padding-block: 50px;
+			@media screen and (max-width: 650px) {
+				height: 50vh;
+			}
 			.title {
 				font-size: 2rem;
 				font-weight: 200;
@@ -25,15 +27,16 @@
 			}
 			.description {
 				font-size: 0.8rem;
-
 				font-weight: 300;
 				max-width: 1000px;
 				margin-bottom: 20px;
+				color: var(--foreground-light);
 			}
 		}
 		.right {
 			align-self: flex-end;
-			padding-block: 10px 20px;
+			padding-block: 20px 0px;
+			margin-top: auto;
 			.image {
 				width: 150px;
 				height: auto;
