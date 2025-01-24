@@ -1,5 +1,8 @@
 .main {
-	height: clamp(fit-content, 50vh, 800px);
+	/* height: clamp(fit-content, 90vh, 600px); */
+	min-height: fit-content;
+	height: 90vh;
+	max-height: 600px;
 	background-image: url('/assets/landing-bg2.png');
 	background-size: cover;
 	background-position: center;

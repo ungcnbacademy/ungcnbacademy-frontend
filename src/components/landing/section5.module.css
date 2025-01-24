@@ -13,6 +13,9 @@
 		align-items: center;
 		justify-content: space-between;
 		.left {
+			min-height: fit-content;
+			height: 50vh;
+			padding-block: 50px;
 			.title {
 				font-size: 2rem;
 				font-weight: 200;
@@ -30,6 +33,7 @@
 		}
 		.right {
 			align-self: flex-end;
+			padding-block: 10px 20px;
 			.image {
 				width: 150px;
 				height: auto;

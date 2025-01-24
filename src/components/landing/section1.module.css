@@ -1,13 +1,23 @@
 .main {
 	display: flex;
 	flex-wrap: wrap;
-  height: clamp(600px, 70vh, 800px);
+	/* height: clamp(fit-content, 90vh, 600px); */
+	min-height: fit-content;
+	height: 90vh;
+	max-height: 800px;
+
 	.left {
 		flex: 1 300px;
 		display: flex;
     flex-direction: column;
 		align-items: center;
 		justify-content: center;
+    min-height: fit-content;
+    @media screen and (max-width: 600px) {
+      height: 50vh;
+    }
+    padding-block: 50px;
+    padding-inline: var(--global-padding-inline);
     .container{
       max-width: 300px;
       .title{
@@ -30,5 +40,10 @@
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
+    min-height: fit-content;
+    padding-block: 50px;
+    @media screen and (max-width: 600px) {
+      height: 50vh;
+    }
 	}
 }

@@ -1,6 +1,7 @@
 .main {
 	width: 100vw;
 	height: 85vh;
+	min-height: 500px;
 	position: relative;
 	color: var(--foreground-white);
 	.video {
