@@ -23,7 +23,7 @@
 		align-items: center;
 		justify-content: center;
 		gap: 10px;
-		padding: 50px;
+		padding: 10% 30px;
 		.title {
 			font-size: 2rem;
 			font-weight: 200;
