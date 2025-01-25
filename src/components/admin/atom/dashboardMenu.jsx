@@ -9,7 +9,7 @@ import { FaFileAlt } from "react-icons/fa";
 import { useState } from 'react';
 import { RiAdminFill } from 'react-icons/ri';
 import Tooltip from '@/components/ui/tooltip/tooltip';
-
+import { FaUserGroup } from "react-icons/fa6";
 export default function DashboardMenu() {
 	const pathname = usePathname();
 	const [isOpen, setIsOpen] = useState(false);
@@ -36,6 +36,11 @@ export default function DashboardMenu() {
 			link: '/admin/all-admins',
 			icon: <RiAdminFill />,
 		},
+		{
+			name: 'Users',
+			link: '/admin/users',
+			icon: <FaUserGroup />,
+		}
 	];
 	return (
 		<div

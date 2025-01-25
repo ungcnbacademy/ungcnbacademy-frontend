@@ -9,20 +9,20 @@ import Pagination from '@/components/ui/pagination/pagination';
 import { tableDefaultItemLimit, userRoles } from '@/constants/constants';
 import moment from 'moment';
 
-import styles from './allAdministration.module.css';
-export default function AllAdministration() {
-	const [response, error, loading, axiosFetch] = useAxios();
+import styles from './allUsers.module.css';
+export default function AllUsers() {
+  const [response, error, loading, axiosFetch] = useAxios();
 	const [refreshData, setRefreshData] = useState(false);
-	const getAllAdmins = (page, pageSize) => {
+	const getAllUsers = (page, pageSize) => {
 		if (!page) page = 1;
 		if (!pageSize) pageSize = tableDefaultItemLimit;
 		axiosFetch({
 			method: 'Get',
-			url: `${configuration.admin.admin}?page=${page}&limit=${pageSize}&type=main`,
+			url: `${configuration.admin.admin}?page=${page}&limit=${pageSize}&role=user`,
 		});
 	};
 	useEffect(() => {
-		getAllAdmins();
+		getAllUsers();
 	}, [refreshData]);
 
 	const columns = [
@@ -85,7 +85,7 @@ export default function AllAdministration() {
 					</Tooltip>
 					<Tag loading={loading}>
 						<p>
-							Total Admins:{' '}
+							Total Users:{' '}
 							{response?.data?.pagination?.totalUsers || 0}
 						</p>
 					</Tag>
