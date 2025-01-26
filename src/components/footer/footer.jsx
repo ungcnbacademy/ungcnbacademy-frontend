@@ -1,11 +1,8 @@
 'use client';
 import React from 'react';
 import styles from './footer.module.css';
-import Image from 'next/image';
-
 import { legalMenu, MainMenu, serviceMenu } from '@/constants/menuList';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { IoCallSharp } from 'react-icons/io5';
 import { MdEmail } from 'react-icons/md';
 import { FaLocationDot } from 'react-icons/fa6';
@@ -18,17 +15,9 @@ import { FaLinkedin } from 'react-icons/fa';
 import { companyInfo } from '@/constants/constants';
 
 export default function Footer() {
-	const pathParam = usePathname();
 
 	return (
 		<div className={styles.main}>
-			{/* <Image
-				src="/logo.svg"
-				alt="CrediLink Logo"
-				width={140}
-				height={70}
-				loading="lazy"
-			/> */}
 			<div className={styles.top}>
 				<div className={styles.card}>
 					<h2 className={styles.title}>Contact Us</h2>
@@ -69,12 +58,6 @@ export default function Footer() {
 								<li key={index}>
 									<Link
 										href={item.link}
-										{...{
-											className:
-												pathParam === item.link
-													? 'text-action'
-													: 'hover:text-action',
-										}}
 									>
 										{item.name}
 									</Link>
@@ -90,12 +73,6 @@ export default function Footer() {
 							<li key={index}>
 								<Link
 									href={item.link}
-									{...{
-										className:
-											pathParam === item.link
-												? 'text-action'
-												: 'hover:text-action',
-									}}
 								>
 									{item.name}
 								</Link>
