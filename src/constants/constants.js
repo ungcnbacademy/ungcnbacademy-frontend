@@ -30,10 +30,24 @@ export const allAdminRoles = [
 export const companyInfo = {
 	companyName: 'ESG edTech',
 	websiteName: 'ESG edTech',
-	developer: {
-		name: 'ContentPro.',
-		url: 'https://contentprobd.com',
-	},
+	name: "ESG edTech",
+  address: "6th Floor, BIMS Bhaban, 3 Progoti Sharani, Dhaka 1212, Bangladesh",
+  phone: "+8801626-658248",
+  email: "info@esginstitutebd.com",
+  website: "https://esgeducation.netlify.app",
+  googleMapAddress: "https://www.google.com/maps/place/Golden+Plaza/@22.3607201,91.8213674,17z/data=!3m1!4b1!4m6!3m5!1s0x30acd88fed100001:0xbcfc2eb540c77d83!8m2!3d22.3607201!4d91.8213674!16s%2Fg%2F11fx8k_6bw?entry=ttu&g_ep=EgoyMDI0MTExMy4xIKXMDSoASAFQAw%3D%3D",
+  socials: {
+    facebook: "https://www.facebook.com",
+    twitter: "https://twitter.com/",
+    instagram: "https://www.instagram.com/",
+    linkedin: "https://www.linkedin.com/",
+    youtube: "https://www.youtube.com/",
+    whatsapp: "https://wa.me/8801626658248"
+  },
+  developer: {
+    company: 'ContentPro.',
+    website: 'https://contentprobd.com'
+  }
 };
 
 export const orderStatus = [
