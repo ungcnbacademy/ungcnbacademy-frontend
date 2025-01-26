@@ -1,0 +1,37 @@
+.overlay {
+	padding-bottom: 100px;
+	width: 100%;
+	.header {
+		padding-inline: var(--global-padding-inline);
+		background-color: rgb(35, 35, 35);
+		.title {
+			color: var(--foreground-white);
+			padding-block: 50px;
+			font-size: clamp(1.5rem, 5vw, 2rem);
+		}
+	}
+	.main {
+		padding-inline: var(--global-padding-inline);
+		padding-block: 20px;
+		min-height: 50vh;
+		.filter {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 30px;
+			.search {
+				background-color: white;
+				border: solid 1px rgba(199, 199, 199, 0.498);
+				max-width: 300px;
+				&::-webkit-input-placeholder {
+					font-size: 0.8rem;
+				}
+			}
+		}
+		.container {
+			display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 20px;
+		}
+	}
+}

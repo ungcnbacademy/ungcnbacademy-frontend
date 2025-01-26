@@ -42,6 +42,10 @@ export default function Navbar({ variant = 'transparent' }) {
 			active: pathParam === '/',
 		},
 		{
+			name: 'Courses',
+			link: '/courses',
+		},
+		{
 			name: 'Login',
 			link: '/login',
 			active: pathParam.startsWith('/login'),
@@ -57,6 +61,10 @@ export default function Navbar({ variant = 'transparent' }) {
 			name: 'Home',
 			link: '/',
 			active: pathParam === '/',
+		},
+		{
+			name: 'Courses',
+			link: '/courses',
 		},
 		{
 			name: 'Profile',
@@ -80,6 +88,10 @@ export default function Navbar({ variant = 'transparent' }) {
 			name: 'Home',
 			link: '/',
 			active: pathParam === '/',
+		},
+		{
+			name: 'Courses',
+			link: '/courses',
 		},
 		{
 			name: 'Dashboard',
