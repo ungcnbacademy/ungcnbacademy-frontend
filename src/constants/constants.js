@@ -35,7 +35,7 @@ export const companyInfo = {
   phone: "+8801626-658248",
   email: "info@esginstitutebd.com",
   website: "https://esgeducation.netlify.app",
-  googleMapAddress: "https://www.google.com/maps/place/Golden+Plaza/@22.3607201,91.8213674,17z/data=!3m1!4b1!4m6!3m5!1s0x30acd88fed100001:0xbcfc2eb540c77d83!8m2!3d22.3607201!4d91.8213674!16s%2Fg%2F11fx8k_6bw?entry=ttu&g_ep=EgoyMDI0MTExMy4xIKXMDSoASAFQAw%3D%3D",
+  googleMapAddress: "https://www.google.com/maps/place/ESG+Institute+Bangladesh/@23.7907918,90.4251343,17z/data=!3m1!4b1!4m6!3m5!1s0x3755c700057bae11:0xb1dc187232bc98b6!8m2!3d23.7907918!4d90.4251343!16s%2Fg%2F11ln9dw9zl?entry=ttu&g_ep=EgoyMDI1MDEyMi4wIKXMDSoASAFQAw%3D%3D",
   socials: {
     facebook: "https://www.facebook.com",
     twitter: "https://twitter.com/",
