@@ -62,7 +62,7 @@ export default function AllModules({ id }) {
         <Tag loading={loading}>
           <p>
             Total:{' '}
-            {response?.data?.pagination?.totalCourses || 0}
+            {response?.data?.length  || 0}
           </p>
         </Tag>
       </div>

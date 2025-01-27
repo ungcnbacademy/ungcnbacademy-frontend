@@ -38,17 +38,16 @@
 	text-align: center;
 	width: fit-content;
 }
-.title{
+.title {
 	color: var(--accent2);
 	display: flex;
-
 	gap: 5px;
 	cursor: pointer;
 	transition: all 0.6s ease-in-out;
-	&:hover{
+	&:hover {
 		text-decoration: underline;
 	}
-	.infoIcon{
+	.infoIcon {
 		font-size: 1rem;
 		align-self: flex-end;
 	}
