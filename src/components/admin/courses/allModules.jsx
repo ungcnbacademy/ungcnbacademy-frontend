@@ -11,6 +11,8 @@ import moment from 'moment';
 import { getAmountsWithCommas } from '@/utils/utils';
 import Link from 'next/link';
 import styles from './allModules.module.css';
+import { IoMdInformationCircleOutline } from 'react-icons/io';
+
 export default function AllModules({ id }) {
 	const [response, error, loading, axiosFetch] = useAxios();
 	const [refreshData, setRefreshData] = useState(false);
@@ -29,6 +31,18 @@ export default function AllModules({ id }) {
 		{
 			title: 'Title',
 			dataIndex: 'title',
+			render: (title, record) => (
+				<Link href={`/admin/courses/modules/${id}/${record._id}`}>
+					<div className={styles.title}>
+						{title}
+						<Tooltip content="Module details" placement="top">
+							<IoMdInformationCircleOutline
+								className={styles.infoIcon}
+							/>
+						</Tooltip>
+					</div>
+				</Link>
+			)
 		},
 		{
 			title: 'Description',
