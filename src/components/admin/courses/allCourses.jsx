@@ -8,11 +8,10 @@ import Tag from '@/components/ui/tag/tag';
 import Pagination from '@/components/ui/pagination/pagination';
 import { tableDefaultItemLimit } from '@/constants/constants';
 import moment from 'moment';
-
-import styles from './allCourses.module.css';
 import { getAmountsWithCommas } from '@/utils/utils';
 import Link from 'next/link';
 
+import styles from './allCourses.module.css';
 export default function AllCourses() {
   const [response, error, loading, axiosFetch] = useAxios();
 	const [refreshData, setRefreshData] = useState(false);

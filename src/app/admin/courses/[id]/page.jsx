@@ -10,6 +10,8 @@ import styles from './page.module.css';
 import LoadingDots from '@/components/ui/loading/loadingDots';
 import Drawer from '@/components/ui/drawer/drawer';
 import Button from '@/components/ui/button/button';
+import AllModules from '@/components/admin/courses/allModules';
+import CreateModule from '@/components/admin/courses/createModule';
 export default function CourseDetails({ params }) {
 	const unwrappedParams = React.use(params);
 	const courseId = unwrappedParams.id;
@@ -31,7 +33,7 @@ export default function CourseDetails({ params }) {
 						title="Create Module"
 						closeFunction={() => setIsDrawerOpenCreateModule(false)}
 					>
-
+						<CreateModule id={courseId} />
 					</Drawer>
 				)}
 			</>
@@ -105,12 +107,7 @@ export default function CourseDetails({ params }) {
 						}
 					/>
 				</div>
-
-				<Table
-					columns={columns}
-					dataSource={response?.data?.modules}
-					loading={loading}
-				/>
+				<AllModules id={courseId} />
 			</div>
 		);
 	};
