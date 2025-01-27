@@ -10,10 +10,11 @@ import { tableDefaultItemLimit } from '@/constants/constants';
 import moment from 'moment';
 import { getAmountsWithCommas } from '@/utils/utils';
 import Link from 'next/link';
+import { IoMdInformationCircleOutline } from 'react-icons/io';
 
 import styles from './allCourses.module.css';
 export default function AllCourses() {
-  const [response, error, loading, axiosFetch] = useAxios();
+	const [response, error, loading, axiosFetch] = useAxios();
 	const [refreshData, setRefreshData] = useState(false);
 	const getAllCourses = (page, pageSize) => {
 		if (!page) page = 1;
@@ -32,26 +33,37 @@ export default function AllCourses() {
 			title: 'Title',
 			dataIndex: 'title',
 			render: (title, record) => (
-				<Link href={`/admin/courses/${record._id}`}><p className={styles.title}>{title}</p></Link>
+				<Link href={`/admin/courses/${record._id}`}>
+					<div className={styles.title}>
+						{title}
+						<Tooltip content="Course details" placement="top">
+							<IoMdInformationCircleOutline
+								className={styles.infoIcon}
+							/>
+						</Tooltip>
+					</div>
+				</Link>
 			),
-		},
-		{
-			title: 'Description',
-			dataIndex: 'description',
 		},
 		{
 			title: 'Category',
 			dataIndex: 'category',
 		},
 		{
+			title: 'Enrollments',
+			dataIndex: 'totalStudents',
+		},
+		{
 			title: 'Price',
 			dataIndex: 'price',
-      render: (price)=> getAmountsWithCommas(price),
-		},{
-      title: 'Instructor',
-      dataIndex: 'instructors',
-      render: (instructors) => instructors?.map((instructor) => instructor?.name).join(', '),
-    },
+			render: (price) => getAmountsWithCommas(price),
+		},
+		{
+			title: 'Instructor',
+			dataIndex: 'instructors',
+			render: (instructors) =>
+				instructors?.map((instructor) => instructor?.name).join(', '),
+		},
 		{
 			title: 'Created at',
 			dataIndex: 'createdAt',

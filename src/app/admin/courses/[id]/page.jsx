@@ -12,6 +12,9 @@ import Drawer from '@/components/ui/drawer/drawer';
 import Button from '@/components/ui/button/button';
 import AllModules from '@/components/admin/courses/allModules';
 import CreateModule from '@/components/admin/courses/createModule';
+import { TbWorld } from 'react-icons/tb';
+import { IoLogoLinkedin } from 'react-icons/io';
+import { AiOutlineTwitter } from 'react-icons/ai';
 export default function CourseDetails({ params }) {
 	const unwrappedParams = React.use(params);
 	const courseId = unwrappedParams.id;
@@ -44,18 +47,18 @@ export default function CourseDetails({ params }) {
 		return (
 			<div>
 				{response?.data && (
-					<div>
-						<h2>Title: {response?.data?.title}</h2>
-						<p>Id: {response?.data?._id}</p>
+					<div className={styles.details}>
+						<h2 className={styles.title}>
+							{response?.data?.title}
+						</h2>
+						<p># {response?.data?._id}</p>
 						<p> Description: {response?.data?.description}</p>
 						<p> Category: {response?.data?.category}</p>
 						<p>
-							{' '}
 							Price: {getAmountsWithCommas(response?.data?.price)}
 						</p>
 						<p>
-							{' '}
-							Created At:{' '}
+							Created At:
 							{moment(response?.data?.createdAt).format('lll')}
 						</p>
 					</div>
@@ -67,7 +70,7 @@ export default function CourseDetails({ params }) {
 	const courseInstructorRender = () => {
 		return (
 			<div>
-				<h2>Instructors</h2>
+				<h2 className={styles.title}>Instructors</h2>
 				{response?.data?.instructors &&
 					response?.data?.instructors?.map((instructor, i) => (
 						<div key={i} className={styles.instructor}>
@@ -75,10 +78,50 @@ export default function CourseDetails({ params }) {
 							<p>Designation: {instructor?.designation}</p>
 							<p>Description: {instructor?.description}</p>
 							<p>Bio: {instructor?.bio}</p>
-							<h4>Social Links</h4>
-							<p>Website: {instructor?.socialLinks?.website}</p>
-							<p>LinkedIn: {instructor?.socialLinks?.linkedin}</p>
-							<p>Twitter: {instructor?.socialLinks?.twitter}</p>
+							<h5 className={styles.socialTitle}>Social Links</h5>
+							<div className={styles.socialContent}>
+								<TbWorld />
+								{instructor?.socialLinks?.website ? (
+									<a
+										href={instructor?.socialLinks?.website}
+										target="_blank"
+										className={styles.socialLink}
+									>
+										{instructor?.socialLinks?.website}
+									</a>
+								) : (
+									<p>Not available</p>
+								)}
+							</div>
+
+							<div className={styles.socialContent}>
+								<IoLogoLinkedin />
+								{instructor?.socialLinks?.linkedin ? (
+									<a
+										href={instructor?.socialLinks?.linkedin}
+										target="_blank"
+										className={styles.socialLink}
+									>
+										{instructor?.socialLinks?.linkedin}
+									</a>
+								) : (
+									<p>Not available</p>
+								)}
+							</div>
+							<div className={styles.socialContent}>
+								<AiOutlineTwitter />
+								{instructor?.socialLinks?.twitter ? (
+									<a
+										href={instructor?.socialLinks?.twitter}
+										target="_blank"
+										className={styles.socialLink}
+									>
+										{instructor?.socialLinks?.twitter}
+									</a>
+								) : (
+									<p>Not available</p>
+								)}
+							</div>
 						</div>
 					))}
 			</div>
@@ -86,17 +129,10 @@ export default function CourseDetails({ params }) {
 	};
 
 	const courseModuleRender = () => {
-		const columns = [
-			{
-				title: 'Name',
-				dataIndex: 'name',
-			},
-			{},
-		];
 		return (
 			<div>
 				<div className={styles.header}>
-					<h2>Modules</h2>
+					<h2 className={styles.title}>Modules</h2>
 					<Button
 						text="Create Module"
 						variant="primary"
@@ -118,14 +154,22 @@ export default function CourseDetails({ params }) {
 			{loading && <LoadingDots />}
 			{!loading && !error && (
 				<>
-					<Image
-						src={response?.data?.thumbnail || '/assets/noImage.svg'}
-						alt="course image"
-						width={820}
-						height={360}
-						className={styles.image}
-					/>
-					<br /> <br />
+					{response?.data?.thumbnail && (
+						<>
+							<Image
+								src={
+									response?.data?.thumbnail ||
+									'/assets/noImage.svg'
+								}
+								alt="course image"
+								width={820}
+								height={360}
+								className={styles.image}
+							/>
+							<br /> <br />
+						</>
+					)}
+
 					{courseDetailsRender()}
 					<br />
 					{courseModuleRender()}
