@@ -5,6 +5,7 @@ export const configuration = {
 	forgotPassword: '/auth/forgot-password',
 	resetPassword: '/auth/reset-password',
 	changePassword: '/auth/change-password',
+	courses: '/courses',
 	admin: {
     admin: '/admin/users', //admin create, delete, update
   },

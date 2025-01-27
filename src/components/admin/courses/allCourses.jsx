@@ -9,62 +9,46 @@ import Pagination from '@/components/ui/pagination/pagination';
 import { tableDefaultItemLimit, userRoles } from '@/constants/constants';
 import moment from 'moment';
 
-import styles from './allUsers.module.css';
-export default function AllUsers() {
+import styles from './allCourses.module.css';
+import { getAmountsWithCommas } from '@/utils/utils';
+
+export default function AllCourses() {
   const [response, error, loading, axiosFetch] = useAxios();
 	const [refreshData, setRefreshData] = useState(false);
-	const getAllUsers = (page, pageSize) => {
+	const getAllCourses = (page, pageSize) => {
 		if (!page) page = 1;
 		if (!pageSize) pageSize = tableDefaultItemLimit;
 		axiosFetch({
 			method: 'Get',
-			url: `${configuration.admin.admin}?page=${page}&limit=${pageSize}&role=user`,
+			url: `${configuration.courses}?page=${page}&limit=${pageSize}`,
 		});
 	};
 	useEffect(() => {
-		getAllUsers();
+		getAllCourses();
 	}, [refreshData]);
 
 	const columns = [
 		{
-			title: 'First Name',
-			dataIndex: 'firstName',
+			title: 'Title',
+			dataIndex: 'title',
 		},
 		{
-			title: 'Last Name',
-			dataIndex: 'lastName',
+			title: 'Description',
+			dataIndex: 'description',
 		},
 		{
-			title: 'Email',
-			dataIndex: 'email',
+			title: 'Category',
+			dataIndex: 'category',
 		},
 		{
-			title: 'Verified',
-			dataIndex: 'isEmailVerified',
-			render: (isEmailVerified) => {
-				return (
-					<>
-						{isEmailVerified ? (
-							<p className={styles.verified}>Verified</p>
-						) : (
-							<p className={styles.notVerified}>Not Verified</p>
-						)}
-					</>
-				);
-			},
-		},
-		{
-			title: 'Role',
-			dataIndex: 'role',
-			render: (role) => {
-				return (
-					<>
-						{userRoles?.admin[role]?.title ||
-							userRoles?.client.title}
-					</>
-				);
-			},
-		},
+			title: 'Price',
+			dataIndex: 'price',
+      render: (price)=> getAmountsWithCommas(price),
+		},{
+      title: 'Instructor',
+      dataIndex: 'instructors',
+      render: (instructors) => instructors?.map((instructor) => instructor?.name).join(', '),
+    },
 		{
 			title: 'Created at',
 			dataIndex: 'createdAt',
@@ -85,8 +69,8 @@ export default function AllUsers() {
 					</Tooltip>
 					<Tag loading={loading}>
 						<p>
-							Total Users:{' '}
-							{response?.data?.pagination?.totalUsers || 0}
+							Total Courses:{' '}
+							{response?.data?.pagination?.totalCourses || 0}
 						</p>
 					</Tag>
 				</div>
@@ -94,13 +78,13 @@ export default function AllUsers() {
 					currentPage={response?.data?.pagination?.currentPage || 1}
 					totalPage={response?.data?.pagination?.totalPages || 1}
 					setCurrentPage={(page) => {
-						getAllUsers(page, tableDefaultItemLimit);
+						getAllCourses(page, tableDefaultItemLimit);
 					}}
 				/>
 			</div>
 			<Table
 				columns={columns}
-				dataSource={response?.data?.users}
+				dataSource={response?.data?.courses || []}
 				loading={loading}
 			/>
 		</div>
