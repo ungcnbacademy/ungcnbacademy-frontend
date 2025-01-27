@@ -6,7 +6,7 @@ import { BiRefresh } from 'react-icons/bi';
 import Tooltip from '@/components/ui/tooltip/tooltip';
 import Tag from '@/components/ui/tag/tag';
 import Pagination from '@/components/ui/pagination/pagination';
-import { tableDefaultItemLimit, userRoles } from '@/constants/constants';
+import { tableDefaultItemLimit } from '@/constants/constants';
 import moment from 'moment';
 
 import styles from './allCourses.module.css';

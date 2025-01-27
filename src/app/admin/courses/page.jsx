@@ -4,6 +4,7 @@ import Drawer from '@/components/ui/drawer/drawer';
 import Button from '@/components/ui/button/button';
 import styles from './page.module.css';
 import AllCourses from '@/components/admin/courses/allCourses';
+import CreateCourse from '@/components/admin/courses/createCourse';
 
 export default function Courses() {
 	const [isOpenDrawer, setIsOpenDrawer] = useState(false);
@@ -14,7 +15,9 @@ export default function Courses() {
 					<Drawer
 						title="Create Course"
 						closeFunction={() => setIsOpenDrawer(false)}
-					></Drawer>
+					>
+						<CreateCourse/>
+					</Drawer>
 				)}
 			</>
 		);
