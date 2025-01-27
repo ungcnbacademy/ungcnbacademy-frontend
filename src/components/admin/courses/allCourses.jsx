@@ -11,6 +11,7 @@ import moment from 'moment';
 
 import styles from './allCourses.module.css';
 import { getAmountsWithCommas } from '@/utils/utils';
+import Link from 'next/link';
 
 export default function AllCourses() {
   const [response, error, loading, axiosFetch] = useAxios();
@@ -31,6 +32,9 @@ export default function AllCourses() {
 		{
 			title: 'Title',
 			dataIndex: 'title',
+			render: (title, record) => (
+				<Link href={`/admin/courses/${record._id}`}><p className={styles.title}>{title}</p></Link>
+			),
 		},
 		{
 			title: 'Description',
@@ -69,7 +73,7 @@ export default function AllCourses() {
 					</Tooltip>
 					<Tag loading={loading}>
 						<p>
-							Total Courses:{' '}
+							Total:{' '}
 							{response?.data?.pagination?.totalCourses || 0}
 						</p>
 					</Tag>
