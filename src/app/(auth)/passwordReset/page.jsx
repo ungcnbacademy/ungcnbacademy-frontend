@@ -30,7 +30,7 @@ export default function PasswordReset() {
 		axiosFetchOTP({
 			method: 'Post',
 			url: configuration.requestOTP,
-			requestConfig: { identifier },
+			requestConfig: { email: identifier },
 		});
 	};
 	const passwordResetHandler = async (e) => {
@@ -42,8 +42,8 @@ export default function PasswordReset() {
 		}
 		axiosFetchPasswordReset({
 			method: 'Post',
-			url: resetPasswordLink,
-			requestConfig: { otp, newPassword },
+			url: configuration.resetPassword,
+			requestConfig: { otp, password: newPassword, email: identifier, confirmPassword: confirmPassword },
 		});
 	};
 
@@ -122,7 +122,7 @@ export default function PasswordReset() {
 					<br />
 					<form className={styles.form}>
 						<Input
-							type="number"
+							type="text"
 							placeholder="Enter OTP"
 							name="otp"
 							value={otp}

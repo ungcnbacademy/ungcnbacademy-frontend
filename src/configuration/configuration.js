@@ -2,7 +2,7 @@ export const configuration = {
 	baseUrl: 'https://education-platform-api-production.up.railway.app/api',
 	login: '/auth/login',
 	verifyEmail: '/auth/verify-email',
-	forgotPassword: '/auth/forgot-password',
+	requestOTP: '/auth/forgot-password',
 	resetPassword: '/auth/reset-password',
 	changePassword: '/auth/change-password',
 	courses: '/courses',
