@@ -6,10 +6,9 @@ import useAxios from '@/hooks/useAxios';
 import Message from '@/components/ui/message/message';
 import { configuration } from '@/configuration/configuration';
 import Select from '@/components/ui/select/select';
-import styles from './createModule.module.css';
-
-export default function CreateModule({id}) {
-	const [response, error, loading, axiosFetch] = useAxios();
+import styles from './createLesson.module.css';
+export default function CreateLesson({courseId, moduleId}) {
+  const [response, error, loading, axiosFetch] = useAxios();
 	const formRef = useRef(null);
 	const [message, setMessage] = useState({ text: '', type: '' });
 	useEffect(() => {
@@ -25,7 +24,7 @@ export default function CreateModule({id}) {
 		formRef.current.reset();
 	};
 
-	const onAddModuleSubmitHandler = (event) => {
+	const onAddLessonSubmitHandler = (event) => {
 		event.preventDefault();
     setMessage({ text: '', type: '' });
 		const formData = new FormData(event.target);
@@ -33,7 +32,7 @@ export default function CreateModule({id}) {
 
 		axiosFetch({
 			method: 'POST',
-			url: configuration.courses +'/' + id + '/modules',
+			url: configuration.courses +'/' + courseId + '/modules/' + moduleId + '/lessons',
 			requestConfig: payload,
 		});
 	};
@@ -42,22 +41,22 @@ export default function CreateModule({id}) {
 		<div className={styles.main}>
 			<form
 				className={styles.form}
-				onSubmit={onAddModuleSubmitHandler}
+				onSubmit={onAddLessonSubmitHandler}
 				ref={formRef}
 			>
-				<p className={styles.subTitle}>Module details:</p>
+				<p className={styles.subTitle}>Lesson details:</p>
 				<p className={styles.label}>Module title</p>
 				<Input
 					type="text"
-					placeholder="Module Title"
+					placeholder="Lesson Title"
 					name="title"
 					variant="secondary"
 					required
 				/>
-				<p className={styles.label}>Module description</p>
+				<p className={styles.label}>Lesson description</p>
 				<Input
 					type="text"
-					placeholder="Module Description"
+					placeholder="Lesson Description"
 					name="description"
 					variant="secondary"
 					required
@@ -71,14 +70,13 @@ export default function CreateModule({id}) {
 					required
 				/>
 				<p className={styles.subTitle}>Accessibility:</p>
-				<p className={styles.label}>is active?</p>
+				<p className={styles.label}>is Quiz Required?</p>
 
 				<Select
 					options = {[{label: 'Yes', value: true}, {label: 'No', value: false}]}
-					name="isAccessible"
+					name="requireQuizPass"
 					variant="secondary"
 				/>
-
 
 				<div className={styles.submitContainer}>
 					<Message

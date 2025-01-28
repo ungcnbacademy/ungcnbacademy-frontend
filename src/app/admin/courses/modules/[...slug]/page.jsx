@@ -4,11 +4,13 @@ import React, { useState } from 'react';
 import styles from './page.module.css';
 import Drawer from '@/components/ui/drawer/drawer';
 import AllLessons from '@/components/admin/courses/allLessons';
+import CreateLesson from '@/components/admin/courses/createLesson';
+import SingleModuleDetails from '@/components/admin/courses/singleModuleDetails';
 
 export default function ModuleDetails({ params }) {
 	const unwrappedParams = React.use(params);
 	const courseId = unwrappedParams.slug[0];
-  const moduleId = unwrappedParams.slug[1];
+	const moduleId = unwrappedParams.slug[1];
 
 	const [isOpenDrawer, setIsOpenDrawer] = useState(false);
 	const drawerRender = () => {
@@ -18,7 +20,9 @@ export default function ModuleDetails({ params }) {
 					<Drawer
 						title="Create Lesson"
 						closeFunction={() => setIsOpenDrawer(false)}
-					></Drawer>
+					>
+						<CreateLesson courseId={courseId} moduleId={moduleId} />
+					</Drawer>
 				)}
 			</>
 		);
@@ -27,8 +31,9 @@ export default function ModuleDetails({ params }) {
 	return (
 		<div className={styles.main}>
 			{drawerRender()}
+			<SingleModuleDetails courseId={courseId} moduleId={moduleId} />
 			<div className={styles.header}>
-				<h2 className={styles.title}>Module Details</h2>
+				<h2 className={styles.title}>All Lessons:</h2>
 				<Button
 					text="Create Lesson"
 					variant="primary"
@@ -36,10 +41,7 @@ export default function ModuleDetails({ params }) {
 				/>
 			</div>
 			<div className={styles.container}>
-				<AllLessons
-					courseId={courseId}
-					moduleId={ moduleId}
-				/>
+				<AllLessons courseId={courseId} moduleId={moduleId} />
 			</div>
 		</div>
 	);
