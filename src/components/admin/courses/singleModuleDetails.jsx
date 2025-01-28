@@ -15,7 +15,7 @@ export default function SingleModuleDetails({ courseId, moduleId }) {
 
 	return (
 		<div className={styles.main}>
-      {loading && <LoadingDots/>}
+			{loading && <LoadingDots />}
 			{response?.data && !loading && !error && (
 				<>
 					<h2 className={styles.title}>Module Details:</h2>
@@ -31,7 +31,6 @@ export default function SingleModuleDetails({ courseId, moduleId }) {
 					</p>
 				</>
 			)}
-
 		</div>
 	);
 }
