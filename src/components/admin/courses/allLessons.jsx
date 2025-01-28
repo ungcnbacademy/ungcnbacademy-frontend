@@ -1,3 +1,4 @@
+'use client';
 import Table from '@/components/ui/table/table';
 import useAxios from '@/hooks/useAxios';
 import { configuration } from '@/configuration/configuration';
@@ -12,29 +13,27 @@ import { getAmountsWithCommas } from '@/utils/utils';
 import Link from 'next/link';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 
-import styles from './allModules.module.css';
-
-
-export default function AllModules({ id }) {
-	const [response, error, loading, axiosFetch] = useAxios();
+import styles from './allLessons.module.css';
+export default function AllLessons({courseId, moduleId}) {
+  const [response, error, loading, axiosFetch] = useAxios();
 	const [refreshData, setRefreshData] = useState(false);
-	const getAllModules = (page, pageSize) => {
+	const getAllLessons = (page, pageSize) => {
 		if (!page) page = 1;
 		if (!pageSize) pageSize = tableDefaultItemLimit;
 		axiosFetch({
 			method: 'Get',
-			url: `${configuration.courses}/${id}/modules`,
+			url: `${configuration.courses}/${courseId}/modules/${moduleId}/lessons`,
 		});
 	};
 	useEffect(() => {
-		getAllModules();
+		getAllLessons();
 	}, [refreshData]);
 	const columns = [
 		{
 			title: 'Title',
 			dataIndex: 'title',
 			render: (title, record) => (
-				<Link href={`/admin/courses/modules/${id}/${record._id}`}>
+				<Link href={`/admin/courses/lessons/${courseId}/${moduleId}`}>
 					<div className={styles.title}>
 						{title}
 						<Tooltip content="Module details" placement="top">

@@ -1,10 +1,46 @@
-'use client'
-import React from 'react'
+'use client';
+import Button from '@/components/ui/button/button';
+import React, { useState } from 'react';
+import styles from './page.module.css';
+import Drawer from '@/components/ui/drawer/drawer';
+import AllLessons from '@/components/admin/courses/allLessons';
 
-export default function ModuleDetails({params}) {
-  const unwrappedParams = React.use(params);
-  console.log(unwrappedParams)
-  return (
-    <div>ModuleDetails</div>
-  )
+export default function ModuleDetails({ params }) {
+	const unwrappedParams = React.use(params);
+	const courseId = unwrappedParams.slug[0];
+  const moduleId = unwrappedParams.slug[1];
+
+	const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+	const drawerRender = () => {
+		return (
+			<>
+				{isOpenDrawer && (
+					<Drawer
+						title="Create Lesson"
+						closeFunction={() => setIsOpenDrawer(false)}
+					></Drawer>
+				)}
+			</>
+		);
+	};
+
+	return (
+		<div className={styles.main}>
+			{drawerRender()}
+			<div className={styles.header}>
+				<h2 className={styles.title}>Module Details</h2>
+				<Button
+					text="Create Lesson"
+					variant="primary"
+					onClick={() => setIsOpenDrawer(!isOpenDrawer)}
+				/>
+			</div>
+			<div className={styles.container}>
+				<AllLessons
+					courseId={courseId}
+					moduleId={ moduleId}
+				/>
+			</div>
+		</div>
+	);
 }
