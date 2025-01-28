@@ -1,0 +1,29 @@
+.main {
+	.title {
+		font-size: 1.2rem;
+		font-weight: 500;
+	}
+	.uploadVideo {
+		padding: 20px;
+		max-width: 800px;
+		margin-top: 30px;
+		background-color: var(--background-dashboard);
+
+		.form {
+			margin-top: 10px;
+			display: flex;
+			flex-direction: column;
+		}
+		.input {
+			width: fit-content;
+		}
+		.button {
+			margin-top: 10px;
+		}
+	}
+}
+.main > p {
+	color: var(--foreground-light);
+	font-size: 0.85rem;
+	margin-top: 5px;
+}

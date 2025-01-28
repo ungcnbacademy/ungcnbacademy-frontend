@@ -1,4 +1,5 @@
 export const tableDefaultItemLimit = 10;
+export const cloudflareCustomerId = 'vv3mcx6scdxfhofx';
 
 export const userRoles = {
 	admin: {

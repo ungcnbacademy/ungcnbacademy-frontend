@@ -33,7 +33,7 @@ export default function AllLessons({courseId, moduleId}) {
 			title: 'Title',
 			dataIndex: 'title',
 			render: (title, record) => (
-				<Link href={`/admin/courses/lessons/${courseId}/${moduleId}`}>
+				<Link href={`/admin/courses/lessons/${courseId}/${moduleId}/${record._id}`}>
 					<div className={styles.title}>
 						{title}
 						<Tooltip content="Module details" placement="top">
