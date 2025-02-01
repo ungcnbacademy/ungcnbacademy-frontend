@@ -9,6 +9,8 @@ import Input from '@/components/ui/input/input';
 import Button from '@/components/ui/button/button';
 import Message from '@/components/ui/message/message';
 import { cloudflareCustomerId } from '@/constants/constants';
+import { Stream } from '@cloudflare/stream-react';
+
 export default function LessonDetails({ params }) {
 	const unwrappedParams = React.use(params);
 	const courseId = unwrappedParams.slug[0];
@@ -42,7 +44,7 @@ export default function LessonDetails({ params }) {
 
 	const onVideoUploadHandler = (e) => {
 		e.preventDefault();
-    setMessage({ text: '', type: '' });
+		setMessage({ text: '', type: '' });
 		const formData = new FormData(e.target);
 
 		axiosFetchVideoUpload({
@@ -50,6 +52,18 @@ export default function LessonDetails({ params }) {
 			url: `${configuration.courses}/${courseId}/modules/${moduleId}/lessons/${lessonId}/video`,
 			requestConfig: formData,
 		});
+	};
+
+	const StreamVideo = () => {
+		return (
+			<div className={styles.videoContainer}>
+				<Stream
+					src={response?.data?.cloudflareVideoId}
+					controls
+					className={styles.video}
+				/>
+			</div>
+		);
 	};
 
 	return (
@@ -67,21 +81,8 @@ export default function LessonDetails({ params }) {
 						{moment(response?.data?.createdAt).format('lll')}
 					</p>
 					<br />
-          {response?.data?.videoUrl && <iframe
-						src={response?.data?.videoUrl.replace(
-							'manifest/video.m3u8',
-							'iframe'
-						)}
-            //src={`https://customer-${cloudflareCustomerId}.cloudflarestream.com/${response?.data?.videoUrl}/iframe`}
-            //src="https://customer-vv3mcx6scdxfhofx.cloudflarestream.com/7ec7f517977f45f9ad646d8d2f41f6a6/iframe"
-						title="Example Stream video"
-						width="100%"
-						height="500"
-						frameBorder="0"
-						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-						allowFullScreen
-					></iframe>}
 
+					{response?.data?.cloudflareVideoId && <StreamVideo />}
 
 					<div className={styles.uploadVideo}>
 						<label className={styles.label}>
@@ -95,14 +96,14 @@ export default function LessonDetails({ params }) {
 								type="file"
 								variant="secondary"
 								label="Upload Video"
-                placeholder='Upload Video'
+								placeholder="Upload Video"
 								name="video"
 								className={styles.input}
 							/>
 							<Message
 								text={message.text}
 								type={message.type}
-                loading={loadingVideoUpload}
+								loading={loadingVideoUpload}
 							/>
 							<Button
 								type="submit"

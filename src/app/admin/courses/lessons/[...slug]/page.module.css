@@ -27,3 +27,11 @@
 	font-size: 0.85rem;
 	margin-top: 5px;
 }
+.videoContainer{
+	width: 60%;
+	aspect-ratio: 16/9;
+	.video {
+		width: 100%;
+	}
+}
+
