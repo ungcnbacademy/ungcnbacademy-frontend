@@ -5,11 +5,11 @@ import React, { useEffect, useState } from 'react';
 import styles from './page.module.css';
 import LoadingDots from '@/components/ui/loading/loadingDots';
 import moment from 'moment';
-import Input from '@/components/ui/input/input';
 import Button from '@/components/ui/button/button';
-import Message from '@/components/ui/message/message';
-import { cloudflareCustomerId } from '@/constants/constants';
+
 import { Stream } from '@cloudflare/stream-react';
+import CreateAssets from '@/components/admin/courses/lesson/createAssets';
+import UploadVideo from '@/components/admin/courses/lesson/uploadVideo';
 
 export default function LessonDetails({ params }) {
 	const unwrappedParams = React.use(params);
@@ -17,23 +17,6 @@ export default function LessonDetails({ params }) {
 	const moduleId = unwrappedParams.slug[1];
 	const lessonId = unwrappedParams.slug[2];
 	const [response, error, loading, axiosFetch] = useAxios();
-	const [
-		responseVideoUpload,
-		errorVideoUpload,
-		loadingVideoUpload,
-		axiosFetchVideoUpload,
-	] = useAxios();
-
-	const [message, setMessage] = useState({ text: '', type: '' });
-
-	useEffect(() => {
-		if (responseVideoUpload?.message) {
-			setMessage({ text: responseVideoUpload?.message, type: 'success' });
-		}
-		if (errorVideoUpload?.message) {
-			setMessage({ text: errorVideoUpload?.message, type: 'error' });
-		}
-	}, [responseVideoUpload, errorVideoUpload]);
 
 	useEffect(() => {
 		axiosFetch({
@@ -41,18 +24,6 @@ export default function LessonDetails({ params }) {
 			url: `${configuration.courses}/${courseId}/modules/${moduleId}/lessons/${lessonId}`,
 		});
 	}, []);
-
-	const onVideoUploadHandler = (e) => {
-		e.preventDefault();
-		setMessage({ text: '', type: '' });
-		const formData = new FormData(e.target);
-
-		axiosFetchVideoUpload({
-			method: 'POST',
-			url: `${configuration.courses}/${courseId}/modules/${moduleId}/lessons/${lessonId}/video`,
-			requestConfig: formData,
-		});
-	};
 
 	const lessonDetailsRender = () => {
 		return (
@@ -94,36 +65,6 @@ export default function LessonDetails({ params }) {
 		);
 	};
 
-	const uploadVideoRender = () => {
-		return (
-			<div className={styles.uploadVideo}>
-				<label className={styles.label}>Upload or change video</label>
-				<form className={styles.form} onSubmit={onVideoUploadHandler}>
-					<Input
-						type="file"
-						variant="secondary"
-						label="Upload Video"
-						placeholder="Upload Video"
-						name="video"
-						className={styles.input}
-					/>
-					<Message
-						text={message.text}
-						type={message.type}
-						loading={loadingVideoUpload}
-					/>
-					<Button
-						type="submit"
-						text="Upload"
-						variant="primary"
-						className={styles.button}
-						loading={loadingVideoUpload}
-					/>
-				</form>
-			</div>
-		);
-	};
-
 	return (
 		<div className={styles.main}>
 			{loading && <LoadingDots />}
@@ -132,11 +73,16 @@ export default function LessonDetails({ params }) {
 					<div className={styles.left}>
 						{lessonDetailsRender()}
 						{streamVideoRender()}
-						{uploadVideoRender()}
+						<UploadVideo
+							courseId={courseId}
+							moduleId={moduleId}
+							lessonId={lessonId}
+						/>
 					</div>
 					<div className={styles.right}>
 						<small>Lesson Details</small>
 						<h2 className={styles.title}>Assets</h2>
+						<CreateAssets />
 					</div>
 				</div>
 			)}
