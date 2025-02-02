@@ -11,9 +11,7 @@ import moment from 'moment';
 import { getAmountsWithCommas } from '@/utils/utils';
 import Link from 'next/link';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
-
 import styles from './allModules.module.css';
-
 
 export default function AllModules({ id }) {
 	const [response, error, loading, axiosFetch] = useAxios();

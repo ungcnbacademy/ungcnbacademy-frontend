@@ -31,7 +31,11 @@ export default function LessonDetails({ params }) {
 						title="Create Assets"
 						closeFunction={() => setIsDrawerOpenCreateAssets(false)}
 					>
-						<CreateAssets />
+						<CreateAssets
+							courseId={courseId}
+							moduleId={moduleId}
+							lessonId={lessonId}
+						/>
 					</Drawer>
 				)}
 			</>

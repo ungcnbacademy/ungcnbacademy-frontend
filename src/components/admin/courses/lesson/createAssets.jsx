@@ -8,7 +8,7 @@ import { configuration } from '@/configuration/configuration';
 
 import styles from './createAssets.module.css';
 
-export default function CreateAssets() {
+export default function CreateAssets({ courseId, moduleId, lessonId }) {
 	const [response, error, loading, axiosFetch] = useAxios();
 	const formRef = useRef(null);
 	const [message, setMessage] = useState({ text: '', type: '' });
@@ -32,22 +32,21 @@ export default function CreateAssets() {
 		setMessage({ text: '', type: '' });
 		const formData = new FormData(event.target);
 		const payload = Object.fromEntries(formData);
+		const fileName = payload.description;
+
+		formData.delete('description');
+		formData.append('description', [fileName]);
 
 		axiosFetch({
-			method: 'POST',
-			url: configuration.courses + '/',
-			requestConfig: payload,
+			method: 'PUT',
+			url: configuration.courses + '/' + courseId + '/modules/' + moduleId + '/lessons/' + lessonId ,
+			requestConfig: formData,
 		});
-
 	};
 
 	return (
 		<div className={styles.main}>
-			<form
-				className={styles.form}
-				onSubmit={onAddAsset}
-				ref={formRef}
-			>
+			<form className={styles.form} onSubmit={onAddAsset} ref={formRef}>
 				<p className={styles.subTitle}>Upload Assets:</p>
 				<p className={styles.label}>Upload file</p>
 				<Input
