@@ -36,7 +36,7 @@ export default function AllModules({ id }) {
 			render: (title, record) => (
 				<Link href={`/admin/courses/modules/${id}/${record._id}`}>
 					<div className={styles.title}>
-						{title}
+						{`Module ${record.order}: ${title}`}
 						<Tooltip content="Module details" placement="top">
 							<IoMdInformationCircleOutline
 								className={styles.infoIcon}

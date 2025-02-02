@@ -35,7 +35,7 @@ export default function AllLessons({courseId, moduleId}) {
 			render: (title, record) => (
 				<Link href={`/admin/courses/lessons/${courseId}/${moduleId}/${record._id}`}>
 					<div className={styles.title}>
-						{title}
+						{`Lesson ${record.order}: ${title}`}
 						<Tooltip content="Module details" placement="top">
 							<IoMdInformationCircleOutline
 								className={styles.infoIcon}

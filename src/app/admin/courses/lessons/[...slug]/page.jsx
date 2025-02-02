@@ -67,14 +67,18 @@ export default function LessonDetails({ params }) {
 	const lessonDetailsRender = () => {
 		return (
 			<div className={styles.details}>
-				<h2 className={styles.title}>{response?.data?.title}</h2>
+				<h2
+					className={styles.title}
+				>{`Lesson ${response?.data?.order}: ${response?.data?.title}`}</h2>
 				<p className={styles.subtitle}># {response?.data?._id}</p>
-				<p className={styles.subtitle}>
-					Duration: {response?.data?.duration}{' '}
-					{Number(response?.data?.durationUnit) > 1
-						? 'minutes'
-						: 'seconds'}{' '}
-				</p>
+				{response?.data?.duration && (
+					<p className={styles.subtitle}>
+						Duration: {response?.data?.duration}{' '}
+						{Number(response?.data?.durationUnit) > 1
+							? 'minutes'
+							: 'seconds'}{' '}
+					</p>
+				)}
 				<p className={styles.subtitle}>
 					Description: {response?.data?.description}
 				</p>
@@ -95,6 +99,7 @@ export default function LessonDetails({ params }) {
 							src={response?.data?.cloudflareVideoId}
 							controls
 							className={styles.video}
+							onError={(error) => console.log(error)}
 						/>
 					</div>
 				)}
@@ -125,7 +130,11 @@ export default function LessonDetails({ params }) {
 						</div>
 					</div>
 					<div className={styles.bottom}>
-						<div className={styles.left}>{streamVideoRender()}</div>
+						{response?.data?.cloudflareVideoId && (
+							<div className={styles.left}>
+								{streamVideoRender()}
+							</div>
+						)}
 						<div className={styles.right}>
 							<small>Lesson Details</small>
 							<h2 className={styles.title}>Assets</h2>
