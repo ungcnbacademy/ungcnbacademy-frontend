@@ -9,13 +9,12 @@ export default function DotsInfo({
 			<BsThreeDotsVertical className={styles.threeDots} />
 			<div className={styles.container}>
 				{data.map((item, index) => (
-					<p
-						className={styles.button}
-						key={index}
-						onClick={item.function}
-					>
-						{item.title}
-					</p>
+					<div key={index} className={styles.buttonContainer}>
+						{item.icon && item.icon}
+						<p className={styles.button} onClick={item.function}>
+							{item.title}
+						</p>
+					</div>
 				))}
 			</div>
 		</div>

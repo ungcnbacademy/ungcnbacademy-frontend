@@ -149,9 +149,10 @@ export default function LessonDetails({ params }) {
 									<div key={i}>
 										<AssetDetails
 											title={asset?.title}
-											description={asset?.description}
 											type={asset?.fileType}
 											size={asset?.fileSize}
+											viewUrl={asset?.fileUrl}
+											url={`${configuration.courses}/${courseId}/modules/${moduleId}/lessons/${lessonId}/assets/${asset?._id}`}
 										/>
 									</div>
 								))
