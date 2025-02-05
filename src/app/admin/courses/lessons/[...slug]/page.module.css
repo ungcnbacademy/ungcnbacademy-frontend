@@ -12,6 +12,14 @@
 				flex-wrap: wrap;
 				gap: 10px;
 			}
+			.refreshIcon {
+				font-size: 2.2rem;
+				background-color: var(--background-dashboard);
+				cursor: pointer;
+				padding: 5px;
+				border-radius: var(--global-border-radius);
+				box-shadow: 0 1px 12px rgba(128, 128, 128, 0.1);
+			}
 		}
 		.bottom {
 			display: flex;
@@ -22,7 +30,7 @@
 			}
 			.right {
 				flex: 1 300px;
-				.emptyText{
+				.emptyText {
 					color: var(--foreground-light);
 					font-size: 0.85rem;
 					margin-top: 5px;
@@ -52,4 +60,3 @@
 		width: 100%;
 	}
 }
-

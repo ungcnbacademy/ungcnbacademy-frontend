@@ -1,14 +1,15 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './assetDetails.module.css';
 import { FaRegFilePdf } from 'react-icons/fa6';
 import { IoDocumentOutline } from 'react-icons/io5';
-import { IoCloudDownloadOutline } from "react-icons/io5";
+import { IoCloudDownloadOutline } from 'react-icons/io5';
 import DotsInfo from '../ui/threeDotsInfoButton/dotsInfo';
-import { RiDeleteBin7Line } from "react-icons/ri";
+import { RiDeleteBin7Line } from 'react-icons/ri';
 import useAxios from '@/hooks/useAxios';
+import Toast from '../ui/toast/toast';
 
-export default function AssetDetails({ title, type, size, url, viewUrl }) {
+export default function AssetDetails({ title, type, size, url, viewUrl , refresh}) {
 	const [responseDelete, errorDelete, loadingDelete, axiosFetchDelete] =
 		useAxios();
 	const [
@@ -17,6 +18,7 @@ export default function AssetDetails({ title, type, size, url, viewUrl }) {
 		loadingDownload,
 		axiosFetchDownload,
 	] = useAxios();
+	const [message, setMessage] = useState({ text: '', type: '' });
 
 	const deleteAssetHandler = () => {
 		axiosFetchDelete({
@@ -30,6 +32,16 @@ export default function AssetDetails({ title, type, size, url, viewUrl }) {
 			url: `${url}/download`,
 		});
 	};
+	useEffect(() => {
+		if (responseDelete?.message) {
+      refresh();
+			// setMessage({ text: responseDelete?.message, type: 'success' });
+		}
+		if (errorDelete?.message) {
+			setMessage({ text: errorDelete?.message, type: 'error' });
+		}
+	}, [responseDelete, errorDelete]);
+
 	const iconRender = () => {
 		switch (type) {
 			case 'application/pdf':
@@ -46,6 +58,8 @@ export default function AssetDetails({ title, type, size, url, viewUrl }) {
 
 	return (
 		<div className={styles.main}>
+      {message.text &&<Toast text={message.text} variant={message.type} />}
+      {loadingDelete && <Toast text="Please wait..." variant="warning" />}
 			{iconRender()}
 			<div className={styles.container}>
 				<p className={styles.title}>{title}</p>
@@ -55,21 +69,21 @@ export default function AssetDetails({ title, type, size, url, viewUrl }) {
 				data={[
 					{
 						title: 'View',
-            icon: <IoDocumentOutline/>,
+						icon: <IoDocumentOutline />,
 						function: () => {
 							window.open(viewUrl, '_blank');
 						},
 					},
 					{
 						title: 'Download',
-            icon: <IoCloudDownloadOutline/>,
+						icon: <IoCloudDownloadOutline />,
 						function: () => {
 							downloadAssetHandler();
 						},
 					},
 					{
 						title: 'Delete',
-            icon: <RiDeleteBin7Line/>,
+						icon: <RiDeleteBin7Line />,
 						function: () => {
 							confirm(
 								'Are you sure you want to delete this asset?'

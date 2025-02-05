@@ -14,7 +14,7 @@
 		box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.2);
 		border-radius: var(--global-border-radius);
 		padding: 5px;
-		z-index: 10;
+		z-index: 100;
 	}
 	.buttonContainer {
 		display: flex;

@@ -12,6 +12,8 @@ import CreateAssets from '@/components/admin/courses/lesson/createAssets';
 import UploadVideo from '@/components/admin/courses/lesson/uploadVideo';
 import Drawer from '@/components/ui/drawer/drawer';
 import AssetDetails from '@/components/atom/assetDetails';
+import { BiRefresh } from 'react-icons/bi';
+import Tooltip from '@/components/ui/tooltip/tooltip';
 
 export default function LessonDetails({ params }) {
 	const unwrappedParams = React.use(params);
@@ -23,7 +25,7 @@ export default function LessonDetails({ params }) {
 		useState(false);
 	const [isDrawerOpenUploadVideo, setIsDrawerOpenUploadVideo] =
 		useState(false);
-
+	const [refreshData, setRefreshData] = useState(false);
 	const drawerOpenCreateAssetsRender = () => {
 		return (
 			<>
@@ -62,12 +64,16 @@ export default function LessonDetails({ params }) {
 		);
 	};
 
-	useEffect(() => {
+	const getAllLessonData = () => {
 		axiosFetch({
 			method: 'Get',
 			url: `${configuration.courses}/${courseId}/modules/${moduleId}/lessons/${lessonId}`,
 		});
-	}, []);
+	}
+
+	useEffect(() => {
+		getAllLessonData();
+	}, [refreshData]);
 
 	const lessonDetailsRender = () => {
 		return (
@@ -122,6 +128,12 @@ export default function LessonDetails({ params }) {
 					<div className={styles.top}>
 						{lessonDetailsRender()}
 						<div className={styles.buttonContainer}>
+						<Tooltip content="Refresh" placement="top">
+						<BiRefresh
+							className={styles.refreshIcon}
+							onClick={() => setRefreshData(!refreshData)}
+						/>
+					</Tooltip>
 							<Button
 								text="Create Assets"
 								onClick={() =>
@@ -152,6 +164,7 @@ export default function LessonDetails({ params }) {
 											type={asset?.fileType}
 											size={asset?.fileSize}
 											viewUrl={asset?.fileUrl}
+											refresh={() => setRefreshData(!refreshData)}
 											url={`${configuration.courses}/${courseId}/modules/${moduleId}/lessons/${lessonId}/assets/${asset?._id}`}
 										/>
 									</div>

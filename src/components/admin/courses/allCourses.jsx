@@ -13,8 +13,10 @@ import Link from 'next/link';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 
 import styles from './allCourses.module.css';
+import DotsInfo from '@/components/ui/threeDotsInfoButton/dotsInfo';
 export default function AllCourses() {
 	const [response, error, loading, axiosFetch] = useAxios();
+	const [responseDelete, errorDelete, loadingDelete, axiosFetchDelete] = useAxios();
 	const [refreshData, setRefreshData] = useState(false);
 	const getAllCourses = (page, pageSize) => {
 		if (!page) page = 1;
@@ -27,6 +29,20 @@ export default function AllCourses() {
 	useEffect(() => {
 		getAllCourses();
 	}, [refreshData]);
+
+	const deleteCourseHandler = (id) => {
+		confirm('Are you sure you want to delete this course?') &&
+			axiosFetchDelete({
+				method: 'DELETE',
+				url: `${configuration.courses}/${id}`,
+		})
+	}
+
+	useEffect(() => {
+		if (responseDelete?.data) {
+			setRefreshData(!refreshData);
+		}
+	}, [responseDelete]);
 
 	const columns = [
 		{
@@ -69,7 +85,13 @@ export default function AllCourses() {
 			dataIndex: 'createdAt',
 			render: (createdAt) =>
 				moment(createdAt).format('DD-MM-YYYY HH:mm A'),
-		},
+		},{
+			title: '',
+			dataIndex: '_id',
+			render: (id) => (
+				<DotsInfo data={[{title: 'Delete', function: () => {deleteCourseHandler(id)}}]} />
+			)
+		}
 	];
 
 	return (
