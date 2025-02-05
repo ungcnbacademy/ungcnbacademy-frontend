@@ -1,10 +1,12 @@
 import CourseDetails from '@/components/allCourses/courseDetails';
 import React from 'react';
 
-export default function Details() {
+export default async function Details({ params }) {
+	const courseId = (await params).id;
+
 	return (
 		<div>
-			<CourseDetails />
+			<CourseDetails id={courseId} />
 		</div>
 	);
 }

@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import styles from './courseCard.module.css';
 import Image from 'next/image';
 import {
@@ -7,6 +8,7 @@ import {
 	FaArrowRight,
 	FaRegClock,
 } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
 
 export default function CourseCard({
 	img = '/assets/noImage.svg',
@@ -15,15 +17,22 @@ export default function CourseCard({
 	startTime = 'Anytime',
 	duration = '',
 	totalLectures = '',
+	id,
 }) {
+	const [courseImage, setCourseImage] = useState(img);
+	const router = useRouter();
 	return (
-		<div className={styles.main}>
+		<div
+			className={styles.main}
+			onClick={() => router.push(`/courses/${id}`)}
+		>
 			<Image
-				src={img}
+				src={courseImage}
 				alt="Empty"
 				width={300}
 				height={200}
 				className={styles.image}
+				onError={() => setCourseImage('/assets/noImage.svg')}
 			/>
 			<div className={styles.container}>
 				<p className={styles.title}>{title}</p>

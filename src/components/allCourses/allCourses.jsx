@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
 import styles from './allCourses.module.css';
 import CourseCard from '../atom/courseCard';
 import Input from '../ui/input/input';
-export default function AllCourses() {
+import { getFetchRequests } from '@/fetch ssr/getFetchRequests';
+export default async function AllCourses() {
+	const response = await getFetchRequests.getAllCourses();
 	return (
 		<div className={styles.overlay}>
 			<div className={styles.main}>
@@ -16,54 +18,18 @@ export default function AllCourses() {
 					/>
 				</div>
 				<div className={styles.container}>
-					<CourseCard
-						img="/assets/auth-bg.webp"
-						title="ESG Investing and Analysis"
-						description="Learn how to incorporate ESG factors into your investment strategy"
-						startTime="Anytime"
-						duration="10"
-						totalLectures="10"
-					/>
-					<CourseCard
-						img="/assets/auth-bg.webp"
-						title="ESG Investing and Analysis"
-						description="Learn how to incorporate ESG factors into your investment strategy"
-						startTime="Anytime"
-						duration="10"
-						totalLectures="10"
-					/>
-					<CourseCard
-						img="/assets/auth-bg.webp"
-						title="ESG Investing and Analysis"
-						description="Learn how to incorporate ESG factors into your investment strategy"
-						startTime="Anytime"
-						duration="10"
-						totalLectures="10"
-					/>
-					<CourseCard
-						img="/assets/auth-bg.webp"
-						title="ESG Investing and Analysis"
-						description="Learn how to incorporate ESG factors into your investment strategy"
-						startTime="Anytime"
-						duration="10"
-						totalLectures="10"
-					/>
-					<CourseCard
-						img="/assets/auth-bg.webp"
-						title="ESG Investing and Analysis"
-						description="Learn how to incorporate ESG factors into your investment strategy"
-						startTime="Anytime"
-						duration="10"
-						totalLectures="10"
-					/>
-					<CourseCard
-						img="/assets/auth-bg.webp"
-						title="ESG Investing and Analysis"
-						description="Learn how to incorporate ESG factors into your investment strategy"
-						startTime="Anytime"
-						duration="10"
-						totalLectures="10"
-					/>
+					{response?.data?.courses.map((course) => (
+						<CourseCard
+							key={course._id}
+							img={course.thumbnail || '/assets/noImage.svg'}
+							title={course.title}
+							description={course.description}
+							startTime="Anytime"
+							duration="10"
+							totalLectures="10"
+							id={course._id}
+						/>
+					))}
 				</div>
 			</div>
 		</div>
