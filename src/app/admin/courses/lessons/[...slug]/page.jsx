@@ -11,6 +11,7 @@ import { Stream } from '@cloudflare/stream-react';
 import CreateAssets from '@/components/admin/courses/lesson/createAssets';
 import UploadVideo from '@/components/admin/courses/lesson/uploadVideo';
 import Drawer from '@/components/ui/drawer/drawer';
+import AssetDetails from '@/components/atom/assetDetails';
 
 export default function LessonDetails({ params }) {
 	const unwrappedParams = React.use(params);
@@ -140,8 +141,25 @@ export default function LessonDetails({ params }) {
 							</div>
 						)}
 						<div className={styles.right}>
-							<small>Lesson Details</small>
+							{/* <small>Lesson Details</small> */}
 							<h2 className={styles.title}>Assets</h2>
+
+							{response?.data?.assets?.length > 0 ? (
+								response?.data?.assets?.map((asset, i) => (
+									<div key={i}>
+										<AssetDetails
+											title={asset?.title}
+											description={asset?.description}
+											type={asset?.fileType}
+											size={asset?.fileSize}
+										/>
+									</div>
+								))
+							) : (
+								<p className={styles.emptyText}>
+									No assets available
+								</p>
+							)}
 						</div>
 					</div>
 				</div>
