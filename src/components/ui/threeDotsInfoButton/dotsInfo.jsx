@@ -1,13 +1,22 @@
 import React from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import styles from './dotsInfo.module.css';
-export default function DotsInfo() {
+export default function DotsInfo({
+	data = [{ title: '', function: () => {} }],
+}) {
 	return (
 		<div className={styles.main}>
 			<BsThreeDotsVertical className={styles.threeDots} />
 			<div className={styles.container}>
-				<p className={styles.button}>Download</p>
-				<p className={styles.button}>Download</p>
+				{data.map((item, index) => (
+					<p
+						className={styles.button}
+						key={index}
+						onClick={item.function}
+					>
+						{item.title}
+					</p>
+				))}
 			</div>
 		</div>
 	);

@@ -14,14 +14,12 @@ export default function AssetDetails({ title, description, type, size }) {
 				return <IoDocumentOutline className={styles.icon} />;
 		}
 	};
-	const convertBytesToKB = () => {
-		const kb = size / 1024;
-		return `${kb.toFixed(2)} KB`;
-	};
+
 	const convertBytesToMB = () => {
 		const mb = size / 1024 / 1024;
 		return `Size: ${mb.toFixed(2)} MB`;
 	};
+
 	return (
 		<div className={styles.main}>
 			{iconRender()}
@@ -29,7 +27,22 @@ export default function AssetDetails({ title, description, type, size }) {
 				<p className={styles.title}>{title}</p>
 				<p className={styles.size}>{convertBytesToMB()}</p>
 			</div>
-      <DotsInfo/>
+			<DotsInfo
+				data={[
+					{
+						title: 'Delete',
+						function: () => {
+							alert('delete');
+						},
+					},
+          {
+            title: 'Download',
+            function: () => {
+              alert('download');
+            },
+          }
+				]}
+			/>
 		</div>
 	);
 }
