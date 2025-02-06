@@ -8,10 +8,12 @@ import { configuration } from '@/configuration/configuration';
 import Select from '@/components/ui/select/select';
 import styles from './createCourse.module.css';
 import { allAdminRoles, userRoles } from '@/constants/constants';
+import TextEditor from '../atom/textEditor';
 export default function CreateCourse() {
 	const [response, error, loading, axiosFetch] = useAxios();
 	const formRef = useRef(null);
 	const [message, setMessage] = useState({ text: '', type: '' });
+	const [longDescription, setLongDescription] = useState();
 	useEffect(() => {
 		if (response?.message) {
 			setMessage({ text: response?.message, type: 'success' });
@@ -49,6 +51,7 @@ export default function CreateCourse() {
 		const courseData = {
 			title: formDataObject.title,
 			description: formDataObject.description,
+			longDescription: longDescription, // Use the longDescription state
 			category: formDataObject.category,
 			price: formDataObject.price,
 			modulePrice: formDataObject.modulePrice,
@@ -101,6 +104,8 @@ export default function CreateCourse() {
 					variant="secondary"
 					required
 				/>
+				<p className={styles.label}>Long Description</p>
+				<TextEditor setData={setLongDescription} />
 				<p className={styles.label}>Category</p>
 				<Input
 					type="text"
