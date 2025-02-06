@@ -32,6 +32,10 @@
 			display: flex;
 			flex-wrap: wrap;
 			gap: 20px;
+			.empty > .text {
+				font-size: 0.8rem;
+				color: var(--foreground-light);
+			}
 		}
 	}
 }

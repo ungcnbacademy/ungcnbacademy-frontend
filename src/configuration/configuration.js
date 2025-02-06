@@ -7,9 +7,12 @@ export const configuration = {
 	changePassword: '/auth/change-password',
 	courses: '/courses',
 	admin: {
-    admin: '/admin/users', //admin create, delete, update
-  },
+		admin: '/admin/users', //admin create, delete, update
+	},
 	client: {
-    clientSignup: '/auth/signup', //client signup
-  },
+		clientSignup: '/auth/signup', //client signup
+		enrolledCourses: '/users/enrolled-courses',
+		profile: '/users/profile',
+	},
+	enroll: '/test-enrollment/courses',
 };

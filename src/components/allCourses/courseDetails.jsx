@@ -4,17 +4,17 @@ import styles from './courseDetails.module.css';
 import Image from 'next/image';
 import { getAmountsWithCommas } from '@/utils/utils';
 import moment from 'moment';
-import Button from '../ui/button/button';
 import Collapse from '../ui/collapse/collapse';
 import Avatar from '../ui/avatar/avatar';
+import Enroll from './enroll';
 export default async function CourseDetails({ id }) {
 	const response = await getFetchRequests.getCourseById(id);
-	console.log(response);
+
 	return (
 		<div className={styles.main}>
 			<Image
-				src={response?.data?.thumbnail}
-				alt={response?.data?.title}
+				src={response?.data?.thumbnail || '/assets/noImage.svg'}
+				alt={response?.data?.title || 'Course'}
 				width={500}
 				height={500}
 				className={styles.image}
@@ -160,11 +160,7 @@ export default async function CourseDetails({ id }) {
 						Created at:{' '}
 						{moment(response?.data?.createdAt).format('lll')}
 					</p>
-					<Button
-						text="Enroll Now"
-						className={styles.button}
-						variant="secondary"
-					/>
+					<Enroll courseId={response?.data?._id} />
 				</div>
 			</div>
 		</div>
