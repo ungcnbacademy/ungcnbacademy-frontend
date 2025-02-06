@@ -129,18 +129,18 @@ export default function LearningDetails({ id }) {
 									</div>
 								))
 							) : (
-								<p>no assets available</p>
+								<p className={styles.noAssets}>No assets available.</p>
 							)}
 						</div>
 					</>
 				)}
 			</div>
 			<div className={styles.right}>
-				{loading && <LoadingDots />}
+
 				{response?.data?.modules && (
 					<p className={styles.title}>Course Content</p>
 				)}
-				{response?.data?.modules &&
+				{response?.data?.modules && 
 					response?.data?.modules?.map((module, i) => (
 						<ContentCardModule
 							key={i}

@@ -56,6 +56,10 @@
           }
 				}
 			}
+      >.noAssets{
+        color: var(--foreground-light);
+        font-size: 0.8rem;
+      }
 		}
 	}
 
