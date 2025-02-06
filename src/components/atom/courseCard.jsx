@@ -18,13 +18,14 @@ export default function CourseCard({
 	duration = '',
 	totalLectures = '',
 	id,
+	onClickLink
 }) {
 	const [courseImage, setCourseImage] = useState(img);
 	const router = useRouter();
 	return (
 		<div
 			className={styles.main}
-			onClick={() => router.push(`/courses/${id}`)}
+			onClick={() => router.push( onClickLink || `/courses/${id}`)}
 		>
 			<Image
 				src={courseImage}

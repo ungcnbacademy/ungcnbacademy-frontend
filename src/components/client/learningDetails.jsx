@@ -119,9 +119,13 @@ export default function LearningDetails({ id }) {
 										key={i}
 										className={styles.assetContainer}
 									>
-										<p className={styles.title}>
-											{asset.title}
-										</p>
+										<a
+											href={asset.fileUrl}
+											target="_blank"
+											className={styles.title}
+										>
+										 {i+1}.	{asset.title}
+										</a>
 									</div>
 								))
 							) : (
@@ -143,6 +147,7 @@ export default function LearningDetails({ id }) {
 							order={module.order}
 							title={module.title}
 							totalLesson={module.totalLessons}
+							selected={selectedLesson?.moduleId === module._id}
 							children={module.lessons.map((lesson, i) => (
 								<ContentCardLesson
 									key={i}
@@ -151,6 +156,10 @@ export default function LearningDetails({ id }) {
 									hasVideo={lesson.hasVideo}
 									totalAssets={lesson.totalAssets}
 									videoDuration={lesson.duration}
+									selected= {
+										selectedLesson?.moduleId === module._id &&
+										selectedLesson?.lessonId === lesson._id
+									}
 									onClick={() => {
 										setSelectedLesson({
 											moduleId: module._id,

@@ -46,8 +46,14 @@
 				font-weight: 500;
 			}
 			> .assetContainer {
+        margin-top: 10px;
 				> .title {
 					font-size: 0.9rem;
+          color: var(--accent2);
+          transition: all 0.6s ease-in-out;
+          &:hover {
+            color: var(--accent3);
+          }
 				}
 			}
 		}

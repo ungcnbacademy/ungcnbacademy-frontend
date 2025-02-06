@@ -29,6 +29,7 @@ export default function Courses() {
 						className={styles.search}
 					/>
 				</div> */}
+
 				<div className={styles.container}>
 					{ response?.data?.length > 0 && response?.data?.map((course, i) => (
 						<CourseCard
@@ -39,7 +40,8 @@ export default function Courses() {
 							startTime="Anytime"
 							duration="10"
 							totalLectures="10"
-							id={course._id}
+							id={course.course._id}
+							onClickLink={`/client/my-courses/${course.course._id}`}
 						/>
 					))}
 					{response?.data?.length === 0 && (

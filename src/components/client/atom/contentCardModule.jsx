@@ -7,12 +7,13 @@ export default function ContentCardModule({
 	totalLesson,
 	order,
 	children,
+	selected
 }) {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(selected ? true : false);
 
 	return (
 		<div className={styles.main}>
-			<div className={styles.header} onClick={() => setIsOpen(!isOpen)}>
+			<div className={`${styles.header} ${selected && styles.selected}`} onClick={() => setIsOpen(!isOpen)}>
         <div>
         <p className={styles.title}>
 					Module {order}: {title}

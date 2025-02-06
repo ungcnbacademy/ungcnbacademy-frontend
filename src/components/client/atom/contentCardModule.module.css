@@ -1,18 +1,22 @@
-.main{
-border-bottom: solid 1px rgba(199, 199, 199, 0.498);
-  .header{
-    padding:10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    .title{
-      font-size: .9rem;
-      font-weight: 400;
-    }
-    .lessons{
-      font-size: .75rem;
-      color: var(--foreground-light);
-    }
-  }
+.main {
+	border-bottom: solid 1px rgba(199, 199, 199, 0.498);
+	.header {
+		padding: 10px 20px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		cursor: pointer;
+		.title {
+			font-size: 0.9rem;
+			font-weight: 400;
+		}
+		.lessons {
+			font-size: 0.75rem;
+			color: var(--foreground-light);
+		}
+	}
+}
+.selected {
+	background-color: var(--table-hover);
+  border: solid 1px rgba(199, 199, 199, 0.3);
 }
