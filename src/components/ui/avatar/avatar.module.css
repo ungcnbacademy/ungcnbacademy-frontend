@@ -50,8 +50,8 @@
 		overflow: hidden;
 		transition: all 0.6s ease-in-out;
 		.image {
-			width: var(--width);
-			height: var(--height);
+			/* width: var(--width);
+			height: var(--height); */
 			border-radius: 50%;
 		}
 		&:hover {

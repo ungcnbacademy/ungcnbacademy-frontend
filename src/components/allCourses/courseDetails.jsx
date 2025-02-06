@@ -29,10 +29,13 @@ export default async function CourseDetails({ id }) {
 					<div>
 						<h3 className={styles.title}>Course content</h3>
 						<p className={styles.subtitle}>
-							{response?.data?.statistics?.totalModules} Modules, {' '}
-							{ response?.data?.statistics?.totalLessons} Lessons, {' '}
-							{response?.data?.statistics?.totalDuration.toFixed(2)} minutes, {' '}
-							{response?.data?.statistics?.totalQuizzes} Quizzes
+							{response?.data?.statistics?.totalModules} Modules,{' '}
+							{response?.data?.statistics?.totalLessons} Lessons,{' '}
+							{response?.data?.statistics?.totalDuration.toFixed(
+								2
+							)}{' '}
+							minutes, {response?.data?.statistics?.totalQuizzes}{' '}
+							Quizzes
 						</p>
 						{response?.data?.modules?.length > 0 &&
 							response?.data?.modules?.map((module, i) => (
@@ -69,24 +72,84 @@ export default async function CourseDetails({ id }) {
 					<br />
 					<div>
 						<h3 className={styles.title}>Instructor</h3>
-						{response?.data?.instructors && (
-							response?.data?.instructors?.map((instructor, i) => (
-								<div key={i} className={styles.instructor}>
-									<Avatar
-										icon
-										image={instructor?.image}
-									/>
-									<p	className={styles.name} > {instructor?.name} </p>
-									<p> {instructor?.designation} </p>
-									<p> {instructor?.bio} </p>
-									<div className={styles.socialLinks}>
-										{instructor?.socialLinks?.linkedin && <a className={styles.socialLink} href={instructor?.socialLinks?.linkedin} target="_blank" >{instructor?.socialLinks?.linkedin}</a>}
-										{instructor?.socialLinks?.twitter && <a className={styles.socialLink} href={instructor?.socialLinks?.twitter} target="_blank" >{instructor?.socialLinks?.twitter}</a>}
-										{instructor?.socialLinks?.website && <a className={styles.socialLink} href={instructor?.socialLinks?.website} target="_blank" >{instructor?.socialLinks?.website}</a>}
+						{response?.data?.instructors &&
+							response?.data?.instructors?.map(
+								(instructor, i) => (
+									<div key={i} className={styles.instructor}>
+										<Avatar
+											image={
+												instructor?.image &&
+												instructor?.image
+											}
+											name={!instructor?.image && instructor?.name}
+											size={80}
+										/>
+										{}
+										<p className={styles.name}>
+											{' '}
+											{instructor?.name}{' '}
+										</p>
+										<p> {instructor?.designation} </p>
+										<p> {instructor?.bio} </p>
+										<div className={styles.socialLinks}>
+											{instructor?.socialLinks
+												?.linkedin && (
+												<a
+													className={
+														styles.socialLink
+													}
+													href={
+														instructor?.socialLinks
+															?.linkedin
+													}
+													target="_blank"
+												>
+													{
+														instructor?.socialLinks
+															?.linkedin
+													}
+												</a>
+											)}
+											{instructor?.socialLinks
+												?.twitter && (
+												<a
+													className={
+														styles.socialLink
+													}
+													href={
+														instructor?.socialLinks
+															?.twitter
+													}
+													target="_blank"
+												>
+													{
+														instructor?.socialLinks
+															?.twitter
+													}
+												</a>
+											)}
+											{instructor?.socialLinks
+												?.website && (
+												<a
+													className={
+														styles.socialLink
+													}
+													href={
+														instructor?.socialLinks
+															?.website
+													}
+													target="_blank"
+												>
+													{
+														instructor?.socialLinks
+															?.website
+													}
+												</a>
+											)}
+										</div>
 									</div>
-								</div>
-							))
-						)}
+								)
+							)}
 					</div>
 				</div>
 				<div className={styles.right}>

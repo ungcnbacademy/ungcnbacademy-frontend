@@ -45,6 +45,7 @@
 		.name {
 			color: var(--foreground);
 			font-size: 1rem;
+			margin-block: 10px 5px ;
 		}
 		.socialLinks {
 			display: flex;
