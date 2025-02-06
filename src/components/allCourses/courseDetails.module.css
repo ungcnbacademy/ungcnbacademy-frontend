@@ -14,12 +14,50 @@
 		}
 		.right {
 			width: 300px;
+			height: fit-content;
 			background-color: #eae9e9;
 			border-radius: var(--global-border-radius);
 			padding: 20px;
 			.button {
 				width: 100%;
-        margin-top: 20px;
+				margin-top: 20px;
+			}
+		}
+	}
+	.title {
+		font-size: 1.2rem;
+		font-weight: 500;
+	}
+	.description {
+		font-size: 0.9rem;
+		color: var(--foreground-light);
+	}
+	.subtitle {
+		font-size: 0.8rem;
+		font-weight: 300;
+		margin-block: 5px 15px;
+		color: var(--foreground-light);
+	}
+	.instructor {
+		margin-top: 10px;
+		font-size: 0.9rem;
+		color: var(--foreground-light);
+		.name {
+			color: var(--foreground);
+			font-size: 1rem;
+		}
+		.socialLinks {
+			display: flex;
+			flex-direction: column;
+			margin-top: 10px;
+			.socialLink {
+				font-size: 0.8rem;
+				color: var(--accent2);
+				cursor: pointer;
+				transition: all 0.6s ease-in-out;
+				&:hover {
+					color: var(--accent3);
+				}
 			}
 		}
 	}
