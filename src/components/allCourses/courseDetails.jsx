@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { getAmountsWithCommas } from '@/utils/utils';
 import moment from 'moment';
 import Button from '../ui/button/button';
+import Collapse from '../ui/collapse/collapse';
 export default async function CourseDetails({ id }) {
 	const response = await getFetchRequests.getCourseById(id);
 	console.log(response);
@@ -23,17 +24,51 @@ export default async function CourseDetails({ id }) {
 					<p className={styles.description}>
 						{response?.data?.description}
 					</p>
+					<div>
+						{response?.data?.modules?.length > 0 &&
+							response?.data?.modules?.map((module, i) => (
+								<Collapse
+									key={i}
+									data={[
+										{
+											title: `Module ${module.order}: ${module.title}`,
+											description: module.description,
+											children: module?.lessons?.length > 0 && module?.lessons?.map(
+												(lesson, i) => (
+													<Collapse
+														key={i}
+														variant="secondary"
+														data={[
+															{
+																title: `Lesson ${lesson.order}: ${lesson.title}`,
+																description:
+																	lesson.description,
+																children: null,
+															},
+														]}
+													/>
+												)
+											),
+										},
+									]}
+								/>
+							))}
+					</div>
 				</div>
 				<div className={styles.right}>
-          <p className={styles.price}>
-            Price: {getAmountsWithCommas(response?.data?.price)}
-          </p>
-          <p className={styles.price}>
-            Created at:{' '}
-            {moment(response?.data?.createdAt).format('lll')}
-          </p>
-          <Button text='Enroll Now' className={styles.button} variant='secondary' />
-        </div>
+					<p className={styles.price}>
+						Price: {getAmountsWithCommas(response?.data?.price)}
+					</p>
+					<p className={styles.price}>
+						Created at:{' '}
+						{moment(response?.data?.createdAt).format('lll')}
+					</p>
+					<Button
+						text="Enroll Now"
+						className={styles.button}
+						variant="secondary"
+					/>
+				</div>
 			</div>
 		</div>
 	);

@@ -8,6 +8,7 @@
 		padding-block: 20px;
 		display: flex;
 		flex-wrap: wrap;
+		gap: 20px;
 		.left {
 			flex: 1 300px;
 		}
