@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './avatar.module.css';
 import Image from 'next/image';
 import { HiUser } from 'react-icons/hi2';
-export default function Avatar({ name, image, icon, size = 28 }) {
+export default function Avatar({ name, image, icon, size = 32 }) {
 	return (
 		<div className={styles.main}>
 			{image && (
