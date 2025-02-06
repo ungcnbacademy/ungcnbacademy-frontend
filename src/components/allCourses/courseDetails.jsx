@@ -9,7 +9,7 @@ import Avatar from '../ui/avatar/avatar';
 import Enroll from './enroll';
 export default async function CourseDetails({ id }) {
 	const response = await getFetchRequests.getCourseById(id);
-
+	console.log(response);
 	return (
 		<div className={styles.main}>
 			<Image
@@ -21,11 +21,23 @@ export default async function CourseDetails({ id }) {
 			/>
 			<div className={styles.container}>
 				<div className={styles.left}>
-					<h1 className={styles.title}>{response?.data?.title}</h1>
+					<h1 className={styles.courseTitle}>{response?.data?.title}</h1>
+					<p className={styles.category}>Category: {response?.data?.category}</p>
 					<p className={styles.description}>
 						{response?.data?.description}
 					</p>
+
 					<br />
+					<div>
+						{response?.data?.category && (
+							<div
+								dangerouslySetInnerHTML={{
+									__html: response?.data?.longDescription,
+								}}
+								className={styles.longDescription}
+							></div>
+						)}
+					</div>
 					<div>
 						<h3 className={styles.title}>Course content</h3>
 						<p className={styles.subtitle}>
@@ -81,7 +93,10 @@ export default async function CourseDetails({ id }) {
 												instructor?.image &&
 												instructor?.image
 											}
-											name={!instructor?.image && instructor?.name}
+											name={
+												!instructor?.image &&
+												instructor?.name
+											}
 											size={80}
 										/>
 										{}
@@ -90,7 +105,10 @@ export default async function CourseDetails({ id }) {
 											{instructor?.name}{' '}
 										</p>
 										<p> {instructor?.designation} </p>
-										<p> {instructor?.bio} </p>
+										<p className={styles.bio}>
+											{' '}
+											{instructor?.bio}{' '}
+										</p>
 										<div className={styles.socialLinks}>
 											{instructor?.socialLinks
 												?.linkedin && (
