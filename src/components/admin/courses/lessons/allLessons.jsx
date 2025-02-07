@@ -9,7 +9,6 @@ import Tag from '@/components/ui/tag/tag';
 import Pagination from '@/components/ui/pagination/pagination';
 import { tableDefaultItemLimit } from '@/constants/constants';
 import moment from 'moment';
-import { getAmountsWithCommas } from '@/utils/utils';
 import Link from 'next/link';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 

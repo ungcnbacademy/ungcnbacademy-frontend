@@ -7,7 +7,7 @@ import Message from '@/components/ui/message/message';
 import { configuration } from '@/configuration/configuration';
 import Select from '@/components/ui/select/select';
 import styles from './createLesson.module.css';
-import TextEditor from '../atom/textEditor';
+import TextEditor from '../../atom/textEditor';
 export default function CreateLesson({courseId, moduleId}) {
   const [response, error, loading, axiosFetch] = useAxios();
 	const [longDetails, setLongDetails] = useState('');

@@ -8,8 +8,8 @@ import moment from 'moment';
 import Button from '@/components/ui/button/button';
 
 import { Stream } from '@cloudflare/stream-react';
-import CreateAssets from '@/components/admin/courses/lesson/createAssets';
-import UploadVideo from '@/components/admin/courses/lesson/uploadVideo';
+import CreateAssets from '@/components/admin/courses/lessons/createAssets';
+import UploadVideo from '@/components/admin/courses/lessons/uploadVideo';
 import Drawer from '@/components/ui/drawer/drawer';
 import AssetDetails from '@/components/atom/assetDetails';
 import { BiRefresh } from 'react-icons/bi';

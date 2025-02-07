@@ -3,9 +3,9 @@ import Button from '@/components/ui/button/button';
 import React, { useState } from 'react';
 import styles from './page.module.css';
 import Drawer from '@/components/ui/drawer/drawer';
-import AllLessons from '@/components/admin/courses/allLessons';
-import CreateLesson from '@/components/admin/courses/createLesson';
-import SingleModuleDetails from '@/components/admin/courses/singleModuleDetails';
+import AllLessons from '@/components/admin/courses/lessons/allLessons';
+import SingleModuleDetails from '@/components/admin/courses/modules/singleModuleDetails';
+import CreateLesson from '@/components/admin/courses/lessons/createLesson';
 
 export default function ModuleDetails({ params }) {
 	const unwrappedParams = React.use(params);
