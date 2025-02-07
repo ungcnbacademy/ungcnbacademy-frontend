@@ -6,8 +6,9 @@ import useAxios from '@/hooks/useAxios';
 import Message from '@/components/ui/message/message';
 import { configuration } from '@/configuration/configuration';
 import styles from './uploadVideo.module.css';
+import ProgressBar from '@/components/ui/progressBar/progressBar';
 export default function UploadVideo({ courseId, moduleId, lessonId }) {
-	const [response, error, loading, axiosFetch] = useAxios();
+	const [response, error, loading, axiosFetch, progress] = useAxios();
 	const formRef = useRef(null);
 	const [message, setMessage] = useState({ text: '', type: '' });
 
@@ -54,6 +55,7 @@ export default function UploadVideo({ courseId, moduleId, lessonId }) {
 					required
 				/>
 
+				<ProgressBar progress={progress}  />
 				<div className={styles.submitContainer}>
 					<Message
 						text={message.text}

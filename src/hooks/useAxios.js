@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect } from 'react';
 import { instance } from '../lib/axiosInstance';
 //import { message } from 'antd';
@@ -7,6 +8,7 @@ const useAxios = () => {
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [controller, setController] = useState();
+	const [progress, setProgress] = useState(0);
 
 	const axiosFetch = async (configObj) => {
 		const { method, url, requestConfig = {} } = configObj;
@@ -18,7 +20,15 @@ const useAxios = () => {
 			setController(ctrl);
 			const res = await instance[method.toLowerCase()](
 				url,
-				requestConfig
+				requestConfig,
+				{
+					onUploadProgress: (progressEvent) => {
+						const percentCompleted = Math.round(
+							(progressEvent.loaded * 100) / progressEvent.total
+						);
+						setProgress(percentCompleted);
+					},
+				}
 			);
 			setResponse(res?.data);
 		} catch (error) {
@@ -52,7 +62,7 @@ const useAxios = () => {
 		return () => controller && controller.abort();
 	}, [controller]);
 
-	return [response, error, loading, axiosFetch];
+	return [response, error, loading, axiosFetch, progress];
 };
 
 export default useAxios;
