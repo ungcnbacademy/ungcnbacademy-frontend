@@ -7,13 +7,14 @@ import Message from '@/components/ui/message/message';
 import { configuration } from '@/configuration/configuration';
 import Select from '@/components/ui/select/select';
 import styles from './createCourse.module.css';
-import { allAdminRoles, userRoles } from '@/constants/constants';
 import TextEditor from '../atom/textEditor';
+
 export default function CreateCourse() {
 	const [response, error, loading, axiosFetch] = useAxios();
 	const formRef = useRef(null);
 	const [message, setMessage] = useState({ text: '', type: '' });
 	const [longDescription, setLongDescription] = useState();
+
 	useEffect(() => {
 		if (response?.message) {
 			setMessage({ text: response?.message, type: 'success' });
@@ -22,6 +23,7 @@ export default function CreateCourse() {
 			setMessage({ text: error?.message, type: 'error' });
 		}
 	}, [response, error]);
+
 	const onClearHandler = () => {
 		setMessage({ text: '', type: '' });
 		formRef.current.reset();
@@ -39,10 +41,8 @@ export default function CreateCourse() {
 		formData.delete('price');
 		formData.delete('modulePrice');
 		formData.delete('featured');
-
 		formData.delete('instructorName');
 		formData.delete('instructorDesignation');
-		formData.delete('instructorDescription');
 		formData.delete('bio');
 		formData.delete('linkedin');
 		formData.delete('twitter');
@@ -60,7 +60,6 @@ export default function CreateCourse() {
 				{
 					name: formDataObject.instructorName,
 					designation: formDataObject.instructorDesignation,
-					description: formDataObject.instructorDescription,
 					bio: formDataObject.bio,
 					socialLinks: {
 						linkedin: formDataObject.linkedin,
@@ -130,6 +129,7 @@ export default function CreateCourse() {
 					]}
 					variant="secondary"
 				/>
+
 				<p className={styles.subTitle}>Pricing:</p>
 				<p className={styles.label}>Course price in BDT</p>
 				<Input
@@ -157,13 +157,6 @@ export default function CreateCourse() {
 					variant="secondary"
 					required
 				/>
-				<p className={styles.label}>Instructor description</p>
-				<Input
-					type="text"
-					placeholder="Instructor Description"
-					name="instructorDescription"
-					variant="secondary"
-				/>
 				<p className={styles.label}>Instructor designation</p>
 				<Input
 					type="text"
@@ -178,20 +171,7 @@ export default function CreateCourse() {
 					name="bio"
 					variant="secondary"
 				/>
-				{/* <p className={styles.label}>Instructor expertise</p>
-				<Input
-					type="text"
-					placeholder="Instructor Expertise"
-					name="instructorExpertise"
-					variant="secondary"
-				/>
-				<p className={styles.label}>Instructor achievements</p>
-				<Input
-					type="text"
-					placeholder="Instructor Achievements"
-					name="achievements"
-					variant="secondary"
-				/> */}
+				
 				<p className={styles.subTitle}>Instructor Social Links:</p>
 				<p className={styles.label}>Linkedin</p>
 				<Input
