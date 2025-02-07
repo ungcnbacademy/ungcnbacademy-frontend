@@ -25,13 +25,13 @@ export default function CreateLesson({courseId, moduleId}) {
 		setMessage({ text: '', type: '' });
 		formRef.current.reset();
 	};
-console.log(longDetails)
+
 	const onAddLessonSubmitHandler = (event) => {
 		event.preventDefault();
     setMessage({ text: '', type: '' });
 		const formData = new FormData(event.target);
 		formData.append('details', longDetails);
-	
+
 		axiosFetch({
 			method: 'POST',
 			url: configuration.courses +'/' + courseId + '/modules/' + moduleId + '/lessons',
