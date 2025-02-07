@@ -128,6 +128,15 @@ export default function CourseDetails({ params }) {
 		);
 	};
 
+	const courseLongDescriptionRender = () => {
+		return (
+			<div className={styles.longDescriptionContainer}>
+				<h2 className={styles.title}>Long Description</h2>
+				<div className={styles.longDescription} dangerouslySetInnerHTML={{ __html: response?.data?.longDescription }} ></div>
+			</div>
+		);
+	};
+
 	const courseModuleRender = () => {
 		return (
 			<div>
@@ -173,6 +182,8 @@ export default function CourseDetails({ params }) {
 					{courseDetailsRender()}
 					<br />
 					{courseModuleRender()}
+					<br />
+					{courseLongDescriptionRender()}
 					<br />
 					{courseInstructorRender()}
 				</>

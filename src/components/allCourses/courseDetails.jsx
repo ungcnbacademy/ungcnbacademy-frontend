@@ -9,7 +9,7 @@ import Avatar from '../ui/avatar/avatar';
 import Enroll from './enroll';
 export default async function CourseDetails({ id }) {
 	const response = await getFetchRequests.getCourseById(id);
-	console.log(response);
+
 	return (
 		<div className={styles.main}>
 			<Image

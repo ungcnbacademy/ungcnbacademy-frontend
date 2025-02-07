@@ -44,10 +44,10 @@ export default function AllModules({ id }) {
 				</Link>
 			)
 		},
-		{
-			title: 'Description',
-			dataIndex: 'description',
-		},
+		// {
+		// 	title: 'Description',
+		// 	dataIndex: 'description',
+		// },
 		{
 			title: 'Order',
 			dataIndex: 'order',

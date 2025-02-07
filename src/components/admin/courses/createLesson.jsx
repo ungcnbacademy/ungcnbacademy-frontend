@@ -7,8 +7,10 @@ import Message from '@/components/ui/message/message';
 import { configuration } from '@/configuration/configuration';
 import Select from '@/components/ui/select/select';
 import styles from './createLesson.module.css';
+import TextEditor from '../atom/textEditor';
 export default function CreateLesson({courseId, moduleId}) {
   const [response, error, loading, axiosFetch] = useAxios();
+	const [longDetails, setLongDetails] = useState('');
 	const formRef = useRef(null);
 	const [message, setMessage] = useState({ text: '', type: '' });
 	useEffect(() => {
@@ -28,6 +30,7 @@ export default function CreateLesson({courseId, moduleId}) {
 		event.preventDefault();
     setMessage({ text: '', type: '' });
 		const formData = new FormData(event.target);
+		formData.append('details', longDetails);
 		const payload = Object.fromEntries(formData);
 
 		axiosFetch({
@@ -61,6 +64,8 @@ export default function CreateLesson({courseId, moduleId}) {
 					variant="secondary"
 					required
 				/>
+				<p className={styles.label}>Lesson details</p>
+				<TextEditor setData={setLongDetails} />
 				<p className={styles.label}>Order</p>
 				<Input
 					type="number"

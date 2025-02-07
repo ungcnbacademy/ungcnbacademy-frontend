@@ -29,6 +29,8 @@ export default function SingleModuleDetails({ courseId, moduleId }) {
 						Updated at:{' '}
 						{moment(response?.data?.updatedAt).fromNow()}
 					</p>
+					<p>Description:</p>
+					<p>{response?.data?.description}</p>
 				</>
 			)}
 		</div>
