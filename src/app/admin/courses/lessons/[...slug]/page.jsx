@@ -69,7 +69,7 @@ export default function LessonDetails({ params }) {
 			method: 'Get',
 			url: `${configuration.courses}/${courseId}/modules/${moduleId}/lessons/${lessonId}`,
 		});
-	}
+	};
 
 	useEffect(() => {
 		getAllLessonData();
@@ -117,7 +117,19 @@ export default function LessonDetails({ params }) {
 			</>
 		);
 	};
-
+	const courseLongDescriptionRender = () => {
+		return (
+			<div className={styles.longDescriptionContainer}>
+				<h2 className={styles.title}>Long Description</h2>
+				<div
+					className={styles.longDescription}
+					dangerouslySetInnerHTML={{
+						__html: response?.data?.details,
+					}}
+				></div>
+			</div>
+		);
+	};
 	return (
 		<div className={styles.main}>
 			{drawerOpenCreateAssetsRender()}
@@ -128,12 +140,12 @@ export default function LessonDetails({ params }) {
 					<div className={styles.top}>
 						{lessonDetailsRender()}
 						<div className={styles.buttonContainer}>
-						<Tooltip content="Refresh" placement="top">
-						<BiRefresh
-							className={styles.refreshIcon}
-							onClick={() => setRefreshData(!refreshData)}
-						/>
-					</Tooltip>
+							<Tooltip content="Refresh" placement="top">
+								<BiRefresh
+									className={styles.refreshIcon}
+									onClick={() => setRefreshData(!refreshData)}
+								/>
+							</Tooltip>
 							<Button
 								text="Create Assets"
 								onClick={() =>
@@ -164,7 +176,9 @@ export default function LessonDetails({ params }) {
 											type={asset?.fileType}
 											size={asset?.fileSize}
 											viewUrl={asset?.fileUrl}
-											refresh={() => setRefreshData(!refreshData)}
+											refresh={() =>
+												setRefreshData(!refreshData)
+											}
 											url={`${configuration.courses}/${courseId}/modules/${moduleId}/lessons/${lessonId}/assets/${asset?._id}`}
 										/>
 									</div>
@@ -176,6 +190,7 @@ export default function LessonDetails({ params }) {
 							)}
 						</div>
 					</div>
+					{courseLongDescriptionRender()}
 				</div>
 			)}
 		</div>
