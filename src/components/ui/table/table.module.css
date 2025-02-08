@@ -2,8 +2,7 @@
 	background-color: var(--background-dashboard);
 	overflow-x: auto;
 	height: fit-content;
-	/* max-height: 70vh; */
-	/* position: relative; */
+	position: relative;
 }
 .table {
 	border-collapse: collapse;
