@@ -14,10 +14,13 @@ import { IoMdInformationCircleOutline } from 'react-icons/io';
 
 import styles from './allCourses.module.css';
 import DotsInfo from '@/components/ui/threeDotsInfoButton/dotsInfo';
+import Toast from '@/components/ui/toast/toast';
 export default function AllCourses() {
 	const [response, error, loading, axiosFetch] = useAxios();
-	const [responseDelete, errorDelete, loadingDelete, axiosFetchDelete] = useAxios();
+	const [responseDelete, errorDelete, loadingDelete, axiosFetchDelete] =
+		useAxios();
 	const [refreshData, setRefreshData] = useState(false);
+	const [message, setMessage] = useState({ text: '', variant: '' });
 	const getAllCourses = (page, pageSize) => {
 		if (!page) page = 1;
 		if (!pageSize) pageSize = tableDefaultItemLimit;
@@ -26,17 +29,35 @@ export default function AllCourses() {
 			url: `${configuration.courses}?page=${page}&limit=${pageSize}`,
 		});
 	};
+
 	useEffect(() => {
 		getAllCourses();
 	}, [refreshData]);
 
+	useEffect(() => {
+		if (responseDelete?.message) {
+			setMessage({
+				text: responseDelete?.message,
+				variant: 'success',
+			});
+			setRefreshData(!refreshData);
+		}
+		if (errorDelete) {
+			setMessage({ text: errorDelete?.message, variant: 'error' });
+		}
+		if (loadingDelete) {
+			setMessage({ text: 'Deleting course...', variant: 'warning' });
+		}
+	}, [responseDelete, errorDelete, loadingDelete]);
+
 	const deleteCourseHandler = (id) => {
+		setMessage();
 		confirm('Are you sure you want to delete this course?') &&
 			axiosFetchDelete({
 				method: 'DELETE',
 				url: `${configuration.courses}/${id}`,
-		})
-	}
+			});
+	};
 
 	useEffect(() => {
 		if (responseDelete?.data) {
@@ -85,17 +106,30 @@ export default function AllCourses() {
 			dataIndex: 'createdAt',
 			render: (createdAt) =>
 				moment(createdAt).format('DD-MM-YYYY HH:mm A'),
-		},{
+		},
+		{
 			title: '',
 			dataIndex: '_id',
 			render: (id) => (
-				<DotsInfo data={[{title: 'Delete', function: () => {deleteCourseHandler(id)}}]} />
-			)
-		}
+				<DotsInfo
+					data={[
+						{
+							title: 'Delete',
+							function: () => {
+								deleteCourseHandler(id);
+							},
+						},
+					]}
+				/>
+			),
+		},
 	];
 
 	return (
 		<div className={styles.main}>
+			{message?.text && (
+				<Toast text={message?.text} variant={message?.variant} />
+			)}
 			<div className={styles.tableHeader}>
 				<div className={styles.tableHeaderLeft}>
 					<Tooltip content="Refresh" placement="top">
