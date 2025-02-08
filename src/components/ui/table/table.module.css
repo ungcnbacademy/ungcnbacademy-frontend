@@ -1,6 +1,7 @@
 .main {
 	background-color: var(--background-dashboard);
 	overflow-x: auto;
+  overflow-y: visible;
 	height: fit-content;
 	position: relative;
 }

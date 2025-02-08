@@ -2,7 +2,7 @@ import React from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import styles from './dotsInfo.module.css';
 export default function DotsInfo({
-	data = [{ title: '', function: () => {} }],
+	data = [{ title: '', icon: null, function: () => {} }],
 }) {
 	return (
 		<div className={styles.main}>
