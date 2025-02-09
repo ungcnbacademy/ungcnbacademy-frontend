@@ -4,7 +4,7 @@ import styles from './assetDetails.module.css';
 import { FaRegFilePdf } from 'react-icons/fa6';
 import { IoDocumentOutline } from 'react-icons/io5';
 import { IoCloudDownloadOutline } from 'react-icons/io5';
-import DotsInfo from '../ui/threeDotsInfoButton/dotsInfo';
+import DotsInfo from '../ui/popover/popover';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import useAxios from '@/hooks/useAxios';
 import Toast from '../ui/toast/toast';

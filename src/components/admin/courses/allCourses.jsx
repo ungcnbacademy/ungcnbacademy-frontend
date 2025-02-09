@@ -13,7 +13,7 @@ import Link from 'next/link';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 
 import styles from './allCourses.module.css';
-import DotsInfo from '@/components/ui/threeDotsInfoButton/dotsInfo';
+import DotsInfo from '@/components/ui/popover/popover';
 import Toast from '@/components/ui/toast/toast';
 export default function AllCourses() {
 	const [response, error, loading, axiosFetch] = useAxios();

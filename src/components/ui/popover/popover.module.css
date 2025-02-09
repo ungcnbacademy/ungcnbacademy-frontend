@@ -1,13 +1,12 @@
 .main {
 	position: relative;
 	padding: 2px 5px;
-	
+
 	.threeDots {
 		cursor: pointer;
 	}
 
 	.container {
-		display: none;
 		position: fixed;
 		background-color: var(--background-dashboard);
 		min-width: fit-content;
