@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import styles from './popover.module.css';
+import styles from './popoverList.module.css';
 
-export default function Popover({
+export default function PopoverList({
 	data = [{ title: '', icon: null, function: () => {} }],
 }) {
 	const positionRef = useRef(null);

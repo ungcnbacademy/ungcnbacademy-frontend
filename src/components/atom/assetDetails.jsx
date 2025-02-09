@@ -4,7 +4,7 @@ import styles from './assetDetails.module.css';
 import { FaRegFilePdf } from 'react-icons/fa6';
 import { IoDocumentOutline } from 'react-icons/io5';
 import { IoCloudDownloadOutline } from 'react-icons/io5';
-import DotsInfo from '../ui/popover/popover';
+import PopoverList from '../ui/popover/popoverList';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import useAxios from '@/hooks/useAxios';
 import Toast from '../ui/toast/toast';
@@ -65,7 +65,7 @@ export default function AssetDetails({ title, type, size, url, viewUrl , refresh
 				<p className={styles.title}>{title}</p>
 				<p className={styles.size}>{convertBytesToMB()}</p>
 			</div>
-			<DotsInfo
+			<PopoverList
 				data={[
 					{
 						title: 'View',

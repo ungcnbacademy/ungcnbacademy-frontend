@@ -11,10 +11,12 @@ import moment from 'moment';
 import { getAmountsWithCommas } from '@/utils/utils';
 import Link from 'next/link';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
-
+import { MdDeleteOutline } from 'react-icons/md';
+import { LiaEdit } from "react-icons/lia";
 import styles from './allCourses.module.css';
-import DotsInfo from '@/components/ui/popover/popover';
+import PopoverList from '@/components/ui/popover/popoverList';
 import Toast from '@/components/ui/toast/toast';
+
 export default function AllCourses() {
 	const [response, error, loading, axiosFetch] = useAxios();
 	const [responseDelete, errorDelete, loadingDelete, axiosFetchDelete] =
@@ -111,10 +113,16 @@ export default function AllCourses() {
 			title: '',
 			dataIndex: '_id',
 			render: (id) => (
-				<DotsInfo
+				<PopoverList
 					data={[
 						{
+							title: 'Edit',
+							icon: <LiaEdit />,
+							function: () => {},
+						},
+						{
 							title: 'Delete',
+							icon: <MdDeleteOutline />,
 							function: () => {
 								deleteCourseHandler(id);
 							},
