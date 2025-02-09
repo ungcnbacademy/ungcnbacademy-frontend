@@ -20,6 +20,7 @@ export default function ModuleDetails({ params }) {
 					<Drawer
 						title="Create Lesson"
 						closeFunction={() => setIsOpenDrawer(false)}
+						size='lg'
 					>
 						<CreateLesson courseId={courseId} moduleId={moduleId} />
 					</Drawer>

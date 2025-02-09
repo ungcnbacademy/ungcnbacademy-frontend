@@ -38,7 +38,6 @@ export default function TextEditor({ setData }) {
 				'fontsize',
 				'paragraph',
 				'spellcheck',
-				'image',
 				'align',
 				'undo',
 				'redo',
