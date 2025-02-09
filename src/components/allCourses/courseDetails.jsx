@@ -29,7 +29,7 @@ export default async function CourseDetails({ id }) {
 
 					<br />
 					<div>
-						{response?.data?.category && (
+						{response?.data?.longDescription && (
 							<div
 								dangerouslySetInnerHTML={{
 									__html: response?.data?.longDescription,
@@ -169,6 +169,7 @@ export default async function CourseDetails({ id }) {
 								)
 							)}
 					</div>
+					<br /><br /><br /><br /><br />
 				</div>
 				<div className={styles.right}>
 					<p className={styles.price}>

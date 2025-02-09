@@ -76,3 +76,22 @@
 		}
 	}
 }
+
+.longDescription {
+	font-size: 0.9rem;
+	color: var(--foreground-light);
+	text-align: justify;
+}
+
+.longDescription > h2 {
+	font-size: 1.2rem;
+	font-weight: 500;
+	margin-bottom: 10px;
+	color: var(--foreground);
+}
+.longDescription > h1 {
+	font-size: 1.3rem;
+	font-weight: 500;
+	margin-bottom: 10px;
+	color: var(--foreground);
+}
