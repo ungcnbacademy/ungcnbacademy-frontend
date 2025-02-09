@@ -26,7 +26,9 @@
 }
 
 .drawer {
-	width: clamp(250px, 50vw, 420px);
+	/* width: clamp(250px, 50vw, 420px); */
+	min-width: 250px;
+	max-width: 50vw;
 	background-color: var(--background-dashboard);
 	box-shadow: 0 1px 12px rgba(128, 128, 128, 0.348);
 	transition: transform 0.6s ease-in-out;
@@ -67,6 +69,16 @@
 		bottom: 0;
 		z-index: 3;
 	}
+}
+
+.md {
+	width: 420px;
+}
+.lg {
+	width: 45vw;
+}
+.sm {
+	width: 250px;
 }
 
 .close .overlay {

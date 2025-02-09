@@ -9,6 +9,7 @@ export default function Drawer({
 	title = '',
 	closeFunction = () => {},
 	footerRender,
+	size = 'md',
 }) {
 	const [isOpen, setIsOpen] = useState(true);
 	const [isVisible, setIsVisible] = useState(true);
@@ -26,7 +27,7 @@ export default function Drawer({
 		{isVisible && (
 			<div className={`${styles.main} ${!isOpen && styles.close}`}>
 				<div className={styles.overlay} onClick={closeDrawer}></div>
-				<div className={styles.drawer}>
+				<div className={`${styles.drawer} ${styles[size]}`}>
 					<div className={styles.header}>
 						<h3 className={styles.title}>{title}</h3>
 						<IoCloseSharp

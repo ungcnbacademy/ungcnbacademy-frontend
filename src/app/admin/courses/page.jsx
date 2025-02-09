@@ -15,6 +15,7 @@ export default function Courses() {
 					<Drawer
 						title="Create Course"
 						closeFunction={() => setIsOpenDrawer(false)}
+						size='lg'
 					>
 						<CreateCourse/>
 					</Drawer>
