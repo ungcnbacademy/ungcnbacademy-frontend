@@ -8,12 +8,23 @@ import { configuration } from '@/configuration/configuration';
 import Select from '@/components/ui/select/select';
 import styles from './createCourse.module.css';
 import TextEditor from '../atom/textEditor';
+import LoadingDots from '@/components/ui/loading/loadingDots';
 
-export default function CreateCourse() {
+export default function CreateCourse({ id = '' }) {
 	const [response, error, loading, axiosFetch] = useAxios();
+	const [responseGetInfo, errorGetInfo, loadingGetInfo, axiosFetchGetInfo] =
+		useAxios();
 	const formRef = useRef(null);
 	const [message, setMessage] = useState({ text: '', type: '' });
 	const [longDescription, setLongDescription] = useState();
+
+	useEffect(() => {
+		if (!id) return;
+		axiosFetchGetInfo({
+			method: 'GET',
+			url: configuration.courses + '/' + id,
+		});
+	}, [id]);
 
 	useEffect(() => {
 		if (response?.message) {
@@ -73,14 +84,15 @@ export default function CreateCourse() {
 		formData.append('courseData', JSON.stringify(courseData));
 
 		axiosFetch({
-			method: 'POST',
-			url: configuration.courses,
+			method: id ? 'PUT' : 'POST',
+			url: id ? configuration.courses + '/' + id : configuration.courses,
 			requestConfig: formData,
 		});
 	};
 
 	return (
 		<div className={styles.main}>
+			{loadingGetInfo && !errorGetInfo && <LoadingDots/>}
 			<form
 				className={styles.form}
 				onSubmit={onCreateCourseSubmitHandler}
@@ -93,6 +105,7 @@ export default function CreateCourse() {
 					placeholder="Course Title"
 					name="title"
 					variant="secondary"
+					defaultValue={responseGetInfo?.data?.title}
 					required
 				/>
 				<p className={styles.label}>Course Description</p>
@@ -101,16 +114,18 @@ export default function CreateCourse() {
 					placeholder="Course Description"
 					name="description"
 					variant="secondary"
+					defaultValue={responseGetInfo?.data?.description}
 					required
 				/>
 				<p className={styles.label}>Long Description</p>
-				<TextEditor setData={setLongDescription} />
+				<TextEditor setData={setLongDescription} defaultValue={responseGetInfo?.data?.longDescription} />
 				<p className={styles.label}>Category</p>
 				<Input
 					type="text"
 					placeholder="Category"
 					name="category"
 					variant="secondary"
+					defaultValue={responseGetInfo?.data?.category}
 					required
 				/>
 				<p className={styles.label}>Course image</p>
@@ -128,6 +143,7 @@ export default function CreateCourse() {
 						{ label: 'No', value: false },
 					]}
 					variant="secondary"
+					defaultValue={responseGetInfo?.data?.featured}
 				/>
 
 				<p className={styles.subTitle}>Pricing:</p>
@@ -137,6 +153,7 @@ export default function CreateCourse() {
 					placeholder="Course Price"
 					name="price"
 					variant="secondary"
+					defaultValue={responseGetInfo?.data?.price}
 					required
 				/>
 				<p className={styles.label}>Module price in BDT</p>
@@ -145,6 +162,7 @@ export default function CreateCourse() {
 					placeholder="Module Price"
 					name="modulePrice"
 					variant="secondary"
+					defaultValue={responseGetInfo?.data?.modulePrice}
 					required
 				/>
 
@@ -155,6 +173,7 @@ export default function CreateCourse() {
 					placeholder="Instructor Name"
 					name="instructorName"
 					variant="secondary"
+					defaultValue={responseGetInfo?.data?.instructors[0]?.name}
 					required
 				/>
 				<p className={styles.label}>Instructor designation</p>
@@ -162,6 +181,7 @@ export default function CreateCourse() {
 					type="text"
 					placeholder="Instructor Designation"
 					name="instructorDesignation"
+					defaultValue={responseGetInfo?.data?.instructors[0]?.designation}
 					variant="secondary"
 				/>
 				<p className={styles.label}>Instructor bio</p>
@@ -169,9 +189,10 @@ export default function CreateCourse() {
 					type="text"
 					placeholder="Instructor Bio"
 					name="bio"
+					defaultValue={responseGetInfo?.data?.instructors[0]?.bio}
 					variant="secondary"
 				/>
-				
+
 				<p className={styles.subTitle}>Instructor Social Links:</p>
 				<p className={styles.label}>Linkedin</p>
 				<Input
@@ -179,6 +200,7 @@ export default function CreateCourse() {
 					placeholder="Linkedin"
 					name="linkedin"
 					variant="secondary"
+					defaultValue={responseGetInfo?.data?.instructors[0]?.socialLinks?.linkedin}
 				/>
 				<p className={styles.label}>Twitter</p>
 				<Input
@@ -186,6 +208,7 @@ export default function CreateCourse() {
 					placeholder="Twitter"
 					name="twitter"
 					variant="secondary"
+					defaultValue={responseGetInfo?.data?.instructors[0]?.socialLinks?.twitter}
 				/>
 				<p className={styles.label}>Website</p>
 				<Input
@@ -193,6 +216,7 @@ export default function CreateCourse() {
 					placeholder="Website"
 					name="website"
 					variant="secondary"
+					defaultValue={responseGetInfo?.data?.instructors[0]?.socialLinks?.website}
 				/>
 
 				<div className={styles.submitContainer}>

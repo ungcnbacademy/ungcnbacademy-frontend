@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import styles from './textEditor.module.css';
 
@@ -8,9 +8,14 @@ const JoditEditor = dynamic(() => import('jodit-react'), {
 	ssr: false,
 });
 
-export default function TextEditor({ setData }) {
+export default function TextEditor({ setData, defaultValue='' }) {
 	const editor = useRef(null);
 	const [content, setContent] = useState('');
+
+	useEffect(() => {
+		if (!defaultValue) return;
+		setContent(defaultValue);
+	}, [defaultValue]);
 
 	const config = useMemo(
 		() => ({

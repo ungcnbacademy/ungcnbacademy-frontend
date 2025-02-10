@@ -12,16 +12,20 @@ import { getAmountsWithCommas } from '@/utils/utils';
 import Link from 'next/link';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 import { MdDeleteOutline } from 'react-icons/md';
-import { LiaEdit } from "react-icons/lia";
+import { LiaEdit } from 'react-icons/lia';
 import styles from './allCourses.module.css';
 import PopoverList from '@/components/ui/popover/popoverList';
 import Toast from '@/components/ui/toast/toast';
+import Drawer from '@/components/ui/drawer/drawer';
+import CreateCourse from './createCourse';
 
 export default function AllCourses() {
 	const [response, error, loading, axiosFetch] = useAxios();
 	const [responseDelete, errorDelete, loadingDelete, axiosFetchDelete] =
 		useAxios();
 	const [refreshData, setRefreshData] = useState(false);
+	const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+	const [editCourseId, setEditCourseId] = useState(null);
 	const [message, setMessage] = useState({ text: '', variant: '' });
 	const getAllCourses = (page, pageSize) => {
 		if (!page) page = 1;
@@ -59,6 +63,22 @@ export default function AllCourses() {
 				method: 'DELETE',
 				url: `${configuration.courses}/${id}`,
 			});
+	};
+
+	const drawerRender = () => {
+		return (
+			<>
+				{isOpenDrawer && (
+					<Drawer
+						title="Edit Course"
+						closeFunction={() => setIsOpenDrawer(false)}
+						size="lg"
+					>
+						<CreateCourse id={editCourseId} />
+					</Drawer>
+				)}
+			</>
+		);
 	};
 
 	useEffect(() => {
@@ -118,7 +138,7 @@ export default function AllCourses() {
 						{
 							title: 'Edit',
 							icon: <LiaEdit />,
-							function: () => {},
+							function: () => {setIsOpenDrawer(true); setEditCourseId(id)},
 						},
 						{
 							title: 'Delete',
@@ -135,6 +155,7 @@ export default function AllCourses() {
 
 	return (
 		<div className={styles.main}>
+			{drawerRender()}
 			{message?.text && (
 				<Toast text={message?.text} variant={message?.variant} />
 			)}
