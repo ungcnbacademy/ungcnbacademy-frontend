@@ -7,9 +7,11 @@ import Message from '@/components/ui/message/message';
 import { configuration } from '@/configuration/configuration';
 import Select from '@/components/ui/select/select';
 import styles from './createModule.module.css';
+import LoadingDots from '@/components/ui/loading/loadingDots';
 
-export default function CreateModule({id}) {
+export default function CreateModule({courseId, moduleId=''}) {
 	const [response, error, loading, axiosFetch] = useAxios();
+	const [responseGetInfo, errorGetInfo, loadingGetInfo, axiosFetchGetInfo] = useAxios();
 	const formRef = useRef(null);
 	const [message, setMessage] = useState({ text: '', type: '' });
 	useEffect(() => {
@@ -20,6 +22,15 @@ export default function CreateModule({id}) {
 			setMessage({ text: error?.message, type: 'error' });
 		}
 	}, [response, error]);
+
+	useEffect(() => {
+		if (!moduleId) return;
+		axiosFetchGetInfo({
+			method: 'GET',
+			url: configuration.courses + '/' + courseId + '/modules/' + moduleId,
+		});
+	},[moduleId]);
+
 	const onClearHandler = () => {
 		setMessage({ text: '', type: '' });
 		formRef.current.reset();
@@ -31,15 +42,22 @@ export default function CreateModule({id}) {
 		const formData = new FormData(event.target);
 		const payload = Object.fromEntries(formData);
 
+		let apiUrl = configuration.courses + '/' + courseId + '/modules';
+		//for editing a module
+		if (moduleId) {
+			apiUrl += '/' + moduleId;
+		}
+
 		axiosFetch({
-			method: 'POST',
-			url: configuration.courses +'/' + id + '/modules',
+			method: moduleId ? 'PUT' : 'POST',
+			url: apiUrl,
 			requestConfig: payload,
 		});
 	};
 
 	return (
 		<div className={styles.main}>
+			{loadingGetInfo && !errorGetInfo && <LoadingDots/>}
 			<form
 				className={styles.form}
 				onSubmit={onAddModuleSubmitHandler}
@@ -52,6 +70,7 @@ export default function CreateModule({id}) {
 					placeholder="Module Title"
 					name="title"
 					variant="secondary"
+					defaultValue={responseGetInfo?.data?.title}
 					required
 				/>
 				<p className={styles.label}>Module description</p>
@@ -60,6 +79,7 @@ export default function CreateModule({id}) {
 					placeholder="Module Description"
 					name="description"
 					variant="secondary"
+					defaultValue={responseGetInfo?.data?.description}
 					required
 				/>
 				<p className={styles.label}>Order</p>
@@ -68,6 +88,7 @@ export default function CreateModule({id}) {
 					placeholder="Order"
 					name="order"
 					variant="secondary"
+					defaultValue={responseGetInfo?.data?.order}
 					required
 				/>
 				<p className={styles.subTitle}>Accessibility:</p>
@@ -77,6 +98,7 @@ export default function CreateModule({id}) {
 					options = {[{label: 'Yes', value: true}, {label: 'No', value: false}]}
 					name="isAccessible"
 					variant="secondary"
+					defaultValue={responseGetInfo?.data?.isAccessible}
 				/>
 
 
