@@ -8,11 +8,13 @@ import Tag from '@/components/ui/tag/tag';
 import Pagination from '@/components/ui/pagination/pagination';
 import { tableDefaultItemLimit } from '@/constants/constants';
 import moment from 'moment';
-import { MdDeleteOutline } from 'react-icons/md';
 import Link from 'next/link';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 import styles from './allModules.module.css';
 import Toast from '@/components/ui/toast/toast';
+import PopoverList from '@/components/ui/popover/popoverList';
+import { MdDeleteOutline } from 'react-icons/md';
+import { LiaEdit } from 'react-icons/lia';
 
 export default function AllModules({ id }) {
 	const [response, error, loading, axiosFetch] = useAxios();
@@ -96,11 +98,21 @@ export default function AllModules({ id }) {
 			title: '',
 			dataIndex: '_id',
 			render: (id) => (
-				<MdDeleteOutline
-					className={styles.deleteIcon}
-					onClick={() => {
-						onClickDeleteHandler(id);
-					}}
+				<PopoverList
+					data={[
+						{
+							title: 'Edit',
+							icon: <LiaEdit />,
+							//function: () => {setIsOpenDrawer(true); setEditCourseId(id)},
+						},
+						{
+							title: 'Delete',
+							icon: <MdDeleteOutline />,
+							function: () => {
+								onClickDeleteHandler(id);
+							},
+						},
+					]}
 				/>
 			),
 		},
