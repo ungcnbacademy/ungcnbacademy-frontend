@@ -22,7 +22,7 @@ export default function ContentCardModule({
 				className={`${styles.header} ${selected && styles.selected}`}
 				onClick={() => setIsOpen(!isOpen)}
 			>
-				<div>
+				<div className={styles.container}>
 					<p className={styles.title}>
 						Module {order}: {title}
 					</p>
