@@ -12,15 +12,21 @@ import moment from 'moment';
 import Link from 'next/link';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 import { MdDeleteOutline } from 'react-icons/md';
-
+import { LiaEdit } from 'react-icons/lia';
 import styles from './allLessons.module.css';
 import Toast from '@/components/ui/toast/toast';
+import Drawer from '@/components/ui/drawer/drawer';
+import CreateLesson from './createLesson';
+import PopoverList from '@/components/ui/popover/popoverList';
 export default function AllLessons({ courseId, moduleId }) {
 	const [response, error, loading, axiosFetch] = useAxios();
 	const [responseDelete, errorDelete, loadingDelete, axiosDelete] =
 		useAxios();
 	const [refreshData, setRefreshData] = useState(false);
 	const [message, setMessage] = useState({ text: '', variant: '' });
+
+	const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+	const [editLessonId, setEditLessonId] = useState(null);
 
 	const getAllLessons = (page, pageSize) => {
 		if (!page) page = 1;
@@ -56,6 +62,26 @@ export default function AllLessons({ courseId, moduleId }) {
 			setMessage({ text: 'Deleting...', variant: 'warning' });
 		}
 	}, [responseDelete, errorDelete, loadingDelete]);
+
+	const drawerRender = () => {
+		return (
+			<>
+				{isOpenDrawer && (
+					<Drawer
+						title="Edit Course"
+						closeFunction={() => setIsOpenDrawer(false)}
+						size="lg"
+					>
+						<CreateLesson
+							courseId={courseId}
+							moduleId={moduleId}
+							lessonId={editLessonId}
+						/>
+					</Drawer>
+				)}
+			</>
+		);
+	};
 
 	const columns = [
 		{
@@ -99,18 +125,32 @@ export default function AllLessons({ courseId, moduleId }) {
 			title: '',
 			dataIndex: '_id',
 			render: (id) => (
-				<MdDeleteOutline
-					className={styles.deleteIcon}
-					onClick={() => {
-						onClickDeleteHandler(id);
-					}}
+				<PopoverList
+					data={[
+						{
+							title: 'Edit',
+							icon: <LiaEdit />,
+							function: () => {
+								setIsOpenDrawer(true);
+								setEditLessonId(id);
+							},
+						},
+						{
+							title: 'Delete',
+							icon: <MdDeleteOutline />,
+							function: () => {
+								onClickDeleteHandler(id);
+							},
+						},
+					]}
 				/>
 			),
 		},
 	];
 	return (
 		<div className={styles.main}>
-			{ message?.text && (
+			{drawerRender()}
+			{message?.text && (
 				<Toast text={message.text} variant={message.variant} />
 			)}
 			<div className={styles.tableHeader}>

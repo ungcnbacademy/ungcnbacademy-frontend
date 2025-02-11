@@ -50,14 +50,13 @@ export default function PopoverList({
 					}}
 				>
 					{data.map((item, index) => (
-						<div key={index} className={styles.buttonContainer}>
+						<div
+							key={index}
+							className={styles.buttonContainer}
+							onClick={item.function}
+						>
 							{item.icon && item.icon}
-							<p
-								className={styles.button}
-								onClick={item.function}
-							>
-								{item.title}
-							</p>
+							<p className={styles.button}>{item.title}</p>
 						</div>
 					))}
 				</div>

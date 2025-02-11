@@ -15,6 +15,8 @@ import Toast from '@/components/ui/toast/toast';
 import PopoverList from '@/components/ui/popover/popoverList';
 import { MdDeleteOutline } from 'react-icons/md';
 import { LiaEdit } from 'react-icons/lia';
+import Drawer from '@/components/ui/drawer/drawer';
+import CreateModule from './createModule';
 
 export default function AllModules({ id }) {
 	const [response, error, loading, axiosFetch] = useAxios();
@@ -22,6 +24,8 @@ export default function AllModules({ id }) {
 		useAxios();
 	const [refreshData, setRefreshData] = useState(false);
 	const [message, setMessage] = useState({ text: '', variant: '' });
+	const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+	const [editModuleId, setEditModuleId] = useState(null);
 
 	const getAllModules = (page, pageSize) => {
 		if (!page) page = 1;
@@ -53,6 +57,21 @@ export default function AllModules({ id }) {
 			setMessage({ text: 'Loading...', variant: 'warning' });
 		}
 	}, [responseDelete, loadingDelete, errorDelete]);
+
+	const drawerRender = () => {
+		return (
+			<>
+				{isOpenDrawer && (
+					<Drawer
+						title="Edit Module"
+						closeFunction={() => setIsOpenDrawer(false)}
+					>
+						<CreateModule courseId={id} moduleId={editModuleId} />
+					</Drawer>
+				)}
+			</>
+		);
+	};
 
 	useEffect(() => {
 		getAllModules();
@@ -103,7 +122,7 @@ export default function AllModules({ id }) {
 						{
 							title: 'Edit',
 							icon: <LiaEdit />,
-							//function: () => {setIsOpenDrawer(true); setEditCourseId(id)},
+							function: () => {setIsOpenDrawer(true); setEditModuleId(id)},
 						},
 						{
 							title: 'Delete',
@@ -119,6 +138,7 @@ export default function AllModules({ id }) {
 	];
 	return (
 		<div className={styles.main}>
+			{drawerRender()}
 			{message?.text && (
 				<Toast text={message?.text} variant={message?.variant} />
 			)}
