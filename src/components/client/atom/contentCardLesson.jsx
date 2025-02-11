@@ -11,7 +11,7 @@ export default function ContentCardLesson({ title, order, hasVideo, totalAssets,
 				</p>
         <div className={styles.subtitle}>
           {hasVideo && <MdOutlineOndemandVideo />}
-          {videoDuration && <label>Duration {videoDuration} min,</label>}
+          {hasVideo && videoDuration && <label>Duration {videoDuration} min,</label>}
           <label>Total Assets {totalAssets},</label>
         </div>
 			</div>
