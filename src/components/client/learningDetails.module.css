@@ -79,7 +79,7 @@
 
 .longDescription {
 	font-size: 0.9rem;
-	color: var(--foreground-light);
+	color: var(--foreground);
 	text-align: justify;
 }
 

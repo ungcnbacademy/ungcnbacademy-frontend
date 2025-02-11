@@ -52,6 +52,7 @@ export default function TextEditor({ setData, defaultValue='' }) {
 				'indent',
 				'hr',
 				'brush',
+				'preview',
 			],
 		}),
 		[]
