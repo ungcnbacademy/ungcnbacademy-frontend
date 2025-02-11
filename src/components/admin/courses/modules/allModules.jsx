@@ -17,6 +17,7 @@ import { MdDeleteOutline } from 'react-icons/md';
 import { LiaEdit } from 'react-icons/lia';
 import Drawer from '@/components/ui/drawer/drawer';
 import CreateModule from './createModule';
+import { getAmountsWithCommas } from '@/utils/utils';
 
 export default function AllModules({ id }) {
 	const [response, error, loading, axiosFetch] = useAxios();
@@ -94,13 +95,14 @@ export default function AllModules({ id }) {
 				</Link>
 			),
 		},
-		// {
-		// 	title: 'Description',
-		// 	dataIndex: 'description',
-		// },
 		{
 			title: 'Order',
 			dataIndex: 'order',
+		},
+		{
+			title: 'Price',
+			dataIndex: 'price',
+			render: (price) => getAmountsWithCommas(price),
 		},
 		{
 			title: 'Published',
@@ -122,7 +124,10 @@ export default function AllModules({ id }) {
 						{
 							title: 'Edit',
 							icon: <LiaEdit />,
-							function: () => {setIsOpenDrawer(true); setEditModuleId(id)},
+							function: () => {
+								setIsOpenDrawer(true);
+								setEditModuleId(id);
+							},
 						},
 						{
 							title: 'Delete',
