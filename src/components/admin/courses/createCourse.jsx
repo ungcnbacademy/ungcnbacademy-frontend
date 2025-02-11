@@ -50,7 +50,6 @@ export default function CreateCourse({ id = '' }) {
 		formData.delete('description');
 		formData.delete('category');
 		formData.delete('price');
-		formData.delete('modulePrice');
 		formData.delete('featured');
 		formData.delete('instructorName');
 		formData.delete('instructorDesignation');
@@ -65,7 +64,6 @@ export default function CreateCourse({ id = '' }) {
 			longDescription: longDescription, // Use the longDescription state
 			category: formDataObject.category,
 			price: formDataObject.price,
-			modulePrice: formDataObject.modulePrice,
 			featured: formDataObject.featured,
 			instructors: [
 				{
@@ -156,16 +154,7 @@ export default function CreateCourse({ id = '' }) {
 					defaultValue={responseGetInfo?.data?.price}
 					required
 				/>
-				<p className={styles.label}>Module price in BDT</p>
-				<Input
-					type="number"
-					placeholder="Module Price"
-					name="modulePrice"
-					variant="secondary"
-					defaultValue={responseGetInfo?.data?.modulePrice}
-					required
-				/>
-
+			
 				<p className={styles.subTitle}>Instructor:</p>
 				<p className={styles.label}>Instructor name</p>
 				<Input

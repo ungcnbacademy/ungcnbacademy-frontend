@@ -91,6 +91,18 @@ export default function CreateModule({courseId, moduleId=''}) {
 					defaultValue={responseGetInfo?.data?.order}
 					required
 				/>
+				<p className={styles.subTitle}>Price:</p>
+				<p className={styles.label}>Module price</p>
+
+				<Input
+					type="number"
+					placeholder="Module Price"
+					name="price"
+					variant="secondary"
+					defaultValue={responseGetInfo?.data?.price}
+					required
+				/>
+
 				<p className={styles.subTitle}>Accessibility:</p>
 				<p className={styles.label}>is active?</p>
 
