@@ -56,6 +56,7 @@
 	aspect-ratio: 16/9;
 	border-radius: var(--global-border-radius);
 	overflow: hidden;
+	background-color: black;
 	.video {
 		width: 100%;
 	}

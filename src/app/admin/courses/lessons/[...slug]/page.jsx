@@ -26,6 +26,7 @@ export default function LessonDetails({ params }) {
 	const [isDrawerOpenUploadVideo, setIsDrawerOpenUploadVideo] =
 		useState(false);
 	const [refreshData, setRefreshData] = useState(false);
+const [videoPlayerLoading, setVideoPlayerLoading] = useState(true);
 	const drawerOpenCreateAssetsRender = () => {
 		return (
 			<>
@@ -106,11 +107,13 @@ export default function LessonDetails({ params }) {
 			<>
 				{response?.data?.cloudflareVideoId && (
 					<div className={styles.videoContainer}>
+						{videoPlayerLoading &&  <LoadingDots color='white'/>}
 						<Stream
 							src={response?.data?.cloudflareVideoId}
 							controls
 							className={styles.video}
 							onError={(error) => console.log(error)}
+							onLoadedData={ () => setVideoPlayerLoading(false)}
 						/>
 					</div>
 				)}
