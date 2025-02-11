@@ -5,12 +5,12 @@ import { Stream } from '@cloudflare/stream-react';
 import useAxios from '@/hooks/useAxios';
 import { configuration } from '@/configuration/configuration';
 import LoadingDots from '../ui/loading/loadingDots';
-import Collapse from '../ui/collapse/collapse';
 import ContentCardModule from './atom/contentCardModule';
 import ContentCardLesson from './atom/contentCardLesson';
 export default function LearningDetails({ id }) {
 	const [response, error, loading, axiosFetch] = useAxios();
 	const [selectedLesson, setSelectedLesson] = useState(null);
+	const [videoPlayerLoading, setVideoPlayerLoading] = useState(true);
 	const [selectedLessonDetails, setSelectedLessonDetails] = useState(null);
 	const [responseLesson, errorLesson, loadingLesson, axiosFetchLesson] =
 		useAxios();
@@ -47,21 +47,71 @@ export default function LearningDetails({ id }) {
 		}
 	}, [response]);
 
-	return (
-		<div className={styles.main}>
-			{loading && <LoadingDots />}
-			<div className={styles.left}>
+	const courseContentListViewRender = () => {
+		return (
+			<>
+				{response?.data?.modules && (
+					<p className={styles.title}>Course Content</p>
+				)}
+				{response?.data?.modules &&
+					response?.data?.modules?.map((module, i) => (
+						<ContentCardModule
+							key={i}
+							order={module.order}
+							title={module.title}
+							totalLesson={module.totalLessons}
+							selected={selectedLesson?.moduleId === module._id}
+							children={module.lessons.map((lesson, i) => (
+								<ContentCardLesson
+									key={i}
+									order={lesson.order}
+									title={lesson.title}
+									hasVideo={lesson.hasVideo}
+									totalAssets={lesson.totalAssets}
+									videoDuration={lesson.duration}
+									selected={
+										selectedLesson?.moduleId ===
+											module._id &&
+										selectedLesson?.lessonId === lesson._id
+									}
+									onClick={() => {
+										setSelectedLesson({
+											moduleId: module._id,
+											lessonId: lesson._id,
+										});
+									}}
+								/>
+							))}
+						/>
+					))}
+			</>
+		);
+	};
+
+	const lessonDetailsRender = () => {
+		return (
+			<>
 				{loadingLesson && <LoadingDots />}
 				{responseLesson?.data && !loadingLesson && !errorLesson && (
 					<>
-						<div className={styles.videoContainer}>
-							<Stream
-								src={responseLesson?.data?.cloudflareVideoId}
-								controls
-								className={styles.video}
-								onError={(error) => console.log(error)}
-							/>
-						</div>
+						{responseLesson?.data?.cloudflareVideoId && (
+							<div className={styles.videoContainer}>
+								{videoPlayerLoading && (
+									<LoadingDots color="white" />
+								)}
+								<Stream
+									src={
+										responseLesson?.data?.cloudflareVideoId
+									}
+									controls
+									className={styles.video}
+									onError={(error) => console.log(error)}
+									onLoadedData={() =>
+										setVideoPlayerLoading(false)
+									}
+								/>
+							</div>
+						)}
 						<div className={styles.lessonHeader}>
 							<p className={styles.title}>
 								Lesson {responseLesson?.data?.order}:{' '}
@@ -106,43 +156,21 @@ export default function LearningDetails({ id }) {
 						</div>
 					</>
 				)}
-			</div>
-			<div className={styles.right}>
-				{response?.data?.modules && (
-					<p className={styles.title}>Course Content</p>
-				)}
-				{response?.data?.modules &&
-					response?.data?.modules?.map((module, i) => (
-						<ContentCardModule
-							key={i}
-							order={module.order}
-							title={module.title}
-							totalLesson={module.totalLessons}
-							selected={selectedLesson?.moduleId === module._id}
-							children={module.lessons.map((lesson, i) => (
-								<ContentCardLesson
-									key={i}
-									order={lesson.order}
-									title={lesson.title}
-									hasVideo={lesson.hasVideo}
-									totalAssets={lesson.totalAssets}
-									videoDuration={lesson.duration}
-									selected={
-										selectedLesson?.moduleId ===
-											module._id &&
-										selectedLesson?.lessonId === lesson._id
-									}
-									onClick={() => {
-										setSelectedLesson({
-											moduleId: module._id,
-											lessonId: lesson._id,
-										});
-									}}
-								/>
-							))}
-						/>
-					))}
-			</div>
+			</>
+		);
+	};
+
+	return (
+		<div className={styles.main}>
+			{loading && <LoadingDots />}
+			{!loading && !error && (
+				<>
+					<div className={styles.left}>{lessonDetailsRender()}</div>
+					<div className={styles.right}>
+						{courseContentListViewRender()}
+					</div>
+				</>
+			)}
 		</div>
 	);
 }

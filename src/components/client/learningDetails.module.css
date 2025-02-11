@@ -13,6 +13,7 @@
 			width: 100%;
 			aspect-ratio: 16/9;
 			background-color: black;
+			overflow: hidden;
 		}
 		.lessonHeader {
 			background-color: var(--background-dashboard);
