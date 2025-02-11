@@ -1,10 +1,10 @@
 .main {
-	/* padding-inline: var(--global-padding-inline); */
-  /* padding-inline: 10px; */
+	/* padding-inline: var(--global-padding-inline);
+	padding-inline: 10px; */
 	padding-block: 10px;
 	min-height: 85vh;
 	display: flex;
-  flex-wrap: wrap;
+	flex-wrap: wrap;
 	gap: 10px;
 
 	.left {
@@ -48,20 +48,20 @@
 				font-weight: 500;
 			}
 			> .assetContainer {
-        margin-top: 10px;
+				margin-top: 10px;
 				> .title {
 					font-size: 0.9rem;
-          color: var(--accent2);
-          transition: all 0.6s ease-in-out;
-          &:hover {
-            color: var(--accent3);
-          }
+					color: var(--accent2);
+					transition: all 0.6s ease-in-out;
+					&:hover {
+						color: var(--accent3);
+					}
 				}
 			}
-      >.noAssets{
-        color: var(--foreground-light);
-        font-size: 0.8rem;
-      }
+			> .noAssets {
+				color: var(--foreground-light);
+				font-size: 0.8rem;
+			}
 		}
 	}
 
