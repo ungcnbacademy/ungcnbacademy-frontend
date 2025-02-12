@@ -2,11 +2,11 @@ import { getFetchRequests } from '@/fetch ssr/getFetchRequests';
 import React from 'react';
 import styles from './courseDetails.module.css';
 import Image from 'next/image';
-import { getAmountsWithCommas } from '@/utils/utils';
 import moment from 'moment';
 import Collapse from '../ui/collapse/collapse';
 import Avatar from '../ui/avatar/avatar';
-import Enroll from './enroll';
+import { MdOutlineOndemandVideo } from "react-icons/md";
+import CoursePriceContainer from './coursePriceContainer';
 export default async function CourseDetails({ id }) {
 	const response = await getFetchRequests.getCourseById(id);
 
@@ -21,8 +21,12 @@ export default async function CourseDetails({ id }) {
 			/>
 			<div className={styles.container}>
 				<div className={styles.left}>
-					<h1 className={styles.courseTitle}>{response?.data?.title}</h1>
-					<p className={styles.category}>Category: {response?.data?.category}</p>
+					<h1 className={styles.courseTitle}>
+						{response?.data?.title}
+					</h1>
+					<p className={styles.category}>
+						Category: {response?.data?.category}
+					</p>
 					<p className={styles.description}>
 						{response?.data?.description}
 					</p>
@@ -69,8 +73,13 @@ export default async function CourseDetails({ id }) {
 																	title: `Lesson ${lesson.order}: ${lesson.title}`,
 																	description:
 																		lesson.description,
-																	children:
-																		null,
+																	children: (
+																		<div className={styles.lessonAssets}>
+																			{/* {lesson?.duration > 0 && <MdOutlineOndemandVideo />} */}
+																			{lesson?.duration > 0 && lesson?.duration && <label>Duration {lesson?.duration} min,</label>}
+																			{lesson?.totalAssets > 0 && <label>Total Assets {lesson?.totalAssets}</label>}
+																		</div>
+																	),
 																},
 															]}
 														/>
@@ -169,19 +178,27 @@ export default async function CourseDetails({ id }) {
 								)
 							)}
 					</div>
-					<br /><br /><br /><br /><br />
 				</div>
 				<div className={styles.right}>
-					<p className={styles.price}>
+					{/* <p className={styles.price}>
 						Price: {getAmountsWithCommas(response?.data?.price)}
 					</p>
 					<p className={styles.price}>
 						Created at:{' '}
 						{moment(response?.data?.createdAt).format('lll')}
 					</p>
-					<Enroll courseId={response?.data?._id} />
+					<Enroll courseId={response?.data?._id} /> */}
+					<CoursePriceContainer
+						modules={response?.data?.modules}
+						price={response?.data?.price}
+					/>
 				</div>
 			</div>
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
 		</div>
 	);
 }

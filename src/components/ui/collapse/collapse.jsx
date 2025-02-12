@@ -23,9 +23,10 @@ export default function Collapse({
 				</div>
 
 				<div className={`${styles.content} ${isOpen && styles.open}`}>
-					<p className={styles.description}>{description}</p>
-          {children && <div className={styles.children}>{children}</div> }
-
+					<div className={styles.innerContainer}>
+						{description && <p className={styles.description}>{description}</p>}
+          	{children && <div className={styles.children}>{children}</div> }
+					</div>
 				</div>
 			</div>
 		);

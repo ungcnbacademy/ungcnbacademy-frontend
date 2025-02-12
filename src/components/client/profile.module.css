@@ -37,6 +37,11 @@
 				font-size: 1.2rem;
 				font-weight: 500;
 			}
+			.subTitle {
+				font-size: 0.8rem;
+				color: var(--foreground-light);
+				font-weight: 400;
+			}
 			.details {
 				background-color: var(--background-dashboard);
 				padding: 20px;

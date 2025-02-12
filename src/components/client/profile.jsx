@@ -55,6 +55,11 @@ export default function Profile() {
 					)}
 
 					<h1 className={styles.heading}>Course Progress</h1>
+					{response?.data?.enrolledCourses.length < 1  && (
+						<p className={styles.subTitle}>
+							You have not enrolled in any course yet
+						</p>
+					)}
 					{response?.data?.enrolledCourses.length > 0 &&
 						response?.data?.enrolledCourses.map((course, i) => (
 							<div className={styles.details} key={i}>

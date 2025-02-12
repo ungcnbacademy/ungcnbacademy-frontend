@@ -1,0 +1,73 @@
+.main {
+	font-size: 0.85rem;
+	color: var(--foreground-dark);
+	padding: 10px;
+
+	> .header {
+		> .title {
+			font-size: 1rem;
+			font-weight: 500;
+			margin-bottom: 10px;
+		}
+		> .container {
+			color: var(--foreground-light);
+			margin-top: 5px;
+			display: flex;
+			gap: 10px;
+			align-items: center;
+		}
+	}
+	> .priceContainer {
+		margin-top: 20px;
+		> .text {
+			font-size: 0.8rem;
+			color: var(--foreground-light);
+			margin-bottom: 10px;
+		}
+		> .price {
+			font-size: 1.2rem;
+			font-weight: 500;
+		}
+		> .previousPrice {
+			margin-top: 5px;
+			text-decoration: line-through;
+			color: var(--danger-light);
+		}
+	}
+	> .enrollContainer {
+		.text {
+			font-size: 0.8rem;
+			margin-top: 10px;
+			color: var(--foreground-dark);
+		}
+		.text > span {
+			color: var(--accent2);
+			font-weight: 500;
+			&:hover {
+				text-decoration: underline;
+				cursor: pointer;
+			}
+		}
+	}
+	> .modulesContainer {
+		margin-top: 10px;
+		> .noModule {
+			font-size: 0.8rem;
+			color: var(--foreground-light);
+		}
+		.enrollModuleContainer {
+      >.lessons{
+        font-size: 0.8rem;
+        color: var(--foreground-light);
+      }
+			>.price {
+				font-size: 0.95rem;
+				font-weight: 500;
+				margin-top: 5px;
+			}
+			>.button {
+				margin-top: 10px;
+			}
+		}
+	}
+}
