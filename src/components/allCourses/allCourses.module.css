@@ -16,6 +16,8 @@
 		min-height: 50vh;
 		.filter {
 			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
 			justify-content: space-between;
 			align-items: center;
 			margin-bottom: 30px;
