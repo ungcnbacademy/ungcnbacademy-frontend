@@ -1,15 +1,19 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, act } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './navbar.module.css';
 import { allAdminRoles, userRoles } from '@/constants/constants';
+import { IoMenuSharp } from 'react-icons/io5';
+import Drawer from '../ui/drawer/drawer';
+
 export default function Navbar({ variant = 'transparent' }) {
 	//const variant = ['transparent', 'accentColor', 'white'];
 	const pathParam = usePathname();
 	const [scrolled, setScrolled] = useState(false);
 	const [userDetails, setUserDetails] = useState();
+	const [isShowMenu, setIsShowMenu] = useState(false);
 
 	// Check scroll position to update navbar background
 	useEffect(() => {
@@ -45,6 +49,7 @@ export default function Navbar({ variant = 'transparent' }) {
 		{
 			name: 'Courses',
 			link: '/courses',
+			active: pathParam === '/courses',
 		},
 		{
 			name: 'Login',
@@ -66,6 +71,7 @@ export default function Navbar({ variant = 'transparent' }) {
 		{
 			name: 'Courses',
 			link: '/courses',
+			active: pathParam === '/courses',
 		},
 		{
 			name: 'Profile',
@@ -73,7 +79,7 @@ export default function Navbar({ variant = 'transparent' }) {
 			active: pathParam === '/client/profile',
 		},
 		{
-			name: 'Learning',
+			name: 'My Learning',
 			link: '/client/my-courses',
 			active: pathParam === '/client//my-courses',
 		},
@@ -93,6 +99,7 @@ export default function Navbar({ variant = 'transparent' }) {
 		{
 			name: 'Courses',
 			link: '/courses',
+			active: pathParam === '/courses',
 		},
 		{
 			name: 'Dashboard',
@@ -107,22 +114,49 @@ export default function Navbar({ variant = 'transparent' }) {
 	];
 
 	let authLinks;
-	
+
 	if (userDetails?.data?.role === userRoles.client.role) {
 		authLinks = authCustomerLinks;
-	} else if ( allAdminRoles.includes(userDetails?.data?.role)) {
+	} else if (allAdminRoles.includes(userDetails?.data?.role)) {
 		authLinks = authAdminLinks;
 	} else {
 		authLinks = nonAuthLinks;
 	}
 
 	const links = userDetails ? authLinks : nonAuthLinks;
+
+	const drawerRender = () => {
+		return (
+			<>
+				{isShowMenu && (
+					<Drawer title="" closeFunction={() => setIsShowMenu(false)}>
+						<div className={styles.menu}>
+							{links.map((link, i) => (
+								<Link
+									key={i}
+									href={link.link}
+									className={`${styles.menuLink} ${
+										link.active ? styles.activeMenu : ''
+									}`}
+								>
+									{link.name}
+								</Link>
+							))}
+						</div>
+					</Drawer>
+				)}
+			</>
+		);
+	};
+
+
 	return (
 		<nav
 			className={`${styles.navbar} ${
 				scrolled && variant === 'transparent' ? styles.scrolled : ''
 			} ${styles[variant]}`}
 		>
+			{drawerRender()}
 			<div className={styles.logoWrapper}>
 				<Link href="/" className={styles.logoLink}>
 					<Image
@@ -150,6 +184,10 @@ export default function Navbar({ variant = 'transparent' }) {
 						{link.name}
 					</Link>
 				))}
+				<IoMenuSharp
+					className={styles.menuIcon}
+					onClick={() => setIsShowMenu(true)}
+				/>
 			</div>
 		</nav>
 	);
