@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './navbar.module.css';
+import { allAdminRoles, userRoles } from '@/constants/constants';
 export default function Navbar({ variant = 'transparent' }) {
 	//const variant = ['transparent', 'accentColor', 'white'];
 	const pathParam = usePathname();
@@ -104,8 +105,17 @@ export default function Navbar({ variant = 'transparent' }) {
 			active: pathParam === '/logout',
 		},
 	];
-	const authLinks =
-		userDetails?.data?.role === 'user' ? authCustomerLinks : authAdminLinks;
+
+	let authLinks;
+	
+	if (userDetails?.data?.role === userRoles.client.role) {
+		authLinks = authCustomerLinks;
+	} else if ( allAdminRoles.includes(userDetails?.data?.role)) {
+		authLinks = authAdminLinks;
+	} else {
+		authLinks = nonAuthLinks;
+	}
+
 	const links = userDetails ? authLinks : nonAuthLinks;
 	return (
 		<nav
