@@ -62,7 +62,7 @@ export default function Checkout() {
 						{globalCart?.courseTitle || ''}
 					</h1>
 					{globalCart?.moduleTitle && (
-						<p>
+						<p className={styles.allModules}>
 							Module {globalCart?.moduleOrder}:{' '}
 							{globalCart?.moduleTitle || ''}
 						</p>
@@ -77,7 +77,7 @@ export default function Checkout() {
 							))}
 						</div>
 					)}
-					<p>Type: {globalCart?.type || ''}</p>
+					<p className={styles.type}>Type: <span>{globalCart?.type || ''}</span> </p>
 					<p className={styles.price}>
 						Price:{' '}
 						{getAmountsWithCommas(

@@ -36,7 +36,7 @@ export default function CourseDetails({ params }) {
 						title="Create Module"
 						closeFunction={() => setIsDrawerOpenCreateModule(false)}
 					>
-						<CreateModule id={courseId} />
+						<CreateModule courseId={courseId} />
 					</Drawer>
 				)}
 			</>
