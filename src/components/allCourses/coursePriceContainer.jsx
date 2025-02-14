@@ -16,16 +16,17 @@ export default function CoursePriceContainer({ courseInfo }) {
 
 	const enrollInCorseHandler = () => {
 		setGlobalCart({
-			type: 'fullCourse',
+			type: 'Full Course',
 			courseTitle: courseInfo?.title,
 			courseId: courseInfo?._id,
 			price: courseInfo?.price,
+			allModules: courseInfo?.modules,
 		});
 		router.push('/client/payment/checkout');
 	};
 	const enrollInModuleHandler = ( module ) => {
 		setGlobalCart({
-			type: 'singleModule',
+			type: 'Single Module',
 			courseTitle: courseInfo?.title,
 			courseId: courseInfo?._id,
 			moduleId: module?._id,

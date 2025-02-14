@@ -4,6 +4,7 @@ import styles from './page.module.css';
 import Input from '@/components/ui/input/input';
 import Button from '@/components/ui/button/button';
 import { CartContext } from '@/context/cartContext';
+import { getAmountsWithCommas } from '@/utils/utils';
 export default function Checkout() {
 	const { globalCart } = useContext(CartContext);
 
@@ -12,7 +13,7 @@ export default function Checkout() {
 			<div className={styles.formContainer}>
 				<h3 className={styles.title}>Shipping Address</h3>
 				<form className={styles.form}>
-					<label>Phone</label>
+					<label>Phone (ex: 01700000000)</label>
 					<Input
 						type="tel"
 						placeholder="Enter your phone"
@@ -54,20 +55,36 @@ export default function Checkout() {
 	};
 	const coursePaymentInfoRender = () => {
 		return (
-			<div className={styles.infoContainer}>
-				<h1 className={styles.title}>
-					{globalCart?.courseTitle || ''}
-				</h1>
-				{globalCart?.moduleTitle && (
-					<p>
-						Module {globalCart?.moduleOrder}:{' '}
-						{globalCart?.moduleTitle || ''}
+			<div className={styles.infoWrapper}>
+				<h2 className={styles.title}>Course Details</h2>
+				<div className={styles.infoContainer}>
+					<h1 className={styles.title}>
+						{globalCart?.courseTitle || ''}
+					</h1>
+					{globalCart?.moduleTitle && (
+						<p>
+							Module {globalCart?.moduleOrder}:{' '}
+							{globalCart?.moduleTitle || ''}
+						</p>
+					)}
+					{globalCart?.allModules && (
+						<div className={styles.allModules}>
+							{globalCart?.allModules?.map((module) => (
+								<p key={module?._id}>
+									Module {module?.order}:{' '}
+									{module?.title || ''}
+								</p>
+							))}
+						</div>
+					)}
+					<p>Type: {globalCart?.type || ''}</p>
+					<p className={styles.price}>
+						Price:{' '}
+						{getAmountsWithCommas(
+							globalCart?.price || globalCart?.modulePrice || ''
+						)}
 					</p>
-				)}
-				<p>
-					Price: {globalCart?.price || globalCart?.modulePrice || ''}
-				</p>
-				<p>Type: {globalCart?.type || ''}</p>
+				</div>
 			</div>
 		);
 	};

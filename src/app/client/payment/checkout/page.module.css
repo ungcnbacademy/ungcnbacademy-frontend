@@ -14,7 +14,7 @@
 		padding-inline: var(--global-padding-inline);
 		margin-top: 50px;
 		display: flex;
-		flex-wrap: wrap;
+		flex-wrap: wrap-reverse;
 		gap: 20px;
 
 		.left,
@@ -30,7 +30,7 @@
 				display: flex;
 				flex-direction: column;
 				gap: 10px;
-				width: clamp(250px, 40vw, 450px);
+				width: clamp(300px, 40vw, 450px);
 				margin-top: 10px;
 				> .button {
 					margin-top: 30px;
@@ -40,13 +40,36 @@
 				font-size: 0.8rem;
 			}
 		}
+		.infoWrapper {
+			> .title {
+				font-size: 1.2rem;
+				margin-bottom: 10px;
+			}
+		}
 		.infoContainer {
 			background-color: var(--background-dashboard);
 			border-radius: var(--global-border-radius);
 			padding: 20px;
-      >.title{
-        font-size: 1.2rem;
-      }
+			> .title {
+				font-size: 1.2rem;
+				font-weight: 500;
+			}
+			> .price {
+				margin-top: 10px;
+				font-weight: 600;
+			}
+			> .allModules {
+				padding-left: 10px;
+				margin-top: 10px;
+				font-size: 0.8rem;
+				margin-bottom: 5px;
+				color: var(--foreground-light);
+			}
+		}
+		.infoContainer > p {
+			font-size: 0.9rem;
+			margin-top: 3px;
+			color: var(--foreground-dark);
 		}
 	}
 }
