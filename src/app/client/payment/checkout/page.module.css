@@ -1,0 +1,52 @@
+.overlay {
+	padding-bottom: 100px;
+	width: 100%;
+	.header {
+		padding-inline: var(--global-padding-inline);
+		background-color: rgb(35, 35, 35);
+		.title {
+			color: var(--foreground-white);
+			padding-block: 50px;
+			font-size: clamp(1.5rem, 5vw, 2rem);
+		}
+	}
+	.main {
+		padding-inline: var(--global-padding-inline);
+		margin-top: 50px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+
+		.left,
+		.right {
+			flex: 1 300px;
+		}
+
+		.formContainer {
+			> .title {
+				font-size: 1.2rem;
+			}
+			> .form {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+				width: clamp(250px, 40vw, 450px);
+				margin-top: 10px;
+				> .button {
+					margin-top: 30px;
+				}
+			}
+			> .form > label {
+				font-size: 0.8rem;
+			}
+		}
+		.infoContainer {
+			background-color: var(--background-dashboard);
+			border-radius: var(--global-border-radius);
+			padding: 20px;
+      >.title{
+        font-size: 1.2rem;
+      }
+		}
+	}
+}

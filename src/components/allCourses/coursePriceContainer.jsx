@@ -1,15 +1,41 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './coursePriceContainer.module.css';
 import { MdOutlineOndemandVideo, MdOutlineAssignment } from 'react-icons/md';
 import { GoDesktopDownload } from 'react-icons/go';
 import { SlTrophy } from 'react-icons/sl';
-import Enroll from './enroll';
 import { getAmountsWithCommas } from '@/utils/utils';
 import Button from '../ui/button/button';
 import Collapse from '../ui/collapse/collapse';
-export default function CoursePriceContainer({ price = 1000, modules = [] }) {
+import { CartContext } from '@/context/cartContext';
+import { useRouter } from 'next/navigation';
+export default function CoursePriceContainer({ courseInfo }) {
 	const [showModulePrice, setShowModulePrice] = useState(false);
+	const { setGlobalCart } = useContext(CartContext);
+	const router = useRouter();
+
+	const enrollInCorseHandler = () => {
+		setGlobalCart({
+			type: 'fullCourse',
+			courseTitle: courseInfo?.title,
+			courseId: courseInfo?._id,
+			price: courseInfo?.price,
+		});
+		router.push('/client/payment/checkout');
+	};
+	const enrollInModuleHandler = ( module ) => {
+		setGlobalCart({
+			type: 'singleModule',
+			courseTitle: courseInfo?.title,
+			courseId: courseInfo?._id,
+			moduleId: module?._id,
+			moduleOrder: module?.order,
+			moduleTitle: module?.title,
+			price: module?.price,
+		});
+		router.push('/client/payment/checkout');
+	};
+
 	return (
 		<div className={styles.main}>
 			<div className={styles.header}>
@@ -35,13 +61,20 @@ export default function CoursePriceContainer({ price = 1000, modules = [] }) {
 			</div>
 			<div className={styles.priceContainer}>
 				<p className={styles.text}>Enroll in all modules at once for</p>
-				<p className={styles.price}>{getAmountsWithCommas(price)}</p>
+				<p className={styles.price}>
+					{getAmountsWithCommas(courseInfo?.price)}
+				</p>
 				<p className={styles.previousPrice}>
-					{getAmountsWithCommas(price * 1.3)}
+					{getAmountsWithCommas(courseInfo?.price * 1.3)}
 				</p>
 			</div>
 			<div className={styles.enrollContainer}>
-				<Enroll courseId={1} />
+				<Button
+					text="Enroll in course"
+					variant="secondary"
+					className={styles.buttonCourse}
+					onClick={() => enrollInCorseHandler()}
+				/>
 				<p className={styles.text}>
 					Want to enroll in a single module?{' '}
 					<span onClick={() => setShowModulePrice(!showModulePrice)}>
@@ -51,23 +84,21 @@ export default function CoursePriceContainer({ price = 1000, modules = [] }) {
 			</div>
 			{showModulePrice && (
 				<div className={styles.modulesContainer}>
-					{modules?.length < 1 && (
+					{courseInfo?.modules?.length < 1 && (
 						<p className={styles.noModule}>No modules found</p>
 					)}
-					{modules?.map((module, i) => (
+					{courseInfo?.modules?.map((module, i) => (
 						<Collapse
 							key={i}
 							data={[
 								{
 									title: module.title,
-									//description: module.description,
 									children: (
 										<div
 											className={
 												styles.enrollModuleContainer
 											}
 										>
-
 											<p className={styles.price}>
 												Price:{' '}
 												{getAmountsWithCommas(
@@ -78,6 +109,11 @@ export default function CoursePriceContainer({ price = 1000, modules = [] }) {
 												text="Enroll in module"
 												variant="secondary"
 												className={styles.button}
+												onClick={() =>
+													enrollInModuleHandler(
+														module
+													)
+												}
 											/>
 										</div>
 									),

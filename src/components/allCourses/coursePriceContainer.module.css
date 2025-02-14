@@ -35,6 +35,10 @@
 		}
 	}
 	> .enrollContainer {
+		.buttonCourse {
+			margin-block: 20px 5px;
+			width: 100%;
+		}
 		.text {
 			font-size: 0.8rem;
 			margin-top: 10px;
@@ -56,16 +60,16 @@
 			color: var(--foreground-light);
 		}
 		.enrollModuleContainer {
-      >.lessons{
-        font-size: 0.8rem;
-        color: var(--foreground-light);
-      }
-			>.price {
+			> .lessons {
+				font-size: 0.8rem;
+				color: var(--foreground-light);
+			}
+			> .price {
 				font-size: 0.95rem;
 				font-weight: 500;
 				margin-top: 5px;
 			}
-			>.button {
+			> .button {
 				margin-top: 10px;
 			}
 		}

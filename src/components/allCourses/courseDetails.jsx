@@ -189,8 +189,8 @@ export default async function CourseDetails({ id }) {
 					</p>
 					<Enroll courseId={response?.data?._id} /> */}
 					<CoursePriceContainer
-						modules={response?.data?.modules}
 						price={response?.data?.price}
+						courseInfo={response?.data}
 					/>
 				</div>
 			</div>
