@@ -5,19 +5,36 @@ import Input from '@/components/ui/input/input';
 import Button from '@/components/ui/button/button';
 import { CartContext } from '@/context/cartContext';
 import { getAmountsWithCommas } from '@/utils/utils';
+import useAxios from '@/hooks/useAxios';
+import { configuration } from '@/configuration/configuration';
 export default function Checkout() {
 	const { globalCart } = useContext(CartContext);
+	const [response, error, loading, axiosFetch] = useAxios();
 
+	const checkoutClickHandler = (event) => {
+		event.preventDefault();
+		const formData = new FormData(event.target);
+		const payload = Object.fromEntries(formData);
+		axiosFetch({
+			method: 'POST',
+			url: `${configuration?.client?.payment}/${globalCart?.courseId}/initiate-course`,
+			requestConfig: {
+				redirectUrl: `${window.location.origin}/client/payment/status`,
+				shippingAddress: payload,
+			},
+		});
+	};
 	const addressFormRender = () => {
 		return (
 			<div className={styles.formContainer}>
 				<h3 className={styles.title}>Shipping Address</h3>
-				<form className={styles.form}>
+				<form className={styles.form} onSubmit={checkoutClickHandler}>
 					<label>Phone (ex: 01700000000)</label>
 					<Input
 						type="tel"
 						placeholder="Enter your phone"
 						variant="secondary"
+						name="phone"
 						required
 					/>
 					<label>Address</label>
@@ -45,6 +62,7 @@ export default function Checkout() {
 						required
 					/>
 					<Button
+						type="submit"
 						variant="secondary"
 						text="Checkout"
 						className={styles.button}
@@ -77,7 +95,9 @@ export default function Checkout() {
 							))}
 						</div>
 					)}
-					<p className={styles.type}>Type: <span>{globalCart?.type || ''}</span> </p>
+					<p className={styles.type}>
+						Type: <span>{globalCart?.type || ''}</span>{' '}
+					</p>
 					<p className={styles.price}>
 						Price:{' '}
 						{getAmountsWithCommas(
