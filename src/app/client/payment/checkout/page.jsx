@@ -74,6 +74,7 @@ export default function Checkout() {
 						type="submit"
 						variant="secondary"
 						text="Checkout"
+						loading={loading}
 						className={styles.button}
 					/>
 				</form>
