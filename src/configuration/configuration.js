@@ -13,7 +13,7 @@ export const configuration = {
 		clientSignup: '/auth/signup', //client signup
 		enrolledCourses: '/users/enrolled-courses',
 		profile: '/users/profile',
-		payment: '/payments/courses/'
+		payment: '/payments/courses'
 	},
 	enroll: '/test-enrollment/courses',
 };

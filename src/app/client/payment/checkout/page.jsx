@@ -15,12 +15,16 @@ export default function Checkout() {
 		event.preventDefault();
 		const formData = new FormData(event.target);
 		const payload = Object.fromEntries(formData);
+
+		const data = {
+			redirectUrl: `${window.location.origin}/client/payment/status`,
+			shippingAddress: payload,
+		};
 		axiosFetch({
 			method: 'POST',
 			url: `${configuration?.client?.payment}/${globalCart?.courseId}/initiate-course`,
 			requestConfig: {
-				redirectUrl: `${window.location.origin}/client/payment/status`,
-				shippingAddress: payload,
+				data,
 			},
 		});
 	};
@@ -31,7 +35,7 @@ export default function Checkout() {
 				<form className={styles.form} onSubmit={checkoutClickHandler}>
 					<label>Phone (ex: 01700000000)</label>
 					<Input
-						type="tel"
+						type="text"
 						placeholder="Enter your phone"
 						variant="secondary"
 						name="phone"
