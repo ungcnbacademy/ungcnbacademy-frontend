@@ -30,7 +30,7 @@
 				font-weight: 300;
 				max-width: 1000px;
 				margin-bottom: 20px;
-				color: var(--foreground-light);
+				color: var(--foreground-dark);
 			}
 		}
 		.right {

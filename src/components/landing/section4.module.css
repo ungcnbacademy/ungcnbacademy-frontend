@@ -3,7 +3,7 @@
 	min-height: fit-content;
 	height: 90vh;
 	max-height: 600px;
-	background-image: url('/assets/landing-bg2.png');
+	background-image: url('/assets/landing/bg2.png');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -36,7 +36,7 @@
 			font-weight: 300;
 			max-width: 1000px;
 			margin-bottom: 20px;
-			color: var(--foreground-light);
+			color: var(--foreground-dark);
 		}
 		.heading {
 			font-size: 1rem;

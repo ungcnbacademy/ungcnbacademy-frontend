@@ -26,7 +26,7 @@ export default function Section5() {
 				</div>
 				<div className={styles.right}>
 					<Image
-						src="/assets/badge.png"
+						src="/assets/landing/badge.png"
 						alt="Empty"
 						width={150}
 						height={200}

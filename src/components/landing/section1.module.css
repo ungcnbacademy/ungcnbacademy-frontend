@@ -36,7 +36,7 @@
 	}
 	.right {
 		flex: 1 300px;
-		background-image: url('https://images.unsplash.com/photo-1573164574048-f968d7ee9f20?q=80&w=2338&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+		background-image: url('/assets/landing/1.webp');
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
