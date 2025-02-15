@@ -1,5 +1,5 @@
 'use client';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styles from './page.module.css';
 import Input from '@/components/ui/input/input';
 import Button from '@/components/ui/button/button';
@@ -16,18 +16,26 @@ export default function Checkout() {
 		const formData = new FormData(event.target);
 		const payload = Object.fromEntries(formData);
 
-		const data = {
-			redirectUrl: `${window.location.origin}/client/payment/status`,
-			shippingAddress: payload,
-		};
 		axiosFetch({
 			method: 'POST',
 			url: `${configuration?.client?.payment}/${globalCart?.courseId}/initiate-course`,
 			requestConfig: {
-				data,
+				redirectUrl: `${window.location.origin}/client/payment/verify-payment`,
+				shippingAddress: payload,
 			},
 		});
 	};
+
+	useEffect(() => {
+		console.log(response);
+		console.log('response?.data?.gatewayRedirectURL', response?.data?.gatewayRedirectURL)
+		if (response?.data?.gatewayRedirectURL) {
+			console.log('first')
+			//redirect to payment gateway
+			window.location.href = response?.data?.gatewayRedirectURL;
+		}
+	}, [response]);
+
 	const addressFormRender = () => {
 		return (
 			<div className={styles.formContainer}>
