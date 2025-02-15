@@ -27,10 +27,7 @@ export default function Checkout() {
 	};
 
 	useEffect(() => {
-		console.log(response);
-		console.log('response?.data?.gatewayRedirectURL', response?.data?.gatewayRedirectURL)
 		if (response?.data?.gatewayRedirectURL) {
-			console.log('first')
 			//redirect to payment gateway
 			window.location.href = response?.data?.gatewayRedirectURL;
 		}

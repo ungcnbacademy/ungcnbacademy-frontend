@@ -5,7 +5,7 @@ export default function Status() {
 	return (
 		<div className={styles.overlay}>
 			<div className={styles.header}>
-				<h3 className={styles.title}>Payment status normal</h3>
+				<h3 className={styles.title}>Payment status dynamic</h3>
 			</div>
 		</div>
 	);
