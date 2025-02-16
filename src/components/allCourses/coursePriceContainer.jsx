@@ -9,12 +9,36 @@ import Button from '../ui/button/button';
 import Collapse from '../ui/collapse/collapse';
 import { CartContext } from '@/context/cartContext';
 import { useRouter } from 'next/navigation';
+import { allAdminRoles, userRoles } from '@/constants/constants';
+import Message from '../ui/message/message';
 export default function CoursePriceContainer({ courseInfo }) {
 	const [showModulePrice, setShowModulePrice] = useState(false);
 	const { setGlobalCart } = useContext(CartContext);
+	const [userDetails, setUserDetails] = useState();
+	const [message, setMessage] = useState({ text: '', type: '' });
 	const router = useRouter();
 
+	useEffect(() => {
+		setUserDetails(JSON.parse(localStorage.getItem('user')));
+	}, []);
+
+	const checkIfUserIsClient = () => {
+		if (!userDetails) {
+			router.push('/login');
+			return true;
+		} else if (allAdminRoles.includes(userDetails?.data?.role)) {
+			setMessage({
+				text: 'Admins are not allowed to buy courses',
+				type: 'error',
+			});
+			return true;
+		} else if (userDetails?.data?.role === userRoles.client.role) {
+			return;
+		}
+	};
+
 	const enrollInCorseHandler = () => {
+		if (checkIfUserIsClient()) return;
 		setGlobalCart({
 			type: 'Full Course',
 			courseTitle: courseInfo?.title,
@@ -24,7 +48,9 @@ export default function CoursePriceContainer({ courseInfo }) {
 		});
 		router.push('/client/payment/checkout');
 	};
-	const enrollInModuleHandler = ( module ) => {
+
+	const enrollInModuleHandler = (module) => {
+		if (checkIfUserIsClient()) return;
 		setGlobalCart({
 			type: 'Single Module',
 			courseTitle: courseInfo?.title,
@@ -60,6 +86,7 @@ export default function CoursePriceContainer({ courseInfo }) {
 					<p>Certificate of completion</p>
 				</div>
 			</div>
+			
 			<div className={styles.priceContainer}>
 				<p className={styles.text}>Enroll in all modules at once for</p>
 				<p className={styles.price}>
@@ -69,6 +96,7 @@ export default function CoursePriceContainer({ courseInfo }) {
 					{getAmountsWithCommas(courseInfo?.price * 1.3)}
 				</p>
 			</div>
+			<Message text={message.text} type={message.type} />
 			<div className={styles.enrollContainer}>
 				<Button
 					text="Enroll in course"

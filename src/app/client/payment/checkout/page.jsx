@@ -1,5 +1,5 @@
 'use client';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './page.module.css';
 import Input from '@/components/ui/input/input';
 import Button from '@/components/ui/button/button';
@@ -7,13 +7,24 @@ import { CartContext } from '@/context/cartContext';
 import { getAmountsWithCommas } from '@/utils/utils';
 import useAxios from '@/hooks/useAxios';
 import { configuration } from '@/configuration/configuration';
+import Link from 'next/link';
+import { redirect } from 'next/navigation';
+import Image from 'next/image';
+import Message from '@/components/ui/message/message';
 export default function Checkout() {
 	const { globalCart } = useContext(CartContext);
 	const [response, error, loading, axiosFetch] = useAxios();
+	const [checkMark, setCheckMark] = useState(false);
+	const [message, setMessage] = useState({ text: '', type: '' });
 
 	const checkoutClickHandler = (event) => {
 		event.preventDefault();
+		if (!checkMark) {
+			setMessage({ text:"Please agree to our terms and conditions", type: 'error' });
+			return
+		};
 		const formData = new FormData(event.target);
+		formData.delete('check');
 		const payload = Object.fromEntries(formData);
 
 		axiosFetch({
@@ -32,6 +43,12 @@ export default function Checkout() {
 			window.location.href = response?.data?.gatewayRedirectURL;
 		}
 	}, [response]);
+
+	useEffect(() => {
+		if (!globalCart) {
+			redirect('/courses');
+		}
+	}, [globalCart]);
 
 	const addressFormRender = () => {
 		return (
@@ -70,6 +87,22 @@ export default function Checkout() {
 						name="country"
 						required
 					/>
+					<br />
+					<div className={styles.checkContainer}>
+						<Input
+							type="checkbox"
+							name="check"
+							className={styles.check}
+							onChange={(e) => setCheckMark(e.target.checked)}
+						/>
+						<label className={styles.checkLabel}>
+							Please agree to our terms and conditions &nbsp;
+							<Link href="/terms-of-sale" className={styles.link}>
+								Terms and condition
+							</Link>
+						</label>
+					</div>
+					<Message text={message.text} type={message.type} />
 					<Button
 						type="submit"
 						variant="secondary"
@@ -114,6 +147,18 @@ export default function Checkout() {
 							globalCart?.price || globalCart?.modulePrice || ''
 						)}
 					</p>
+				</div>
+				<br />
+				<h2 className={styles.title}>Payment </h2>
+				<div className={styles.paymentContainer}>
+					<p className={styles.paymentText}>Powered by</p>
+					<Image
+						src="/assets/payment/1.png"
+						alt="Empty"
+						width={180}
+						height={35}
+						className={styles.paymentIcon}
+					/>
 				</div>
 			</div>
 		);

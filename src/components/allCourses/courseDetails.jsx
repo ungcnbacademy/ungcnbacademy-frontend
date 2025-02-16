@@ -2,10 +2,8 @@ import { getFetchRequests } from '@/fetch ssr/getFetchRequests';
 import React from 'react';
 import styles from './courseDetails.module.css';
 import Image from 'next/image';
-import moment from 'moment';
 import Collapse from '../ui/collapse/collapse';
 import Avatar from '../ui/avatar/avatar';
-import { MdOutlineOndemandVideo } from "react-icons/md";
 import CoursePriceContainer from './coursePriceContainer';
 export default async function CourseDetails({ id }) {
 	const response = await getFetchRequests.getCourseById(id);
@@ -180,14 +178,6 @@ export default async function CourseDetails({ id }) {
 					</div>
 				</div>
 				<div className={styles.right}>
-					{/* <p className={styles.price}>
-						Price: {getAmountsWithCommas(response?.data?.price)}
-					</p>
-					<p className={styles.price}>
-						Created at:{' '}
-						{moment(response?.data?.createdAt).format('lll')}
-					</p>
-					<Enroll courseId={response?.data?._id} /> */}
 					<CoursePriceContainer
 						price={response?.data?.price}
 						courseInfo={response?.data}
