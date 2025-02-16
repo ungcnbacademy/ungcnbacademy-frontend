@@ -1,0 +1,45 @@
+.main {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		margin: 20px;
+		width: clamp(300px, 100vw, 700px);
+		padding: 30px;
+		box-shadow: 0 1px 12px rgba(128, 128, 128, 0.3);
+		border-radius: var(--global-border-radius);
+		text-align: center;
+		.successIcon {
+			color: rgb(15, 177, 15);
+			font-size: 2.5rem;
+		}
+		.failedIcon {
+			color: red;
+			font-size: 2.5rem;
+		}
+		.title {
+			margin-top: 10px;
+			font-size: 1.2rem;
+			font-weight: 500;
+		}
+		.text {
+			font-size: 0.8rem;
+			color: var(--foreground-light);
+			margin-top: 10px;
+		}
+		.amount {
+			font-size: 0.9rem;
+			margin-top: 5px;
+		}
+		.buttonContainer {
+			margin-top: 30px;
+			display: flex;
+			gap: 10px;
+		}
+	}
+}

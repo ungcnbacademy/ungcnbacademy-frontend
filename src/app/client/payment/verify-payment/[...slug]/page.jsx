@@ -1,14 +1,15 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import styles from './page.module.css';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+import PaymentStatus from '@/components/client/payment/paymentStatus';
 
 export default function Status() {
 	const [slugs, setSlugs] = useState('');
 	const searchParams = useSearchParams();
-	const pathname = usePathname();
-
 	const tranId = searchParams.get('tran_id');
+	const amount = searchParams.get('amount');
+
 	useEffect(() => {
 		const url = new URL(window.location.href);
 		const slugs = url.pathname.split('/').pop();
@@ -17,12 +18,14 @@ export default function Status() {
 
 	return (
 		<div className={styles.overlay}>
-			<div className={styles.header}>
-				<h3 className={styles.title}>Payment status dynamic</h3>
-			</div>
-			<h4>{slugs}</h4> {/* Now this will work */}
-			<h4>{tranId}</h4>
-			<h4>{pathname}</h4>
+			{/* <div className={styles.header}>
+				<h3 className={styles.title}>Payment status</h3>
+			</div> */}
+			<PaymentStatus
+				status={slugs}
+				tranId={tranId || ''}
+				amount={amount || 0}
+			/>
 		</div>
 	);
 }
