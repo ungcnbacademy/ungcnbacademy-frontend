@@ -1,5 +1,11 @@
 import React from 'react';
-import styles from './page.module.css';
+import TopSection from '@/components/contact-us/topSection';
+import InfoSection from '@/components/contact-us/infoSection';
+import MapSection from '@/components/contact-us/mapSection';
 export default function ContactUs() {
-	return <div>ContactUs</div>;
+	return <div>
+		<TopSection/>
+		<InfoSection/>
+		<MapSection/>
+	</div>;
 }

@@ -1,0 +1,38 @@
+.main {
+	padding-inline: var(--global-padding-inline);
+	padding-block: 70px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+
+	gap: 30px;
+	.container {
+		flex: 1 300px;
+		background-color: white;
+		padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.06);
+    border-bottom: 5px solid white;
+    transition: all 0.6s ease-in-out;
+    .icon{
+      font-size: 2rem;
+      color: var(--accent2);
+      margin-bottom: 10px;
+    }
+    &:hover {
+      border-bottom: 5px solid var(--accent2);
+    }
+	}
+	.container > h1 {
+		font-size: 1.2rem;
+		font-weight: 600;
+    max-width: 80%;
+    margin-bottom: 15px;
+	}
+  .container > p {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--foreground-light);
+  }
+}
