@@ -11,12 +11,23 @@ import { CartContext } from '@/context/cartContext';
 import { useRouter } from 'next/navigation';
 import { allAdminRoles, userRoles } from '@/constants/constants';
 import Message from '../ui/message/message';
+import useAxios from '@/hooks/useAxios';
+import { configuration } from '@/configuration/configuration';
 export default function CoursePriceContainer({ courseInfo }) {
 	const [showModulePrice, setShowModulePrice] = useState(false);
 	const { setGlobalCart } = useContext(CartContext);
 	const [userDetails, setUserDetails] = useState();
 	const [message, setMessage] = useState({ text: '', type: '' });
 	const router = useRouter();
+
+	//calling the same api again to get the enrollment information
+	const [response, error, loading, axiosFetch] = useAxios();
+	useEffect(() => {
+		axiosFetch({
+			method: 'Get',
+			url: `${configuration.courses}/${courseInfo?._id}`,
+		})
+	},[]);
 
 	useEffect(() => {
 		setUserDetails(JSON.parse(localStorage.getItem('user')));
@@ -103,19 +114,27 @@ export default function CoursePriceContainer({ courseInfo }) {
 			<Message text={message.text} type={message.type} />
 			<div className={styles.enrollContainer}>
 				<Button
-					text= {courseInfo?.enrollment?.type === 'full' ? "Go to course" : "Enroll in course"}
+					text= {response?.data?.enrollment?.type === 'full' ? "Start learning..." : "Enroll in course"}
 					variant="secondary"
 					className={styles.buttonCourse}
-					onClick={() => courseInfo?.enrollment?.type === 'full' ? alreadyEnrolledCourseHandler() : enrollInCorseHandler()}
+					loading={loading}
+					onClick={() => response?.data?.enrollment?.type === 'full' ? alreadyEnrolledCourseHandler() : enrollInCorseHandler()}
 				/>
-				<p className={styles.text}>
-					Want to enroll in a single module?{' '}
-					<span onClick={() => setShowModulePrice(!showModulePrice)}>
-						Click here
-					</span>
-				</p>
+				{
+					response?.data?.enrollment?.type !== 'full' && <p className={styles.text}>
+						Want to enroll in a single module?{' '}
+						<span onClick={() => setShowModulePrice(!showModulePrice)}>
+							Click here
+						</span>
+					</p>
+				}
+				{
+					response?.data?.enrollment?.type === 'full' && <p className={styles.text}>
+						You already enrolled in this course.
+					</p>
+				}
 			</div>
-			{showModulePrice && (
+			{showModulePrice && response?.data?.enrollment?.type !== 'full' && (
 				<div className={styles.modulesContainer}>
 					{courseInfo?.modules?.length < 1 && (
 						<p className={styles.noModule}>No modules found</p>
