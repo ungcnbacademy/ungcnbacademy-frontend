@@ -38,6 +38,12 @@ export default function Checkout() {
 	};
 
 	useEffect(() => {
+		if (error?.message) {
+			setMessage({ text: error?.message, type: 'error' });
+		}
+	}, [ error]);
+
+	useEffect(() => {
 		if (response?.data?.gatewayRedirectURL) {
 			//redirect to payment gateway
 			window.location.href = response?.data?.gatewayRedirectURL;
