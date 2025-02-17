@@ -10,6 +10,15 @@
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
+		.title{
+			font-size: 1.2rem;
+			font-weight: 500;
+			margin-bottom: 20px;
+		}
+		.title > span {
+			font-size: 1.2rem;
+			color: var(--accent2);
+		}
 		.text {
 			font-size: 0.8rem;
 			color: var(--foreground-light);
@@ -21,7 +30,7 @@
 		}
 		.socialTitle {
 			font-size: 1.2rem;
-			font-weight: bold;
+			font-weight: 400;
 			margin-top: 20px;
 		}
 		.social {
@@ -48,7 +57,7 @@
 				font-size: .9rem;
 				transition: all 0.6s ease-in-out;
 				cursor: pointer;
-				font-weight: 600;
+				font-weight: 500;
 				width: fit-content;
 				margin-bottom: 5px;
 				&:hover {
@@ -57,15 +66,7 @@
 			}
 		}
 	}
-	.left > h1 {
-		font-weight: bold;
-		margin-bottom: 20px;
-		font-size: 1.2rem;
-	}
-	.left > h1 > span {
-		font-size: 1.2rem;
-		color: var(--accent2);
-	}
+
 
 	.right {
 		flex: 1 300px;

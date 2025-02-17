@@ -14,7 +14,7 @@ export default function MapSection() {
 	return (
 		<div className={styles.main}>
 			<div className={styles.left}>
-				<h1>
+				<h1 className={styles.title}>
 					<span> Contact </span>us
 				</h1>
 				<div className={styles.contactInfo}>
