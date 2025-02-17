@@ -72,10 +72,33 @@ export default async function CourseDetails({ id }) {
 																	description:
 																		lesson.description,
 																	children: (
-																		<div className={styles.lessonAssets}>
+																		<div
+																			className={
+																				styles.lessonAssets
+																			}
+																		>
 																			{/* {lesson?.duration > 0 && <MdOutlineOndemandVideo />} */}
-																			{lesson?.duration > 0 && lesson?.duration && <label>Duration {lesson?.duration} min,</label>}
-																			{lesson?.totalAssets > 0 && <label>Total Assets {lesson?.totalAssets}</label>}
+																			{lesson?.duration >
+																				0 &&
+																				lesson?.duration && (
+																					<label>
+																						Duration{' '}
+																						{
+																							lesson?.duration
+																						}{' '}
+																						min,
+																					</label>
+																				)}
+																			{lesson?.totalAssets >
+																				0 && (
+																				<label>
+																					Total
+																					Assets{' '}
+																					{
+																						lesson?.totalAssets
+																					}
+																				</label>
+																			)}
 																		</div>
 																	),
 																},
@@ -106,14 +129,11 @@ export default async function CourseDetails({ id }) {
 											}
 											size={80}
 										/>
-										{}
 										<p className={styles.name}>
-											{' '}
 											{instructor?.name}{' '}
 										</p>
 										<p> {instructor?.designation} </p>
 										<p className={styles.bio}>
-											{' '}
 											{instructor?.bio}{' '}
 										</p>
 										<div className={styles.socialLinks}>
@@ -178,10 +198,7 @@ export default async function CourseDetails({ id }) {
 					</div>
 				</div>
 				<div className={styles.right}>
-					<CoursePriceContainer
-						price={response?.data?.price}
-						courseInfo={response?.data}
-					/>
+					<CoursePriceContainer courseInfo={response?.data} />
 				</div>
 			</div>
 			<br />

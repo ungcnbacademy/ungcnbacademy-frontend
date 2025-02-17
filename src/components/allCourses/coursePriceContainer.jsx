@@ -63,6 +63,10 @@ export default function CoursePriceContainer({ courseInfo }) {
 		router.push('/client/payment/checkout');
 	};
 
+	const alreadyEnrolledCourseHandler = () => {
+		router.push(`/client/my-courses/${courseInfo?._id}`);
+	}
+
 	return (
 		<div className={styles.main}>
 			<div className={styles.header}>
@@ -86,7 +90,7 @@ export default function CoursePriceContainer({ courseInfo }) {
 					<p>Certificate of completion</p>
 				</div>
 			</div>
-			
+
 			<div className={styles.priceContainer}>
 				<p className={styles.text}>Enroll in all modules at once for</p>
 				<p className={styles.price}>
@@ -99,10 +103,10 @@ export default function CoursePriceContainer({ courseInfo }) {
 			<Message text={message.text} type={message.type} />
 			<div className={styles.enrollContainer}>
 				<Button
-					text="Enroll in course"
+					text= {courseInfo?.enrollment?.type === 'full' ? "Go to course" : "Enroll in course"}
 					variant="secondary"
 					className={styles.buttonCourse}
-					onClick={() => enrollInCorseHandler()}
+					onClick={() => courseInfo?.enrollment?.type === 'full' ? alreadyEnrolledCourseHandler() : enrollInCorseHandler()}
 				/>
 				<p className={styles.text}>
 					Want to enroll in a single module?{' '}
