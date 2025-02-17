@@ -20,9 +20,12 @@ export default function Checkout() {
 	const checkoutClickHandler = (event) => {
 		event.preventDefault();
 		if (!checkMark) {
-			setMessage({ text:"Please agree to our terms and conditions", type: 'error' });
-			return
-		};
+			setMessage({
+				text: 'Please agree to our terms and conditions',
+				type: 'error',
+			});
+			return;
+		}
 		const formData = new FormData(event.target);
 		formData.delete('check');
 		const payload = Object.fromEntries(formData);
@@ -41,7 +44,7 @@ export default function Checkout() {
 		if (error?.message) {
 			setMessage({ text: error?.message, type: 'error' });
 		}
-	}, [ error]);
+	}, [error]);
 
 	useEffect(() => {
 		if (response?.data?.gatewayRedirectURL) {
