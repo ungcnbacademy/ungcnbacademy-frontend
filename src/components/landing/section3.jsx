@@ -2,7 +2,13 @@ import React from 'react';
 import styles from './section3.module.css';
 import Button from '../ui/button/button';
 import CourseCard from '../atom/courseCard';
-export default function Section3() {
+import { getFetchRequests } from '@/fetch ssr/getFetchRequests';
+import Link from 'next/link';
+
+export default async function Section3() {
+	const response = await getFetchRequests.getFeaturedCourses();
+	const firstCourse = response?.data?.courses[0];
+
 	return (
 		<div className={styles.overlay}>
 			<div className={styles.main}>
@@ -26,18 +32,26 @@ export default function Section3() {
 							industry.
 						</p>
 						<br />
-						<Button text="Our Courses" variant="outLined" />
+						<Link href="/courses" className={styles.link}>
+							<Button text="Our Courses" variant="outLined" />
+						</Link>
 						<br />
 					</div>
 				</div>
 				<div className={styles.right}>
 					<CourseCard
-						img="/assets/auth-bg.webp"
-						title="ESG Investing and Analysis"
-						description="Learn how to incorporate ESG factors into your investment strategy"
+						img={firstCourse?.thumbnail || '/assets/auth-bg.webp'}
+						title={
+							firstCourse?.title || 'ESG Investing and Analysis'
+						}
+						description={
+							firstCourse?.description ||
+							'Learn how to incorporate ESG factors into your investment strategy'
+						}
 						startTime="Anytime"
 						duration="10"
 						totalLectures="10"
+						id={firstCourse?._id}
 					/>
 				</div>
 			</div>
