@@ -113,6 +113,19 @@ export default function Navbar({ variant = 'transparent' }) {
 		},
 	];
 
+	const extraMenuLinks = [
+		{
+			name: 'About us',
+			link: '/about-us',
+			active: pathParam === '/about-us',
+		},
+		{
+			name: 'Contact us',
+			link: '/contact-us',
+			active: pathParam === '/contact-us',
+		},
+	];
+
 	let authLinks;
 
 	if (userDetails?.data?.role === userRoles.client.role) {
@@ -142,13 +155,23 @@ export default function Navbar({ variant = 'transparent' }) {
 									{link.name}
 								</Link>
 							))}
+							{extraMenuLinks.map((link, i) => (
+								<Link
+									key={i}
+									href={link.link}
+									className={`${styles.menuLink} ${
+										link.active ? styles.activeMenu : ''
+									}`}
+								>
+									{link.name}
+								</Link>
+							))}
 						</div>
 					</Drawer>
 				)}
 			</>
 		);
 	};
-
 
 	return (
 		<nav
