@@ -2,11 +2,11 @@
 import DashboardMenu from '@/components/admin/atom/dashboardMenu';
 import styles from './layout.module.css';
 import LayoutHeader from '@/components/admin/atom/layoutHeader';
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { allAdminRoles } from '@/constants/constants';
 
 export default function Layout({ children }) {
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const userData = JSON.parse(localStorage.getItem('user'));
 		if (!allAdminRoles.includes(userData?.data?.role)) {
 			redirect('/');
