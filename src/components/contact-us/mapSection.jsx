@@ -59,11 +59,14 @@ export default function MapSection() {
 					/>
 				</div>
 				<p className={styles.text}>
-					If you have any questions or need further information about
-					our services, please do not hesitate to reach out. Our team
-					at Swift Squads is here to assist you and provide the
-					support you need. Contact us today, and let us discuss how
-					we can enhance your space!
+					We are here to connect, collaborate, and support your journey
+					toward a sustainable future. Whether you have questions
+					about our platform, are interested in partnering with us, or
+					simply want to share your thoughts, we would love to hear from
+					you. Our team is dedicated to providing prompt and helpful
+					responses to ensure you have the best experience. Together,
+					we can create meaningful impact and drive positive change.
+					Do not hesitate to reach out—we are just a message away!
 				</p>
 			</div>
 			<div className={styles.right}>

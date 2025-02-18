@@ -8,23 +8,37 @@ export default function InfoSection() {
 		<div className={styles.main}>
 			<div className={styles.container}>
 				<LuMessagesSquare className={styles.icon} />
-				<h1>We are here for you! Just ask and get answers.</h1>
+				<h1>
+					Have Questions? We are Here to Assist with Your Queries.
+				</h1>
 				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem quibusdam nihil sapiente cupiditate atque accusantium, quis deserunt vel excepturi optio?
+					If you need help with our platform or services, our
+					dedicated team is ready to provide clear guidance and
+					support tailored to your needs.
 				</p>
 			</div>
 			<div className={styles.container}>
 				<HiOutlineDevicePhoneMobile className={styles.icon} />
-				<h1>Have any questions? Reach us by phone.</h1>
+				<h1>
+					Join Forces to Drive Sustainable Growth Through
+					Partnerships.
+				</h1>
 				<p>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic nihil dolores nisi minus explicabo neque sed possimus doloribus esse itaque!
+					Collaborate with us to create innovative solutions for
+					sustainability. Together, we can make a meaningful impact
+					and build a better future for all.{' '}
 				</p>
 			</div>
 			<div className={styles.container}>
 				<BsBoundingBoxCircles className={styles.icon} />
-				<h1>Get more info quickly. Most popular help topics.</h1>
+				<h1>
+					Your Feedback Inspires Us to Continuously Improve and
+					Evolve.
+				</h1>
 				<p>
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam saepe deleniti inventore accusantium eius. Minus velit temporibus vitae cumque animi.
+					We value your thoughts and ideas. Share your feedback to
+					help us refine our platform and create a better experience
+					for everyone committed to sustainability.{' '}
 				</p>
 			</div>
 		</div>

@@ -6,7 +6,7 @@ export default function TopSection() {
 		<div className={styles.main}>
 			<h1 className={styles.title}>Contact Us</h1>
 			<p className={styles.text}>
-				Comprehensive Support & Specialized Cleaning, On Demand
+			Get in Touch with Our Team and Join Us in Shaping a Sustainable Tomorrow.
 			</p>
 		</div>
 	);

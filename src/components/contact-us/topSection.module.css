@@ -1,20 +1,27 @@
-.main{
-  padding-inline: var(--global-padding-inline);
-  padding-block: 70px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background-color: var(--accent2-light);
-  .title{
-    font-size: 1.3rem;
-font-weight: 500;
-  }
-  .text{
-    font-size: .9rem;
-    color: var(--foreground-light);
-    max-width: 700px;
-    margin-top: 5px;
-  }
+.main {
+	padding-inline: var(--global-padding-inline);
+	padding-block: 120px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	background-color: var(--accent2-light);
+	background-image: url('/assets/contact/1.webp');
+	background-size: cover;
+	background-position: bottom;
+	background-repeat: no-repeat;
+	.title {
+		font-size: 1.3rem;
+		font-weight: 500;
+    color: var(--foreground-white);
+    text-shadow: 0 1px 12px rgba(128, 128, 128, 0.3);
+	}
+	.text {
+		font-size: 0.9rem;
+		color: var(--foreground-white);
+    text-shadow: 0 1px 12px rgba(128, 128, 128, 0.3);
+		max-width: 700px;
+		margin-top: 5px;
+	}
 }

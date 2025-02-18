@@ -22,7 +22,7 @@
 		.text {
 			font-size: 0.8rem;
 			color: var(--foreground-light);
-			max-width: 70%;
+			max-width: 90%;
 			margin-top: 40px;
 			@media screen and (max-width: 800px) {
 				max-width: 100%;
