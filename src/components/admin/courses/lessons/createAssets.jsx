@@ -31,15 +31,10 @@ export default function CreateAssets({ courseId, moduleId, lessonId }) {
 		event.preventDefault();
 		setMessage({ text: '', type: '' });
 		const formData = new FormData(event.target);
-		const payload = Object.fromEntries(formData);
-		const fileName = payload.description;
-
-		formData.delete('description');
-		formData.append('description', [fileName]);
 
 		axiosFetch({
 			method: 'PUT',
-			url: configuration.courses + '/' + courseId + '/modules/' + moduleId + '/lessons/' + lessonId ,
+			url: configuration.courses + '/' + courseId + '/modules/' + moduleId + '/lessons/' + lessonId,
 			requestConfig: formData,
 		});
 	};
@@ -56,15 +51,6 @@ export default function CreateAssets({ courseId, moduleId, lessonId }) {
 					variant="secondary"
 					required
 				/>
-				<p className={styles.label}>Asset Name</p>
-				<Input
-					type="text"
-					placeholder="Asset Name"
-					name="description"
-					variant="secondary"
-					required
-				/>
-
 				<div className={styles.submitContainer}>
 					<Message
 						text={message.text}

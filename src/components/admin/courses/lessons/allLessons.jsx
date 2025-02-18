@@ -111,11 +111,6 @@ export default function AllLessons({ courseId, moduleId }) {
 			dataIndex: 'order',
 		},
 		{
-			title: 'Published',
-			dataIndex: 'isAccessible',
-			render: (isAccessible) => (isAccessible ? 'Yes' : 'No'),
-		},
-		{
 			title: 'Created at',
 			dataIndex: 'createdAt',
 			render: (createdAt) =>
