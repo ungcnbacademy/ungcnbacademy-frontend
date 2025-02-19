@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Collapse from '../ui/collapse/collapse';
 import Avatar from '../ui/avatar/avatar';
 import CoursePriceContainer from './coursePriceContainer';
+import { FaSquareXTwitter, FaLinkedin } from 'react-icons/fa6';
+import { FaGlobeAmericas } from 'react-icons/fa';
 export default async function CourseDetails({ id }) {
 	const response = await getFetchRequests.getCourseById(id);
 
@@ -78,7 +80,6 @@ export default async function CourseDetails({ id }) {
 																				styles.lessonAssets
 																			}
 																		>
-																			{/* {lesson?.duration > 0 && <MdOutlineOndemandVideo />} */}
 																			{lesson?.duration >
 																				0 &&
 																				lesson?.duration && (
@@ -150,10 +151,7 @@ export default async function CourseDetails({ id }) {
 													}
 													target="_blank"
 												>
-													{
-														instructor?.socialLinks
-															?.linkedin
-													}
+													<FaLinkedin /> Linkedin
 												</a>
 											)}
 											{instructor?.socialLinks
@@ -168,10 +166,7 @@ export default async function CourseDetails({ id }) {
 													}
 													target="_blank"
 												>
-													{
-														instructor?.socialLinks
-															?.twitter
-													}
+													<FaSquareXTwitter /> Twitter
 												</a>
 											)}
 											{instructor?.socialLinks
@@ -186,10 +181,7 @@ export default async function CourseDetails({ id }) {
 													}
 													target="_blank"
 												>
-													{
-														instructor?.socialLinks
-															?.website
-													}
+													<FaGlobeAmericas /> Website
 												</a>
 											)}
 										</div>
