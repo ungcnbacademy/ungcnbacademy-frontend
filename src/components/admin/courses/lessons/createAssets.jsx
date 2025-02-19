@@ -7,9 +7,10 @@ import Message from '@/components/ui/message/message';
 import { configuration } from '@/configuration/configuration';
 
 import styles from './createAssets.module.css';
+import ProgressBar from '@/components/ui/progressBar/progressBar';
 
 export default function CreateAssets({ courseId, moduleId, lessonId }) {
-	const [response, error, loading, axiosFetch] = useAxios();
+	const [response, error, loading, axiosFetch, progress] = useAxios();
 	const formRef = useRef(null);
 	const [message, setMessage] = useState({ text: '', type: '' });
 
@@ -52,11 +53,13 @@ export default function CreateAssets({ courseId, moduleId, lessonId }) {
 					required
 				/>
 				<div className={styles.submitContainer}>
+				<ProgressBar progress={progress} />
 					<Message
 						text={message.text}
 						type={message.type}
-						loading={loading}
+						//loading={loading}
 					/>
+
 					<div className={styles.buttonContainer}>
 						<Button
 							text="Clear"
