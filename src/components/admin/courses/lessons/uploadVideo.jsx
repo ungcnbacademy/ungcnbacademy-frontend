@@ -54,8 +54,7 @@ export default function UploadVideo({ courseId, moduleId, lessonId }) {
 					variant="secondary"
 					required
 				/>
-
-				<ProgressBar progress={progress}  />
+				<ProgressBar progress={progress} />
 				<div className={styles.submitContainer}>
 					<Message
 						text={message.text}

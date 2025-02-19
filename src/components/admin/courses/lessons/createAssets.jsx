@@ -35,7 +35,14 @@ export default function CreateAssets({ courseId, moduleId, lessonId }) {
 
 		axiosFetch({
 			method: 'PUT',
-			url: configuration.courses + '/' + courseId + '/modules/' + moduleId + '/lessons/' + lessonId,
+			url:
+				configuration.courses +
+				'/' +
+				courseId +
+				'/modules/' +
+				moduleId +
+				'/lessons/' +
+				lessonId,
 			requestConfig: formData,
 		});
 	};
@@ -52,14 +59,13 @@ export default function CreateAssets({ courseId, moduleId, lessonId }) {
 					variant="secondary"
 					required
 				/>
-				<div className={styles.submitContainer}>
 				<ProgressBar progress={progress} />
+				<div className={styles.submitContainer}>
 					<Message
 						text={message.text}
 						type={message.type}
 						//loading={loading}
 					/>
-
 					<div className={styles.buttonContainer}>
 						<Button
 							text="Clear"
