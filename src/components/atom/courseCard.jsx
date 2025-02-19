@@ -9,6 +9,7 @@ import {
 	FaRegClock,
 } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
+import { truncateString } from '@/utils/utils';
 
 export default function CourseCard({
 	img = '/assets/noImage.svg',
@@ -38,8 +39,8 @@ export default function CourseCard({
 				onError={() => setCourseImage('/assets/noImage.svg')}
 			/>
 			<div className={styles.container}>
-				<p className={styles.title}>{title}</p>
-				<p className={styles.description}>{description}</p>
+				<p className={styles.title}>{truncateString(title, 55)}</p>
+				<p className={styles.description}>{truncateString(description, 120)}</p>
 				<div className={styles.content}>
 					<FaRegCalendarAlt />
 					<p>{startTime}</p>
