@@ -52,6 +52,7 @@ export default async function Section3() {
 						duration="10"
 						totalLectures="10"
 						id={firstCourse?._id}
+						maxWidth='300px'
 					/>
 				</div>
 			</div>

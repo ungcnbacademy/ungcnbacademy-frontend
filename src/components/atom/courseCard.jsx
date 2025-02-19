@@ -18,7 +18,8 @@ export default function CourseCard({
 	duration = '',
 	totalLectures = '',
 	id,
-	onClickLink
+	onClickLink,
+	maxWidth = '400px',
 }) {
 	const [courseImage, setCourseImage] = useState(img);
 	const router = useRouter();
@@ -26,6 +27,7 @@ export default function CourseCard({
 		<div
 			className={styles.main}
 			onClick={() => router.push( onClickLink || `/courses/${id}`)}
+			style={{ maxWidth: maxWidth }}
 		>
 			<Image
 				src={courseImage}
