@@ -14,18 +14,25 @@ export default function Collapse({
 					className={styles.header}
 					onClick={() => setIsOpen(!isOpen)}
 				>
-					{isOpen ? (
-						<IoIosArrowDown className={styles.icon} />
-					) : (
-						<IoIosArrowForward className={styles.icon} />
-					)}
+					<div className={styles.iconContainer}>
+						{isOpen ? (
+							<IoIosArrowDown className={styles.icon} />
+						) : (
+							<IoIosArrowForward className={styles.icon} />
+						)}
+					</div>
+
 					<p className={styles.title}>{title}</p>
 				</div>
 
 				<div className={`${styles.content} ${isOpen && styles.open}`}>
 					<div className={styles.innerContainer}>
-						{description && <p className={styles.description}>{description}</p>}
-          	{children && <div className={styles.children}>{children}</div> }
+						{description && (
+							<p className={styles.description}>{description}</p>
+						)}
+						{children && (
+							<div className={styles.children}>{children}</div>
+						)}
 					</div>
 				</div>
 			</div>

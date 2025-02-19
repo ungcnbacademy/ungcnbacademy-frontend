@@ -40,6 +40,7 @@ export default async function CourseDetails({ id }) {
 							></div>
 						)}
 					</div>
+					<br />
 					<div>
 						<h3 className={styles.title}>Course content</h3>
 						<p className={styles.subtitle}>
