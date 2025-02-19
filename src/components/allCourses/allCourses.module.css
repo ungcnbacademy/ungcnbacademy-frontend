@@ -28,6 +28,9 @@
 				&::-webkit-input-placeholder {
 					font-size: 0.8rem;
 				}
+				@media screen and (max-width: 450px) {
+					max-width: 100%;
+				}
 			}
 		}
 		.container {

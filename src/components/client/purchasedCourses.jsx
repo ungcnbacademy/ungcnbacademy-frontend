@@ -46,6 +46,7 @@ export default function PurchasedCourses() {
 								totalLectures="10"
 								id={course.course._id}
 								onClickLink={`/client/my-courses/${course.course._id}`}
+								maxWidth='none'
 							/>
 						))}
 					{response?.data?.length === 0 && (

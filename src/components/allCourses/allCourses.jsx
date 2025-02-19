@@ -58,6 +58,7 @@ export default function AllCourses() {
 							duration="10"
 							totalLectures="10"
 							id={course._id}
+							maxWidth='none'
 						/>
 					))}
 				</div>
