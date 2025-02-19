@@ -1,5 +1,4 @@
 'use client';
-import Table from '@/components/ui/table/table';
 import { configuration } from '@/configuration/configuration';
 import useAxios from '@/hooks/useAxios';
 import { getAmountsWithCommas } from '@/utils/utils';
