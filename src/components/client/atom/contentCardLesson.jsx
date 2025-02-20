@@ -2,6 +2,8 @@
 import React from 'react';
 import styles from './contentCardLesson.module.css';
 import { MdOutlineOndemandVideo, MdLock } from 'react-icons/md';
+import Button from '@/components/ui/button/button';
+import { redirect } from 'next/navigation';
 
 export default function ContentCardLesson({
 	title,
@@ -12,9 +14,16 @@ export default function ContentCardLesson({
 	onClick = () => {},
 	selected,
 	checked = false,
-	locked = false,
+	isLocked = false,
 	lockMessage = 'Locked',
+	isQuizRequired = false,
+	quizId = '',
 }) {
+	const quizButtonClickHandler = (event) => {
+		event.stopPropagation();
+		confirm('Are you sure you want to start this quiz?') &&
+		redirect(`/client/my-courses/quiz/1111111`);
+	};
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.LessonContainer}>
@@ -28,20 +37,32 @@ export default function ContentCardLesson({
 						}`}
 					></div>
 					<div className={styles.container}>
-						<p className={styles.title}>
-							Lesson {order}: {title}
-						</p>
-						<div className={styles.subtitle}>
-							{hasVideo && <MdOutlineOndemandVideo />}
-							{hasVideo && videoDuration && (
-								<label>Duration {videoDuration} min,</label>
-							)}
-							<label>Total Assets {totalAssets},</label>
+						<div className={styles.top}>
+							<p className={styles.title}>
+								Lesson {order}: {title}
+							</p>
+							<div className={styles.subtitle}>
+								{hasVideo && <MdOutlineOndemandVideo />}
+								{hasVideo && videoDuration && (
+									<label>Duration {videoDuration} min,</label>
+								)}
+								<label>Total Assets {totalAssets},</label>
+							</div>
 						</div>
+						{isQuizRequired && <div className={styles.bottom}>
+							<Button
+								text="Quiz"
+								variant="outLined"
+								className={styles.button}
+								onClick={(event) =>
+									quizButtonClickHandler(event)
+								}
+							/>
+						</div>}
 					</div>
 				</div>
 			</div>
-			{locked && (
+			{isLocked && (
 				<div className={styles.locked}>
 					<div className={styles.lockContainer}>
 						<MdLock className={styles.lockIcon} />

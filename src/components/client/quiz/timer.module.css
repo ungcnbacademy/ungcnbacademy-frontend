@@ -1,0 +1,13 @@
+.main {
+	.title {
+		font-size: 0.8rem;
+		color: var(--foreground-light);
+	}
+	.time {
+		font-size: 1.4rem;
+		font-weight: 500;
+	}
+	.timeUp {
+		color: var(--danger);
+	}
+}

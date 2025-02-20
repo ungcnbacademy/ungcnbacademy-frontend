@@ -4,8 +4,8 @@
 .locked {
 	position: absolute;
 	inset: 1 0;
-	background-color: rgba(211, 211, 211, 0.5);
-	backdrop-filter: blur(0.5px);
+	background-color: rgba(211, 211, 211, 0.6);
+	backdrop-filter: blur(.8px);
 
 	display: flex;
 	align-items: center;
@@ -49,18 +49,27 @@
 
 		.container {
 			flex: 1;
-			.title {
-				font-size: 0.9rem;
-				font-weight: 400;
+			.top {
+				.title {
+					font-size: 0.9rem;
+					font-weight: 400;
+				}
+				.subtitle {
+					margin-top: 5px;
+					font-size: 0.75rem;
+					color: var(--foreground-light);
+					display: flex;
+					flex-wrap: wrap;
+					align-items: center;
+					gap: 5px;
+				}
 			}
-			.subtitle {
-				margin-top: 5px;
-				font-size: 0.75rem;
-				color: var(--foreground-light);
-				display: flex;
-				flex-wrap: wrap;
-				align-items: center;
-				gap: 5px;
+			.bottom{
+				.button{
+					padding: 5px 25px;
+					min-width: fit-content;
+					margin-top: 10px;
+				}
 			}
 		}
 
@@ -72,8 +81,10 @@
 	.selected {
 		background-color: var(--accent2-light);
 		.container {
-			.subtitle {
-				color: var(--foreground);
+			.top {
+				.subtitle {
+					color: var(--foreground);
+				}
 			}
 		}
 	}

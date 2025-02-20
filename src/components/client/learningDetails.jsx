@@ -80,6 +80,8 @@ export default function LearningDetails({ id }) {
 											lessonId: lesson._id,
 										});
 									}}
+									isQuizRequired={!lesson?.requireQuizPass}
+									//isLocked={true}
 								/>
 							))}
 						/>

@@ -14,11 +14,11 @@
 			aspect-ratio: 16/9;
 			background-color: black;
 			overflow: hidden;
+			margin-bottom: 10px;
 		}
 		.lessonHeader {
 			background-color: var(--background-dashboard);
 			padding: 20px;
-			margin-top: 10px;
 			border-radius: var(--global-border-radius);
 			> .title {
 				font-size: 1.2rem;
