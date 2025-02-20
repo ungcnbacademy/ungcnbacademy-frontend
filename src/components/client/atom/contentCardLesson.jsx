@@ -47,7 +47,7 @@ export default function ContentCardLesson({
 								{hasVideo && videoDuration && (
 									<label>Duration {moment.utc(videoDuration * 1000).format('HH:mm:ss')},</label>
 								)}
-								<label>Total Assets {totalAssets},</label>
+								<label>Total Assets {totalAssets}.</label>
 							</div>
 						</div>
 						{isQuizRequired && <div className={styles.bottom}>
