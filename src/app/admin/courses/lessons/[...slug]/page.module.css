@@ -8,9 +8,15 @@
 			justify-content: space-between;
 			padding-bottom: 20px;
 			.buttonContainer {
+				width: 100%;
 				display: flex;
 				flex-wrap: wrap;
+				justify-content: space-between;
 				gap: 10px;
+				.btnContainer {
+					display: flex;
+					gap: 10px;
+				}
 			}
 			.refreshIcon {
 				font-size: 2.2rem;
@@ -83,5 +89,16 @@
 		font-weight: 500;
 		margin-bottom: 10px;
 		color: var(--foreground);
+	}
+}
+.quizContainer{
+	margin-top: 20px;
+	.quizSection{
+		margin-top: 10px;
+		padding: 30px;
+		border-radius: var(--global-border-radius);
+		background-color: var(--background-dashboard);
+		font-size: 0.9rem;
+		color: var(--foreground-light);
 	}
 }
