@@ -14,6 +14,7 @@ import CreateModule from '@/components/admin/courses/modules/createModule';
 import { TbWorld } from 'react-icons/tb';
 import { IoLogoLinkedin } from 'react-icons/io';
 import { AiOutlineTwitter } from 'react-icons/ai';
+
 export default function CourseDetails({ params }) {
 	const unwrappedParams = React.use(params);
 	const courseId = unwrappedParams.id;
