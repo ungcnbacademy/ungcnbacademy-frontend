@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import styles from "./createQuiz.module.css";
-import Input from "@/components/ui/input/input";
-import Button from "@/components/ui/button/button";
+import React, { useState } from 'react';
+import styles from './createQuiz.module.css';
+import Input from '@/components/ui/input/input';
+import Button from '@/components/ui/button/button';
+import { MdDeleteOutline } from 'react-icons/md';
 
 export default function CreateQuiz() {
   const [quiz, setQuiz] = useState({
-    title: "",
+    title: '',
     quizTime: 0,
     passingScore: 0,
     maxAttempts: 0,
@@ -18,10 +19,10 @@ export default function CreateQuiz() {
       questions: [
         ...quiz.questions,
         {
-          question: "",
-          type: "mcq",
+          question: '',
+          type: 'mcq',
           marks: 1,
-          options: [{ option: "", isCorrect: false }],
+          options: [{ option: '', isCorrect: false }],
         },
       ],
     });
@@ -34,7 +35,7 @@ export default function CreateQuiz() {
 
   const handleAddOption = (index) => {
     const updatedQuestions = [...quiz.questions];
-    updatedQuestions[index].options.push({ option: "", isCorrect: false });
+    updatedQuestions[index].options.push({ option: '', isCorrect: false });
     setQuiz({ ...quiz, questions: updatedQuestions });
   };
 
@@ -55,70 +56,32 @@ export default function CreateQuiz() {
       setQuiz({ ...quiz, questions: updatedQuestions });
     } else {
       const updatedQuestions = [...quiz.questions];
-      updatedQuestions[index].options[optionIndex][name] = type === "checkbox" ? checked : value;
+      updatedQuestions[index].options[optionIndex][name] = type === 'checkbox' ? checked : value;
       setQuiz({ ...quiz, questions: updatedQuestions });
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Quiz Payload:", quiz);
+    console.log('Quiz Payload:', quiz);
   };
 
   return (
     <div className={styles.main}>
-      <form onSubmit={handleSubmit} className="quiz-creator">
-        <h1>Create Quiz</h1>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <label>Title:</label>
+        <Input type="text" name="title" value={quiz.title} onChange={handleInputChange} variant="secondary" required />
 
-        <div>
-          <label>Title:</label>
-          <Input
-            type="text"
-            name="title"
-            value={quiz.title}
-            onChange={handleInputChange}
-            variant="secondary"
-            required
-          />
-        </div>
+        <label>Quiz Time (minutes):</label>
+        <Input type="number" name="quizTime" value={quiz.quizTime} onChange={handleInputChange} variant="secondary" />
 
-        <div>
-          <label>Quiz Time (minutes):</label>
-          <Input
-            type="number"
-            name="quizTime"
-            value={quiz.quizTime}
-            onChange={handleInputChange}
-            variant="secondary"
-            required
-          />
-        </div>
+        <label>Passing Score (%):</label>
+        <Input type="number" name="passingScore" value={quiz.passingScore} onChange={handleInputChange} variant="secondary" />
 
-        <div>
-          <label>Passing Score (%):</label>
-          <Input
-            type="number"
-            name="passingScore"
-            value={quiz.passingScore}
-            onChange={handleInputChange}
-            variant="secondary"
-            required
-          />
-        </div>
+        <label>Max Attempts:</label>
+        <Input type="number" name="maxAttempts" value={quiz.maxAttempts} onChange={handleInputChange} variant="secondary" />
 
-        <div>
-          <label>Max Attempts:</label>
-          <Input
-            type="number"
-            name="maxAttempts"
-            value={quiz.maxAttempts}
-            onChange={handleInputChange}
-            variant="secondary"
-            required
-          />
-        </div>
-
-        <h2>Questions</h2>
+        <p className={styles.questionHeader}>Questions</p>
         {quiz.questions.map((q, index) => (
           <div key={index} className="question">
             <label>Question:</label>
@@ -147,30 +110,34 @@ export default function CreateQuiz() {
               <option value="text">Text</option>
             </select>
 
-            {q.type === "mcq" && (
-              <div className="options">
+            {q.type === 'mcq' && (
+              <div className={styles.optionsWrapper}>
                 <h3>Options</h3>
                 {q.options.map((option, optIndex) => (
-                  <div key={optIndex} className="option">
-                    <label>Option:</label>
-                    <Input
-                      type="text"
-                      name="option"
-                      value={option.option}
-                      variant="secondary"
-                      onChange={(e) => handleInputChange(e, index, optIndex)}
-                      required
-                    />
-
-                    <label>Is Correct:</label>
-                    <Input
-                      type="checkbox"
-                      name="isCorrect"
-                      checked={option.isCorrect}
-                      variant="secondary"
-                      onChange={(e) => handleInputChange(e, index, optIndex)}
-                    />
-                    <Button type="button" onClick={() => handleRemoveOption(index, optIndex)} text="Remove Option" />
+                  <div key={optIndex} className={styles.optionContainer}>
+                    <label>Option {optIndex + 1}:</label>
+                    <div className={styles.optionInputContainer}>
+                      <Input
+                        type="text"
+                        name="option"
+                        value={option.option}
+                        variant="secondary"
+                        onChange={(e) => handleInputChange(e, index, optIndex)}
+                        required
+                      />
+                      <MdDeleteOutline onClick={() => handleRemoveOption(index, optIndex)} className={styles.deleteIcon} />
+                    </div>
+                    <div className={styles.isCorrectContainer}>
+                      <label>Is Correct:</label>
+                      <Input
+                        type="checkbox"
+                        name="isCorrect"
+                        checked={option.isCorrect}
+                        variant="secondary"
+                        className={styles.isCorrectCheckbox}
+                        onChange={(e) => handleInputChange(e, index, optIndex)}
+                      />
+                    </div>
                   </div>
                 ))}
                 <Button type="button" onClick={() => handleAddOption(index)} text="Add Option" />
@@ -179,10 +146,27 @@ export default function CreateQuiz() {
             <Button type="button" onClick={() => handleRemoveQuestion(index)} text="Remove Question" />
           </div>
         ))}
-
-        <Button type="button" onClick={handleAddQuestion} text="Add Question" />
-
-        <Button type="submit" text="Create Quiz" />
+        <Button type="button" onClick={handleAddQuestion} text="Add Question" variant="secondary" />
+        <div className={styles.submitContainer}>
+          {/* <Message
+						text={message.text}
+						type={message.type}
+						loading={loading}
+					/> */}
+          <div className={styles.buttonContainer}>
+            <Button
+              text="Clear"
+              variant="outLined"
+              // disabled={loading} onClick={onClearHandler}
+            />
+            <Button
+              type="submit"
+              text="Submit"
+              variant="primary"
+              //  loading={loading} disabled={loading}
+            />
+          </div>
+        </div>
       </form>
     </div>
   );
