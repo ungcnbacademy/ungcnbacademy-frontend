@@ -3,6 +3,7 @@ import styles from './createQuiz.module.css';
 import Input from '@/components/ui/input/input';
 import Button from '@/components/ui/button/button';
 import { MdDeleteOutline } from 'react-icons/md';
+import Select from '@/components/ui/select/select';
 
 export default function CreateQuiz() {
   const [quiz, setQuiz] = useState({
@@ -81,10 +82,10 @@ export default function CreateQuiz() {
         <label>Max Attempts:</label>
         <Input type="number" name="maxAttempts" value={quiz.maxAttempts} onChange={handleInputChange} variant="secondary" />
 
-        <p className={styles.questionHeader}>Questions</p>
+        <p className={styles.questionHeader}>Questions:</p>
         {quiz.questions.map((q, index) => (
-          <div key={index} className="question">
-            <label>Question:</label>
+          <div key={index} className={styles.questionWrapper}>
+            <label>Question {index + 1}:</label>
             <Input
               type="text"
               name="question"
@@ -105,14 +106,21 @@ export default function CreateQuiz() {
             />
 
             <label>Type:</label>
-            <select name="type" value={q.type} onChange={(e) => handleInputChange(e, index)} required>
-              <option value="mcq">Multiple Choice</option>
-              <option value="text">Text</option>
-            </select>
+            <Select
+              name="type"
+              value={q.type}
+              onChange={(e) => handleInputChange(e, index)}
+              className={styles.select}
+              options={[
+                { value: 'mcq', label: 'Multiple Choice' },
+                { value: 'text', label: 'Text' },
+              ]}
+              variant="secondary"
+            />
 
             {q.type === 'mcq' && (
               <div className={styles.optionsWrapper}>
-                <h3>Options</h3>
+                <p className={styles.optionsHeader}>Options:</p>
                 {q.options.map((option, optIndex) => (
                   <div key={optIndex} className={styles.optionContainer}>
                     <label>Option {optIndex + 1}:</label>
@@ -140,10 +148,16 @@ export default function CreateQuiz() {
                     </div>
                   </div>
                 ))}
-                <Button type="button" onClick={() => handleAddOption(index)} text="Add Option" />
+                <Button type="button" onClick={() => handleAddOption(index)} text="Add Option" variant="primary" />
               </div>
             )}
-            <Button type="button" onClick={() => handleRemoveQuestion(index)} text="Remove Question" />
+            <Button
+              type="button"
+              onClick={() => handleRemoveQuestion(index)}
+              text="Remove Question"
+              variant="dangerOutLined"
+              icon={<MdDeleteOutline />}
+            />
           </div>
         ))}
         <Button type="button" onClick={handleAddQuestion} text="Add Question" variant="secondary" />

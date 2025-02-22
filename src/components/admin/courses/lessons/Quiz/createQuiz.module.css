@@ -28,14 +28,42 @@
     color: var(--foreground-light);
   }
 }
-.optionsWrapper{
+.questionHeader{
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.questionWrapper {
+  padding: 15px;
+  border-radius: var(--global-border-radius);
+  background-color: var(--accent2-light);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.questionWrapper > label {
+  font-size: 0.8rem;
+  color: var(--foreground-dark);
+}
+.optionsWrapper {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border: solid;
-  padding: 5px;
-  .optionContainer{
-background-color: rgba(0, 102, 255, 0.465);
+  .optionsHeader {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 5px;
+  }
+  .optionContainer {
+    background-color: var(--background-dashboard);
+    border-radius: var(--global-border-radius);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .optionContainer > label {
+    font-size: 0.8rem;
+    color: var(--foreground-light);
   }
   .optionInputContainer {
     display: flex;
@@ -47,11 +75,13 @@ background-color: rgba(0, 102, 255, 0.465);
       cursor: pointer;
     }
   }
-  .isCorrectContainer{
+  .isCorrectContainer {
     display: flex;
     align-items: center;
     gap: 10px;
-    >.isCorrectCheckbox{
+    font-size: 0.9rem;
+    color: var(--foreground-dark);
+    > .isCorrectCheckbox {
       width: fit-content;
     }
   }
