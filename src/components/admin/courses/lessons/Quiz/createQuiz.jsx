@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './createQuiz.module.css';
 import Input from '@/components/ui/input/input';
 import Button from '@/components/ui/button/button';
 import { MdDeleteOutline } from 'react-icons/md';
 import Select from '@/components/ui/select/select';
+import useAxios from '@/hooks/useAxios';
+import { configuration } from '@/configuration/configuration';
+import Message from '@/components/ui/message/message';
 
-export default function CreateQuiz() {
+export default function CreateQuiz({ courseId, moduleId, lessonId }) {
+  const [response, error, loading, axiosFetch] = useAxios();
+  const [message, setMessage] = useState({ text: '', type: '' });
   const [quiz, setQuiz] = useState({
     title: '',
     quizTime: 0,
@@ -65,7 +70,21 @@ export default function CreateQuiz() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Quiz Payload:', quiz);
+    axiosFetch({
+      method: 'POST',
+      url: configuration.courses + '/' + courseId + '/modules/' + moduleId + '/lessons/' + lessonId + '/quiz',
+      requestConfig: quiz,
+    });
   };
+
+  useEffect(() => {
+    if (response.message) {
+      setMessage({ text: response.message, type: 'success' });
+    }
+    if (error.message) {
+      setMessage({ text: error.message, type: 'error' });
+    }
+  }, [response]);
 
   return (
     <div className={styles.main}>
@@ -162,23 +181,14 @@ export default function CreateQuiz() {
         ))}
         <Button type="button" onClick={handleAddQuestion} text="Add Question" variant="secondary" />
         <div className={styles.submitContainer}>
-          {/* <Message
-						text={message.text}
-						type={message.type}
-						loading={loading}
-					/> */}
+          <Message text={message.text} type={message.type} loading={loading} />
           <div className={styles.buttonContainer}>
             <Button
               text="Clear"
               variant="outLined"
               // disabled={loading} onClick={onClearHandler}
             />
-            <Button
-              type="submit"
-              text="Submit"
-              variant="primary"
-              //  loading={loading} disabled={loading}
-            />
+            <Button type="submit" text="Submit" variant="primary" loading={loading} disabled={loading} />
           </div>
         </div>
       </form>
