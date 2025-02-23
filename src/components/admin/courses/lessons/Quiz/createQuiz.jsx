@@ -69,7 +69,8 @@ export default function CreateQuiz({ courseId, moduleId, lessonId }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Quiz Payload:', quiz);
+    setMessage({ text: '', type: '' });
+    //console.log('Quiz Payload:', quiz);
     axiosFetch({
       method: 'POST',
       url: configuration.courses + '/' + courseId + '/modules/' + moduleId + '/lessons/' + lessonId + '/quiz',
@@ -84,7 +85,7 @@ export default function CreateQuiz({ courseId, moduleId, lessonId }) {
     if (error?.message) {
       setMessage({ text: error.message, type: 'error' });
     }
-  }, [response]);
+  }, [response, error]);
 
   return (
     <div className={styles.main}>

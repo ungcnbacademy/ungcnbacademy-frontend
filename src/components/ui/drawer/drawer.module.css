@@ -9,7 +9,6 @@
 	display: flex;
 	justify-content: flex-end;
 	transition: opacity 0.6s ease-in-out;
-
 	/* background-color: var(--wrapperColor);
 	backdrop-filter: var(--filter);
 	transition: opacity 0.6s ease-in-out;

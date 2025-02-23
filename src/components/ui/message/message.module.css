@@ -2,6 +2,7 @@
   margin-top: 10px;
   margin-bottom: 5px;
   font-size: 0.8rem;
+  word-break: break-all;
 }
 .error {
   color: red;
