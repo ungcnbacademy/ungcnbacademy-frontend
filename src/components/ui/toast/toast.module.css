@@ -12,6 +12,7 @@
   transition: all 0.3s ease-in-out;
   z-index: 50;
 	box-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
+  word-break: break-all;
 }
 
 .visible {
