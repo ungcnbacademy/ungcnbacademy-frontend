@@ -12,64 +12,46 @@ import { redirect } from 'next/navigation';
 import { userRoles } from '@/constants/constants';
 
 export default function LayoutHeader() {
-	const [userDetails, setUserDetails] = useState({});
-	const [mounted, setMounted] = useState(false);
-	const [isOpen, setIsOpen] = useState(false);
+  const [userDetails, setUserDetails] = useState({});
+  const [mounted, setMounted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-	useEffect(() => {
-		setMounted(true);
-		if (typeof window !== 'undefined') {
-			const userData = JSON.parse(localStorage.getItem('user'));
-			setUserDetails(userData?.data);
-		}
-	}, []);
+  useEffect(() => {
+    setMounted(true);
+    if (typeof window !== 'undefined') {
+      const userData = JSON.parse(localStorage.getItem('user'));
+      setUserDetails(userData?.data);
+    }
+  }, []);
 
-	if (!mounted) return null;
+  if (!mounted) return null;
 
-	return (
-		<div className={styles.main}>
-			<Link href="/">
-				<Image
-					src="/logoBlack.svg"
-					priority={true}
-					alt="Logo"
-					width={110}
-					height={50}
-					style={{ visibility: 'visible' }}
-				/>
-			</Link>
+  return (
+    <div className={styles.main}>
+      <Link href="/">
+        <Image src="/logoBlack.svg" priority={true} alt="Logo" width={110} height={50} style={{ visibility: 'visible' }} />
+      </Link>
 
-			<div
-				className={styles.dropdown}
-				onMouseEnter={() => setIsOpen(true)}
-				onMouseLeave={() => setIsOpen(false)}
-			>
-				<Avatar name={userDetails?.firstName || 'n'} />
-				<div
-					className={`${styles.dropdownContent} ${
-						isOpen ? styles.show : ''
-					}`}
-				>
-					<p className={styles.name}>
-						{userDetails?.firstName + ' ' + userDetails?.lastName || 'not available'}
-					</p>
-					<p className={styles.details}>
-						Role:{' '}
-						{userDetails?.role && userRoles?.admin[userDetails?.role]?.title || 'not available'}
-					</p>
-					<div className={styles.item}>
-						<FaRegUser className={styles.icon} />
-						Profile
-					</div>
-					<div className={styles.item}>
-						<IoHelp className={styles.icon} />
-						Help
-					</div>
-					<div className={styles.item} onClick={()=>redirect('/logout')}>
-						<AiOutlineLogout className={styles.icon} /> Logout
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+      <div className={styles.dropdown} onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
+        <Avatar name={userDetails?.firstName || 'n'} />
+        <div className={`${styles.dropdownContent} ${isOpen ? styles.show : ''}`}>
+          <p className={styles.name}>{userDetails?.firstName + ' ' + userDetails?.lastName || 'not available'}</p>
+          <p className={styles.details}>
+            Role: {(userDetails?.role && userRoles?.admin[userDetails?.role]?.title) || 'not available'}
+          </p>
+          <div className={styles.item}>
+            <FaRegUser className={styles.icon} />
+            Profile
+          </div>
+          <div className={styles.item}>
+            <IoHelp className={styles.icon} />
+            Help
+          </div>
+          <div className={styles.item} onClick={() => redirect('/logout')}>
+            <AiOutlineLogout className={styles.icon} /> Logout
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
