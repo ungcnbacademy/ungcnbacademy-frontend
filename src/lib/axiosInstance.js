@@ -1,5 +1,5 @@
-import axios from "axios";
-import { configuration } from "../configuration/configuration";
+import axios from 'axios';
+import { configuration } from '../configuration/configuration';
 
 export const instance = axios.create({
   baseURL: configuration.baseUrl,
@@ -7,7 +7,7 @@ export const instance = axios.create({
 
 //interceptor for adding token in your request
 instance.interceptors.request.use((config) => {
-  const userToken = JSON.parse(localStorage.getItem("user"));
+  const userToken = JSON.parse(localStorage.getItem('user'));
   const token = userToken?.token;
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
@@ -27,10 +27,9 @@ instance.interceptors.response.use(
     if (error?.response?.status === 406) {
       localStorage.clear(); //clearing the local storage (token and other info)
       window.location.reload(false); //refreshing the page to go to login page
-    } else if(error?.response?.status === 429) {
+    } else if (error?.response?.status === 429) {
       //console.log('Too many requests, please try again later.')
-    }
-     else {
+    } else {
       //console.log(error.response);
     }
     return Promise.reject(error);
