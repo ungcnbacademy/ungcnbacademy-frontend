@@ -1,0 +1,11 @@
+.main {
+  padding-inline: var(--global-padding-inline);
+  padding-block: 20px;
+  min-height: 80vh;
+  background-color: rgb(72, 72, 72);
+
+  .certificate {
+    max-width: 100%;
+    height: auto;
+  }
+}
