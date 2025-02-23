@@ -1,3 +1,25 @@
-.main{
-  
+.main {
+  min-height: 80vh;
+  padding-inline: var(--global-padding-inline);
+  padding-block: 20px;
+  display: flex;
+  justify-content: center;
+
+  .container {
+    height: fit-content;
+    width: clamp(300px, 50%, 600px);
+    padding: 20px;
+    background-color: var(--background-dashboard);
+    border-radius: var(--global-border-radius);
+    box-shadow: 0 1px 12px rgba(128, 128, 128, 0.1);
+    .title {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .button {
+      margin-top: 20px;
+    }
+  }
 }

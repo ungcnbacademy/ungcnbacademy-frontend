@@ -8,12 +8,12 @@ export const MainMenu = [
     link: '/about-us',
   },
   {
-    name: 'Courses',
-    link: '/courses',
-  },
-  {
     name: 'Contact Us',
     link: '/contact-us',
+  },
+  {
+    name: 'Verify Certificate',
+    link: '/verify',
   },
 ];
 
