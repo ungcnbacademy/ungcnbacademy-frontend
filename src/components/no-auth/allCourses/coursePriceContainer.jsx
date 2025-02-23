@@ -5,12 +5,12 @@ import { MdOutlineOndemandVideo, MdOutlineAssignment } from 'react-icons/md';
 import { GoDesktopDownload } from 'react-icons/go';
 import { SlTrophy } from 'react-icons/sl';
 import { getAmountsWithCommas } from '@/utils/utils';
-import Button from '../ui/button/button';
-import Collapse from '../ui/collapse/collapse';
+import Button from '@/components/ui/button/button';
+import Collapse from '@/components/ui/collapse/collapse';
 import { CartContext } from '@/context/cartContext';
 import { useRouter } from 'next/navigation';
 import { allAdminRoles, userRoles } from '@/constants/constants';
-import Message from '../ui/message/message';
+import Message from '@/components/ui/message/message';
 import useAxios from '@/hooks/useAxios';
 import { configuration } from '@/configuration/configuration';
 export default function CoursePriceContainer({ courseInfo }) {

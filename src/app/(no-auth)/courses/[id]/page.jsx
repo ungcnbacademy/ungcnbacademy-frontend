@@ -1,4 +1,5 @@
-import CourseDetails from '@/components/allCourses/courseDetails';
+
+import CourseDetails from '@/components/no-auth/allCourses/courseDetails';
 import React from 'react';
 
 export default async function Details({ params }) {

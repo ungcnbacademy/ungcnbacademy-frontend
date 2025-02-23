@@ -1,14 +1,14 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import styles from './allCourses.module.css';
-import CourseCard from '../atom/courseCard';
-import Input from '../ui/input/input';
+import CourseCard from '@/components/atom/courseCard';
+import Input from '@/components/ui/input/input';
 import useAxios from '@/hooks/useAxios';
 import { useDebounceValue } from '@/hooks/useDebounceValue';
 import { tableDefaultItemLimit } from '@/constants/constants';
-import LoadingDots from '../ui/loading/loadingDots';
+import LoadingDots from '@/components/ui/loading/loadingDots';
 import { configuration } from '@/configuration/configuration';
-import Pagination from '../ui/pagination/pagination';
+import Pagination from '@/components/ui/pagination/pagination';
 export default function AllCourses() {
 	const [response, error, loading, axiosFetch] = useAxios();
 	const [search, setSearch] = useState('');
