@@ -2,10 +2,14 @@
   padding-inline: var(--global-padding-inline);
   padding-block: 20px;
   min-height: 80vh;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .certificate {
-    max-width: 100%;
+    max-width: 80vw;
+    max-height: 80vh;
     height: auto;
+    width: auto;
     box-shadow: 0 1px 12px rgba(128, 128, 128, 0.3);
   }
 }
