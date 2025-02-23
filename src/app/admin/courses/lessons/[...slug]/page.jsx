@@ -55,7 +55,7 @@ export default function LessonDetails({ params }) {
     return (
       <>
         {isDrawerOpenCreateQuiz && (
-          <Drawer title="Create Quiz" closeFunction={() => setIsDrawerOpenCreateQuiz(false)} size='lg'>
+          <Drawer title="Create Quiz" closeFunction={() => setIsDrawerOpenCreateQuiz(false)} size="lg">
             <CreateQuiz courseId={courseId} moduleId={moduleId} lessonId={lessonId} />
           </Drawer>
         )}

@@ -78,10 +78,10 @@ export default function CreateQuiz({ courseId, moduleId, lessonId }) {
   };
 
   useEffect(() => {
-    if (response.message) {
+    if (response?.message) {
       setMessage({ text: response.message, type: 'success' });
     }
-    if (error.message) {
+    if (error?.message) {
       setMessage({ text: error.message, type: 'error' });
     }
   }, [response]);
