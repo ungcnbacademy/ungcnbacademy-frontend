@@ -34,14 +34,48 @@ export default function LearningDetails({ id }) {
     }
   }, [selectedLesson]);
 
+  // Set the first lesson as selected
   useEffect(() => {
-    if (response?.data?.modules[0]?.lessons[0]) {
-      setSelectedLesson({
-        moduleId: response?.data?.modules[0]?._id,
-        lessonId: response?.data?.modules[0]?.lessons[0]?._id,
+    if (response?.data?.enrollment?.type === 'full') {
+      if (response?.data?.modules[0]?.lessons[0]) {
+        setSelectedLesson({
+          moduleId: response?.data?.modules[0]?._id,
+          lessonId: response?.data?.modules[0]?.lessons[0]?._id,
+        });
+      }
+    } else if (response?.data?.enrollment?.type === 'module') {
+      response?.data?.modules.map((module) => {
+        response?.data?.enrollment?.enrolledModules.map((enrolledModule) => {
+          if (module._id === enrolledModule.module) {
+            if (module.lessons[0]) {
+              setSelectedLesson({
+                moduleId: module._id,
+                lessonId: module.lessons[0]._id,
+              });
+            }
+          }
+        });
       });
     }
   }, [response]);
+
+  const checkIfLessonIsLocked = (id) => {
+    if (response?.data?.enrollment?.type === 'module') {
+      const isEnrolled = response.data.enrollment.enrolledModules.some((enrolledModule) => enrolledModule.module === id);
+
+      if (isEnrolled) {
+        // If module is found
+        return false;
+      } else {
+        // If module is not found
+        return true;
+      }
+    } else if (response?.data?.enrollment?.type === 'full') {
+      return false;
+    } else {
+      return true;
+    }
+  };
 
   const courseContentListViewRender = () => {
     return (
@@ -71,7 +105,8 @@ export default function LearningDetails({ id }) {
                     });
                   }}
                   isQuizRequired={!lesson?.requireQuizPass}
-                  //isLocked={true}
+                  isLocked={checkIfLessonIsLocked(module._id)}
+                  //lockMessage='Buy this module to unlock this lesson'
                 />
               ))}
             />
