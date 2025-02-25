@@ -105,7 +105,8 @@ export default function LearningDetails({ id }) {
                     });
                   }}
                   isQuizRequired={!lesson?.requireQuizPass}
-                  isLocked={checkIfLessonIsLocked(module._id)}
+                  isLocked={true}
+                  //isLocked={checkIfLessonIsLocked(module._id)}
                   //lockMessage='Buy this module to unlock this lesson'
                 />
               ))}
