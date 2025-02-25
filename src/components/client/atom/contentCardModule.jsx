@@ -19,7 +19,7 @@ export default function ContentCardModule({ title, totalLesson, order, children,
           </p>
           <p className={styles.lessons}>{totalLesson} Lessons</p>
         </div>
-        {isOpen ? <IoIosArrowDown /> : <IoIosArrowForward />}
+        <div className={styles.iconContainer}>{isOpen ? <IoIosArrowDown /> : <IoIosArrowForward />}</div>
       </div>
       {isOpen && <div className={styles.container}>{children}</div>}
     </div>

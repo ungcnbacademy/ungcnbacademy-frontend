@@ -7,12 +7,16 @@ import { configuration } from '@/configuration/configuration';
 import LoadingDots from '../ui/loading/loadingDots';
 import ContentCardModule from './atom/contentCardModule';
 import ContentCardLesson from './atom/contentCardLesson';
+import { IoMdClose } from 'react-icons/io';
+import { ImArrowLeft } from 'react-icons/im';
+
 export default function LearningDetails({ id }) {
   const [response, error, loading, axiosFetch] = useAxios();
   const [selectedLesson, setSelectedLesson] = useState(null);
   const [videoPlayerLoading, setVideoPlayerLoading] = useState(true);
   const [selectedLessonDetails, setSelectedLessonDetails] = useState(null);
   const [responseLesson, errorLesson, loadingLesson, axiosFetchLesson] = useAxios();
+  const [showCourseContent, setShowCourseContent] = useState(true);
 
   useEffect(() => {
     axiosFetch({
@@ -80,7 +84,12 @@ export default function LearningDetails({ id }) {
   const courseContentListViewRender = () => {
     return (
       <>
-        {response?.data?.modules && <p className={styles.title}>Course Content</p>}
+        {response?.data?.modules && (
+          <div className={styles.courseContentHeader}>
+            <p className={styles.title}>Course Content</p>
+            <IoMdClose onClick={() => setShowCourseContent(false)} className={styles.closeIcon} />
+          </div>
+        )}
         {response?.data?.modules &&
           response?.data?.modules?.map((module, i) => (
             <ContentCardModule
@@ -122,15 +131,20 @@ export default function LearningDetails({ id }) {
         {responseLesson?.data && !loadingLesson && !errorLesson && (
           <>
             {responseLesson?.data?.cloudflareVideoId && (
-              <div className={styles.videoContainer}>
-                {videoPlayerLoading && <LoadingDots color="white" />}
-                <Stream
-                  src={responseLesson?.data?.cloudflareVideoId}
-                  controls
-                  className={styles.video}
-                  onError={(error) => console.log(error)}
-                  onLoadedData={() => setVideoPlayerLoading(false)}
-                />
+              <div className={styles.videoContainerWrapper}>
+                <div className={styles.showContent} onClick={() => setShowCourseContent(!showCourseContent)}>
+                  <ImArrowLeft /> <p className={styles.text}>Course Content</p>
+                </div>
+                <div className={styles.videoContainer}>
+                  {videoPlayerLoading && <LoadingDots color="white" />}
+                  <Stream
+                    src={responseLesson?.data?.cloudflareVideoId}
+                    controls
+                    className={styles.video}
+                    onError={(error) => console.log(error)}
+                    onLoadedData={() => setVideoPlayerLoading(false)}
+                  />
+                </div>
               </div>
             )}
             <div className={styles.lessonHeader}>
@@ -175,7 +189,9 @@ export default function LearningDetails({ id }) {
       {!loading && !error && (
         <>
           <div className={styles.left}>{lessonDetailsRender()}</div>
-          <div className={styles.right}>{courseContentListViewRender()}</div>
+          <div className={styles.right} style={showCourseContent ? {} : { display: 'none' }}>
+            {courseContentListViewRender()}
+          </div>
         </>
       )}
     </div>

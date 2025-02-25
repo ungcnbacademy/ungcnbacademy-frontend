@@ -1,37 +1,43 @@
 .main {
-	border-bottom: solid 1px rgba(199, 199, 199, 0.498);
-	.header {
-		padding: 10px 20px;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		cursor: pointer;
+  border-bottom: solid 1px rgba(199, 199, 199, 0.498);
 
-		&:hover {
-			background-color: var(--accent2);
-			color: white;
-			.lessons {
-				color: white;
-			}
-		}
-	}
+  .header {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--accent2);
+      color: white;
+      .lessons {
+        color: white;
+      }
+    }
+  }
 }
 .container {
-	.title {
-		font-size: 0.9rem;
-		font-weight: 400;
-	}
-	.lessons {
-		margin-top: 5px;
-		font-size: 0.75rem;
-		color: var(--foreground-light);
-	}
+  .title {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+  .lessons {
+    margin-top: 5px;
+    font-size: 0.75rem;
+    color: var(--foreground-light);
+  }
+}
+.iconContainer {
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .selected {
-	background-color: var(--accent2);
-	color: white;
-	.lessons {
-		color: white;
-	}
-	/* border: solid 1px rgba(199, 199, 199, 0.3); */
+  background-color: var(--accent2);
+  color: white;
+  .lessons {
+    color: white;
+  }
+  /* border: solid 1px rgba(199, 199, 199, 0.3); */
 }
