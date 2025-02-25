@@ -1,6 +1,4 @@
 .main {
-  /* padding-inline: var(--global-padding-inline);
-	padding-inline: 10px; */
   padding-block: 10px;
   min-height: 85vh;
   display: flex;
@@ -11,14 +9,10 @@
     flex: 1 300px;
     height: calc(100vh - 72px);
     overflow-y: auto;
-    .videoContainerWrapper {
-      background-color: black;
+    .lessonDetails {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 10px;
-      width: 100%;
-      height: fit-content;
+      flex-direction: column;
+      gap: 10px;
       position: relative;
       .showContent {
         position: absolute;
@@ -43,6 +37,14 @@
           right: 0;
         }
       }
+    }
+    .videoContainerWrapper {
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: fit-content;
     }
     .videoContainer {
       width: 100%;
@@ -69,14 +71,12 @@
     .content {
       background-color: var(--background-dashboard);
       padding: 20px;
-      margin-top: 10px;
       border-radius: var(--global-border-radius);
       font-size: 0.8rem;
     }
     .assets {
       background-color: var(--background-dashboard);
       padding: 20px;
-      margin-top: 10px;
       border-radius: var(--global-border-radius);
       font-size: 0.8rem;
       > .heading {

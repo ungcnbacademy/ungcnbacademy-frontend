@@ -129,12 +129,12 @@ export default function LearningDetails({ id }) {
       <>
         {loadingLesson && <LoadingDots />}
         {responseLesson?.data && !loadingLesson && !errorLesson && (
-          <>
+          <div className={styles.lessonDetails}>
+            { !showCourseContent && (<div className={styles.showContent} onClick={() => setShowCourseContent(!showCourseContent)}>
+              <ImArrowLeft /> <p className={styles.text}>Course Content</p>
+            </div>)}
             {responseLesson?.data?.cloudflareVideoId && (
               <div className={styles.videoContainerWrapper}>
-                <div className={styles.showContent} onClick={() => setShowCourseContent(!showCourseContent)}>
-                  <ImArrowLeft /> <p className={styles.text}>Course Content</p>
-                </div>
                 <div className={styles.videoContainer}>
                   {videoPlayerLoading && <LoadingDots color="white" />}
                   <Stream
@@ -147,6 +147,7 @@ export default function LearningDetails({ id }) {
                 </div>
               </div>
             )}
+
             <div className={styles.lessonHeader}>
               <p className={styles.title}>
                 Lesson {responseLesson?.data?.order}: {responseLesson?.data?.title}
@@ -177,7 +178,7 @@ export default function LearningDetails({ id }) {
                 <p className={styles.noAssets}>No assets available.</p>
               )}
             </div>
-          </>
+          </div>
         )}
       </>
     );
