@@ -1,10 +1,9 @@
-/* .wrapper {
+.wrapper {
   position: relative;
 }
 .locked {
   position: absolute;
-  inset: 1 0;
-
+  inset: 1px 0;
   background-color: rgba(211, 211, 211, 0.6);
   backdrop-filter: blur(0.8px);
 
@@ -91,15 +90,16 @@
       }
     }
   }
-} */
+}
 
+/*
 .wrapper {
   position: relative;
 }
 .locked {
   position: absolute;
-  /* inset: 1 0; */
-  top: 0;  /* Changed from top: 1; to either 0 or 1px */
+
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -181,4 +181,4 @@
 }
 .LessonContainer .selected .container .top .subtitle {
   color: var(--foreground);
-}
+} */
