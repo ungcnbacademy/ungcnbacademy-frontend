@@ -14,6 +14,7 @@ import AssetDetails from '@/components/atom/assetDetails';
 import { BiRefresh } from 'react-icons/bi';
 import Tooltip from '@/components/ui/tooltip/tooltip';
 import CreateQuiz from '@/components/admin/courses/lessons/Quiz/createQuiz';
+import QuizDetails from '@/components/admin/courses/lessons/Quiz/quizDetails';
 
 export default function LessonDetails({ params }) {
   const unwrappedParams = React.use(params);
@@ -124,7 +125,9 @@ export default function LessonDetails({ params }) {
     return (
       <div className={styles.quizContainer}>
         <h2 className={styles.title}>Quiz</h2>
-        <div className={styles.quizSection}></div>
+        <div className={styles.quizSection}>
+          <QuizDetails courseId={courseId} moduleId={moduleId} lessonId={lessonId} />
+        </div>
       </div>
     );
   };

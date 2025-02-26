@@ -15,7 +15,7 @@ export default function CreateQuiz({ courseId, moduleId, lessonId }) {
     title: '',
     quizTime: 0,
     passingScore: 0,
-    maxAttempts: 0,
+    maxAttempts: 1,
     questions: [],
   });
 
@@ -96,7 +96,7 @@ export default function CreateQuiz({ courseId, moduleId, lessonId }) {
         <label>Quiz Time (minutes):</label>
         <Input type="number" name="quizTime" value={quiz.quizTime} onChange={handleInputChange} variant="secondary" />
 
-        <label>Passing Score (%):</label>
+        <label>Passing Score:</label>
         <Input type="number" name="passingScore" value={quiz.passingScore} onChange={handleInputChange} variant="secondary" />
 
         <label>Max Attempts:</label>
