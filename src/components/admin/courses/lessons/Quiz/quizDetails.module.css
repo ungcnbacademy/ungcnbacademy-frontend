@@ -1,0 +1,31 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .questionsContainer {
+    .questionText {
+      font-size: 0.9rem;
+      color: var(--foreground);
+    }
+    .optionsContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding-left: 15px;
+      margin-top: 5px;
+      .optionTextContainer {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        .optionText {
+          font-size: 0.8rem;
+          color: var(--foreground-light);
+        }
+        .icon {
+          font-size: 0.8rem;
+          color: green;
+        }
+      }
+    }
+  }
+}
