@@ -16,6 +16,7 @@ export default function Input({
   minLength,
   maxLength,
   pattern,
+  defaultChecked,
 }) {
   // If no value is provided, the input will manage its own state internally
   const isControlled = value !== undefined;
@@ -32,6 +33,7 @@ export default function Input({
       placeholder={placeholder}
       onChange={handleChange}
       {...(isControlled ? { value } : { defaultValue })}
+      defaultChecked={defaultChecked}
       className={`${styles.input} ${styles[variant]} ${className}`}
       name={name}
       required={required}

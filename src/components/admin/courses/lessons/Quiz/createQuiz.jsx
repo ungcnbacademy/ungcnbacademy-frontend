@@ -7,9 +7,11 @@ import Select from '@/components/ui/select/select';
 import useAxios from '@/hooks/useAxios';
 import { configuration } from '@/configuration/configuration';
 import Message from '@/components/ui/message/message';
+import LoadingDots from '@/components/ui/loading/loadingDots';
 
-export default function CreateQuiz({ courseId, moduleId, lessonId }) {
+export default function CreateQuiz({ courseId, moduleId, lessonId, update = false }) {
   const [response, error, loading, axiosFetch] = useAxios();
+  const [responseGetQuiz, errorGetQuiz, loadingGetQuiz, axiosFetchGetQuiz] = useAxios();
   const [message, setMessage] = useState({ text: '', type: '' });
   const [quiz, setQuiz] = useState({
     title: '',
@@ -18,6 +20,21 @@ export default function CreateQuiz({ courseId, moduleId, lessonId }) {
     maxAttempts: 1,
     questions: [],
   });
+
+  useEffect(() => {
+    if (update) {
+      axiosFetchGetQuiz({
+        method: 'GET',
+        url: `${configuration.courses}/${courseId}/modules/${moduleId}/lessons/${lessonId}/quiz`,
+      });
+    }
+  }, [update]);
+
+  useEffect(() => {
+    if (responseGetQuiz?.data?.quiz && !errorGetQuiz) {
+      setQuiz(responseGetQuiz.data.quiz);
+    }
+  }, [responseGetQuiz]);
 
   const handleAddQuestion = () => {
     setQuiz({
@@ -89,6 +106,7 @@ export default function CreateQuiz({ courseId, moduleId, lessonId }) {
 
   return (
     <div className={styles.main}>
+      {loadingGetQuiz && <LoadingDots />}
       <form onSubmit={handleSubmit} className={styles.form}>
         <label>Title:</label>
         <Input type="text" name="title" value={quiz.title} onChange={handleInputChange} variant="secondary" required />
@@ -129,6 +147,7 @@ export default function CreateQuiz({ courseId, moduleId, lessonId }) {
             <Select
               name="type"
               value={q.type}
+              defaultValue={q.type}
               onChange={(e) => handleInputChange(e, index)}
               className={styles.select}
               options={[
@@ -160,6 +179,7 @@ export default function CreateQuiz({ courseId, moduleId, lessonId }) {
                       <Input
                         type="checkbox"
                         name="isCorrect"
+                        defaultChecked={option.isCorrect}
                         checked={option.isCorrect}
                         variant="secondary"
                         className={styles.isCorrectCheckbox}
