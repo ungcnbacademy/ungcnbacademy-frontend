@@ -19,10 +19,13 @@ export default function ContentCardLesson({
   lockMessage = 'Locked',
   isQuizRequired = false,
   quizId = '',
+  courseId = '',
+  moduleId = '',
+  lessonId = '',
 }) {
   const quizButtonClickHandler = (event) => {
     event.stopPropagation();
-    confirm('Are you sure you want to start this quiz?') && redirect(`/client/my-courses/quiz/1111111`);
+    redirect(`/client/my-courses/quiz/${courseId}/${moduleId}/${lessonId}`);
   };
   return (
     <div className={styles.wrapper}>

@@ -115,6 +115,9 @@ export default function LearningDetails({ id }) {
                   }}
                   isQuizRequired={lesson?.quiz}
                   isLocked={checkIfLessonIsLocked(module._id)}
+                  courseId={id}
+                  moduleId={module._id}
+                  lessonId={lesson._id}
                   //lockMessage='Buy this module to unlock this lesson'
                 />
               ))}
