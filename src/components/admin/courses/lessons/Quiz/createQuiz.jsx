@@ -89,7 +89,7 @@ export default function CreateQuiz({ courseId, moduleId, lessonId, update = fals
     setMessage({ text: '', type: '' });
     //console.log('Quiz Payload:', quiz);
     axiosFetch({
-      method: 'POST',
+      method: update ? 'PUT' : 'POST',
       url: configuration.courses + '/' + courseId + '/modules/' + moduleId + '/lessons/' + lessonId + '/quiz',
       requestConfig: quiz,
     });

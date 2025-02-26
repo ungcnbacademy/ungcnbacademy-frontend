@@ -8,10 +8,13 @@ import LoadingDots from '@/components/ui/loading/loadingDots';
 import Button from '@/components/ui/button/button';
 import Tooltip from '@/components/ui/tooltip/tooltip';
 import { BiRefresh } from 'react-icons/bi';
+import Drawer from '@/components/ui/drawer/drawer';
+import CreateQuiz from './createQuiz';
 
 export default function QuizDetails({ courseId, moduleId, lessonId }) {
   const [response, error, loading, axiosFetch] = useAxios();
   const [refreshData, setRefreshData] = useState(false);
+  const [drawerOpenUpdateQuiz, setDrawerOpenUpdateQuiz] = useState(false);
 
   const getQuizData = () => {
     axiosFetch({
@@ -23,6 +26,18 @@ export default function QuizDetails({ courseId, moduleId, lessonId }) {
   useEffect(() => {
     getQuizData();
   }, [refreshData]);
+
+  const updateQuizDrawerRender = () => {
+    return (
+      <>
+        {drawerOpenUpdateQuiz && (
+          <Drawer title="Update Quiz" closeFunction={() => setDrawerOpenUpdateQuiz(false)} size="lg">
+            <CreateQuiz courseId={courseId} moduleId={moduleId} lessonId={lessonId} update={true} />
+          </Drawer>
+        )}
+      </>
+    );
+  };
 
   const questionContainerRender = () => {
     return (
@@ -59,13 +74,14 @@ export default function QuizDetails({ courseId, moduleId, lessonId }) {
 
   return (
     <div className={styles.main}>
+      {updateQuizDrawerRender()}
       <div className={styles.header}>
         <h2 className={styles.title}>Quiz</h2>
         <div className={styles.buttonContainer}>
           <Tooltip content="Refresh" placement="top">
             <BiRefresh className={styles.refreshIcon} onClick={() => setRefreshData(!refreshData)} />
           </Tooltip>
-          <Button text={'Update Quiz'} />
+          <Button text={'Update Quiz'} onClick={() => setDrawerOpenUpdateQuiz(!drawerOpenUpdateQuiz)} />
         </div>
       </div>
       {loading && <LoadingDots />}
