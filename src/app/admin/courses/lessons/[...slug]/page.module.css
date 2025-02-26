@@ -93,12 +93,5 @@
 }
 .quizContainer{
 	margin-top: 20px;
-	.quizSection{
-		margin-top: 10px;
-		padding: 30px;
-		border-radius: var(--global-border-radius);
-		background-color: var(--background-dashboard);
-		font-size: 0.9rem;
-		color: var(--foreground-light);
-	}
+	
 }

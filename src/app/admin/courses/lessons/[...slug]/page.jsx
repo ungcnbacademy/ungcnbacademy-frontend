@@ -124,10 +124,7 @@ export default function LessonDetails({ params }) {
   const quizRender = () => {
     return (
       <div className={styles.quizContainer}>
-        <h2 className={styles.title}>Quiz</h2>
-        <div className={styles.quizSection}>
-          <QuizDetails courseId={courseId} moduleId={moduleId} lessonId={lessonId} />
-        </div>
+        <QuizDetails courseId={courseId} moduleId={moduleId} lessonId={lessonId} />
       </div>
     );
   };
