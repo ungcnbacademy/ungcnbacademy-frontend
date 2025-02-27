@@ -34,8 +34,17 @@ export default function QuizDetails({ courseId, moduleId, lessonId }) {
     return (
       <>
         {drawerOpenUpdateQuiz && (
-          <Drawer title="Update Quiz" closeFunction={() => setDrawerOpenUpdateQuiz(false)} size="lg">
-            <CreateQuiz courseId={courseId} moduleId={moduleId} lessonId={lessonId} update={true} />
+          <Drawer
+            title={response?.data?.quiz ? 'Update Quiz' : 'Create Quiz'}
+            closeFunction={() => setDrawerOpenUpdateQuiz(false)}
+            size="lg"
+          >
+            <CreateQuiz
+              courseId={courseId}
+              moduleId={moduleId}
+              lessonId={lessonId}
+              update={response?.data?.quiz ? true : false}
+            />
           </Drawer>
         )}
       </>
@@ -53,7 +62,7 @@ export default function QuizDetails({ courseId, moduleId, lessonId }) {
   useEffect(() => {
     if (responseDelete?.message && !errorDelete) {
       setMessage({ text: responseDelete?.message, variant: 'success' });
-      getQuizData();
+      setRefreshData(!refreshData);
     }
     if (errorDelete?.message) {
       setMessage({ text: errorDelete?.message, variant: 'error' });
@@ -107,7 +116,7 @@ export default function QuizDetails({ courseId, moduleId, lessonId }) {
             <BiRefresh className={styles.refreshIcon} onClick={() => setRefreshData(!refreshData)} />
           </Tooltip>
           <Button text={'Delete Quiz'} variant={'dangerOutLined'} onClick={() => deleteQuizHandler()} loading={loadingDelete} />
-          <Button text={'Update Quiz'} onClick={() => setDrawerOpenUpdateQuiz(!drawerOpenUpdateQuiz)} />
+          <Button text={response?.data?.quiz ? 'Update Quiz' : 'Create Quiz'} onClick={() => setDrawerOpenUpdateQuiz(!drawerOpenUpdateQuiz)} />
         </div>
       </div>
       {loading && <LoadingDots />}
