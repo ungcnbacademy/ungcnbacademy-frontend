@@ -37,12 +37,26 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
         {response?.data?.quizTime && <Timer initialTime={response?.data?.quizTime || 5} />}
       </div>
       <div className={styles.container}>
-        <QuizQuestion
-          question={response?.data?.questions[questionNo].question}
-          options={response?.data?.questions[questionNo].options}
-          correctAnswer={response?.data?.questions[questionNo].correctAnswer}
-          questionNo={questionNo + 1}
-        />
+        <form className={styles.form}>
+          {response?.data?.questions.map((question, index) => (
+            <div key={index} className={styles.questionContainer}>
+              <div className={styles.questionInfo}>
+                <span className={styles.questionNo}>Question No: {index + 1}</span>
+                <span className={styles.marks}>Marks: {question?.marks}</span>
+								<span className={styles.type}>Type: {question?.type.toUpperCase()}</span>
+              </div>
+              <p className={styles.question}>
+                {index + 1}. {question?.question}
+              </p>
+              {question?.options.map((option, index) => (
+                <div key={index} className={styles.optionContainer}>
+                  <input type="radio" name={question?.question} value={option.option} />
+                  <label htmlFor="">{option.option}</label>
+                </div>
+              ))}
+            </div>
+          ))}
+        </form>
       </div>
       <div className={styles.btnContainer}>
         <Button text="Previous" variant="outLined" onClick={OnPreviousQuestionBtnPressHandler} disabled={questionNo === 0} />
