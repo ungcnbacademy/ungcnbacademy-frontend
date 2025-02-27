@@ -59,3 +59,8 @@
     }
   }
 }
+.notAvailable {
+  font-size: 0.8rem;
+  color: var(--foreground-light);
+  margin-top: 10px;
+}
