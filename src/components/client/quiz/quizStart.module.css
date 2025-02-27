@@ -43,5 +43,9 @@
       justify-content: center;
       margin-top: 20px;
     }
+    .notes{
+      margin-block: 20px;
+      color: var(--accent2);
+    }
   }
 }
