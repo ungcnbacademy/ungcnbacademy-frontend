@@ -99,14 +99,14 @@ export default function QuizDetails({ courseId, moduleId, lessonId }) {
   return (
     <div className={styles.main}>
       {updateQuizDrawerRender()}
-      {message?.text && <Toast text={message?.text} variant={message?.variant} />}
+      <Toast text={message?.text} variant={message?.variant} />
       <div className={styles.header}>
         <h2 className={styles.title}>Quiz</h2>
         <div className={styles.buttonContainer}>
           <Tooltip content="Refresh" placement="top">
             <BiRefresh className={styles.refreshIcon} onClick={() => setRefreshData(!refreshData)} />
           </Tooltip>
-          <Button text={'Delete Quiz'} variant={'dangerOutLined'} onClick={() => deleteQuizHandler()} />
+          <Button text={'Delete Quiz'} variant={'dangerOutLined'} onClick={() => deleteQuizHandler()} loading={loadingDelete} />
           <Button text={'Update Quiz'} onClick={() => setDrawerOpenUpdateQuiz(!drawerOpenUpdateQuiz)} />
         </div>
       </div>
