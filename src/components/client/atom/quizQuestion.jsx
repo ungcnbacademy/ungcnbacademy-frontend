@@ -9,10 +9,10 @@ export default function QuizQuestion({ question, options, correctAnswer, questio
         <p className={styles.question}>{question}</p>
       </div>
       <div className={styles.optionsContainer}>
-        {options.map((option, index) => (
+        {options?.map((option, index) => (
           <div key={index} className={styles.singleOption}>
-            <input type="radio" name={question} value={option} />
-            <label htmlFor="">{option}</label>
+            <input type="radio" name={question} value={option?.option} />
+            <label htmlFor="">{option?.option}</label>
           </div>
         ))}
       </div>
