@@ -55,13 +55,10 @@
         display: flex;
         align-items: center;
         gap: 10px;
+				font-size: 0.9rem;
+				color: var(--foreground-dark);
       }
     }
   }
-  .btnContainer {
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-  }
+
 }

@@ -9,6 +9,8 @@ import { configuration } from '@/configuration/configuration';
 export default function LessonQuiz({ courseId, moduleId, lessonId }) {
   const [questionNo, setQuestionNo] = useState(0);
   const [response, error, loading, axiosFetch] = useAxios();
+  const [responseSubmit, errorSubmit, loadingSubmit, axiosFetchSubmit] = useAxios();
+	const [message, setMessage] = useState('');
 
   useEffect(() => {
     axiosFetch({
@@ -23,11 +25,33 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
     }
   }, [response]);
 
-  const OnNextQuestionBtnPressHandler = () => {
-    setQuestionNo(questionNo + 1);
-  };
-  const OnPreviousQuestionBtnPressHandler = () => {
-    setQuestionNo(questionNo - 1);
+	useEffect(() => {
+		if (responseSubmit?.status === 'success') {
+			setMessage({text: 'Successfully submitted', type: 'success'});
+		}
+		if (errorSubmit?.message) {
+			setMessage({text: errorSubmit.message, type: 'error'});
+		}
+	}, [responseSubmit, errorSubmit]);
+
+  const quizSubmitHandler = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = {
+      answers: [],
+    };
+    response?.data?.questions.forEach((question, index) => {
+      data.answers.push({
+        questionId: question._id,
+        selectedOption: formData.get(question.question),
+      });
+    });
+
+    axiosFetchSubmit({
+      url: `${configuration.courses}/${courseId}/modules/${moduleId}/lessons/${lessonId}/quiz/attempts/${response?.data?.attemptId}/submit`,
+      method: 'POST',
+      data: data,
+    });
   };
 
   return (
@@ -37,13 +61,13 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
         {response?.data?.quizTime && <Timer initialTime={response?.data?.quizTime || 5} />}
       </div>
       <div className={styles.container}>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={quizSubmitHandler}>
           {response?.data?.questions.map((question, index) => (
             <div key={index} className={styles.questionContainer}>
               <div className={styles.questionInfo}>
-                <span className={styles.questionNo}>Question No: {index + 1}</span>
+                <span className={styles.questionNo}>Question no: {index + 1}</span>
                 <span className={styles.marks}>Marks: {question?.marks}</span>
-								<span className={styles.type}>Type: {question?.type.toUpperCase()}</span>
+                <span className={styles.type}>Type: {question?.type.toUpperCase()}</span>
               </div>
               <p className={styles.question}>
                 {index + 1}. {question?.question}
@@ -56,16 +80,8 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
               ))}
             </div>
           ))}
+          <Button text="Submit" variant="primary" type="submit" />
         </form>
-      </div>
-      <div className={styles.btnContainer}>
-        <Button text="Previous" variant="outLined" onClick={OnPreviousQuestionBtnPressHandler} disabled={questionNo === 0} />
-        <Button
-          text="Next"
-          variant="primary"
-          onClick={OnNextQuestionBtnPressHandler}
-          disabled={questionNo === response?.data?.questions.length - 1}
-        />
       </div>
     </div>
   );
