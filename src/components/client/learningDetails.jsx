@@ -9,12 +9,13 @@ import ContentCardModule from './atom/contentCardModule';
 import ContentCardLesson from './atom/contentCardLesson';
 import { IoMdClose } from 'react-icons/io';
 import { ImArrowLeft } from 'react-icons/im';
+import { IoCloseCircleSharp } from 'react-icons/io5';
 
 export default function LearningDetails({ id }) {
   const [response, error, loading, axiosFetch] = useAxios();
   const [selectedLesson, setSelectedLesson] = useState(null);
   const [videoPlayerLoading, setVideoPlayerLoading] = useState(true);
-  const [selectedLessonDetails, setSelectedLessonDetails] = useState(null);
+  //const [selectedLessonDetails, setSelectedLessonDetails] = useState(null);
   const [responseLesson, errorLesson, loadingLesson, axiosFetchLesson] = useAxios();
   const [showCourseContent, setShowCourseContent] = useState(true);
 
@@ -63,10 +64,10 @@ export default function LearningDetails({ id }) {
     }
   }, [response]);
 
+  //to check if the module is bought or not so the lessons can be unlocked
   const checkIfLessonIsLocked = (id) => {
     if (response?.data?.enrollment?.type === 'module') {
       const isEnrolled = response.data.enrollment.enrolledModules.some((enrolledModule) => enrolledModule.module === id);
-
       if (isEnrolled) {
         // If module is found
         return false;
@@ -133,9 +134,11 @@ export default function LearningDetails({ id }) {
         {loadingLesson && <LoadingDots />}
         {responseLesson?.data && !loadingLesson && !errorLesson && (
           <div className={styles.lessonDetails}>
-            { !showCourseContent && (<div className={styles.showContent} onClick={() => setShowCourseContent(!showCourseContent)}>
-              <ImArrowLeft /> <p className={styles.text}>Course Content</p>
-            </div>)}
+            {!showCourseContent && (
+              <div className={styles.showContent} onClick={() => setShowCourseContent(!showCourseContent)}>
+                <ImArrowLeft /> <p className={styles.text}>Course Content</p>
+              </div>
+            )}
             {responseLesson?.data?.cloudflareVideoId && (
               <div className={styles.videoContainerWrapper}>
                 <div className={styles.videoContainer}>
@@ -192,7 +195,15 @@ export default function LearningDetails({ id }) {
       {loading && <LoadingDots />}
       {!loading && !error && (
         <>
-          <div className={styles.left}>{lessonDetailsRender()}</div>
+          <div className={styles.left}>
+            {responseLesson && !errorLesson && lessonDetailsRender()}
+            {errorLesson && (
+              <div className={styles.noAccess}>
+                <IoCloseCircleSharp className={styles.icon} />
+                <p className={styles.text}>{errorLesson.message}</p>
+              </div>
+            )}
+          </div>
           <div className={styles.right} style={showCourseContent ? {} : { display: 'none' }}>
             {courseContentListViewRender()}
           </div>

@@ -99,6 +99,24 @@
         font-size: 0.8rem;
       }
     }
+    .noAccess{
+      background-color: var(--background-dashboard);
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      .text{
+        text-align: center;
+        color: var(--foreground-dark);
+        font-size: .9rem;
+      }
+      .icon{
+        font-size: 2rem;
+        color: var(--danger);
+      }
+    }
   }
 
   .right {

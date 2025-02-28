@@ -40,7 +40,15 @@ export default function CreateLesson({ courseId, moduleId, lessonId = '' }) {
     event.preventDefault();
     setMessage({ text: '', type: '' });
     const formData = new FormData(event.target);
+    const formDataToObject = Object.fromEntries(formData);
+    const quizSettings = {
+      required: formDataToObject.required,
+      blockProgress: formDataToObject.blockProgress,
+    }
     formData.append('details', longDetails);
+    formData.delete('required');
+    formData.delete('blockProgress');
+    formData.append('quizSettings', JSON.stringify(quizSettings));
 
     let apiUrl = configuration.courses + '/' + courseId + '/modules/' + moduleId + '/lessons';
     //for editing a lesson
@@ -90,16 +98,27 @@ export default function CreateLesson({ courseId, moduleId, lessonId = '' }) {
           required
         />
         <p className={styles.subTitle}>Accessibility:</p>
-        <p className={styles.label}>is Quiz Required?</p>
 
+        <p className={styles.label}>is Quiz Required?</p>
         <Select
           options={[
             { label: 'Yes', value: true },
             { label: 'No', value: false },
           ]}
-          name="requireQuizPass"
+          name="required"
           variant="secondary"
-          defaultValue={responseGetInfo?.data?.requireQuizPass}
+          defaultValue={responseGetInfo?.data?.quizSettings?.required}
+        />
+
+        <p className={styles.label}>Block next lesson?</p>
+        <Select
+          options={[
+            { label: 'Yes', value: true },
+            { label: 'No', value: false },
+          ]}
+          name="blockProgress"
+          variant="secondary"
+          defaultValue={responseGetInfo?.data?.quizSettings?.blockProgress}
         />
 
         <div className={styles.submitContainer}>
