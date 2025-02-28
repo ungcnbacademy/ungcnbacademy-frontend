@@ -54,7 +54,14 @@ export default function ProgressCard({ courseId }) {
               <p className={styles.startNow}>Start learning</p>
               <IoArrowForward className={styles.icon} />
             </div>
-            <Button text="Course Certificate" className={styles.certificateBtn} variant="primary" />
+            <Button
+              text="Course Certificate"
+              className={styles.certificateBtn}
+              variant="primary"
+              onClick={() => {
+                router.push('/verify/hgfd');
+              }}
+            />
           </div>
 
           <br />
@@ -79,7 +86,12 @@ export default function ProgressCard({ courseId }) {
                           </div>
                         ))}
                         <div className={styles.moduleCertificateContainer}>
-                          <Button text="Module Certificate" />
+                          <Button
+                            text="Module Certificate"
+                            onClick={() => {
+                              router.push('/verify/hgfd');
+                            }}
+                          />
                         </div>
                       </div>
                     ),
