@@ -39,65 +39,58 @@ export default function LearningDetails({ id }) {
     }
   }, [selectedLesson]);
 
-  const checkWhichLessonToBeSelected = () => {
-    for (let i = 0; i < response?.data?.modules.length; i++) {
-      for (let j = 0; j < response?.data?.modules[i].lessons.length; j++) {
-        if (!response?.data?.modules[i].lessons[j].progress?.completed) {
-          setSelectedLesson({
-            moduleId: response?.data?.modules[i]._id,
-            lessonId: response?.data?.modules[i].lessons[j]._id,
-          });
-          return;
-        } else {
-          setSelectedLesson({
-            moduleId: response?.data?.modules[0]._id,
-            lessonId: response?.data?.modules[0].lessons[0]._id,
-          });
+  //This is the function to determine which lesson to select
+  const selectLesson = () => {
+    const modules = response?.data?.modules || [];
+    const enrollment = response?.data?.enrollment;
+
+    if (!enrollment) return;
+
+    if (enrollment.type === 'full') {
+      // Full enrollment logic
+      for (const module of modules) {
+        for (const lesson of module.lessons) {
+          if (!lesson.progress?.completed) {
+            setSelectedLesson({ moduleId: module._id, lessonId: lesson._id });
+            return;
+          }
+        }
+      }
+      // If all lessons are completed, select the first one
+      if (modules[0]?.lessons[0]) {
+        setSelectedLesson({
+          moduleId: modules[0]._id,
+          lessonId: modules[0].lessons[0]._id,
+        });
+      }
+    } else if (enrollment.type === 'module') {
+      // Module-specific enrollment logic
+      const enrolledModules = enrollment.enrolledModules || [];
+      for (const enrolledModule of enrolledModules) {
+        const module = modules.find((mod) => mod._id === enrolledModule.module);
+        if (module) {
+          for (const lesson of module.lessons) {
+            if (!lesson.progress?.completed) {
+              setSelectedLesson({ moduleId: module._id, lessonId: lesson._id });
+              return;
+            }
+          }
+          // If all lessons are completed, select the first lesson in the enrolled module
+          if (module.lessons[0]) {
+            setSelectedLesson({ moduleId: module._id, lessonId: module.lessons[0]._id });
+            return;
+          }
         }
       }
     }
   };
 
-  const checkWhichLessonToBeSelected2 = () => {
-    for (let i = 0; i < response?.data?.modules.length; i++) {
-      for (let j = 0; j < response?.data?.modules[i].lessons.length; j++) {
-        for (let k = 0; k < response?.data?.enrollment?.enrolledModules.length; k++) {
-          if (response?.data?.modules[i]._id === response?.data?.enrollment?.enrolledModules[k].module) {
-            if (!response?.data?.modules[i].lessons[j].progress?.completed) {
-              setSelectedLesson({
-                moduleId: response?.data?.modules[i]._id,
-                lessonId: response?.data?.modules[i].lessons[j]._id,
-              });
-              return;
-            } else {
-              // if all lessons are completed then select the first one but the module id has to be in response?.data?.enrollment?.enrolledModules[k].module
-              response?.data?.modules.map((module) => {
-                response?.data?.enrollment?.enrolledModules.map((enrolledModule) => {
-                  if (module._id === enrolledModule.module) {
-                    if (module.lessons[0]) {
-                      setSelectedLesson({
-                        moduleId: module._id,
-                        lessonId: module.lessons[0]._id,
-                      });
-                    }
-                  }
-                });
-              });
-            }
-          }
-        }
-      }
-    }
-  }
-
   // Set the first lesson as selected
   useEffect(() => {
-    if (response?.data?.enrollment?.type === 'full') {
-      checkWhichLessonToBeSelected();
-    } else if (response?.data?.enrollment?.type === 'module') {
-      checkWhichLessonToBeSelected2();
-    }
+    selectLesson();
   }, [response]);
+
+
 
   //to check if the module is bought or not so the lessons can be unlocked
   const checkIfLessonIsLocked = (id) => {

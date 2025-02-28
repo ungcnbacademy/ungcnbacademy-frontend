@@ -39,11 +39,11 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
       setMessage({ text: errorSubmit?.message, type: 'error' });
       setBackBtnView(true);
     }
-    // if (error?.message) {
-    //   setMessage({ text: error?.message, type: 'error' });
-    //   setBackBtnView(true);
-    // }
-  }, [responseSubmit, errorSubmit, error]);
+    if (error?.message && !response?.data) {
+      setMessage({ text: error?.message, type: 'error' });
+      setBackBtnView(true);
+    }
+  }, [responseSubmit, errorSubmit, error, response]);
 
   const quizSubmitHandler = (e) => {
     e.preventDefault();
@@ -71,7 +71,7 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
         <h1 className={styles.title}>Quiz</h1>
         {response?.data?.quizTime && <Timer initialTime={response?.data?.quizTime || 5} />}
       </div>
-      {loading && <LoadingDots/>}
+      {loading && <LoadingDots />}
       <div className={styles.container}>
         <form className={styles.form} onSubmit={quizSubmitHandler}>
           {response?.data?.questions.map((question, index) => (
@@ -94,7 +94,9 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
           ))}
           <Message text={message?.text} type={message?.type} />
           <div className={styles.buttonContainer}>
-            {response?.data &&<Button text="Submit" variant="primary" type="submit" loading={loadingSubmit} disabled={loadingSubmit} />}
+            {response?.data && (
+              <Button text="Submit" variant="primary" type="submit" loading={loadingSubmit} disabled={loadingSubmit} />
+            )}
             {backBtnView && (
               <Button text="Back to Lesson" variant="secondary" onClick={() => redirect(`/client/my-courses/${courseId}`)} />
             )}

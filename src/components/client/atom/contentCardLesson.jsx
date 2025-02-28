@@ -18,7 +18,6 @@ export default function ContentCardLesson({
   isLocked = false,
   lockMessage = 'Locked',
   isQuizRequired = false,
-  quizId = '',
   courseId = '',
   moduleId = '',
   lessonId = '',
@@ -43,17 +42,18 @@ export default function ContentCardLesson({
                 <label>Total Assets {totalAssets}.</label>
               </div>
             </div>
-            {isQuizRequired && (
-              <div className={styles.bottom}>
+
+            <div className={styles.bottom}>
+              {isQuizRequired && (
                 <Button
                   text="Quiz"
                   variant="outLined"
                   className={styles.button}
                   onClick={(event) => quizButtonClickHandler(event)}
                 />
-                <Button text="Mark Complete" className={styles.buttonComplete} variant="secondary"/>
-              </div>
-            )}
+              )}
+              {!isQuizRequired && <Button text="Mark Complete" className={styles.button} variant="outLined" />}
+            </div>
           </div>
         </div>
       </div>
