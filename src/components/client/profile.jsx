@@ -7,8 +7,8 @@ import Avatar from '../ui/avatar/avatar';
 import moment from 'moment';
 import LoadingDots from '../ui/loading/loadingDots';
 import Button from '../ui/button/button';
-import { useRouter } from 'next/navigation';
 import ProgressCard from './atom/progressCard';
+
 export default function Profile() {
   const [response, error, loading, axiosFetch] = useAxios();
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function Profile() {
       url: configuration.client.profile,
     });
   }, []);
-  const router = useRouter();
+
   return (
     <div className={styles.overlay}>
       <div className={styles.header}>

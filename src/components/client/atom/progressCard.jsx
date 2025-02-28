@@ -3,7 +3,7 @@ import styles from './progressCard.module.css';
 import useAxios from '@/hooks/useAxios';
 import { configuration } from '@/configuration/configuration';
 import Collapse from '@/components/ui/collapse/collapse';
-import ProgressBar from '@/components/ui/progressBar/progressBar';
+import { useRouter } from 'next/navigation';
 import moment from 'moment';
 import { IoArrowForward } from 'react-icons/io5';
 import Button from '@/components/ui/button/button';
@@ -11,7 +11,7 @@ import LoadingDots from '@/components/ui/loading/loadingDots';
 export default function ProgressCard({ courseId }) {
   const [response, error, loading, axiosFetch] = useAxios();
   const [myModules, setMyModules] = useState([]);
-
+  const router = useRouter();
   useEffect(() => {
     axiosFetch({
       method: 'GET',
@@ -48,7 +48,7 @@ export default function ProgressCard({ courseId }) {
             <div
               className={styles.startNowContainer}
               onClick={() => {
-                router.push(`/client/my-courses/${course?.course}`);
+                router.push(`/client/my-courses/${response?.data?._id}`);
               }}
             >
               <p className={styles.startNow}>Start learning</p>

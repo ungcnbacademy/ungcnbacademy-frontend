@@ -1,0 +1,51 @@
+.main {
+  padding-inline: var(--global-padding-inline);
+  padding-block: 20px;
+  min-height: 85vh;
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  .container {
+    box-shadow: 0 1px 12px rgba(128, 128, 128, 0.1);
+    border-radius: var(--global-border-radius);
+    padding: 40px;
+    background-color: var(--background-dashboard);
+    height: fit-content;
+    margin-top: 30px;
+    color: var(--foreground-dark);
+    text-align: center;
+    font-size: 0.9rem;
+    width: 100%;
+    max-width: 800px;
+    .title {
+      font-size: 1.11rem;
+      margin-bottom: 5px;
+      color: var(--foreground);
+    }
+    .heading {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-block: 10px 20px;
+      color: var(--foreground);
+    }
+    .iconOk {
+      color: rgb(15, 177, 15);
+      font-size: 2.5rem;
+    }
+    .iconError {
+      color: rgb(255, 0, 0);
+      font-size: 2.5rem;
+    }
+    .buttonContainer {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .notes {
+      margin-block: 20px;
+      color: var(--accent2);
+    }
+  }
+}

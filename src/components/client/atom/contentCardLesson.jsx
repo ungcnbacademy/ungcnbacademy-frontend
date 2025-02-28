@@ -26,6 +26,10 @@ export default function ContentCardLesson({
     event.stopPropagation();
     redirect(`/client/my-courses/quiz/${courseId}/${moduleId}/${lessonId}`);
   };
+  const lessonMarkCompleteHandler = (event) => {
+    event.stopPropagation();
+    redirect(`/client/my-courses/lessonMarkComplete/${courseId}/${moduleId}/${lessonId}`);
+  }
   return (
     <div className={styles.wrapper}>
       <div className={styles.LessonContainer}>
@@ -52,7 +56,7 @@ export default function ContentCardLesson({
                   onClick={(event) => quizButtonClickHandler(event)}
                 />
               )}
-              {!isQuizRequired && <Button text="Mark Complete" className={styles.button} variant="outLined" />}
+              {!isQuizRequired && <Button text="Mark Complete" className={styles.button} variant="outLined" onClick={(event) => lessonMarkCompleteHandler(event)}/>}
             </div>
           </div>
         </div>
