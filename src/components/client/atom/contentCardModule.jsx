@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './contentCardModule.module.css';
 import { IoIosArrowDown, IoIosArrowForward } from 'react-icons/io';
-export default function ContentCardModule({ title, totalLesson, order, children, selected }) {
+export default function ContentCardModule({ title, totalLesson, order, children, selected, progress = 0 }) {
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     if (selected) {
@@ -17,7 +17,11 @@ export default function ContentCardModule({ title, totalLesson, order, children,
           <p className={styles.title}>
             Module {order}: {title}
           </p>
-          <p className={styles.lessons}>{totalLesson} Lessons</p>
+          <div>
+            <p className={styles.lessons}>
+              {totalLesson} Lessons{progress != 0 && `, Progress: ${(Math.round(Number(progress) * 100) / 100).toFixed(2) || 0}%`}
+            </p>
+          </div>
         </div>
         <div className={styles.iconContainer}>{isOpen ? <IoIosArrowDown /> : <IoIosArrowForward />}</div>
       </div>

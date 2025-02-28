@@ -127,6 +127,7 @@ export default function LearningDetails({ id }) {
               title={module.title}
               totalLesson={module.totalLessons}
               selected={selectedLesson?.moduleId === module._id}
+              progress={module?.progress?.progress}
               children={module.lessons.map((lesson, i) => (
                 <ContentCardLesson
                   key={i}

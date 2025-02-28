@@ -4,7 +4,7 @@ import styles from './collapse.module.css';
 import { IoIosArrowDown, IoIosArrowForward } from 'react-icons/io';
 export default function Collapse({
 	variant = 'primary',
-	data = [{ title: '', description: '', children }],
+	data = [{ title: '', description: '', children: '' }],
 }) {
 	const CollapseItem = ({ title, description, children }) => {
 		const [isOpen, setIsOpen] = useState(false);

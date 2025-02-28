@@ -20,15 +20,6 @@ export default function PurchasedCourses() {
         <h3 className={styles.title}>My Courses</h3>
       </div>
       <div className={styles.main}>
-        {/* <div className={styles.filter}>
-					<p className={styles.text}></p>
-					<Input
-						type="search"
-						placeholder="Search"
-						variant="outLined"
-						className={styles.search}
-					/>
-				</div> */}
         {loading && <LoadingDots />}
         <div className={styles.container}>
           {response?.data?.length > 0 &&

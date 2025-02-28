@@ -9,6 +9,7 @@ import LoadingDots from '../ui/loading/loadingDots';
 import Button from '../ui/button/button';
 import { IoArrowForward } from 'react-icons/io5';
 import { useRouter } from 'next/navigation';
+import ProgressCard from './atom/progressCard';
 export default function Profile() {
   const [response, error, loading, axiosFetch] = useAxios();
   useEffect(() => {
@@ -42,7 +43,7 @@ export default function Profile() {
           {response?.data?.enrolledCourses.length < 1 && (
             <p className={styles.subTitle}>You have not enrolled in any course yet</p>
           )}
-          {response?.data?.enrolledCourses.length > 0 &&
+          {/* {response?.data?.enrolledCourses.length > 0 &&
             response?.data?.enrolledCourses.map((course, i) => (
               <div className={styles.details} key={i}>
                 <p className={styles.title2}>Environmental Social Governance (ESG) Expert Training</p>
@@ -63,7 +64,8 @@ export default function Profile() {
                   <IoArrowForward className={styles.icon} />
                 </div>
               </div>
-            ))}
+            ))} */}
+          {response?.data?.enrolledCourses.length > 0 && <ProgressCard courseId={response?.data?.enrolledCourses[0]?.course} />}
           {loading && <LoadingDots />}
         </div>
       </div>
