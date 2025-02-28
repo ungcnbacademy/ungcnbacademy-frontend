@@ -7,7 +7,6 @@ import Avatar from '../ui/avatar/avatar';
 import moment from 'moment';
 import LoadingDots from '../ui/loading/loadingDots';
 import Button from '../ui/button/button';
-import { IoArrowForward } from 'react-icons/io5';
 import { useRouter } from 'next/navigation';
 import ProgressCard from './atom/progressCard';
 export default function Profile() {
@@ -24,6 +23,7 @@ export default function Profile() {
       <div className={styles.header}>
         <h3 className={styles.title}>My Profile</h3>
       </div>
+      {loading && <LoadingDots />}
       <div className={styles.main}>
         <div className={styles.container}>
           {response?.data && (
@@ -39,34 +39,14 @@ export default function Profile() {
             </div>
           )}
 
-          <h1 className={styles.heading}>Course Progress</h1>
-          {response?.data?.enrolledCourses.length < 1 && (
-            <p className={styles.subTitle}>You have not enrolled in any course yet</p>
-          )}
-          {/* {response?.data?.enrolledCourses.length > 0 &&
-            response?.data?.enrolledCourses.map((course, i) => (
-              <div className={styles.details} key={i}>
-                <p className={styles.title2}>Environmental Social Governance (ESG) Expert Training</p>
-                <p className={styles.subTitle}>Enrolled at: {moment(course?.enrolledAt).format('lll')}</p>
-                <div className={styles.progressContainer}>
-                  <p className={styles.progressText}>Progress: 60%</p>
-                  <div className={styles.progressLineBackground}>
-                    <div className={styles.progressLine} style={{ width: '60%' }}></div>
-                  </div>
-                </div>
-                <div
-                  className={styles.startNowContainer}
-                  onClick={() => {
-                    router.push(`/client/my-courses/${course?.course}`);
-                  }}
-                >
-                  <p className={styles.startNow}>Start now</p>
-                  <IoArrowForward className={styles.icon} />
-                </div>
-              </div>
-            ))} */}
-          {response?.data?.enrolledCourses.length > 0 && <ProgressCard courseId={response?.data?.enrolledCourses[0]?.course} />}
-          {loading && <LoadingDots />}
+          {response?.data?.enrolledCourses && <h1 className={styles.heading}>Course Progress</h1>}
+          <div className={styles.progressContainer}>
+            {response?.data?.enrolledCourses.length < 1 && (
+              <p className={styles.subTitle}>You have not enrolled in any course yet</p>
+            )}
+            {response?.data?.enrolledCourses.length > 0 &&
+              response?.data?.enrolledCourses.map((course, i) => <ProgressCard key={i} courseId={course.course} />)}
+          </div>
         </div>
       </div>
     </div>
