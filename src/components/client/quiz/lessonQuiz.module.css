@@ -21,6 +21,11 @@
       flex-direction: column;
       gap: 10px;
       border-radius: var(--global-border-radius);
+      .buttonContainer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+      }
     }
     .questionContainer {
       background-color: var(--background-dashboard);
@@ -30,21 +35,21 @@
         color: var(--foreground-light);
         display: flex;
         gap: 10px;
-				.questionNo{
-					background-color: rgb(220, 255, 255);
-					padding: 3px 10px;
-					border-radius: var(--global-border-radius);
-				}
-				.marks{
-					background-color: rgb(253, 246, 226);
-					padding: 3px 10px;
-					border-radius: var(--global-border-radius);
-				}
-				.type {
-					background-color:rgb(236, 236, 253);
-					padding: 3px 10px;
-					border-radius: var(--global-border-radius);
-				}
+        .questionNo {
+          background-color: rgb(220, 255, 255);
+          padding: 3px 10px;
+          border-radius: var(--global-border-radius);
+        }
+        .marks {
+          background-color: rgb(253, 246, 226);
+          padding: 3px 10px;
+          border-radius: var(--global-border-radius);
+        }
+        .type {
+          background-color: rgb(236, 236, 253);
+          padding: 3px 10px;
+          border-radius: var(--global-border-radius);
+        }
       }
       .question {
         font-size: 1.2rem;
@@ -55,10 +60,9 @@
         display: flex;
         align-items: center;
         gap: 10px;
-				font-size: 0.9rem;
-				color: var(--foreground-dark);
+        font-size: 0.9rem;
+        color: var(--foreground-dark);
       }
     }
   }
-
 }

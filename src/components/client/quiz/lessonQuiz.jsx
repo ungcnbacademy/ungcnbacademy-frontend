@@ -7,11 +7,15 @@ import QuizQuestion from '../atom/quizQuestion';
 import useAxios from '@/hooks/useAxios';
 import { configuration } from '@/configuration/configuration';
 import Message from '@/components/ui/message/message';
+import { redirect } from 'next/navigation';
+import QuizResult from './quizResult';
+import LoadingDots from '@/components/ui/loading/loadingDots';
 export default function LessonQuiz({ courseId, moduleId, lessonId }) {
   const [questionNo, setQuestionNo] = useState(0);
   const [response, error, loading, axiosFetch] = useAxios();
   const [responseSubmit, errorSubmit, loadingSubmit, axiosFetchSubmit] = useAxios();
   const [message, setMessage] = useState('');
+  const [backBtnView, setBackBtnView] = useState(false);
 
   useEffect(() => {
     axiosFetch({
@@ -29,14 +33,21 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
   useEffect(() => {
     if (responseSubmit?.status === 'success') {
       setMessage({ text: 'Successfully submitted', type: 'success' });
+      setBackBtnView(true);
     }
     if (errorSubmit?.message) {
-      setMessage({ text: errorSubmit.message, type: 'error' });
+      setMessage({ text: errorSubmit?.message, type: 'error' });
+      setBackBtnView(true);
     }
-  }, [responseSubmit, errorSubmit]);
+    // if (error?.message) {
+    //   setMessage({ text: error?.message, type: 'error' });
+    //   setBackBtnView(true);
+    // }
+  }, [responseSubmit, errorSubmit, error]);
 
   const quizSubmitHandler = (e) => {
     e.preventDefault();
+    setMessage();
     const formData = new FormData(e.target);
     const data = {
       answers: [],
@@ -60,6 +71,7 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
         <h1 className={styles.title}>Quiz</h1>
         {response?.data?.quizTime && <Timer initialTime={response?.data?.quizTime || 5} />}
       </div>
+      {loading && <LoadingDots/>}
       <div className={styles.container}>
         <form className={styles.form} onSubmit={quizSubmitHandler}>
           {response?.data?.questions.map((question, index) => (
@@ -80,9 +92,15 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
               ))}
             </div>
           ))}
-          <Message text={message.text} type={message.type} />
-          <Button text="Submit" variant="primary" type="submit" loading={loadingSubmit} disabled={loadingSubmit} />
+          <Message text={message?.text} type={message?.type} />
+          <div className={styles.buttonContainer}>
+            {response?.data &&<Button text="Submit" variant="primary" type="submit" loading={loadingSubmit} disabled={loadingSubmit} />}
+            {backBtnView && (
+              <Button text="Back to Lesson" variant="secondary" onClick={() => redirect(`/client/my-courses/${courseId}`)} />
+            )}
+          </div>
         </form>
+        <QuizResult data={responseSubmit?.data} />
       </div>
     </div>
   );
