@@ -51,6 +51,7 @@ export default function ContentCardLesson({
                   className={styles.button}
                   onClick={(event) => quizButtonClickHandler(event)}
                 />
+                <Button text="Mark Complete" className={styles.buttonComplete} variant="secondary"/>
               </div>
             )}
           </div>

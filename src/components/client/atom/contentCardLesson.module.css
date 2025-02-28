@@ -66,10 +66,18 @@
         }
       }
       .bottom {
+        display: flex;
+        justify-content: space-between;
         .button {
           padding: 5px 25px;
           min-width: fit-content;
           margin-top: 10px;
+        }
+        .buttonComplete {
+          padding: 5px 25px;
+          min-width: fit-content;
+          margin-top: 10px;
+          border: solid var(--accent1);
         }
       }
     }

@@ -6,11 +6,12 @@ import Button from '@/components/ui/button/button';
 import QuizQuestion from '../atom/quizQuestion';
 import useAxios from '@/hooks/useAxios';
 import { configuration } from '@/configuration/configuration';
+import Message from '@/components/ui/message/message';
 export default function LessonQuiz({ courseId, moduleId, lessonId }) {
   const [questionNo, setQuestionNo] = useState(0);
   const [response, error, loading, axiosFetch] = useAxios();
   const [responseSubmit, errorSubmit, loadingSubmit, axiosFetchSubmit] = useAxios();
-	const [message, setMessage] = useState('');
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     axiosFetch({
@@ -25,14 +26,14 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
     }
   }, [response]);
 
-	useEffect(() => {
-		if (responseSubmit?.status === 'success') {
-			setMessage({text: 'Successfully submitted', type: 'success'});
-		}
-		if (errorSubmit?.message) {
-			setMessage({text: errorSubmit.message, type: 'error'});
-		}
-	}, [responseSubmit, errorSubmit]);
+  useEffect(() => {
+    if (responseSubmit?.status === 'success') {
+      setMessage({ text: 'Successfully submitted', type: 'success' });
+    }
+    if (errorSubmit?.message) {
+      setMessage({ text: errorSubmit.message, type: 'error' });
+    }
+  }, [responseSubmit, errorSubmit]);
 
   const quizSubmitHandler = (e) => {
     e.preventDefault();
@@ -46,11 +47,10 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
         selectedOption: formData.get(question.question),
       });
     });
-
     axiosFetchSubmit({
       url: `${configuration.courses}/${courseId}/modules/${moduleId}/lessons/${lessonId}/quiz/attempts/${response?.data?.attemptId}/submit`,
       method: 'POST',
-      data: data,
+      requestConfig: data,
     });
   };
 
@@ -80,7 +80,8 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
               ))}
             </div>
           ))}
-          <Button text="Submit" variant="primary" type="submit" />
+          <Message text={message.text} type={message.type} />
+          <Button text="Submit" variant="primary" type="submit" loading={loadingSubmit} disabled={loadingSubmit} />
         </form>
       </div>
     </div>
