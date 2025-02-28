@@ -39,28 +39,63 @@ export default function LearningDetails({ id }) {
     }
   }, [selectedLesson]);
 
-  // Set the first lesson as selected
-  useEffect(() => {
-    if (response?.data?.enrollment?.type === 'full') {
-      if (response?.data?.modules[0]?.lessons[0]) {
-        setSelectedLesson({
-          moduleId: response?.data?.modules[0]?._id,
-          lessonId: response?.data?.modules[0]?.lessons[0]?._id,
-        });
+  const checkWhichLessonToBeSelected = () => {
+    for (let i = 0; i < response?.data?.modules.length; i++) {
+      for (let j = 0; j < response?.data?.modules[i].lessons.length; j++) {
+        if (!response?.data?.modules[i].lessons[j].progress?.completed) {
+          setSelectedLesson({
+            moduleId: response?.data?.modules[i]._id,
+            lessonId: response?.data?.modules[i].lessons[j]._id,
+          });
+          return;
+        } else {
+          setSelectedLesson({
+            moduleId: response?.data?.modules[0]._id,
+            lessonId: response?.data?.modules[0].lessons[0]._id,
+          });
+        }
       }
-    } else if (response?.data?.enrollment?.type === 'module') {
-      response?.data?.modules.map((module) => {
-        response?.data?.enrollment?.enrolledModules.map((enrolledModule) => {
-          if (module._id === enrolledModule.module) {
-            if (module.lessons[0]) {
+    }
+  };
+
+  const checkWhichLessonToBeSelected2 = () => {
+    for (let i = 0; i < response?.data?.modules.length; i++) {
+      for (let j = 0; j < response?.data?.modules[i].lessons.length; j++) {
+        for (let k = 0; k < response?.data?.enrollment?.enrolledModules.length; k++) {
+          if (response?.data?.modules[i]._id === response?.data?.enrollment?.enrolledModules[k].module) {
+            if (!response?.data?.modules[i].lessons[j].progress?.completed) {
               setSelectedLesson({
-                moduleId: module._id,
-                lessonId: module.lessons[0]._id,
+                moduleId: response?.data?.modules[i]._id,
+                lessonId: response?.data?.modules[i].lessons[j]._id,
+              });
+              return;
+            } else {
+              // if all lessons are completed then select the first one but the module id has to be in response?.data?.enrollment?.enrolledModules[k].module
+              response?.data?.modules.map((module) => {
+                response?.data?.enrollment?.enrolledModules.map((enrolledModule) => {
+                  if (module._id === enrolledModule.module) {
+                    if (module.lessons[0]) {
+                      setSelectedLesson({
+                        moduleId: module._id,
+                        lessonId: module.lessons[0]._id,
+                      });
+                    }
+                  }
+                });
               });
             }
           }
-        });
-      });
+        }
+      }
+    }
+  }
+
+  // Set the first lesson as selected
+  useEffect(() => {
+    if (response?.data?.enrollment?.type === 'full') {
+      checkWhichLessonToBeSelected();
+    } else if (response?.data?.enrollment?.type === 'module') {
+      checkWhichLessonToBeSelected2();
     }
   }, [response]);
 
@@ -119,6 +154,7 @@ export default function LearningDetails({ id }) {
                   courseId={id}
                   moduleId={module._id}
                   lessonId={lesson._id}
+                  checked={lesson?.progress?.completed}
                   //lockMessage='Buy this module to unlock this lesson'
                 />
               ))}
