@@ -8,6 +8,7 @@ import moment from 'moment';
 import { IoArrowForward } from 'react-icons/io5';
 import Button from '@/components/ui/button/button';
 import LoadingDots from '@/components/ui/loading/loadingDots';
+import CheckMark from './checkMark';
 export default function ProgressCard({ courseId }) {
   const [response, error, loading, axiosFetch] = useAxios();
   const [myModules, setMyModules] = useState([]);
@@ -39,7 +40,7 @@ export default function ProgressCard({ courseId }) {
           <p className={styles.title2}>{response?.data?.title}</p>
           <p className={styles.subTitle}>Enrolled at: {moment(response?.data?.enrollment?.enrolledAt).format('lll')}</p>
           <div className={styles.progressContainer}>
-            <p className={styles.progressText}>Progress: {response?.data?.progress?.overallProgress}%</p>
+            <p className={styles.progressText}>Progress: {Number(response?.data?.progress?.overallProgress).toFixed(2)}%</p>
             <div className={styles.progressLineBackground}>
               <div className={styles.progressLine} style={{ width: `${response?.data?.progress?.overallProgress}%` }}></div>
             </div>
@@ -54,14 +55,16 @@ export default function ProgressCard({ courseId }) {
               <p className={styles.startNow}>Start learning</p>
               <IoArrowForward className={styles.icon} />
             </div>
-            <Button
-              text="Course Certificate"
-              className={styles.certificateBtn}
-              variant="primary"
-              onClick={() => {
-                router.push('/verify/hgfd');
-              }}
-            />
+            {Number(response?.data?.progress?.overallProgress) === 100 && (
+              <Button
+                text="Course Certificate"
+                className={styles.certificateBtn}
+                variant="primary"
+                onClick={() => {
+                  router.push('/verify/hgfd');
+                }}
+              />
+            )}
           </div>
 
           <br />
@@ -77,21 +80,29 @@ export default function ProgressCard({ courseId }) {
                       <div className={styles.moduleProgressContainer}>
                         {module.lessons.map((lesson) => (
                           <div key={lesson._id} className={styles.lessonProgressContainer}>
-                            <p className={styles.lessonTitle}>
-                              Lesson {lesson.order}. {lesson.title}
-                            </p>
+                            <div className={styles.lessonTitleContainer}>
+                              {lesson?.progress?.completed && <CheckMark />}
+                              <p
+                                className={styles.lessonTitle}
+                                style={!lesson?.progress?.completed ? { marginLeft: '18px' } : {}}
+                              >
+                                Lesson {lesson.order}. {lesson.title}
+                              </p>
+                            </div>
                             <p className={styles.lessonStatus}>
                               Status: {lesson?.progress?.completed ? 'Completed, Progress: 100%' : 'Not Completed, Progress: 0%'}
                             </p>
                           </div>
                         ))}
                         <div className={styles.moduleCertificateContainer}>
-                          <Button
-                            text="Module Certificate"
-                            onClick={() => {
-                              router.push('/verify/hgfd');
-                            }}
-                          />
+                          {Number(module?.progress?.progress) === 100 && (
+                            <Button
+                              text="Module Certificate"
+                              onClick={() => {
+                                router.push('/verify/hgfd');
+                              }}
+                            />
+                          )}
                         </div>
                       </div>
                     ),

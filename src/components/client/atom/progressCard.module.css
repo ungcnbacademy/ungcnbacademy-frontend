@@ -1,9 +1,9 @@
-.main{
+.main {
   .details {
     background-color: var(--background-dashboard);
     padding: 20px;
     border-radius: var(--global-border-radius);
-    width: clamp(300px, 80%, 800px);
+    width: clamp(300px, 100%, 800px);
     .title {
       font-size: 1.2rem;
       font-weight: 500;
@@ -33,28 +33,21 @@
         height: 5px;
         border-radius: var(--global-border-radius);
         .progressLine {
-          background: linear-gradient(
-            to right,
-            var(--accent2),
-            #6bc88a
-          );
+          background: linear-gradient(to right, var(--accent2), #6bc88a);
           height: 5px;
           border-radius: var(--global-border-radius);
         }
       }
     }
-    .courseBtnContainer{
+    .courseBtnContainer {
       margin-top: 15px;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
-     gap: 10px;
-      .certificateBtn{
-
-      }
+      gap: 10px;
     }
     .startNowContainer {
       display: flex;
-      /* justify-content: flex-end; */
       align-items: center;
       gap: 5px;
       border: solid 1px rgba(199, 199, 199, 0.498);
@@ -85,24 +78,29 @@
       }
     }
   }
-  .moduleProgressContainer{
-
-    .lessonProgressContainer{
+  .moduleProgressContainer {
+    .lessonProgressContainer {
       padding-block: 5px;
-      .lessonTitle{
-        font-size: 0.9rem;
-        font-weight:500 ;
-        color: var(--foreground-dark);
+      .lessonTitleContainer {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        .lessonTitle {
+          font-size: 0.9rem;
+          font-weight: 500;
+          color: var(--foreground-dark);
+        }
       }
-      .lessonStatus{
+
+      .lessonStatus {
         font-size: 0.8rem;
         color: var(--foreground-light);
         margin-top: 3px;
+        margin-left: 18px;
       }
     }
-    .moduleCertificateContainer{
+    .moduleCertificateContainer {
       margin-top: 10px;
     }
   }
-
 }

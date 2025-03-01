@@ -19,7 +19,7 @@ export default function ContentCardModule({ title, totalLesson, order, children,
           </p>
           <div>
             <p className={styles.lessons}>
-              {totalLesson} Lessons{progress != 0 && `, Progress: ${(Math.round(Number(progress) * 100) / 100).toFixed(2) || 0}%`}
+              {totalLesson} Lessons{progress != 0 && `, Progress: ${Number(progress).toFixed(2) || 0}%`}
             </p>
           </div>
         </div>
