@@ -8,6 +8,7 @@ import CoursePriceContainer from './coursePriceContainer';
 import { FaSquareXTwitter, FaLinkedin } from 'react-icons/fa6';
 import { FaGlobeAmericas } from 'react-icons/fa';
 import moment from 'moment';
+import { formatDuration } from '@/utils/utils';
 export default async function CourseDetails({ id }) {
   const response = await getFetchRequests.getCourseById(id);
 
@@ -42,7 +43,7 @@ export default async function CourseDetails({ id }) {
             <h3 className={styles.title}>Course content</h3>
             <p className={styles.subtitle}>
               {response?.data?.statistics?.totalModules} Modules, {response?.data?.statistics?.totalLessons} Lessons,{' '}
-              {moment.utc(response?.data?.statistics?.totalDuration * 1000).format('HH:mm:ss')} Duration,{' '}
+              {formatDuration(response?.data?.statistics?.totalDuration)} Duration,{' '}
               {response?.data?.statistics?.totalQuizzes} Quizzes
             </p>
             {response?.data?.modules?.length > 0 &&
@@ -66,7 +67,7 @@ export default async function CourseDetails({ id }) {
                                 children: (
                                   <div className={styles.lessonAssets}>
                                     {lesson?.duration > 0 && lesson?.duration && (
-                                      <label>Duration {moment.utc(lesson?.duration * 1000).format('HH:mm:ss')},</label>
+                                      <label>Duration {formatDuration(lesson?.duration)},</label>
                                     )}
                                     {lesson?.totalAssets > 0 && <label>Total Assets {lesson?.totalAssets}</label>}
                                   </div>

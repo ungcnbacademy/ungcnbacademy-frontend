@@ -15,6 +15,7 @@ import { BiRefresh } from 'react-icons/bi';
 import Tooltip from '@/components/ui/tooltip/tooltip';
 import CreateQuiz from '@/components/admin/courses/lessons/Quiz/createQuiz';
 import QuizDetails from '@/components/admin/courses/lessons/Quiz/quizDetails';
+import { formatDuration } from '@/utils/utils';
 
 export default function LessonDetails({ params }) {
   const unwrappedParams = React.use(params);
@@ -81,7 +82,7 @@ export default function LessonDetails({ params }) {
         <h2 className={styles.title}>{`Lesson ${response?.data?.order}: ${response?.data?.title}`}</h2>
         <p className={styles.subtitle}># {response?.data?._id}</p>
         {response?.data?.duration && (
-          <p className={styles.subtitle}>Duration: {moment.utc(response?.data?.duration * 1000).format('HH:mm:ss')}</p>
+          <p className={styles.subtitle}>Duration: {formatDuration(response?.data?.duration)}</p>
         )}
         <p className={styles.subtitle}>Description: {response?.data?.description}</p>
         <p className={styles.subtitle}>Created at: {moment(response?.data?.createdAt).format('lll')}</p>

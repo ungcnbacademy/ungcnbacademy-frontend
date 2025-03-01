@@ -9,6 +9,7 @@ import { tableDefaultItemLimit } from '@/constants/constants';
 import LoadingDots from '@/components/ui/loading/loadingDots';
 import { configuration } from '@/configuration/configuration';
 import Pagination from '@/components/ui/pagination/pagination';
+import { formatDuration } from '@/utils/utils';
 export default function AllCourses() {
 	const [response, error, loading, axiosFetch] = useAxios();
 	const [search, setSearch] = useState('');
@@ -20,8 +21,8 @@ export default function AllCourses() {
 
 		const url =
 			search && search !== ''
-				? `${configuration.courses}?search=${search}&page=${page}&limit=${pageSize}`
-				: `${configuration.courses}?page=${page}&limit=${pageSize}`;
+				? `${configuration.courses}/public?search=${search}&page=${page}&limit=${pageSize}`
+				: `${configuration.courses}/public?page=${page}&limit=${pageSize}`;
 
 		axiosFetch({
 			method: 'Get',
@@ -48,15 +49,15 @@ export default function AllCourses() {
 				</div>
 				{loading && <LoadingDots />}
 				<div className={styles.container}>
-					{response?.data?.courses.map((course) => (
+					{response?.data?.courses.map((course, i) => (
 						<CourseCard
-							key={course._id}
-							img={course.thumbnail || '/assets/noImage.svg'}
-							title={course.title}
-							description={course.description}
+							key={i}
+							img={course?.thumbnail || '/assets/noImage.svg'}
+							title={course?.title || ''}
+							description={course?.description || ''}
 							startTime="Anytime"
-							duration="10"
-							totalLectures="10"
+							duration={formatDuration(course?.statistics?.totalDuration)}
+							totalLectures={`${course?.statistics?.totalModules} modules and ${course?.statistics?.totalLessons} lectures`}
 							id={course._id}
 							maxWidth='none'
 						/>

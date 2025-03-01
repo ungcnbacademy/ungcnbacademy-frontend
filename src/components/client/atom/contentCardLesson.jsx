@@ -4,7 +4,7 @@ import styles from './contentCardLesson.module.css';
 import { MdOutlineOndemandVideo, MdLock } from 'react-icons/md';
 import Button from '@/components/ui/button/button';
 import { redirect } from 'next/navigation';
-import moment from 'moment';
+import { formatDuration } from '@/utils/utils';
 
 export default function ContentCardLesson({
   title,
@@ -42,7 +42,7 @@ export default function ContentCardLesson({
               </p>
               <div className={styles.subtitle}>
                 {hasVideo && <MdOutlineOndemandVideo />}
-                {hasVideo && videoDuration && <label>Duration {moment.utc(videoDuration * 1000).format('HH:mm:ss')},</label>}
+                {hasVideo && videoDuration && <label>Duration {formatDuration(videoDuration)},</label>}
                 <label>Total Assets {totalAssets}.</label>
               </div>
             </div>

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styles from './courseCard.module.css';
 import Image from 'next/image';
 import { FaRegCalendarAlt, FaRegFileAlt, FaArrowRight, FaRegClock } from 'react-icons/fa';
-import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { truncateString } from '@/utils/utils';
 
 export default function CourseCard({
@@ -18,9 +18,15 @@ export default function CourseCard({
   maxWidth = '400px',
 }) {
   const [courseImage, setCourseImage] = useState(img);
-  const router = useRouter();
+  const onclickCourseHandler = () => {
+    if (onClickLink) {
+      redirect(onClickLink);
+    } else {
+      redirect(`/courses/${id}`);
+    }
+  };
   return (
-    <div className={styles.main} onClick={() => router.push(onClickLink || `/courses/${id}`)} style={{ maxWidth: maxWidth }}>
+    <div className={styles.main} onClick={() => onclickCourseHandler()} style={{ maxWidth: maxWidth }}>
       <Image
         src={courseImage}
         alt="Empty"
@@ -38,11 +44,11 @@ export default function CourseCard({
         </div>
         <div className={styles.content}>
           <FaRegClock />
-          <p>{duration} total hours</p>
+          <p>{duration}</p>
         </div>
         <div className={styles.content}>
           <FaRegFileAlt />
-          <p>{totalLectures} lectures</p>
+          <p>{totalLectures}</p>
         </div>
 
         <div className={styles.detailsButton}>
