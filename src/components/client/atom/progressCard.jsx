@@ -38,6 +38,7 @@ export default function ProgressCard({ courseId }) {
       {response?.data && !error && !loading && (
         <div className={styles.details}>
           <p className={styles.title2}>{response?.data?.title}</p>
+          <p className={styles.subTitle}>Purchase Type: {response?.data?.enrollment?.type.toUpperCase()}</p>
           <p className={styles.subTitle}>Enrolled at: {moment(response?.data?.enrollment?.enrolledAt).format('lll')}</p>
           <div className={styles.progressContainer}>
             <p className={styles.progressText}>Progress: {Number(response?.data?.progress?.overallProgress).toFixed(2)}%</p>
@@ -55,7 +56,7 @@ export default function ProgressCard({ courseId }) {
               <p className={styles.startNow}>Start learning</p>
               <IoArrowForward className={styles.icon} />
             </div>
-            {Number(response?.data?.progress?.overallProgress) === 100 && (
+            {Number(response?.data?.progress?.overallProgress) === 100 && response?.data?.enrollment?.type === 'full' && (
               <Button
                 text="Course Certificate"
                 className={styles.certificateBtn}
