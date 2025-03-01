@@ -14,13 +14,22 @@ export default async function CourseDetails({ id }) {
 
   return (
     <div className={styles.main}>
-      <Image
-        src={response?.data?.thumbnail || '/assets/noImage.svg'}
-        alt={response?.data?.title || 'Course'}
-        width={500}
-        height={500}
-        className={styles.image}
-      />
+      <div
+        className={styles.imageContainer}
+        style={response?.data?.thumbnail ? { backgroundImage: `url(${response?.data?.thumbnail})` } : {}}
+      >
+        <div className={styles.imageWrapper}>
+        <Image
+          src={response?.data?.thumbnail || '/assets/noImage.svg'}
+          alt={response?.data?.title || 'Course'}
+          width={500}
+          height={500}
+          className={styles.image}
+        />
+        </div>
+
+      </div>
+
       <div className={styles.container}>
         <div className={styles.left}>
           <h1 className={styles.courseTitle}>{response?.data?.title}</h1>
@@ -43,8 +52,8 @@ export default async function CourseDetails({ id }) {
             <h3 className={styles.title}>Course content</h3>
             <p className={styles.subtitle}>
               {response?.data?.statistics?.totalModules} Modules, {response?.data?.statistics?.totalLessons} Lessons,{' '}
-              {formatDuration(response?.data?.statistics?.totalDuration)} Duration,{' '}
-              {response?.data?.statistics?.totalQuizzes} Quizzes
+              {formatDuration(response?.data?.statistics?.totalDuration)} Duration, {response?.data?.statistics?.totalQuizzes}{' '}
+              Quizzes
             </p>
             {response?.data?.modules?.length > 0 &&
               response?.data?.modules?.map((module, i) => (
