@@ -30,8 +30,8 @@ export default function PurchasedCourses() {
                 title={course.course.title}
                 description={course.course.description}
                 startTime="Anytime"
-                duration="10"
-                totalLectures="10"
+                duration="10 total hours"
+                totalLectures="10 lessons"
                 id={course.course._id}
                 onClickLink={`/client/my-courses/${course.course._id}`}
                 maxWidth="none"

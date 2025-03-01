@@ -4,6 +4,7 @@ import Button from '../ui/button/button';
 import CourseCard from '../atom/courseCard';
 import { getFetchRequests } from '@/fetch ssr/getFetchRequests';
 import Link from 'next/link';
+import { formatDuration } from '@/utils/utils';
 
 export default async function Section3() {
 	const response = await getFetchRequests.getFeaturedCourses();
@@ -49,8 +50,8 @@ export default async function Section3() {
 							'Learn how to incorporate ESG factors into your investment strategy'
 						}
 						startTime="Anytime"
-						duration="10"
-						totalLectures="10"
+						duration={formatDuration(firstCourse?.statistics?.totalDuration) || ''}
+						totalLectures={`${firstCourse?.statistics?.totalModules} modules and ${firstCourse?.statistics?.totalLessons} lectures` || ''}
 						id={firstCourse?._id}
 						maxWidth='300px'
 					/>
