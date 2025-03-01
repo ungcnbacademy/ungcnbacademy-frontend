@@ -16,6 +16,7 @@ export default function CourseCard({
   id,
   onClickLink,
   maxWidth = '400px',
+  buttonText = 'Course Details',
 }) {
   const [courseImage, setCourseImage] = useState(img);
   const onclickCourseHandler = () => {
@@ -27,14 +28,17 @@ export default function CourseCard({
   };
   return (
     <div className={styles.main} onClick={() => onclickCourseHandler()} style={{ maxWidth: maxWidth }}>
-      <Image
-        src={courseImage}
-        alt="Empty"
-        width={300}
-        height={200}
-        className={styles.image}
-        onError={() => setCourseImage('/assets/noImage.svg')}
-      />
+      <div className={styles.imageContainer}>
+        <Image
+          src={courseImage}
+          alt="Empty"
+          width={300}
+          height={200}
+          className={styles.image}
+          onError={() => setCourseImage('/assets/noImage.svg')}
+        />
+      </div>
+
       <div className={styles.container}>
         <p className={styles.title}>{truncateString(title, 55)}</p>
         <p className={styles.description}>{truncateString(description, 120)}</p>
@@ -52,7 +56,7 @@ export default function CourseCard({
         </div>
 
         <div className={styles.detailsButton}>
-          <p>Course Details</p>
+          <p>{buttonText}</p>
           <FaArrowRight className={styles.icon} />
         </div>
       </div>

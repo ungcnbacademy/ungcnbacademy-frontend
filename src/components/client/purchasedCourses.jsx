@@ -35,6 +35,7 @@ export default function PurchasedCourses() {
                 id={course.course._id}
                 onClickLink={`/client/my-courses/${course.course._id}`}
                 maxWidth="none"
+                buttonText="Start Learning"
               />
             ))}
           {response?.data?.length === 0 && (
