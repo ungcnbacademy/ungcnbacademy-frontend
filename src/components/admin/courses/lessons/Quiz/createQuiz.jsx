@@ -152,7 +152,7 @@ export default function CreateQuiz({ courseId, moduleId, lessonId, update = fals
               className={styles.select}
               options={[
                 { value: 'mcq', label: 'Multiple Choice' },
-                { value: 'text', label: 'Text' },
+                // { value: 'text', label: 'Text' },
               ]}
               variant="secondary"
             />

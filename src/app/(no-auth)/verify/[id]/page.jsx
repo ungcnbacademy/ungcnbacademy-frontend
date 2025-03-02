@@ -38,7 +38,7 @@ export default function VerifyCertificate({ params }) {
           title={response?.data?.moduleTitle || response?.data?.courseTitle}
           date={moment(response?.data?.issueDate).format('DD MMM YYYY')}
           certificateId={response?.data?.certificateId}
-        /> 
+        />
       )}
     </div>
   );
