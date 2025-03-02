@@ -62,7 +62,7 @@ export default function ProgressCard({ courseId }) {
                 className={styles.certificateBtn}
                 variant="primary"
                 onClick={() => {
-                  router.push('/verify/hgfd');
+                  router.push('/client/certificate/' + response?.data?._id);
                 }}
               />
             )}
@@ -100,7 +100,7 @@ export default function ProgressCard({ courseId }) {
                             <Button
                               text="Module Certificate"
                               onClick={() => {
-                                router.push('/verify/hgfd');
+                                router.push('/client/certificate/' + response?.data?._id + '/' + module?._id);
                               }}
                             />
                           )}
