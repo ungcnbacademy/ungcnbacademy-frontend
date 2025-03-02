@@ -36,9 +36,11 @@ export default function Certificate({ params }) {
   return (
     <div className={styles.main}>
       {loading && <LoadingDots />}
-      { message?.text && <div className={styles.msgContainer}>
-        <Message text={message?.text} type={message?.type} />
-      </div>}
+      {message?.text && (
+        <div className={styles.msgContainer}>
+          <Message text={message?.text} type={message?.type} />
+        </div>
+      )}
       {response?.data?.studentName && !loading && !error && (
         <GenerateCertificate
           name={response?.data?.studentName}

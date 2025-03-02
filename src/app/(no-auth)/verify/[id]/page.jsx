@@ -1,11 +1,45 @@
-import React from 'react';
+'use client';
+import React, { use, useEffect, useState } from 'react';
 import styles from './page.module.css';
 import Image from 'next/image';
+import useAxios from '@/hooks/useAxios';
+import { configuration } from '@/configuration/configuration';
+import Message from '@/components/ui/message/message';
+import GenerateCertificate from '@/components/atom/generateCertificate';
+import LoadingDots from '@/components/ui/loading/loadingDots';
+import moment from 'moment';
 
 export default function VerifyCertificate({ params }) {
+  const unwrappedParams = use(params);
+  const certificateId = unwrappedParams.id;
+  const [response, error, loading, axiosFetch] = useAxios();
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    axiosFetch({
+      method: 'Get',
+      url: `${configuration.certificate}/verify/${certificateId}`,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (error?.message) {
+      setMessage({ text: error?.message, type: 'error' });
+    }
+  }, [error]);
+
   return (
     <div className={styles.main}>
-      <Image src="/assets/certificate.webp" alt="certificate" width={1920} height={1080} className={styles.certificate} />
+      {loading && <LoadingDots />}
+      {message?.text && <Message text={message?.text} type={message?.type} />}
+      {response?.data && !loading && !error && (
+        <GenerateCertificate
+          name={response?.data?.studentName}
+          title={response?.data?.moduleTitle || response?.data?.courseTitle}
+          date={moment(response?.data?.issueDate).format('DD MMM YYYY')}
+          certificateId={response?.data?.certificateId}
+        /> 
+      )}
     </div>
   );
 }
