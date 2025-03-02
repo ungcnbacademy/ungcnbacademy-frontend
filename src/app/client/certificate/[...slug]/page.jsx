@@ -32,7 +32,7 @@ export default function Certificate({ params }) {
         <GenerateCertificate
           name={response?.data?.studentName}
           title={response?.data?.moduleTitle || response?.data?.courseTitle}
-          date={moment(response?.data?.issueDate).format('DD MMM, YYYY')}
+          date={moment(response?.data?.issueDate).format('DD MMM YYYY')}
           certificateId={response?.data?.certificateId}
         />
       )}

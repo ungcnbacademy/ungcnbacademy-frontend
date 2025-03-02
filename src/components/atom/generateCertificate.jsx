@@ -9,7 +9,7 @@ import LoadingDots from '../ui/loading/loadingDots';
 export default function GenerateCertificate({ name = '', title = '', date = '', certificateId = '' }) {
   const containerRef = useRef(null);
   const [imageSrc, setImageSrc] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const handleCapture = async () => {
     if (!containerRef.current) return;
