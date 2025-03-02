@@ -1,3 +1,12 @@
 .main {
   min-height: 85vh;
+  .msgContainer {
+    padding-inline: var(--global-padding-inline);
+    padding-block: 20px;
+    margin-top: 10%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
