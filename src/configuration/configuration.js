@@ -9,6 +9,7 @@ export const configuration = {
   certificate: '/final-cert',
   admin: {
     admin: '/admin/users', //admin create, delete, update
+    quizReview: '/admin/quizzes/ungraded',
   },
   client: {
     clientSignup: '/auth/signup', //client signup
