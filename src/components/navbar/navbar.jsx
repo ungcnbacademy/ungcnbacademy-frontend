@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, act } from 'react';
+import { useState, useLayoutEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -16,7 +16,7 @@ export default function Navbar({ variant = 'transparent' }) {
   const [isShowMenu, setIsShowMenu] = useState(false);
 
   // Check scroll position to update navbar background
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (typeof window !== 'undefined') {
       const userData = JSON.parse(localStorage.getItem('user'));
       setUserDetails(userData);
@@ -50,6 +50,28 @@ export default function Navbar({ variant = 'transparent' }) {
       name: 'Courses',
       link: '/courses',
       active: pathParam === '/courses',
+    },
+    {
+      name: 'About Us',
+      link: '/about-us',
+      active: pathParam === '/about',
+      children: [
+        {
+          name: 'About Us',
+          link: '/about-us',
+          active: pathParam === '/about-us',
+        },
+        {
+          name: 'Our Team',
+          link: '/our-team',
+          active: pathParam === '/our-team',
+        },
+        {
+          name: 'Contact Us',
+          link: '/contact-us',
+          active: pathParam === '/contact-us',
+        },
+      ],
     },
     {
       name: 'Login',
@@ -177,9 +199,21 @@ export default function Navbar({ variant = 'transparent' }) {
       </div>
       <div className={styles.linkContainer}>
         {links.map((link) => (
-          <Link key={link.name} href={link.link} className={`${styles.link} ${link.active ? styles.active : ''}`}>
-            {link.name}
-          </Link>
+          <div className={styles.linkSection}>
+            <Link key={link.name} href={link.link} className={`${styles.link} ${link.active ? styles.active : ''}`}>
+              {link.name}
+            </Link>
+            {/* dropdown section */}
+            {link.children && (
+              <div className={styles.dropdown}>
+                {link.children.map((child, i) => (
+                  <Link key={i} href={child.link} className={`${styles.link} ${child.active ? styles.active : ''}`}>
+                    {child.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         ))}
         <IoMenuSharp className={styles.menuIcon} onClick={() => setIsShowMenu(true)} />
       </div>
