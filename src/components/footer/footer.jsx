@@ -80,15 +80,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className={styles.bottom}>
-        <div className={styles.line}></div>
-        <p>
-          © Copyright {new Date().getFullYear()} All Rights Reserved, developed by{' '}
-          <span className={styles.developer} onClick={() => window.open(companyInfo.developer.website)}>
-            {companyInfo.developer.company}
-          </span>
-        </p>
-      </div>
+      <div className={styles.bottom}></div>
     </div>
   );
 }
