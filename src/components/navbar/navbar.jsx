@@ -57,7 +57,7 @@ export default function Navbar({ variant = 'transparent' }) {
       active: pathParam === '/about',
       children: [
         {
-          name: 'About Us',
+          name: 'About UNGCNB',
           link: '/about-us',
           active: pathParam === '/about-us',
         },
