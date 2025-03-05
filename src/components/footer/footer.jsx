@@ -13,13 +13,37 @@ import { RiInstagramFill } from 'react-icons/ri';
 import { IoLogoWhatsapp } from 'react-icons/io';
 import { FaLinkedin } from 'react-icons/fa';
 import { companyInfo } from '@/constants/constants';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
     <div className={styles.main}>
       <div className={styles.top}>
         <div className={styles.card}>
-          <h2 className={styles.title}>Contact Us</h2>
+          <Image src={'/logo.svg'} alt="Logo" width={160} height={50} />
+        </div>
+        <div className={styles.card}>
+          <h2 className={styles.title}>Learn more</h2>
+          <ul>
+            {MainMenu.map((item, index) => (
+              <li key={index}>
+                <Link href={item.link}>{item.name}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className={styles.card}>
+          <h2 className={styles.title}>Support</h2>
+          <ul>
+            {legalMenu.map((item, index) => (
+              <li key={index}>
+                <Link href={item.link}>{item.name}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className={styles.card}>
+          <h2 className={styles.title}>Get in touch</h2>
           <div className={styles.contactInfo}>
             <a href={`tel:${companyInfo.phone}`}>
               <div className={styles.phoneContainer}>
@@ -41,31 +65,13 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <div className={styles.card}>
-          <h2 className={styles.title}>Company</h2>
-
-          {
-            <ul>
-              {MainMenu.map((item, index) => (
-                <li key={index}>
-                  <Link href={item.link}>{item.name}</Link>
-                </li>
-              ))}
-            </ul>
-          }
+      </div>
+      <div className={styles.bottom}>
+        <div className={styles.left}>
+          <p className={styles.text}>An initiative of the Sustainable Development Solutions Network</p>
+          <Image src={'/SDSN-logo.svg'} alt="Logo" width={175} height={70} />
         </div>
-        <div className={styles.card}>
-          <h2 className={styles.title}>Legal</h2>
-          <ul>
-            {legalMenu.map((item, index) => (
-              <li key={index}>
-                <Link href={item.link}>{item.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className={styles.card}>
-          <h2 className={styles.title}>Follow us on</h2>
+        <div className={styles.right}>
           <div className={styles.social}>
             <FaFacebookSquare className={styles.icon} onClick={() => window.open(companyInfo.socials.facebook)} />
             <IoLogoYoutube className={styles.icon} onClick={() => window.open(companyInfo.socials.youtube)} />
@@ -80,7 +86,11 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className={styles.bottom}></div>
+      <div>
+        <p className={styles.copyright}>
+          Copyright &copy; {new Date().getFullYear()} {companyInfo.name}. All rights reserved.
+        </p>
+      </div>
     </div>
   );
 }
