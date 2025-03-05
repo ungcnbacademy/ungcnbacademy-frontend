@@ -198,9 +198,9 @@ export default function Navbar({ variant = 'transparent' }) {
         </Link>
       </div>
       <div className={styles.linkContainer}>
-        {links.map((link) => (
-          <div className={styles.linkSection}>
-            <Link key={link.name} href={link.link} className={`${styles.link} ${link.active ? styles.active : ''}`}>
+        {links.map((link, i) => (
+          <div className={styles.linkSection} key={i}>
+            <Link href={link.link} className={`${styles.link} ${link.active ? styles.active : ''}`}>
               {link.name}
             </Link>
             {/* dropdown section */}
