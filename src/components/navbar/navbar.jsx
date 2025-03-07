@@ -96,6 +96,28 @@ export default function Navbar({ variant = 'transparent' }) {
       active: pathParam === '/courses',
     },
     {
+      name: 'About Us',
+      link: '/about-us',
+      active: pathParam === '/about',
+      children: [
+        {
+          name: 'About UNGCNB',
+          link: '/about-us',
+          active: pathParam === '/about-us',
+        },
+        {
+          name: 'Our Team',
+          link: '/about-us#team',
+          active: pathParam === '/about-us#team',
+        },
+        {
+          name: 'Contact Us',
+          link: '/contact-us',
+          active: pathParam === '/contact-us',
+        },
+      ],
+    },
+    {
       name: 'Profile',
       link: '/client/profile',
       active: pathParam === '/client/profile',
@@ -122,6 +144,28 @@ export default function Navbar({ variant = 'transparent' }) {
       name: 'Courses',
       link: '/courses',
       active: pathParam === '/courses',
+    },
+    {
+      name: 'About Us',
+      link: '/about-us',
+      active: pathParam === '/about',
+      children: [
+        {
+          name: 'About UNGCNB',
+          link: '/about-us',
+          active: pathParam === '/about-us',
+        },
+        {
+          name: 'Our Team',
+          link: '/about-us#team',
+          active: pathParam === '/about-us#team',
+        },
+        {
+          name: 'Contact Us',
+          link: '/contact-us',
+          active: pathParam === '/contact-us',
+        },
+      ],
     },
     {
       name: 'Dashboard',
