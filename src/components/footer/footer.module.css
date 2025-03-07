@@ -18,6 +18,7 @@
         font-weight: 300;
       }
       .contactInfo {
+        margin-top: 10px;
         .phoneContainer,
         .emailContainer,
         .addressContainer {
@@ -28,9 +29,10 @@
           cursor: pointer;
           font-weight: 300;
           width: fit-content;
+
           .icon {
             font-size: 0.8rem;
-            margin-top: 4px;
+            margin-top: 2px;
           }
           .span {
             flex: 1;

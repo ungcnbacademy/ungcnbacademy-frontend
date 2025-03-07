@@ -45,6 +45,9 @@ export default function Footer() {
         </div>
         <div className={styles.card}>
           <h2 className={styles.title}>Get in touch</h2>
+          <ul>
+            <li><Link href="/contact-us">Contact us</Link></li>
+          </ul>
           <div className={styles.contactInfo}>
             <a href={`tel:${companyInfo.phone}`}>
               <div className={styles.phoneContainer}>
@@ -58,12 +61,12 @@ export default function Footer() {
                 <span className={styles.span}>{companyInfo.email}</span>
               </div>
             </a>
-            <a href={companyInfo.googleMapAddress} target="_blank">
+            {/* <a href={companyInfo.googleMapAddress} target="_blank">
               <div className={styles.addressContainer}>
                 <FaLocationDot className={styles.icon} />
                 <span className={styles.span}>{companyInfo.address}</span>
               </div>
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

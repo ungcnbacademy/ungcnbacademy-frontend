@@ -3,10 +3,11 @@ export const MainMenu = [
     name: 'About Us',
     link: '/about-us',
   },
+  // {
+  //   name: 'Login',
+  //   link: '/login',
+  // },
   {
-    name: 'Login',
-    link: '/login',
-  },{
     name: 'Signup',
     link: '/signup',
   },
@@ -29,8 +30,8 @@ export const legalMenu = [
     name: 'Cookies Policy',
     link: '/cookie-policy',
   },
-  {
-    name: 'Terms & Use',
-    link: '/terms-of-use',
-  },
+  // {
+  //   name: 'Terms & Use',
+  //   link: '/terms-of-use',
+  // },
 ];
