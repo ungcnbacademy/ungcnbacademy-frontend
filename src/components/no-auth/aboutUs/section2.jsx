@@ -5,7 +5,7 @@ export default function Section2() {
   return (
     <div className={styles.main}>
       <p className={styles.text}>
-        The {companyInfo.name} is made possible through the generous support of the ESG institute Bangladesh. Support from others are gratefully acknowledged.
+        The <span className={styles.span}>{companyInfo.name}</span>  is made possible through the generous support of the <span className={styles.span}> ESG Institute Bangladesh</span>. Support from others are gratefully acknowledged.
       </p>
     </div>
   );

@@ -13,5 +13,8 @@
     color: var(--foreground-light);
     max-width: 700px;
     text-shadow: 0 1px 12px rgba(128, 128, 128, 0.3);
+    .span{
+      color: var(--foreground-dark);
+    }
   }
 }
