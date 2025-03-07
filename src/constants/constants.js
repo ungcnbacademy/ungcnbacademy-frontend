@@ -31,9 +31,9 @@ export const clientPaymentStatus = {
 };
 
 export const companyInfo = {
-  companyName: 'ESG edTech',
-  websiteName: 'ESG edTech',
-  name: 'ESG edTech',
+  companyName: 'UNGCNB Academy',
+  websiteName: 'UNGCNB Academy',
+  name: 'UNGCNB Academy',
   address: '6th Floor, BIMS Bhaban, 3 Progoti Sharani, Dhaka 1212, Bangladesh',
   phone: '+8801626-658248',
   email: 'info@esginstitutebd.com',
