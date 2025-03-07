@@ -56,7 +56,7 @@ export default function DashboardMenu() {
             src="/logoBlack.svg"
             priority={true}
             alt="Logo"
-            width={110}
+            width={150}
             height={50}
             style={{ display: isOpen ? 'none' : 'none' }}
           />

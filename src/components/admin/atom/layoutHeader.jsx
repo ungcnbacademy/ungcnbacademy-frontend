@@ -29,7 +29,7 @@ export default function LayoutHeader() {
   return (
     <div className={styles.main}>
       <Link href="/">
-        <Image src="/logoBlack.svg" priority={true} alt="Logo" width={110} height={50} style={{ visibility: 'visible' }} />
+        <Image src="/logoBlack.svg" priority={true} alt="Logo" width={150} height={50} style={{ visibility: 'visible' }} />
       </Link>
 
       <div className={styles.dropdown} onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>

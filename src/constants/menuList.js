@@ -1,15 +1,14 @@
 export const MainMenu = [
   {
-    name: 'Home',
-    link: '/',
-  },
-  {
     name: 'About Us',
     link: '/about-us',
   },
   {
-    name: 'Contact Us',
-    link: '/contact-us',
+    name: 'Login',
+    link: '/login',
+  },{
+    name: 'Signup',
+    link: '/signup',
   },
   {
     name: 'Verify Certificate',

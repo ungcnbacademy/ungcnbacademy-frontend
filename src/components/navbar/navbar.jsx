@@ -191,7 +191,7 @@ export default function Navbar({ variant = 'transparent' }) {
           <Image
             src={scrolled && variant === 'transparent' ? logoForDifferentVariants.scrolled : logoForDifferentVariants[variant]}
             alt="Logo"
-            width={150}
+            width={180}
             height={40}
             priority={true}
           />

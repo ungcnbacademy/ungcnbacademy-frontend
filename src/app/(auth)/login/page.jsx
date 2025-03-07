@@ -70,7 +70,7 @@ export default function Login() {
 				<Image
 					src={'/logoBlack.svg'}
 					alt="Logo"
-					width={160}
+					width={180}
 					height={50}
 				/>
 			</Link>

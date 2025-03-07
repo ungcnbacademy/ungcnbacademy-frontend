@@ -102,7 +102,7 @@ export default function Signup() {
   return (
     <div className={styles.main}>
       <Link href="/">
-        <Image src={'/logoBlack.svg'} alt="Logo" width={160} height={50} />
+        <Image src={'/logoBlack.svg'} alt="Logo" width={180} height={50} />
       </Link>
       <form onSubmit={onSignupSubmitHandlerAsync} className={styles.form}>
         <label className={styles.label}>First Name</label>
