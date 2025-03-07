@@ -7,7 +7,7 @@ export default function Info() {
       <p className={styles.text}>
         The <span className={styles.span}>{companyInfo.name}</span> is a dedicated learning platform designed to empower
         businesses, professionals, and stakeholders with the knowledge and skills needed to drive sustainable change. As an
-        initiative of the <span className={styles.span}>Global Compact Network Bangladesh (GCNB)</span> , the academy supports the
+        initiative of the <span className={styles.span}>Global Compact Network Bangladesh (GCNB)</span>, the academy supports the
         advancement of <span className={styles.span}>the Ten Principles of the UN Global Compact </span> and the{' '}
         <span className={styles.span}> United Nations Sustainable Development Goals (SDGs)</span> through capacity-building
         programs, training sessions, and expert-led discussions.
