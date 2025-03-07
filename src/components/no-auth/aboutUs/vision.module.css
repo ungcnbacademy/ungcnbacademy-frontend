@@ -1,0 +1,21 @@
+.main {
+  padding-inline: var(--global-padding-inline);
+  padding-block: 0px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+  .text {
+    font-size: 1rem;
+    line-height: 2rem;
+    font-weight: 300;
+    color: var(--foreground-dark);
+    text-shadow: 0 1px 12px rgba(128, 128, 128, 0.3);
+    max-width: 800px;
+    .span {
+      font-weight: 500;
+      color: var(--accent2);
+    }
+  }
+}

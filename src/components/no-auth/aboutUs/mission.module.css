@@ -1,0 +1,33 @@
+.main {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  padding-inline: var(--global-padding-inline);
+  padding-block: 100px;
+  gap: 20px;
+  .left {
+    flex: 1 300px;
+    .text {
+      font-size: 1rem;
+      line-height: 2rem;
+      font-weight: 300;
+      color: var(--foreground-dark);
+      text-shadow: 0 1px 12px rgba(128, 128, 128, 0.3);
+    }
+    .logo {
+      margin-top: 50px;
+      height: auto;
+      width: 200px;
+    }
+  }
+  .right {
+    flex: 1 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .image {
+      aspect-ratio: 1;
+      height: auto;
+      width: 80%;
+    }
+  }
+}
