@@ -63,8 +63,8 @@ export default function Navbar({ variant = 'transparent' }) {
         },
         {
           name: 'Our Team',
-          link: '/our-team',
-          active: pathParam === '/our-team',
+          link: '/about-us#team',
+          active: pathParam === '/about-us#team',
         },
         {
           name: 'Contact Us',
