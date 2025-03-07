@@ -41,10 +41,10 @@ export const companyInfo = {
   googleMapAddress:
     'https://www.google.com/maps/place/ESG+Institute+Bangladesh/@23.7907918,90.4251343,17z/data=!3m1!4b1!4m6!3m5!1s0x3755c700057bae11:0xb1dc187232bc98b6!8m2!3d23.7907918!4d90.4251343!16s%2Fg%2F11ln9dw9zl?entry=ttu&g_ep=EgoyMDI1MDEyMi4wIKXMDSoASAFQAw%3D%3D',
   socials: {
-    facebook: 'https://www.facebook.com',
+    facebook: 'https://www.facebook.com/GlobalCompactBangladesh',
     twitter: 'https://twitter.com/',
     instagram: 'https://www.instagram.com/',
-    linkedin: 'https://www.linkedin.com/',
+    linkedin: 'https://www.linkedin.com/company/global-compact-network-bangladesh/',
     youtube: 'https://www.youtube.com/',
     whatsapp: 'https://wa.me/8801626658248',
   },

@@ -66,11 +66,30 @@
     margin-top: 50px;
     padding-block: 50px;
 
+    .middle {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      .text {
+        font-size: 0.8rem;
+        max-width: 200px;
+        font-weight: 200;
+      }
+      .esgLogo {
+        height: 55px;
+        width: auto;
+      }
+    }
     .left {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
       gap: 20px;
+      .ungcLogo {
+        height: auto;
+        width: 200px;
+      }
       .text {
         font-size: 0.8rem;
         max-width: 200px;

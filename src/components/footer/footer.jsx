@@ -11,6 +11,7 @@ import { FaFacebookSquare } from 'react-icons/fa';
 import { IoLogoYoutube } from 'react-icons/io';
 import { RiInstagramFill } from 'react-icons/ri';
 import { IoLogoWhatsapp } from 'react-icons/io';
+import { FaSquareXTwitter } from 'react-icons/fa6';
 import { FaLinkedin } from 'react-icons/fa';
 import { companyInfo } from '@/constants/constants';
 import Image from 'next/image';
@@ -69,20 +70,17 @@ export default function Footer() {
       <div className={styles.bottom}>
         <div className={styles.left}>
           <p className={styles.text}>An initiative of the Sustainable Development Solutions Network</p>
-          <Image src={'/SDSN-logo.svg'} alt="Logo" width={175} height={70} />
+          <Image src={'/ungc.png'} alt="Logo" width={200} height={50} className={styles.ungcLogo} />
+        </div>
+        <div className={styles.middle}>
+          <p className={styles.text}>Knowledge partner</p>
+          <Image src={'/esg-logo.png'} alt="Logo" width={200} height={50} className={styles.esgLogo} />
         </div>
         <div className={styles.right}>
           <div className={styles.social}>
             <FaFacebookSquare className={styles.icon} onClick={() => window.open(companyInfo.socials.facebook)} />
-            <IoLogoYoutube className={styles.icon} onClick={() => window.open(companyInfo.socials.youtube)} />
-            <RiInstagramFill className={styles.icon} onClick={() => window.open(companyInfo.socials.instagram)} />
+            <FaSquareXTwitter className={styles.icon} onClick={() => window.open(companyInfo.socials.twitter)} />
             <FaLinkedin className={styles.icon} onClick={() => window.open(companyInfo.socials.linkedin)} />
-            <IoLogoWhatsapp
-              className={styles.icon}
-              onClick={() => {
-                window.open(companyInfo.socials.whatsapp);
-              }}
-            />
           </div>
         </div>
       </div>
