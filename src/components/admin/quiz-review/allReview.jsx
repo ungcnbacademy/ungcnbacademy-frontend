@@ -2,7 +2,7 @@
 import Table from '@/components/ui/table/table';
 import useAxios from '@/hooks/useAxios';
 import { configuration } from '@/configuration/configuration';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BiRefresh } from 'react-icons/bi';
 import Tooltip from '@/components/ui/tooltip/tooltip';
 import Tag from '@/components/ui/tag/tag';
@@ -31,39 +31,35 @@ export default function AllReview() {
 
   const columns = [
     {
-      title: 'First Name',
-      dataIndex: 'firstName',
+      title: 'Quiz title',
+      dataIndex: 'quiz',
+      render: (quiz) => {
+        return quiz?.title;
+      },
     },
     {
-      title: 'Last Name',
-      dataIndex: 'lastName',
+      title: 'Name',
+      dataIndex: 'user',
+      render: (user) => {
+        return user?.name;
+      },
     },
     {
       title: 'Email',
-      dataIndex: 'email',
-    },
-    {
-      title: 'Verified',
-      dataIndex: 'isEmailVerified',
-      render: (isEmailVerified) => {
-        return (
-          <>
-            {isEmailVerified ? <p className={styles.verified}>Verified</p> : <p className={styles.notVerified}>Not Verified</p>}
-          </>
-        );
+      dataIndex: 'user',
+      render: (user) => {
+        return user?.email;
       },
     },
     {
-      title: 'Role',
-      dataIndex: 'role',
-      render: (role) => {
-        return <>{userRoles?.admin[role]?.title || userRoles?.client.title}</>;
-      },
+      title: 'Total question',
+      dataIndex: 'textQuestionsCount',
     },
+
     {
-      title: 'Created at',
-      dataIndex: 'createdAt',
-      render: (createdAt) => moment(createdAt).format('DD-MM-YYYY HH:mm A'),
+      title: 'Submitted at',
+      dataIndex: 'submittedAt',
+      render: (submittedAt) => moment(submittedAt).format('DD-MM-YYYY HH:mm A'),
     },
   ];
 
@@ -86,7 +82,7 @@ export default function AllReview() {
           }}
         />
       </div>
-      <Table columns={columns} dataSource={response?.data?.users} loading={loading} />
+      <Table columns={columns} dataSource={response?.data} loading={loading} />
     </div>
   );
 }
