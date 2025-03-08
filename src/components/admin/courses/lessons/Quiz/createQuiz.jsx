@@ -43,7 +43,7 @@ export default function CreateQuiz({ courseId, moduleId, lessonId, update = fals
         ...quiz.questions,
         {
           question: '',
-          type: 'mcq',
+          type: '',
           marks: 1,
           options: [{ option: '', isCorrect: false }],
         },
@@ -82,12 +82,27 @@ export default function CreateQuiz({ courseId, moduleId, lessonId, update = fals
       updatedQuestions[index].options[optionIndex][name] = type === 'checkbox' ? checked : value;
       setQuiz({ ...quiz, questions: updatedQuestions });
     }
+
+    if (value === 'text' && type === 'select-one') {
+      console.log('first');
+      //remove all options from questions
+      const updatedQuestions = [...quiz.questions];
+      delete updatedQuestions[index].options;
+      setQuiz({ ...quiz, questions: updatedQuestions });
+    }
+    if (value === 'mcq' && type === 'select-one') {
+      console.log('second');
+      //initiate options: [{ option: '', isCorrect: false }],
+      const updatedQuestions = [...quiz.questions];
+      updatedQuestions[index].options = [{ option: '', isCorrect: false }];
+      setQuiz({ ...quiz, questions: updatedQuestions });
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setMessage({ text: '', type: '' });
-    //console.log('Quiz Payload:', quiz);
+    console.log('Quiz Payload:', quiz);
     axiosFetch({
       method: update ? 'PUT' : 'POST',
       url: configuration.courses + '/' + courseId + '/modules/' + moduleId + '/lessons/' + lessonId + '/quiz',
@@ -152,15 +167,15 @@ export default function CreateQuiz({ courseId, moduleId, lessonId, update = fals
               className={styles.select}
               options={[
                 { value: 'mcq', label: 'Multiple Choice' },
-                // { value: 'text', label: 'Text' },
+                { value: 'text', label: 'Text' },
               ]}
               variant="secondary"
             />
 
-            {q.type === 'mcq' && (
+            {q?.type === 'mcq' && (
               <div className={styles.optionsWrapper}>
                 <p className={styles.optionsHeader}>Options:</p>
-                {q.options.map((option, optIndex) => (
+                {q?.options.map((option, optIndex) => (
                   <div key={optIndex} className={styles.optionContainer}>
                     <label>Option {optIndex + 1}:</label>
                     <div className={styles.optionInputContainer}>
