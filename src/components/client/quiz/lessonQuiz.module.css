@@ -63,6 +63,14 @@
         font-size: 0.9rem;
         color: var(--foreground-dark);
       }
+      .textarea {
+        min-height: 100px;
+        width: 100%;
+        border: solid 1px rgb(204, 204, 204);
+        padding: 10px;
+        outline: none;
+        resize: vertical;
+      }
     }
   }
 }

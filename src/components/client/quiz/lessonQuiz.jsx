@@ -53,11 +53,19 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
       answers: [],
     };
     response?.data?.questions.forEach((question, index) => {
-      data.answers.push({
-        questionId: question._id,
-        selectedOption: formData.get(question.question),
-      });
+      question?.type === 'mcq' &&
+        data.answers.push({
+          questionId: question._id,
+          selectedOption: formData.get(question.question),
+        });
+
+      question?.type === 'text' &&
+        data.answers.push({
+          questionId: question._id,
+          textAnswer: formData.get(question.question),
+        });
     });
+
     axiosFetchSubmit({
       url: `${configuration.courses}/${courseId}/modules/${moduleId}/lessons/${lessonId}/quiz/attempts/${response?.data?.attemptId}/submit`,
       method: 'POST',
@@ -84,12 +92,16 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
               <p className={styles.question}>
                 {index + 1}. {question?.question}
               </p>
-              {question?.options.map((option, index) => (
-                <div key={index} className={styles.optionContainer}>
-                  <input type="radio" name={question?.question} value={option.option} />
-                  <label htmlFor="">{option.option}</label>
-                </div>
-              ))}
+              {question?.options &&
+                question?.options.map((option, index) => (
+                  <div key={index} className={styles.optionContainer}>
+                    <input type="radio" name={question?.question} value={option.option} />
+                    <label htmlFor="">{option.option}</label>
+                  </div>
+                ))}
+              {question?.type === 'text' && (
+                <textarea name={question?.question} placeholder="Enter your answer" className={styles.textarea} />
+              )}
             </div>
           ))}
           <Message text={message?.text} type={message?.type} />
