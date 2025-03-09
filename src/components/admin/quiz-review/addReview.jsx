@@ -33,7 +33,6 @@ export default function AddReview({ questionId, attemptId, courseId, moduleId, l
     const formData = new FormData(event.target);
     const payload = Object.fromEntries(formData);
 
-    // /api/courses/{{courseId}}/modules/{{moduleId}}/lessons/{{lessonId}}/quiz/attempts/{{attemptId}}/grade
     axiosFetch({
       method: 'POST',
       url:
