@@ -7,56 +7,47 @@ import Link from 'next/link';
 import { formatDuration } from '@/utils/utils';
 
 export default async function Section3() {
-	const response = await getFetchRequests.getFeaturedCourses();
-	const firstCourse = response?.data?.courses[0];
+  const response = await getFetchRequests.getFeaturedCourses();
+  const firstCourse = response?.data?.courses[0];
 
-	return (
-		<div className={styles.overlay}>
-			<div className={styles.main}>
-				<div className={styles.left}>
-					<div className={styles.container}>
-						<h1 className={styles.title}>
-							Our Specialized Courses
-						</h1>
-						<p className={styles.description}>
-							You can expect the kinds of benefits that set you up
-							for long-term professional and personal growth
-						</p>
-						<p className={styles.description}>
-							1. Earn valuable credentials from top universities
-							and companies. <br /> 2. Access career support and
-							planning resources. <br />
-							3. Learn from world-class university faculty and
-							industry leaders. <br /> 4. Upskill at your pace
-							with flexible hybrid or 100% online options. <br />{' '}
-							5. Join a global network of professionals in your
-							industry.
-						</p>
-						<br />
-						<Link href="/courses" className={styles.link}>
-							<Button text="Our Courses" variant="outLined" />
-						</Link>
-						<br />
-					</div>
-				</div>
-				<div className={styles.right}>
-					<CourseCard
-						img={firstCourse?.thumbnail || '/assets/auth-bg.webp'}
-						title={
-							firstCourse?.title || 'ESG Investing and Analysis'
-						}
-						description={
-							firstCourse?.description ||
-							'Learn how to incorporate ESG factors into your investment strategy'
-						}
-						startTime="Anytime"
-						duration={formatDuration(firstCourse?.statistics?.totalDuration) || ''}
-						totalLectures={`${firstCourse?.statistics?.totalModules} modules and ${firstCourse?.statistics?.totalLessons} lectures` || ''}
-						id={firstCourse?._id}
-						maxWidth='300px'
-					/>
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div className={styles.overlay}>
+      <div className={styles.main}>
+        <div className={styles.left}>
+          <div className={styles.container}>
+            <h1 className={styles.title}>Our Courses</h1>
+            <p className={styles.description}>
+              Our learning portfolio offers a diverse range of free online courses led by experts from global institutions,
+              academia, and industry leaders. These courses feature insights from professionals at the United Nations,
+              international financial institutions, renowned universities, and leading sustainability organizations.
+            </p>{' '}
+            <p className={styles.description}>
+              Additionally, our UNGCNB Academy Library provides a comprehensive collection of educational resources, offering
+              on-demand access to expert-led lectures, case studies, and training materials designed to support lifelong learning
+              in ESG, corporate sustainability, and responsible business practices.
+            </p>
+            <br />
+            <Link href="/courses" className={styles.link}>
+              <Button text="Our Courses" />
+            </Link>
+            <br />
+          </div>
+        </div>
+        <div className={styles.right}>
+          <CourseCard
+            img={firstCourse?.thumbnail || '/assets/auth-bg.webp'}
+            title={firstCourse?.title || 'ESG Investing and Analysis'}
+            description={firstCourse?.description || 'Learn how to incorporate ESG factors into your investment strategy'}
+            startTime="Anytime"
+            duration={formatDuration(firstCourse?.statistics?.totalDuration) || ''}
+            totalLectures={
+              `${firstCourse?.statistics?.totalModules} modules and ${firstCourse?.statistics?.totalLessons} lectures` || ''
+            }
+            id={firstCourse?._id}
+            maxWidth="300px"
+          />
+        </div>
+      </div>
+    </div>
+  );
 }

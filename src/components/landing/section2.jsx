@@ -1,20 +1,27 @@
 import React from 'react';
-import Button from '../ui/button/button';
 import styles from './section2.module.css';
+import Image from 'next/image';
 export default function Section2() {
-	return (
-		<div className={styles.main}>
-			<div className={styles.left}></div>
-			<div className={styles.right}>
-				<div className={styles.container}>
-					<h1 className={styles.title}>You set the goal. We'll mark the path.</h1>
-					<p className={styles.description}>
-          Career progress isn't always linear. So when your industry evolves or your plans change, edX is the education destination that works as hard as you. Explore thousands of job-relevant online courses that empower you to ramp up, reroute, or start fresh. We'll be with you every step of the way.
-					</p>
-					<br />
-					<Button text="Try Now" variant="secondary" />
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div className={styles.main}>
+      <div className={styles.top}>
+        <div className={styles.left}>
+          <div className={styles.box}></div>
+          <div className={styles.box}>
+            <p className={styles.title}>LEARN HOW WE CAN NOT JUST COEXIST ON THIS PLANET, BUT COME TOGETHER TO SAVE IT.</p>
+          </div>
+        </div>
+        <div className={styles.right}>
+          <div className={styles.box}>
+            <p className={styles.title}>THE PREMIER SOURCE OF HIGH-QUALITY RESOURCES AND GUIDANCE ON EDUCATION FOR THE SDGS.</p>
+          </div>
+          <div className={styles.box}></div>
+          <div className={styles.box}></div>
+          <div className={styles.box}>
+            <p className={styles.title}>Universal education for sustainable development is within reach.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
