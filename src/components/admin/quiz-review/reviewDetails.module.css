@@ -24,5 +24,10 @@
   }
   .questionBlock{
     border: solid;
+    padding: 10px;
+  }
+  .questionBlock > p{
+    font-size: 0.85rem;
+    color: var(--foreground-light);
   }
 }
