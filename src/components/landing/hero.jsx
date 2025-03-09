@@ -22,7 +22,7 @@ export default function Hero() {
         <div className={styles.container}>
           <div className={styles.box1}>
             <Image
-              src="/assets/landing/hero/1.jpeg"
+              src="/assets/landing/hero/1.webp"
               alt="hero"
               width={300}
               height={500}
