@@ -1,12 +1,36 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import styles from './reviewDetails.module.css';
 import moment from 'moment';
 import Button from '@/components/ui/button/button';
 import CheckMark from '@/components/client/atom/checkMark';
+import Drawer from '@/components/ui/drawer/drawer';
+import AddReview from './addReview';
 
 export default function ReviewDetails({ data }) {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [reviewQuestionId, setReviewQuestionId] = useState(null);
+console.log(data)
+  const drawerOpenAddReview = () => {
+    return (
+      <>
+        {isDrawerOpen && (
+          <Drawer title="Add Review" closeFunction={() => setIsDrawerOpen(false)}>
+            <AddReview
+              questionId={reviewQuestionId}
+              attemptId={data.attemptId}
+              courseId={data.course.id}
+              moduleId={data.module.id}
+              lessonId={data.lesson.id}
+            />
+          </Drawer>
+        )}
+      </>
+    );
+  };
   return (
     <div className={styles.main}>
+      {drawerOpenAddReview()}
       <div className={styles.container}>
         <div>
           <h1 className={styles.title}>{data.course.title}</h1>
@@ -32,10 +56,10 @@ export default function ReviewDetails({ data }) {
               <strong>Total Marks:</strong> {data.quiz.totalMarks}
             </p>
             <p>
-              <strong>Start Time:</strong> {moment(data.startTime).format('lll')}
+              <strong>Started at:</strong> {moment(data.startTime).format('lll')}
             </p>
             <p>
-              <strong>Submit Time:</strong> {moment(data.submitTime).format('lll')}
+              <strong>Submitted at:</strong> {moment(data.submitTime).format('lll')}
             </p>
             <p>
               <strong>Status:</strong> {data.status}
@@ -70,7 +94,7 @@ export default function ReviewDetails({ data }) {
                   {question?.options.map((option, index) => (
                     <div key={index} className={styles.optionContainer}>
                       <label className={styles.option}>
-                        {index + 1}. {option.option} {option.isCorrect && <CheckMark/>}
+                        {index + 1}. {option.option} {option.isCorrect && <CheckMark />}
                       </label>
                     </div>
                   ))}
@@ -89,7 +113,14 @@ export default function ReviewDetails({ data }) {
                   <p>
                     <strong>Answer:</strong> {question.userAnswer.textAnswer}
                   </p>
-                  <Button text="Add review" className={styles.addReviewBtn} />
+                  <Button
+                    text="Add review"
+                    className={styles.addReviewBtn}
+                    onClick={() => {
+                      setIsDrawerOpen(true);
+                      setReviewQuestionId(question.questionId);
+                    }}
+                  />
                 </>
               )}
             </div>
