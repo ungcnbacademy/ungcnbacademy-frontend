@@ -10,6 +10,8 @@ import Pagination from '@/components/ui/pagination/pagination';
 import { tableDefaultItemLimit, userRoles } from '@/constants/constants';
 import moment from 'moment';
 import styles from './allReview.module.css';
+import Link from 'next/link';
+import { IoMdInformationCircleOutline } from 'react-icons/io';
 
 export default function AllReview() {
   const [response, error, loading, axiosFetch] = useAxios();
@@ -32,9 +34,18 @@ export default function AllReview() {
   const columns = [
     {
       title: 'Quiz title',
-      dataIndex: 'quiz',
-      render: (quiz) => {
-        return quiz?.title;
+      dataIndex: '',
+      render: (_, record) => {
+        return (
+          <Link href={`/admin/quiz-review/${record?.attemptId}`}>
+            <div className={styles.title}>
+              {record?.quiz?.title}
+              <Tooltip content="Answer details" placement="top">
+                <IoMdInformationCircleOutline className={styles.infoIcon} />
+              </Tooltip>
+            </div>
+          </Link>
+        );
       },
     },
     {

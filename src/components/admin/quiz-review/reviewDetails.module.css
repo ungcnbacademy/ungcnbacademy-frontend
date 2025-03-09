@@ -1,0 +1,28 @@
+.main {
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .title {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  .section {
+    padding: 20px;
+    border-radius: var(--global-border-radius);
+    background-color: var(--background-dashboard);
+  }
+  .section > h2 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .section > p {
+    font-size: 0.85rem;
+    color: var(--foreground-light);
+  }
+  .questionBlock{
+    border: solid;
+  }
+}

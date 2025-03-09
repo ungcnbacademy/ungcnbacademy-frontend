@@ -10,7 +10,7 @@ export const configuration = {
   admin: {
     admin: '/admin/users', //admin create, delete, update
     quizReview: '/admin/quizzes/ungraded',
-    singleQuiz: '/admin/quizzes/attempts/'
+    singleQuiz: '/admin/quizzes/attempts'
   },
   client: {
     clientSignup: '/auth/signup', //client signup
