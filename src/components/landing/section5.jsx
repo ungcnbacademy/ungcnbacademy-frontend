@@ -1,39 +1,25 @@
 import React from 'react';
 import styles from './section5.module.css';
 import Image from 'next/image';
+import Link from 'next/link';
+import Button from '../ui/button/button';
 export default function Section5() {
-	return (
-		<div className={styles.main}>
-			<div className={styles.container}>
-				<div className={styles.left}>
-					<p className={styles.title}>
-						Learner outcomes on ESGeducation
-					</p>
-					<p className={styles.description}>
-						77% of learners report career benefits, such as new
-						skills, increased pay, and new job opportunities.
-					</p>
-					<p className={styles.description}>
-						By engaging with our exceptional faculty, students will:
-						<br /> <br />
-						1. Develop critical thinking and problem-solving skills
-						through real-world applications. <br /> 2. Gain insights
-						from leading academics and industry experts. <br /> 3.
-						Build a strong foundation in their chosen field,
-						enriched by global perspectives. <br /> 4. Cultivate a
-						passion for lifelong learning and professional growth."
-					</p>
-				</div>
-				<div className={styles.right}>
-					<Image
-						src="/assets/landing/badge.png"
-						alt="Empty"
-						width={150}
-						height={200}
-						className={styles.image}
-					/>
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div className={styles.main}>
+      <div className={styles.left}></div>
+      <div className={styles.right}>
+        <div className={styles.container}>
+          <h1 className={styles.title}>Meet Our Faculty</h1>
+          <p className={styles.description}>
+            SDG Academy courses and degree programs are taught by academics, practitioners, and global leaders. Learn about our
+            faculty here.
+          </p>
+          <br />
+          <Link href="/courses" className={styles.link}>
+            <Button text="Try Now" />
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
 }

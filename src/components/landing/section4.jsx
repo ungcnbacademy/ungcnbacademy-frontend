@@ -1,24 +1,31 @@
 import React from 'react';
 import styles from './section4.module.css';
 import Button from '../ui/button/button';
+import Link from 'next/link';
+import Image from 'next/image';
+
 export default function Section4() {
-	return (
-		<div className={styles.main}>
-			<div className={styles.container}>
-				<p className={styles.heading}>
-					Empowering Minds Through Excellence
-				</p>
-				<p className={styles.title}>Meet Our Faculty</p>
-				<p className={styles.description}>
-					We believe that learning begins with exceptional mentorship.
-					Our diverse team of educators brings a wealth of knowledge,
-					experience, and innovation to guide you toward achieving
-					your goals. Our courses and degree programs are taught by
-					academics, practitioners, and global leaders. Learn about
-					our faculty here.
-				</p>
-				<Button text="Meet Our Faculty" variant="secondary" />
-			</div>
-		</div>
-	);
+  return (
+    <div className={styles.main}>
+      <div className={styles.left}>
+        <p className={styles.text}>
+          The SDG Academy is a program of the Sustainable Development Solutions Network, a global initiative for the United
+          Nations supporting the Sustainable Development Goals.
+        </p>
+        <Link href="/about-us">
+          <Button text="About Us" variant="outLined" className={styles.button} />
+        </Link>
+      </div>
+      <div className={styles.right}>
+        <div className={styles.box}></div>
+        <div className={styles.box}>
+					<Image src='/SDSN-logo.svg' alt="Logo" width={300} height={80} />
+				</div>
+        <div className={styles.box}>
+				<Image src='/logoBlack.svg' alt="Logo" width={200} height={50} />
+				</div>
+        <div className={styles.box}></div>
+      </div>
+    </div>
+  );
 }

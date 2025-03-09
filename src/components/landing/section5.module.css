@@ -1,46 +1,49 @@
 .main {
-	padding-inline: var(--global-padding-inline);
-	padding-block: 30px;
-	height: clamp(fit-content, 40vh, 500px);
-	.container {
-		width: 100%;
-		height: 100%;
-		background-color: rgb(210, 230, 243);
-		padding: 5%;
-		border-radius: var(--global-border-radius);
-		display: flex;
-		flex-wrap: wrap-reverse;
-		align-items: center;
-		justify-content: space-between;
-		.left {
-			min-height: fit-content;
-			padding-block: 50px;
-			@media screen and (max-width: 650px) {
-				height: 50vh;
-			}
-			.title {
-				font-size: 2rem;
-				font-weight: 200;
-				line-height: 1.2;
-				max-width: 400px;
-				margin-bottom: 20px;
-			}
-			.description {
-				font-size: 0.8rem;
-				font-weight: 300;
-				max-width: 1000px;
-				margin-bottom: 20px;
-				color: var(--foreground-dark);
-			}
-		}
-		.right {
-			align-self: flex-end;
-			padding-block: 20px 0px;
-			margin-top: auto;
-			.image {
-				width: 150px;
-				height: auto;
-			}
-		}
-	}
+  display: flex;
+  flex-wrap: wrap;
+  /* height: clamp(fit-content, 90vh, 600px); */
+  min-height: fit-content;
+  height: 90vh;
+  max-height: 800px;
+
+
+  .left {
+    flex: 1 300px;
+    min-height: fit-content;
+    padding-block: 50px;
+		background-color: white;
+    @media screen and (max-width: 750px) {
+      display: none;
+    }
+  }
+	.right {
+    flex: 3 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: fit-content;
+		padding: var(--global-padding-inline);
+    @media screen and (max-width: 600px) {
+      height: 50vh;
+    }
+    /* padding-block: 50px;
+    padding-inline: var(--global-padding-inline); */
+    .container {
+      max-width: 400px;
+      .title {
+        font-size: 2rem;
+        font-weight: 300;
+        line-height: 1.2;
+        margin-bottom: 20px;
+      }
+      .description {
+        font-size: 0.9rem;
+        line-height: 1.5rem;
+        color: var(--foreground-light);
+        margin-bottom: 20px;
+        font-weight: 300;
+      }
+    }
+  }
 }
