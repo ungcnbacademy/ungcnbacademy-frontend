@@ -2,10 +2,6 @@
   display: flex;
   flex-wrap: wrap;
   /* height: clamp(fit-content, 90vh, 600px); */
-  min-height: fit-content;
-  height: 90vh;
-  max-height: 800px;
-
 
   .left {
     flex: 1 300px;
@@ -24,6 +20,7 @@
     justify-content: center;
     min-height: fit-content;
 		padding: var(--global-padding-inline);
+    height: 90vh;
     @media screen and (max-width: 600px) {
       height: 50vh;
     }
