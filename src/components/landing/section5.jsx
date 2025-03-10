@@ -3,6 +3,7 @@ import styles from './section5.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '../ui/button/button';
+import { companyInfo } from '@/constants/constants';
 export default function Section5() {
   return (
     <div className={styles.main}>
@@ -11,7 +12,7 @@ export default function Section5() {
         <div className={styles.container}>
           <h1 className={styles.title}>Meet Our Faculty</h1>
           <p className={styles.description}>
-            SDG Academy courses and degree programs are taught by academics, practitioners, and global leaders. Learn about our
+            {companyInfo.name} courses and degree programs are taught by academics, practitioners, and global leaders. Learn about our
             faculty here.
           </p>
           <br />
