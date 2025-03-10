@@ -73,7 +73,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-wrap: wrap;
+      /* flex-wrap: wrap; */
       gap: 20px;
       .text {
         font-size: 0.8rem;

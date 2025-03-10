@@ -21,7 +21,7 @@ export default function Footer() {
     <div className={styles.main}>
       <div className={styles.top}>
         <div className={styles.card}>
-          <Image src={'/logo.svg'} alt="Logo" width={180} height={60} />
+          <Image src={'/logo.svg'} alt="Logo" width={130} height={60} />
         </div>
         <div className={styles.card}>
           <h2 className={styles.title}>Learn more</h2>
