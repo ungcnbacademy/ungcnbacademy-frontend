@@ -14,7 +14,7 @@ export default function Section1() {
           </p>
           <br />
           <Link href="/courses" className={styles.link}>
-            <Button text="Try Now" />
+            <Button text="Start Learning" />
           </Link>
         </div>
       </div>

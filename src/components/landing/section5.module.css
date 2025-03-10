@@ -1,31 +1,29 @@
 .main {
   display: flex;
   flex-wrap: wrap;
-  /* height: clamp(fit-content, 90vh, 600px); */
-
   .left {
     flex: 1 300px;
     min-height: fit-content;
     padding-block: 50px;
-		background-color: white;
-    @media screen and (max-width: 750px) {
+    background-color: white;
+    height: 90vh;
+    @media screen and (max-width: 600px) {
+      height: 70vh;
       display: none;
     }
   }
-	.right {
+  .right {
     flex: 3 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: fit-content;
-		padding: var(--global-padding-inline);
+    padding: var(--global-padding-inline);
     height: 90vh;
     @media screen and (max-width: 600px) {
-      height: 50vh;
+      height: 70vh;
     }
-    /* padding-block: 50px;
-    padding-inline: var(--global-padding-inline); */
     .container {
       max-width: 400px;
       .title {
