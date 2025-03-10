@@ -19,16 +19,18 @@
 }
 
 .main .left > .title {
-  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-size: clamp(2.7rem, 5vw, 4.5rem);
   margin-bottom: 15px;
   font-weight: 600;
   color: var(--foreground-white);
+  font-family: var(--font-futuraPt);
 }
 
 .main .left > .description {
-  font-size: 1.2rem;
-  font-weight: 300;
+  font-size: 1.3rem;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-futuraPt);
 }
 
 .main .left .button {
