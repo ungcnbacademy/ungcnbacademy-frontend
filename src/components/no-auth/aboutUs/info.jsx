@@ -23,6 +23,16 @@ export default function Info() {
         Through structured learning modules, industry best practices, and real-world case studies, the academy equips individuals
         and organizations with the tools to integrate sustainability into their core strategies.
       </p>
+      <br />
+      <br />
+      <p className={styles.text}>
+        In today's rapidly evolving world, tackling sustainability challenges requires skilled professionals who can drive
+        responsible business practices and environmental stewardship. <span className={styles.span}>UNGCNB Academy</span> and{' '}
+        <span className={styles.span}>ESG Institute Bangladesh</span> are committed to equipping individuals with the knowledge,
+        tools, and strategies needed to advance the <span className={styles.span}> UN Global Compact principles, ESG frameworks, and sustainable development
+        goals.</span> Through specialized programs, research, and capacity-building initiatives, we empower businesses and stakeholders
+        to integrate sustainability into their core operations, ensuring long-term positive impact on society and the environment.
+      </p>
       <div className={styles.section}>
         <div className={styles.overlay}>
           <p className={styles.text1}>

@@ -11,13 +11,12 @@
     text-align: center;
   }
   .text {
-    font-size: 1rem;
+    font-size: 1.2rem;
     line-height: 2rem;
-    font-weight: 300;
+    font-weight: 400;
     color: var(--foreground-dark);
     max-width: 600px;
     margin-top: 10px;
-
     text-align: center;
   }
   .cards{

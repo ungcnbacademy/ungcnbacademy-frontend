@@ -10,10 +10,12 @@ export default function Team() {
         global education for sustainable development.
       </p>
       <div className={styles.cards}>
-        <TeamCard image="/assets/about/team1.webp" name="Ms. Shahamin Zaman" role="EXECUTIVE DIRECTOR" />
-        <TeamCard image="/assets/about/team2.webp" name="Mabrur M. Chowdhury" role="COUNTRY PROGRAMME MANAGER" />
-        <TeamCard image="/assets/about/team3.webp" name="Juliana Lawson" role="COORDINATOR, STAKEHOLDER ENGAGEMENTS" />
-        <TeamCard image="/assets/about/team4.webp" name="Nizam Uddin" role="FINANCE & ADMIN OFFICER" />
+        <TeamCard image="/assets/about/team1.webp" name="Ms. Shahamin Zaman" role="Executive Director" />
+        <TeamCard image="/assets/about/team2.webp" name="Mabrur M. Chowdhury" role="Country Program Manager" />
+        <TeamCard image="/assets/about/team3.webp" name="Juliana Lawson" role="Coordinator, Stakeholder Engagement" />
+        <TeamCard image="/assets/about/team4.webp" name="Nizam Uddin" role="Finance & Admin Officer" />
+        <TeamCard image="/assets/about/team2.webp" name="Mabrur M. Chowdhury" role="Country Program Manager" />
+        <TeamCard image="/assets/about/team3.webp" name="Juliana Lawson" role="Coordinator, Stakeholder Engagement" />
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ export default function Mission() {
   return (
     <div className={styles.main}>
       <div className={styles.left}>
+        <p className={styles.title}>Our Mission</p>
         <p className={styles.text}>
           At UNGCNB Academy, we are dedicated to developing and delivering impactful learning experiences on sustainability, ESG,
           and responsible business practices. Our goal is to equip individuals and organizations with the knowledge, skills, and

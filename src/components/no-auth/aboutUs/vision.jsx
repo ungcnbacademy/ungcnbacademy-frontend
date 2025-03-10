@@ -5,6 +5,7 @@ import Button from '@/components/ui/button/button';
 export default function Vision() {
   return (
     <div className={styles.main}>
+      <p className={styles.title}>Our Vision</p>
       <p className={styles.text}>
         Our vision is to foster a sustainable future where the{' '}
         <span className={styles.span}>17 Sustainable Development Goals (SDGs)</span> are realized through the collective efforts

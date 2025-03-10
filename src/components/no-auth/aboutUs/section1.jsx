@@ -1,4 +1,3 @@
-
 import React from 'react';
 import styles from './section1.module.css';
 import Image from 'next/image';
@@ -9,19 +8,17 @@ export default function Section1() {
         <div className={styles.left}></div>
         <div className={styles.right}>
           <div className={styles.box}>
-            <p className={styles.title}> 50+</p>
-            <p className={styles.text}>massive open online courses to date</p>
+            <p className={styles.title}> 100+</p>
+            <p className={styles.text}>Countries already engaged with UNGCNB Academy.</p>
           </div>
           <div className={styles.box}></div>
           <div className={styles.box}>
-            <p className={styles.text}>students from over</p>
-            <p className={styles.title}>100+</p>
-            <p className={styles.text}>countries</p>
+            <p className={styles.title}>5+</p>
+            <p className={styles.text}>Foundational courses in sustainable development and ESG responsibility.</p>
           </div>
           <div className={styles.box}>
-            <p className={styles.text}>alumni </p>
-            <p className={styles.title}>100</p>
-            <p className={styles.title}>million</p>
+            <p className={styles.title}>100+</p>
+            <p className={styles.text}>Global leaders aligned with us to drive sustainable change.</p>
           </div>
         </div>
       </div>
