@@ -5,7 +5,7 @@ import React from 'react';
 export default function MyProfile() {
   return (
     <>
-    <Header title={'My Profile'} description={'Your profile'} />
+    <Header title={'My Profile'} description={'Passionate about transforming education through innovative technology solutions.'} />
       <Profile />
     </>
   );
