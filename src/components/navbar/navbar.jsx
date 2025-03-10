@@ -179,19 +179,6 @@ export default function Navbar({ variant = 'transparent' }) {
     },
   ];
 
-  const extraMenuLinks = [
-    {
-      name: 'About us',
-      link: '/about-us',
-      active: pathParam === '/about-us',
-    },
-    {
-      name: 'Contact us',
-      link: '/contact-us',
-      active: pathParam === '/contact-us',
-    },
-  ];
-
   let authLinks;
 
   if (userDetails?.data?.role === userRoles.client.role) {
@@ -209,16 +196,19 @@ export default function Navbar({ variant = 'transparent' }) {
       <>
         {isShowMenu && (
           <Drawer title="" closeFunction={() => setIsShowMenu(false)}>
-            <div className={styles.menu}>
+            <div className={styles.menu} onClick={() => setIsShowMenu(false)}>
               {links.map((link, i) => (
-                <Link key={i} href={link.link} className={`${styles.menuLink} ${link.active ? styles.activeMenu : ''}`}>
-                  {link.name}
-                </Link>
-              ))}
-              {extraMenuLinks.map((link, i) => (
-                <Link key={i} href={link.link} className={`${styles.menuLink} ${link.active ? styles.activeMenu : ''}`}>
-                  {link.name}
-                </Link>
+                <div key={i} className={styles.menuItem}>
+                  <Link href={link.link} className={`${styles.menuLink} ${link.active ? styles.activeMenu : ''}`}>
+                    {link.name}
+                  </Link>
+                  {link.children &&
+                    link.children.map((child, j) => (
+                      <Link key={j} href={child.link} className={`${styles.menuLink} ${child.active ? styles.activeMenu : ''}`}>
+                        {child.name}
+                      </Link>
+                    ))}
+                </div>
               ))}
             </div>
           </Drawer>
