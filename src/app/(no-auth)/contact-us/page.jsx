@@ -7,7 +7,7 @@ export default function ContactUs() {
     <div>
       <TopSection />
       <InfoSection />
-      <MapSection />
+   
     </div>
   );
 }

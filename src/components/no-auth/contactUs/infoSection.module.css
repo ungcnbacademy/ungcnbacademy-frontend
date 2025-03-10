@@ -1,38 +1,42 @@
-.main {
-	padding-inline: var(--global-padding-inline);
-	padding-block: 70px;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-
-
-	gap: 30px;
-	.container {
-		flex: 1 300px;
-		background-color: white;
-		padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.06);
-    border-bottom: 5px solid white;
-    transition: all 0.6s ease-in-out;
-    .icon{
-      font-size: 2rem;
-      color: var(--accent2);
-      margin-bottom: 10px;
+.main{
+  padding-inline: var(--global-padding-inline);
+  padding-block: 20px;
+  margin-bottom: 200px;
+  .title{
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 50px;
+    margin-top: 100px;
+  }
+  .container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 50px;
+    .section{
+      min-width: 350px;
     }
-    &:hover {
-      border-bottom: 5px solid var(--accent2);
-    }
-	}
-	.container > h1 {
-		font-size: 1.2rem;
-		font-weight: 400;
-    max-width: 80%;
-    margin-bottom: 15px;
-	}
-  .container > p {
-    font-size: 0.8rem;
-    font-weight: 300;
+
+  }
+  .text{
+    font-size: 1rem;
+    line-height: 2rem;
+    font-weight: 500;
+    max-width: 600px;
+    margin-top: 20px;
+  }
+  .email{
+    font-size: 1rem;
+    line-height: 2rem;
+    font-weight: 400;
+    max-width: 600px;
+    color: var(--accent2);
+  }
+  .address{
+    max-width: 300px;
+    font-size: 0.9rem;
     color: var(--foreground-light);
+    margin-top: 10px;
+    line-height: 1.8rem;
   }
 }
