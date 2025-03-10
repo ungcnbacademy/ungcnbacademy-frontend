@@ -7,6 +7,7 @@ import { configuration } from '@/configuration/configuration';
 import LoadingDots from '@/components/ui/loading/loadingDots';
 import moment from 'moment';
 import Message from '@/components/ui/message/message';
+import Header from '@/components/atom/header';
 export default function Certificate({ params }) {
   const unwrappedParams = use(params);
   const courseId = unwrappedParams.slug[0];
@@ -34,21 +35,27 @@ export default function Certificate({ params }) {
   }, [error]);
 
   return (
-    <div className={styles.main}>
-      {loading && <LoadingDots />}
-      {message?.text && (
-        <div className={styles.msgContainer}>
-          <Message text={message?.text} type={message?.type} />
-        </div>
-      )}
-      {response?.data?.studentName && !loading && !error && (
-        <GenerateCertificate
-          name={response?.data?.studentName}
-          title={response?.data?.moduleTitle || response?.data?.courseTitle}
-          date={moment(response?.data?.issueDate).format('DD MMM YYYY')}
-          certificateId={response?.data?.certificateId}
-        />
-      )}
-    </div>
+    <>
+      <Header
+        title={'Certificate'}
+        description={'Passionate about transforming education through innovative technology solutions.'}
+      />
+      <div className={styles.main}>
+        {loading && <LoadingDots />}
+        {message?.text && (
+          <div className={styles.msgContainer}>
+            <Message text={message?.text} type={message?.type} />
+          </div>
+        )}
+        {response?.data?.studentName && !loading && !error && (
+          <GenerateCertificate
+            name={response?.data?.studentName}
+            title={response?.data?.moduleTitle || response?.data?.courseTitle}
+            date={moment(response?.data?.issueDate).format('DD MMM YYYY')}
+            certificateId={response?.data?.certificateId}
+          />
+        )}
+      </div>
+    </>
   );
 }
