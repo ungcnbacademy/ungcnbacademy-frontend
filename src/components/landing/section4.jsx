@@ -23,7 +23,7 @@ export default function Section4() {
 					<Image src='/SDSN-logo.svg' alt="Logo" width={300} height={80} />
 				</div>
         <div className={styles.box}>
-				<Image src='/logoBlack.svg' alt="Logo" width={200} height={50} />
+				<Image src='/logoBlack.svg' alt="Logo" width={200} height={80} />
 				</div>
         <div className={styles.box}></div>
       </div>
