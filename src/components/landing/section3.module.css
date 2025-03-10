@@ -1,21 +1,13 @@
-.overlay {
-  /* background-image: url('/assets/landing/bg.png');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat; */
-}
 .main {
   display: flex;
   flex-wrap: wrap;
-  /* height: clamp(fit-content, 90vh, 600px); */
   min-height: fit-content;
   align-items: center;
-  height: 90vh;
-  max-height: 600px;
+  height: 100vh;
+  max-height: 900px;
   padding-inline: var(--global-padding-inline);
   padding-block: 100px;
-  /* background-color: rgba(0, 0, 0, 0.15); */
-  /* backdrop-filter: blur(1px); */
+
   .left {
     flex: 1 300px;
     display: flex;

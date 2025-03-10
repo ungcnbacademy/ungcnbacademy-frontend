@@ -3,9 +3,11 @@
   flex-wrap: wrap;
   /* height: clamp(fit-content, 90vh, 600px); */
   min-height: fit-content;
-  height: 90vh;
-  max-height: 800px;
-  padding: var(--global-padding-inline);
+  height: 100vh;
+  gap: 30px;
+  /* max-height: 900px; */
+  padding-inline: var(--global-padding-inline);
+  padding-block: 150px;
   .left {
     flex: 1 300px;
     display: flex;
@@ -14,7 +16,7 @@
     justify-content: center;
     min-height: fit-content;
     @media screen and (max-width: 600px) {
-      height: 50vh;
+      height: fit-content;
     }
     .container {
       width: 100%;
@@ -42,8 +44,8 @@
     background-repeat: no-repeat;
     min-height: fit-content;
     padding-block: 50px;
-    @media screen and (max-width: 600px) {
-      height: 50vh;
+    @media screen and (max-width: 700px) {
+      height: 70vh;
     }
   }
 }
