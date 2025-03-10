@@ -44,8 +44,8 @@
       border-radius: var(--global-border-radius);
       padding: 20px;
       box-shadow: 0 1px 12px rgba(128, 128, 128, 0.1);
-      position: sticky;
-      top: 20px;
+      /* position: sticky;
+      top: 70px; */
     }
   }
   .courseTitle {

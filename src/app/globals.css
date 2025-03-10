@@ -4,12 +4,11 @@
   --background-disabled: #dcdada;
 
   --accent1: #262626;
-  /* --accent2: rgb(0, 149, 183);
-  --accent2-light: rgba(0, 150, 183, 0.3); */
-  --accent2: #23324E;
+  --accent2: #23324e;
   --accent2-light: hsla(219, 38%, 22%, 0.3);
-
   --accent3: #820982;
+  --accent4: rgb(0, 149, 183);
+  --accent4-light: rgba(0, 150, 183, 0.3);
   --danger: #ff0000;
   --danger-light: rgba(255, 0, 0, 0.8);
   --accent-action: #13834d;

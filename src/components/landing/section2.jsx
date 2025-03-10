@@ -18,7 +18,11 @@ export default function Section2() {
           <div className={styles.box}></div>
           <div className={styles.box}></div>
           <div className={styles.box}>
-            <p className={styles.title}>Universal education for sustainable development is within reach.</p>
+            <p className={styles.quote}>
+              Sustainability is not just a commitment; it is a continuous journey of collaboration between businesses,
+              communities, and development partners. By fostering responsible leadership and inclusive growth, we can create
+              lasting impact for both people and the planet." <br /> <br /> — Ms. Zaman
+            </p>
           </div>
         </div>
       </div>

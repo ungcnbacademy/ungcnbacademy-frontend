@@ -90,8 +90,6 @@ export default function LearningDetails({ id }) {
     selectLesson();
   }, [response]);
 
-
-
   //to check if the module is bought or not so the lessons can be unlocked
   const checkIfLessonIsLocked = (id) => {
     if (response?.data?.enrollment?.type === 'module') {
@@ -190,16 +188,7 @@ export default function LearningDetails({ id }) {
               </p>
               <p className={styles.subtitle}>{responseLesson?.data?.description}</p>
             </div>
-            <div className={styles.content}>
-              {responseLesson?.data?.details && (
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: responseLesson?.data?.details,
-                  }}
-                  className={styles.longDescription}
-                ></div>
-              )}
-            </div>
+
             <div className={styles.assets}>
               <h1 className={styles.heading}>Lesson assets</h1>
               {responseLesson?.data?.assets.length > 0 ? (
@@ -214,6 +203,19 @@ export default function LearningDetails({ id }) {
                 <p className={styles.noAssets}>No assets available.</p>
               )}
             </div>
+            <div className={styles.content}>
+              {responseLesson?.data?.details && (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: responseLesson?.data?.details,
+                  }}
+                  className={styles.longDescription}
+                ></div>
+              )}
+            </div>
+            <br />
+            <br />
+            <br />
           </div>
         )}
       </>

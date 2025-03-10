@@ -29,7 +29,7 @@
         }
       }
       .box:nth-child(1) {
-        @media screen and (max-width: 779px) {
+        @media screen and (max-width: 899px) {
           background-color: black;
           background-image: url('/assets/landing/bg3.webp');
           background-position: center;
@@ -56,6 +56,7 @@
       }
       .box {
         height: 350px;
+        min-width: 250px;
         width: 100%;
         padding: 30px;
         display: flex;
@@ -71,8 +72,38 @@
         font-size: 1.3rem;
         color: var(--foreground-white);
       }
+      .quote {
+        font-size: clamp(1rem, 1vw, 1.1rem);
+        font-weight: bold;
+        color: var(--foreground-white);
+        text-shadow: 0 1px 12px rgba(128, 128, 128, 0.3);
+      }
       .box:nth-child(1) {
         background-color: #66c253;
+        position: relative;
+        /* create a arrow pointing on right */
+        &::after {
+          content: '';
+          border-bottom: 10px solid transparent;
+          border-left: 10px solid #66c253;
+          border-top: 10px solid transparent;
+          content: '';
+          height: 0;
+          position: absolute;
+          right: -10px;
+          top: 50%;
+          width: 0;
+          transform: translate(0, -50%);
+          @media screen and (max-width: 500px) {
+            bottom: -30px;
+            left: 50%;
+            top: auto;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #66c253;
+            border-left: 10px solid transparent;
+          }
+        }
       }
       .box:nth-child(2) {
         background-image: url('/assets/landing/bg4.webp');
@@ -89,6 +120,30 @@
       }
       .box:nth-child(4) {
         background-color: #fbcb10;
+        position: relative;
+        /* create a arrow pointing on left */
+        &::before {
+          content: '';
+          border-bottom: 10px solid transparent;
+          border-right: 10px solid #fbcb11;
+          border-top: 10px solid transparent;
+          content: '';
+          height: 0;
+          position: absolute;
+          left: -10px;
+          top: 50%;
+          width: 0;
+          transform: translate(0, -50%);
+          @media screen and (max-width: 500px) {
+            left: 50%;
+            transform: translate(0, -50%);
+            top: -10px;
+            border-bottom: 10px solid #fbcb11;
+            border-right: 10px solid transparent;
+            border-top: 10px solid transparent;
+            border-left: 10px solid transparent;
+          }
+        }
       }
     }
   }

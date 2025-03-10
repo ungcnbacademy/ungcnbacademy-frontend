@@ -115,7 +115,6 @@ export default function CoursePriceContainer({ courseInfo }) {
 			<div className={styles.enrollContainer}>
 				<Button
 					text= {response?.data?.enrollment?.type === 'full' ? "Start learning..." : "Enroll in course"}
-					variant="secondary"
 					className={styles.buttonCourse}
 					loading={loading}
 					onClick={() => response?.data?.enrollment?.type === 'full' ? alreadyEnrolledCourseHandler() : enrollInCorseHandler()}
@@ -159,7 +158,6 @@ export default function CoursePriceContainer({ courseInfo }) {
 											</p>
 											<Button
 												text="Enroll in module"
-												variant="secondary"
 												className={styles.button}
 												onClick={() =>
 													enrollInModuleHandler(
