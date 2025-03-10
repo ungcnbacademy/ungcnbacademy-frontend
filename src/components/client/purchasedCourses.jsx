@@ -16,9 +16,7 @@ export default function PurchasedCourses() {
   }, []);
   return (
     <div className={styles.overlay}>
-      <div className={styles.header}>
-        <h3 className={styles.title}>My Courses</h3>
-      </div>
+
       <div className={styles.main}>
         {loading && <LoadingDots />}
         <div className={styles.container}>

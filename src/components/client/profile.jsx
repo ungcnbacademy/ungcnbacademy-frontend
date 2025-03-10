@@ -20,9 +20,6 @@ export default function Profile() {
 
   return (
     <div className={styles.overlay}>
-      <div className={styles.header}>
-        <h3 className={styles.title}>My Profile</h3>
-      </div>
       {loading && <LoadingDots />}
       <div className={styles.main}>
         <div className={styles.container}>

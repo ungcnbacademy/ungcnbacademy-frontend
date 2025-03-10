@@ -15,7 +15,7 @@ export default function Hero() {
           Learn from top professionals and sustainability specialists to make your journey more sustainable.
         </p>
         <Link href="/courses" className={styles.link}>
-          <Button variant="outLined" className={styles.button} text="Try Now" />
+          <Button variant="outLined" className={styles.button} text="Browse All Courses" />
         </Link>
       </div>
       <div className={styles.right}>

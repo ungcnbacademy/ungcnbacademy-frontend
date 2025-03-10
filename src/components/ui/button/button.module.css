@@ -15,9 +15,6 @@
     cursor: not-allowed;
     color: var(--foreground-light2);
   }
-  &:hover {
-    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.3);
-  }
 }
 .textContainer {
   width: 100%;
@@ -41,23 +38,41 @@
   color: var(--foreground-white);
   background: var(--accent2);
   border: solid 1px var(--accent2);
+  &:hover {
+    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.2);
+    border: solid 1px var(--accent2-light);
+    background: var(--accent2-light);
+    color: var(--accent2);
+  }
 }
 .secondary {
   color: var(--foreground-white);
   background: var(--accent1);
   border: solid 1px var(--accent1);
+  &:hover {
+    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.2);
+  }
 }
 .outLined {
   color: var(--accent1);
   background: var(--foreground-white);
   border: solid 1px var(--accent1);
+  &:hover {
+    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.2);
+  }
 }
 .danger {
   color: var(--foreground-white);
   background: var(--danger);
+  &:hover {
+    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.2);
+  }
 }
 .dangerOutLined {
   color: var(--danger);
   background: var(--foreground-white);
   border: solid 1px var(--accent1);
+  &:hover {
+    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.2);
+  }
 }

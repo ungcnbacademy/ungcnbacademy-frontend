@@ -72,7 +72,7 @@ export default function Footer() {
       </div>
       <div className={styles.bottom}>
         <div className={styles.left}>
-          <p className={styles.text}>An initiative of the Sustainable Development Solutions Network</p>
+          <p className={styles.text}>An initiative for sustainable education</p>
           <Image src={'/ungc.png'} alt="Logo" width={200} height={50} className={styles.ungcLogo} />
         </div>
         <div className={styles.middle}>

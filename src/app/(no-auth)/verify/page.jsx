@@ -4,6 +4,7 @@ import styles from './page.module.css';
 import Input from '@/components/ui/input/input';
 import Button from '@/components/ui/button/button';
 import { redirect } from 'next/navigation';
+import Header from '@/components/atom/header';
 
 export default function VerifyCertificate() {
   const [certificateId, setCertificateId] = useState('');
@@ -13,19 +14,22 @@ export default function VerifyCertificate() {
     redirect(`/verify/${certificateId}`);
   };
   return (
-    <div className={styles.main}>
-      <form className={styles.container} onSubmit={onSubmitClickHandler}>
-        <p className={styles.title}>Enter your certificate code</p>
-        <Input
-          type="text"
-          placeholder="Enter your certificate code"
-          variant="secondary"
-          name="certificateId"
-          value={certificateId}
-          onChange={(e) => setCertificateId(e.target.value)}
-        />
-        <Button text="Verify" type="submit" variant="primary" className={styles.button} />
-      </form>
-    </div>
+    <>
+      <Header title={'Certificate Verification'} description={'Enter your certificate code to verify'} />
+      <div className={styles.main}>
+        <form className={styles.container} onSubmit={onSubmitClickHandler}>
+          <p className={styles.title}>Enter your certificate code</p>
+          <Input
+            type="text"
+            placeholder="Enter your certificate code"
+            variant="secondary"
+            name="certificateId"
+            value={certificateId}
+            onChange={(e) => setCertificateId(e.target.value)}
+          />
+          <Button text="Verify" type="submit" variant="primary" className={styles.button} />
+        </form>
+      </div>
+    </>
   );
 }

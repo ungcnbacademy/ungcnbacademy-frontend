@@ -28,7 +28,7 @@ export default async function Section3() {
             </p>
             <br />
             <Link href="/courses" className={styles.link}>
-              <Button text="Our Courses" />
+              <Button text="Browse Our Courses" />
             </Link>
             <br />
           </div>

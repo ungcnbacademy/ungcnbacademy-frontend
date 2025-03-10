@@ -8,6 +8,7 @@ import Message from '@/components/ui/message/message';
 import GenerateCertificate from '@/components/atom/generateCertificate';
 import LoadingDots from '@/components/ui/loading/loadingDots';
 import moment from 'moment';
+import Header from '@/components/atom/header';
 
 export default function VerifyCertificate({ params }) {
   const unwrappedParams = use(params);
@@ -29,17 +30,20 @@ export default function VerifyCertificate({ params }) {
   }, [error]);
 
   return (
-    <div className={styles.main}>
-      {loading && <LoadingDots />}
-      {message?.text && <Message text={message?.text} type={message?.type} />}
-      {response?.data && !loading && !error && (
-        <GenerateCertificate
-          name={response?.data?.studentName}
-          title={response?.data?.moduleTitle || response?.data?.courseTitle}
-          date={moment(response?.data?.issueDate).format('DD MMM YYYY')}
-          certificateId={response?.data?.certificateId}
-        />
-      )}
-    </div>
+    <>
+      <Header title={'Certificate Verification'} description={'Enter your certificate code to verify'} />
+      <div className={styles.main}>
+        {loading && <LoadingDots />}
+        {message?.text && <Message text={message?.text} type={message?.type} />}
+        {response?.data && !loading && !error && (
+          <GenerateCertificate
+            name={response?.data?.studentName}
+            title={response?.data?.moduleTitle || response?.data?.courseTitle}
+            date={moment(response?.data?.issueDate).format('DD MMM YYYY')}
+            certificateId={response?.data?.certificateId}
+          />
+        )}
+      </div>
+    </>
   );
 }
