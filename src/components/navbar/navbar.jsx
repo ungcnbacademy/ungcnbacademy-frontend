@@ -35,6 +35,7 @@ export default function Navbar({ variant = 'transparent' }) {
 
   const logoForDifferentVariants = {
     transparent: '/logo.svg',
+    transparentBlack: '/logo.svg',
     accentColor: '/logoWhite.svg',
     white: '/logoBlack.svg',
     scrolled: '/logoWhite.svg',

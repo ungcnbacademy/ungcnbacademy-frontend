@@ -19,12 +19,10 @@ export default function Section4() {
       </div>
       <div className={styles.right}>
         <div className={styles.box}></div>
+        <div className={styles.box}></div>
         <div className={styles.box}>
-					<Image src='/SDSN-logo.svg' alt="Logo" width={300} height={80} />
-				</div>
-        <div className={styles.box}>
-				<Image src='/logoBlack.svg' alt="Logo" width={200} height={80} />
-				</div>
+          <Image src="/logoBlack.svg" alt="Logo" width={200} height={80} />
+        </div>
         <div className={styles.box}></div>
       </div>
     </div>

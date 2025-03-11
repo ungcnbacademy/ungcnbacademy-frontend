@@ -57,7 +57,7 @@ export default function AllCourses() {
 							description={course?.description || ''}
 							startTime="Anytime"
 							duration={formatDuration(course?.statistics?.totalDuration)}
-							totalLectures={`${course?.statistics?.totalModules} modules and ${course?.statistics?.totalLessons} lectures`}
+							totalLectures={`${course?.statistics?.totalModules || 0} modules and ${course?.statistics?.totalLessons || 0} lectures`}
 							id={course._id}
 							maxWidth='none'
 						/>

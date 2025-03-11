@@ -41,7 +41,9 @@ export default async function Section3() {
             startTime="Anytime"
             duration={formatDuration(firstCourse?.statistics?.totalDuration) || ''}
             totalLectures={
-              `${firstCourse?.statistics?.totalModules} modules and ${firstCourse?.statistics?.totalLessons} lectures` || ''
+              `${firstCourse?.statistics?.totalModules || 0} modules and ${
+                firstCourse?.statistics?.totalLessons || 0
+              } lectures` || ''
             }
             id={firstCourse?._id}
             maxWidth="300px"
