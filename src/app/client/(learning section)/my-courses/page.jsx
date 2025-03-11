@@ -3,7 +3,7 @@ import PurchasedCourses from '@/components/client/purchasedCourses';
 export default function MyCourses() {
   return (
     <>
-      <Header title={'My Courses'} description={'Educational resources from the world’s leading experts on sustainable development'} />
+      <Header title={'My Courses'} description={'Educational resources from the world’s leading experts on sustainable development'} height='45vh' />
       <PurchasedCourses />
     </>
   );
