@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './page.module.css';
 import { useSearchParams } from 'next/navigation';
 import PaymentStatus from '@/components/client/payment/paymentStatus';
+import Header from '@/components/atom/header';
 
 export default function Status() {
 	const [slugs, setSlugs] = useState('');
@@ -18,9 +19,11 @@ export default function Status() {
 
 	return (
 		<div className={styles.overlay}>
-			{/* <div className={styles.header}>
-				<h3 className={styles.title}>Payment status</h3>
-			</div> */}
+			<Header
+				title={'Payment Status'}
+				description={'Educational resources from the world’s leading experts on sustainable development'}
+				height='45vh'
+			/>
 			<PaymentStatus
 				status={slugs}
 				tranId={tranId || ''}

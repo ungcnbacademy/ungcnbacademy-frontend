@@ -7,6 +7,7 @@ export default function LearningDetailsPage({ params }) {
 	const courseId = unwrappedParams.id;
 	return (
 		<div className={styles.main}>
+			<div style={{ height: '70px', background: 'var(--accent2)' }}></div>
 			<LearningDetails id={courseId} />
 		</div>
 	);

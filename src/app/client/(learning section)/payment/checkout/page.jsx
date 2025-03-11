@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import Image from 'next/image';
 import Message from '@/components/ui/message/message';
+import Header from '@/components/atom/header';
 export default function Checkout() {
   const { globalCart } = useContext(CartContext);
   const [response, error, loading, axiosFetch] = useAxios();
@@ -138,9 +139,7 @@ export default function Checkout() {
   };
   return (
     <div className={styles.overlay}>
-      <div className={styles.header}>
-        <h3 className={styles.title}>Checkout</h3>
-      </div>
+      <Header title={'Checkout'} height={'45vh'} description={'Educational resources from the world’s leading experts on sustainable development'} />
       <div className={styles.main}>
         <div className={styles.left}>{addressFormRender()}</div>
         <div className={styles.right}>{coursePaymentInfoRender()}</div>
