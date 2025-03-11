@@ -61,12 +61,6 @@ export default function Footer() {
                 <span className={styles.span}>{companyInfo.email}</span>
               </div>
             </a>
-            {/* <a href={companyInfo.googleMapAddress} target="_blank">
-              <div className={styles.addressContainer}>
-                <FaLocationDot className={styles.icon} />
-                <span className={styles.span}>{companyInfo.address}</span>
-              </div>
-            </a> */}
           </div>
         </div>
       </div>
