@@ -1,5 +1,5 @@
 'use client';
-import { useState, useLayoutEffect } from 'react';
+import { useState, useLayoutEffect, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -15,18 +15,33 @@ export default function Navbar({ variant = 'transparent' }) {
   const [userDetails, setUserDetails] = useState();
   const [isShowMenu, setIsShowMenu] = useState(false);
 
-  // Check scroll position to update navbar background
   useLayoutEffect(() => {
     if (typeof window !== 'undefined') {
       const userData = JSON.parse(localStorage.getItem('user'));
       setUserDetails(userData);
     }
+  }, []);
+
+  // Check scroll position to update navbar background
+  useEffect(() => {
+    let prevScrollPos = window.scrollY;
     const handleScroll = () => {
+      let currentScrollPos = window.scrollY;
       if (window.scrollY > 20) {
-        setScrolled(true);
+        if (currentScrollPos > prevScrollPos) {
+          setScrolled(false);
+        } else {
+          if (currentScrollPos > 300) {
+            setScrolled(true);
+            console.log(currentScrollPos);
+          } else {
+            setScrolled(false);
+          }
+        }
       } else {
         setScrolled(false);
       }
+      prevScrollPos = currentScrollPos;
     };
 
     window.addEventListener('scroll', handleScroll);
