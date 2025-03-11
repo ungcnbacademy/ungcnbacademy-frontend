@@ -135,6 +135,19 @@
         align-items: flex-start;
       }
     }
+    @media screen and (max-width: 574px) {
+      .right {
+        flex: 1;
+        .social {
+          justify-content: center;
+        }
+      }
+    }
+    @media screen and (max-width: 384px) {
+      .right {
+        flex: 1 300px;
+      }
+    }
   }
   .copyright {
     font-size: 0.7rem;

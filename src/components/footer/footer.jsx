@@ -46,7 +46,9 @@ export default function Footer() {
         <div className={styles.card}>
           <h2 className={styles.title}>Get in touch</h2>
           <ul>
-            <li><Link href="/contact-us">Contact us</Link></li>
+            <li>
+              <Link href="/contact-us">Contact us</Link>
+            </li>
           </ul>
           <div className={styles.contactInfo}>
             <a href={`tel:${companyInfo.phone}`}>
