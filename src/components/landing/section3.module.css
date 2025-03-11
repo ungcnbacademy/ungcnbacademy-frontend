@@ -23,20 +23,18 @@
       min-width: 300px;
       max-width: 500px;
       .title {
-        font-size: 2.2rem;
+        font-size: 2rem;
         font-weight: 500;
         line-height: 1.2;
         margin-bottom: 20px;
         color: var(--foreground);
-        font-family: var(--font-futuraPt);
       }
       .description {
-        font-size: 1.2rem;
+        font-size: 1rem;
         line-height: 1.5rem;
         color: var(--foreground-dark);
         margin-bottom: 20px;
-        font-weight: 400;
-        font-family: var(--font-futuraPt);
+        font-weight: 300;
       }
     }
   }
