@@ -9,7 +9,7 @@ export default function Section5() {
     <div className={styles.main}>
       <div className={styles.left}>
         <div className={styles.videoWrapper}>
-          <video autoPlay loop muted className={styles.video}>
+          <video autoPlay loop muted className={styles.video} playsInline>
             <source src="/assets/landing/video.mp4" type="video/mp4" />
           </video>
         </div>
