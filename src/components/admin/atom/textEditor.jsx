@@ -23,7 +23,7 @@ export default function TextEditor({ setData, defaultValue = '' }) {
       placeholder: 'Start typings...',
       toolbar: true,
       statusbar: true,
-      disablePlugins: ['image', 'print', 'video', 'about', 'search', 'table', 'iframe', 'script'],
+      disablePlugins: ['print', 'video', 'about', 'search', 'table', 'iframe', 'script'],
       buttons: [
         'bold',
         'italic',
@@ -44,6 +44,7 @@ export default function TextEditor({ setData, defaultValue = '' }) {
         'hr',
         'brush',
         'preview',
+        'image',
       ],
     }),
     []
