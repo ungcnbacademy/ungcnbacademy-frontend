@@ -34,6 +34,11 @@
 .main .left .button {
   border: none;
   margin-top: 20px;
+  transition: all 0.6s ease-in-out;
+  &:hover {
+    background-color: var(--accent4);
+    color: white;
+  }
 }
 
 .main .right {
