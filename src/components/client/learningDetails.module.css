@@ -7,7 +7,7 @@
 
   .left {
     flex: 1 300px;
-    height: calc(100vh - 72px);
+    height: calc(100vh - 85px);
     overflow-y: auto;
     .lessonDetails {
       display: flex;
@@ -99,7 +99,7 @@
         font-size: 0.8rem;
       }
     }
-    .noAccess{
+    .noAccess {
       background-color: var(--background-dashboard);
       padding: 30px;
       display: flex;
@@ -107,12 +107,12 @@
       flex-direction: column;
       align-items: center;
       gap: 10px;
-      .text{
+      .text {
         text-align: center;
         color: var(--foreground-dark);
-        font-size: .9rem;
+        font-size: 0.9rem;
       }
-      .icon{
+      .icon {
         font-size: 2rem;
         color: var(--danger);
       }
@@ -123,7 +123,7 @@
     flex: 1 300px;
     max-width: 350px;
     background-color: var(--background-dashboard);
-    height: calc(100vh - 72px);
+    height: calc(100vh - 85px);
     overflow-y: auto;
     .courseContentHeader {
       padding: 15px;

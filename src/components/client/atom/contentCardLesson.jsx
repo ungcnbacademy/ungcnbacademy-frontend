@@ -50,7 +50,7 @@ export default function ContentCardLesson({
             <div className={styles.bottom}>
               {isQuizRequired && (
                 <Button
-                  text="Quiz"
+                  text="Take Quiz"
                   variant="outLined"
                   className={styles.button}
                   onClick={(event) => quizButtonClickHandler(event)}
