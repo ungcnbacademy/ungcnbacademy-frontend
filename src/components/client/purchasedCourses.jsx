@@ -16,7 +16,6 @@ export default function PurchasedCourses() {
   }, []);
   return (
     <div className={styles.overlay}>
-
       <div className={styles.main}>
         {loading && <LoadingDots />}
         <div className={styles.container}>
@@ -34,6 +33,7 @@ export default function PurchasedCourses() {
                 onClickLink={`/client/my-courses/${course.course._id}`}
                 maxWidth="none"
                 buttonText="Start Learning"
+                getMoreDetails={true}
               />
             ))}
           {response?.data?.length === 0 && (

@@ -1,10 +1,14 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './courseCard.module.css';
 import Image from 'next/image';
 import { FaRegCalendarAlt, FaRegFileAlt, FaArrowRight, FaRegClock } from 'react-icons/fa';
 import { redirect } from 'next/navigation';
-import { truncateString } from '@/utils/utils';
+import { formatDuration, truncateString } from '@/utils/utils';
+import useAxios from '@/hooks/useAxios';
+import { configuration } from '@/configuration/configuration';
+import { RiProgress2Line } from 'react-icons/ri';
+import { AiOutlineQuestionCircle } from "react-icons/ai";
 
 export default function CourseCard({
   img = '/assets/noImage.svg',
@@ -17,14 +21,56 @@ export default function CourseCard({
   onClickLink,
   maxWidth = '400px',
   buttonText = 'Course Details',
+  getMoreDetails = false,
 }) {
   const [courseImage, setCourseImage] = useState(img);
+  const [response, error, loading, axiosFetch] = useAxios();
+
+  useEffect(() => {
+    if (getMoreDetails) {
+      axiosFetch({
+        method: 'Get',
+        url: `${configuration.courses}/${id}`,
+      });
+    }
+  }, []);
+
   const onclickCourseHandler = () => {
     if (onClickLink) {
       redirect(onClickLink);
     } else {
       redirect(`/courses/${id}`);
     }
+  };
+  const setDuration = () => {
+    if (getMoreDetails) {
+      return formatDuration(response?.data?.statistics.totalDuration || 0);
+    } else {
+      return duration;
+    }
+  };
+  const setTotalLectures = () => {
+    if (getMoreDetails) {
+      return `${response?.data?.statistics.totalModules || 0} modules and ${
+        response?.data?.statistics.totalLessons || 0
+      } lessons`;
+    } else {
+      return totalLectures;
+    }
+  };
+  const courseProgressRender = () => {
+    return (
+      <div className={styles.progressContainer}>
+        <div className={styles.progressTextContainer}>
+          <p className={styles.progressText}>Your progress: </p>
+          <p className={styles.progressText}>{Number(response?.data?.progress?.overallProgress || 0).toFixed(2)}%</p>
+        </div>
+
+        <div className={styles.progressLineBackground}>
+          <div className={styles.progressLine} style={{ width: `${response?.data?.progress?.overallProgress || 0}%` }}></div>
+        </div>
+      </div>
+    );
   };
   return (
     <div className={styles.main} onClick={() => onclickCourseHandler()} style={{ maxWidth: maxWidth }}>
@@ -48,13 +94,20 @@ export default function CourseCard({
         </div>
         <div className={styles.content}>
           <FaRegClock />
-          <p>{duration}</p>
+          <p> {setDuration()}</p>
         </div>
         <div className={styles.content}>
           <FaRegFileAlt />
-          <p>{totalLectures}</p>
+          <p>{setTotalLectures()}</p>
         </div>
+        {getMoreDetails && (
+          <div className={styles.content}>
+            <AiOutlineQuestionCircle />
+            <p>{response?.data?.progress?.totalQuizzes || 0} quizzes </p>
+          </div>
+        )}
 
+        {getMoreDetails && courseProgressRender()}
         <div className={styles.detailsButton}>
           <p>{buttonText}</p>
           <FaArrowRight className={styles.icon} />

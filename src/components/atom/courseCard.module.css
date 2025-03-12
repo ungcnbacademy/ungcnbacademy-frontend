@@ -79,4 +79,28 @@
       }
     }
   }
+  .progressContainer {
+    width: 100%;
+    margin-top: 20px;
+    .progressTextContainer {
+      display: flex;
+      justify-content: space-between;
+    }
+    .progressText {
+      font-size: 0.8rem;
+      margin-bottom: 5px;
+      color: var(--foreground-light);
+    }
+    .progressLineBackground {
+      background-color: var(--background-disabled);
+      height: 5px;
+      border-radius: var(--global-border-radius);
+      .progressLine {
+        background: linear-gradient(to right, var(--accent4), #6bc88a);
+        height: 5px;
+        border-radius: var(--global-border-radius);
+        transition: all 0.6s ease-in-out;
+      }
+    }
+  }
 }
