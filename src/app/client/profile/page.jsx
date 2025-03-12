@@ -1,5 +1,5 @@
 import Header from '@/components/atom/header';
-import Profile from '@/components/client/profile';
+import Profile from '@/components/client/profile/profile';
 import React from 'react';
 
 export default function MyProfile() {

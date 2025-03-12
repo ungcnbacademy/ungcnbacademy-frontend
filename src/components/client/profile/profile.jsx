@@ -1,18 +1,24 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './profile.module.css';
 import useAxios from '@/hooks/useAxios';
 import { configuration } from '@/configuration/configuration';
-import Avatar from '../ui/avatar/avatar';
+import Avatar from '../../ui/avatar/avatar';
 import moment from 'moment';
-import LoadingDots from '../ui/loading/loadingDots';
-import Button from '../ui/button/button';
-import ProgressCard from './atom/progressCard';
+import LoadingDots from '../../ui/loading/loadingDots';
+import Button from '../../ui/button/button';
+import ProgressCard from '../atom/progressCard';
 import { redirect } from 'next/navigation';
-import AllCourses from '../no-auth/allCourses/allCourses';
+import AllCourses from '../../no-auth/allCourses/allCourses';
+import Drawer from '../../ui/drawer/drawer';
+import EditProfile from './editProfile';
+import AddProfilePicture from './addProfilePicture';
 
 export default function Profile() {
   const [response, error, loading, axiosFetch] = useAxios();
+  const [isDrawerOpenEditProfile, setIsDrawerOpenEditProfile] = useState(false);
+  const [isDrawerOpenAddPicture, setIsDrawerOpenAddPicture] = useState(false);
+
   useEffect(() => {
     axiosFetch({
       method: 'GET',
@@ -20,8 +26,34 @@ export default function Profile() {
     });
   }, []);
 
+  const drawerRenderEditProfile = () => {
+    return (
+      <>
+        {isDrawerOpenEditProfile && (
+          <Drawer title="Edit Profile" closeFunction={() => setIsDrawerOpenEditProfile(false)}>
+            <EditProfile/>
+          </Drawer>
+        )}
+      </>
+    );
+  };
+
+  const drawerRenderAddPicture = () => {
+    return (
+      <>
+        {isDrawerOpenAddPicture && (
+          <Drawer title="Add Picture" closeFunction={() => setIsDrawerOpenAddPicture(false)}>
+            <AddProfilePicture/>
+          </Drawer>
+        )}
+      </>
+    );
+  };
+
   return (
     <div className={styles.overlay}>
+      {drawerRenderEditProfile()}
+      {drawerRenderAddPicture()}
       {loading && <LoadingDots />}
       <div className={styles.main}>
         <div className={styles.container}>
@@ -49,9 +81,9 @@ export default function Profile() {
                 <p className={styles.subTitle}>User since: {moment(response?.data?.createdAt).format('lll')}</p>
                 <br />
                 <div className={styles.btnContainer}>
-                  <Button text="Edit Profile" />
-                  <Button text="Add picture" variant="outLined" />
-                  <Button text="Logout" variant="dangerOutLined" />
+                  <Button text="Edit Profile" onClick={() => setIsDrawerOpenEditProfile(true)} />
+                  <Button text="Add picture" variant="outLined" onClick={() => setIsDrawerOpenAddPicture(true)} />
+                  <Button text="Logout" variant="dangerOutLined" onClick={() => redirect('/logout')} />
                 </div>
               </div>
             )}
