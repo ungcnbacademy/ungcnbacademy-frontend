@@ -91,7 +91,7 @@ export default function Signup() {
     const userDetails = JSON.parse(localStorage.getItem('user'));
     if (!userDetails?.token || error) return;
     if (userDetails.data?.role === userRoles.client.role) {
-      redirect('/');
+      redirect('/client/profile');
     } else if (allAdminRoles.includes(userDetails.data?.role)) {
       redirect('/admin/dashboard');
     } else {

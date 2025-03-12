@@ -31,9 +31,8 @@ export default function Navbar({ variant = 'transparent' }) {
         if (currentScrollPos > prevScrollPos) {
           setScrolled(false);
         } else {
-          if (currentScrollPos > 300) {
+          if (currentScrollPos > 200) {
             setScrolled(true);
-            console.log(currentScrollPos);
           } else {
             setScrolled(false);
           }

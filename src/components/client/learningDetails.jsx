@@ -167,21 +167,6 @@ export default function LearningDetails({ id }) {
                 <ImArrowLeft /> <p className={styles.text}>Course Content</p>
               </div>
             )}
-            {responseLesson?.data?.cloudflareVideoId && (
-              <div className={styles.videoContainerWrapper}>
-                <div className={styles.videoContainer}>
-                  {videoPlayerLoading && <LoadingDots color="white" />}
-                  <Stream
-                    src={responseLesson?.data?.cloudflareVideoId}
-                    controls
-                    className={styles.video}
-                    onError={(error) => console.log(error)}
-                    onLoadedData={() => setVideoPlayerLoading(false)}
-                  />
-                </div>
-              </div>
-            )}
-
             <div className={styles.lessonHeader}>
               <p className={styles.title}>
                 Lesson {responseLesson?.data?.order}: {responseLesson?.data?.title}
@@ -203,6 +188,22 @@ export default function LearningDetails({ id }) {
                 <p className={styles.noAssets}>No assets available.</p>
               )}
             </div>
+
+            {responseLesson?.data?.cloudflareVideoId && (
+              <div className={styles.videoContainerWrapper}>
+                <div className={styles.videoContainer}>
+                  {videoPlayerLoading && <LoadingDots color="white" />}
+                  <Stream
+                    src={responseLesson?.data?.cloudflareVideoId}
+                    controls
+                    className={styles.video}
+                    onError={(error) => console.log(error)}
+                    onLoadedData={() => setVideoPlayerLoading(false)}
+                  />
+                </div>
+              </div>
+            )}
+
             <div className={styles.content}>
               {responseLesson?.data?.details && (
                 <div
