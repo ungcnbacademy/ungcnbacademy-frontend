@@ -125,6 +125,9 @@
     background-color: var(--background-dashboard);
     height: calc(100vh - 85px);
     overflow-y: auto;
+    @media screen and (max-width: 609px) {
+      max-width: none;
+    }
     .courseContentHeader {
       padding: 15px;
       display: flex;
