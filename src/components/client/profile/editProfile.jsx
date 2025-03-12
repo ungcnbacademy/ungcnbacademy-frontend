@@ -8,7 +8,7 @@ import { configuration } from '@/configuration/configuration';
 import styles from './editProfile.module.css';
 import LoadingDots from '@/components/ui/loading/loadingDots';
 
-export default function EditProfile() {
+export default function EditProfile({refreshData = () => {}}) {
 	const [response, error, loading, axiosFetch] = useAxios();
   const [responseGetUserInfo, errorGetUserInfo, loadingGetUserInfo, axiosFetchGetUserInfo] = useAxios();
 	const formRef = useRef(null);
@@ -17,6 +17,7 @@ export default function EditProfile() {
   useEffect(() => {
 		if (response?.message) {
 			setMessage({ text: response?.message, type: 'success' });
+			refreshData();
 		}
 		if (error?.message) {
 			setMessage({ text: error?.message, type: 'error' });

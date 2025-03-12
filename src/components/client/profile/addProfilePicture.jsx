@@ -7,13 +7,14 @@ import Message from '@/components/ui/message/message';
 import { configuration } from '@/configuration/configuration';
 import styles from './addProfilePicture.module.css';
 
-export default function AddProfilePicture() {
+export default function AddProfilePicture({refreshData = () => {}}) {
   const [response, error, loading, axiosFetch] = useAxios();
   const formRef = useRef(null);
   const [message, setMessage] = useState({ text: '', type: '' });
   useEffect(() => {
     if (response?.message) {
       setMessage({ text: response?.message, type: 'success' });
+      refreshData();
     }
     if (error?.message) {
       setMessage({ text: error?.message, type: 'error' });

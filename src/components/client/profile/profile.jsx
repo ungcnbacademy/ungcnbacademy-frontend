@@ -18,20 +18,21 @@ export default function Profile() {
   const [response, error, loading, axiosFetch] = useAxios();
   const [isDrawerOpenEditProfile, setIsDrawerOpenEditProfile] = useState(false);
   const [isDrawerOpenAddPicture, setIsDrawerOpenAddPicture] = useState(false);
+  const [refreshData, setRefreshData] = useState(false);
 
   useEffect(() => {
     axiosFetch({
       method: 'GET',
       url: configuration.client.profile,
     });
-  }, []);
+  }, [refreshData]);
 
   const drawerRenderEditProfile = () => {
     return (
       <>
         {isDrawerOpenEditProfile && (
           <Drawer title="Edit Profile" closeFunction={() => setIsDrawerOpenEditProfile(false)}>
-            <EditProfile/>
+            <EditProfile refreshData={() => setRefreshData(!refreshData)}/>
           </Drawer>
         )}
       </>
@@ -43,7 +44,7 @@ export default function Profile() {
       <>
         {isDrawerOpenAddPicture && (
           <Drawer title="Add Picture" closeFunction={() => setIsDrawerOpenAddPicture(false)}>
-            <AddProfilePicture/>
+            <AddProfilePicture refreshData={() => setRefreshData(!refreshData)} />
           </Drawer>
         )}
       </>
