@@ -1,5 +1,6 @@
 .main {
   width: 100vw;
+  max-height: 1000px;
   background-color: black;
   display: flex;
   flex-wrap: wrap;
@@ -9,9 +10,10 @@
   overflow: hidden;
 }
 
-.main .left {
+.left {
   flex: 1 300px;
-  height: fit-content;
+  flex-grow: 1;
+  height: 100%;
   padding-block: 100px 30px;
   display: flex;
   flex-direction: column;
@@ -43,6 +45,7 @@
 
 .main .right {
   height: 100vh;
+  max-height: 1000px;
   flex: 1 300px;
   position: relative;
   overflow: hidden;
