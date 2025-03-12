@@ -21,7 +21,7 @@ export default function Section2() {
             <div className={styles.quote}>
               Sustainability is not just a commitment; it is a continuous journey of collaboration between businesses,
               communities, and development partners. By fostering responsible leadership and inclusive growth, we can create
-              lasting impact for both people and the planet."
+              lasting impact for both people and the planet.
               <p className={styles.author}>
                <b>— Ms. Shahamin Zaman</b>  <br /> Executive Director. Global Compact Network Bangladesh.
               </p>
