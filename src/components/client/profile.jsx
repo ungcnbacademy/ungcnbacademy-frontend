@@ -45,7 +45,6 @@ export default function Profile() {
                 <p className={styles.title}>{response?.data?.firstName + ' ' + response?.data?.lastName}</p>
                 <p className={styles.subTitle}># {response?.data?._id}</p>
                 <p className={styles.subTitle}>{response?.data?.email}</p>
-                <p className={styles.subTitle}>Verified: {response?.data?.isEmailVerified ? 'Yes' : 'No'}</p>
                 <p className={styles.subTitle}>User since: {moment(response?.data?.createdAt).format('lll')}</p>
                 <br />
                 <Button text="Edit Profile" />
