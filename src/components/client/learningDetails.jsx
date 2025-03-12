@@ -17,7 +17,6 @@ export default function LearningDetails({ id }) {
   const [response, error, loading, axiosFetch] = useAxios();
   const [selectedLesson, setSelectedLesson] = useState(null);
   const [videoPlayerLoading, setVideoPlayerLoading] = useState(true);
-  //const [selectedLessonDetails, setSelectedLessonDetails] = useState(null);
   const [responseLesson, errorLesson, loadingLesson, axiosFetchLesson] = useAxios();
   const [showCourseContent, setShowCourseContent] = useState(true);
 
@@ -110,6 +109,52 @@ export default function LearningDetails({ id }) {
     }
   };
 
+  const onNextLessonButtonClickHandler = () => {
+    const modules = response?.data?.modules || [];
+    const moduleIndex = modules.findIndex((module) => module._id === selectedLesson?.moduleId);
+    const lessonIndex = modules[moduleIndex].lessons.findIndex((lesson) => lesson._id === selectedLesson?.lessonId);
+    const nextLesson = modules[moduleIndex].lessons[lessonIndex + 1];
+    if (nextLesson) {
+      setSelectedLesson({ moduleId: modules[moduleIndex]._id, lessonId: nextLesson._id });
+    }
+    // const nextModule = modules[index + 1];
+    // if (nextModule) {
+    //   setSelectedLesson({ moduleId: nextModule._id, lessonId: nextModule.lessons[0]._id });
+    // }
+  };
+
+  const onPreviousLessonButtonClickHandler = () => {
+    const modules = response?.data?.modules || [];
+    const moduleIndex = modules.findIndex((module) => module._id === selectedLesson?.moduleId);
+    const lessonIndex = modules[moduleIndex].lessons.findIndex((lesson) => lesson._id === selectedLesson?.lessonId);
+    const previousLesson = modules[moduleIndex].lessons[lessonIndex - 1];
+    if (previousLesson) {
+      setSelectedLesson({ moduleId: modules[moduleIndex]._id, lessonId: previousLesson._id });
+    }
+    // const previousModule = modules[index - 1];
+    // if (previousModule) {
+    //   setSelectedLesson({ moduleId: previousModule._id, lessonId: previousModule.lessons[0]._id });
+    // }
+  };
+
+  const isNextLessonAvailable = () => {
+    if (!selectedLesson) return false;
+    const modules = response?.data?.modules || [];
+    const moduleIndex = modules.findIndex((module) => module._id === selectedLesson?.moduleId);
+    const lessonIndex = modules[moduleIndex].lessons.findIndex((lesson) => lesson._id === selectedLesson?.lessonId);
+    const nextLesson = modules[moduleIndex].lessons[lessonIndex + 1];
+    return nextLesson !== undefined;
+  };
+
+  const isPreviousLessonAvailable = () => {
+    if (!selectedLesson) return false;
+    const modules = response?.data?.modules || [];
+    const moduleIndex = modules.findIndex((module) => module._id === selectedLesson?.moduleId);
+    const lessonIndex = modules[moduleIndex].lessons.findIndex((lesson) => lesson._id === selectedLesson?.lessonId);
+    const previousLesson = modules[moduleIndex].lessons[lessonIndex - 1];
+    return previousLesson !== undefined;
+  };
+
   const courseContentListViewRender = () => {
     return (
       <>
@@ -189,6 +234,10 @@ export default function LearningDetails({ id }) {
               ) : (
                 <p className={styles.noAssets}>No assets available.</p>
               )}
+              <div className={styles.btnContainer}>
+                <Button text="Previous Lesson" variant="outLined" onClick={onPreviousLessonButtonClickHandler} disabled={!isPreviousLessonAvailable()} />
+                <Button text="Next Lesson" variant="primary" onClick={onNextLessonButtonClickHandler} disabled={!isNextLessonAvailable()} />
+              </div>
             </div>
 
             {responseLesson?.data?.cloudflareVideoId && (

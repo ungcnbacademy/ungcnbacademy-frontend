@@ -114,6 +114,12 @@
         color: var(--foreground-light);
         font-size: 0.8rem;
       }
+      > .btnContainer {
+        margin-top: 30px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
     }
     .noAccess {
       background-color: var(--background-dashboard);
