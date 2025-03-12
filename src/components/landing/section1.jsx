@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './section1.module.css';
 import Button from '../ui/button/button';
 import Link from 'next/link';
+import Image from 'next/image';
 export default function Section1() {
   return (
     <div className={styles.main}>
@@ -18,7 +19,9 @@ export default function Section1() {
           </Link>
         </div>
       </div>
-      <div className={styles.right}></div>
+      <div className={styles.right}>
+        <Image src="/assets/landing/bg1.webp" width={500} height={500} alt="hero" className={styles.image} />
+      </div>
     </div>
   );
 }
