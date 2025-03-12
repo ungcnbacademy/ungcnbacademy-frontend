@@ -118,19 +118,14 @@
       }
     }
     @media screen and (max-width: 1362px) {
-      .right {
-        flex: 0;
+      .middle {
+        flex-direction: column;
+        align-items: center;
       }
     }
     @media screen and (max-width: 1065px) {
       gap: 40px;
       .left {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .middle {
-        display: flex;
         flex-direction: column;
         align-items: flex-start;
       }

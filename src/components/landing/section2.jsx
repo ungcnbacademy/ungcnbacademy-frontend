@@ -23,7 +23,7 @@ export default function Section2() {
               communities, and development partners. By fostering responsible leadership and inclusive growth, we can create
               lasting impact for both people and the planet."
               <p className={styles.author}>
-                — Ms. Shahamin Zaman <br /> Executive Director. Global Compact Network Bangladesh.
+               <b>— Ms. Shahamin Zaman</b>  <br /> Executive Director. Global Compact Network Bangladesh.
               </p>
             </div>
           </div>

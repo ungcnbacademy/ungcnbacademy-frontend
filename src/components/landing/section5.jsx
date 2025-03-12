@@ -16,10 +16,9 @@ export default function Section5() {
       </div>
       <div className={styles.right}>
         <div className={styles.container}>
-          <h1 className={styles.title}>Meet Our Faculty</h1>
+          <h1 className={styles.title}>Join the Movement. Learn from the Best.</h1>
           <p className={styles.description}>
-            {companyInfo.name} courses and degree programs are taught by academics, practitioners, and global leaders. Learn about
-            our faculty here.
+            At {companyInfo.name}, our courses and programs are led by top academics, industry experts, and global leaders. Be part of a learning journey that creates real impact.
           </p>
           <br />
           <Link href="/courses" className={styles.link}>

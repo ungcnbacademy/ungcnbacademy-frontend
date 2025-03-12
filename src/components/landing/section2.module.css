@@ -80,6 +80,7 @@
         .author{
           font-size: clamp(0.8rem, 1vw, 1rem);
           margin-top: 10px;
+          font-weight: 400;
         }
       }
       .box:nth-child(1) {
