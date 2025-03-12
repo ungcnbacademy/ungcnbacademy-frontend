@@ -58,11 +58,14 @@
   border: solid 1px var(--accent1);
   &:hover {
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.2);
+    background: var(--accent1);
+    color: var(--foreground-white);
   }
 }
 .danger {
   color: var(--foreground-white);
   background: var(--danger);
+  border: solid 1px var(--danger);
   &:hover {
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.2);
   }
@@ -73,5 +76,8 @@
   border: solid 1px var(--accent1);
   &:hover {
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.2);
+    background: var(--danger);
+    color: var(--foreground-white);
+    border: solid 1px var(--danger);
   }
 }

@@ -9,6 +9,7 @@ import LoadingDots from '../ui/loading/loadingDots';
 import Button from '../ui/button/button';
 import ProgressCard from './atom/progressCard';
 import { redirect } from 'next/navigation';
+import AllCourses from '../no-auth/allCourses/allCourses';
 
 export default function Profile() {
   const [response, error, loading, axiosFetch] = useAxios();
@@ -47,9 +48,16 @@ export default function Profile() {
                 <p className={styles.subTitle}>{response?.data?.email}</p>
                 <p className={styles.subTitle}>User since: {moment(response?.data?.createdAt).format('lll')}</p>
                 <br />
-                <Button text="Edit Profile" />
+                <div className={styles.btnContainer}>
+                  <Button text="Edit Profile" />
+                  <Button text="Add picture" variant="outLined" />
+                  <Button text="Logout" variant="dangerOutLined" />
+                </div>
               </div>
             )}
+            <div className={styles.sideBar}>
+              <AllCourses showSearch={false} />
+            </div>
           </div>
         </div>
       </div>
