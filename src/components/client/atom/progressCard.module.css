@@ -33,7 +33,7 @@
         height: 5px;
         border-radius: var(--global-border-radius);
         .progressLine {
-          background: linear-gradient(to right, var(--accent2), #6bc88a);
+          background: linear-gradient(to right, var(--accent4), #6bc88a);
           height: 5px;
           border-radius: var(--global-border-radius);
         }

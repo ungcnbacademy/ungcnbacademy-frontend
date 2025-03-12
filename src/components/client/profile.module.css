@@ -1,25 +1,21 @@
 .overlay {
   padding-bottom: 100px;
   width: 100%;
-  .header {
-    padding-inline: var(--global-padding-inline);
-    background-color: rgb(35, 35, 35);
-    .title {
-      color: var(--foreground-white);
-      padding-block: 50px;
-      font-size: clamp(1.5rem, 5vw, 2rem);
-    }
-  }
+
   .main {
     padding-inline: var(--global-padding-inline);
     padding-block: 20px;
     min-height: 80vh;
     .container {
       display: flex;
-      flex-direction: column;
       flex-wrap: wrap;
       gap: 20px;
-     
+      .left {
+        flex: 1.5;
+      }
+      .right {
+        flex: 1;
+      }
       .details {
         background-color: var(--background-dashboard);
         padding: 20px;
@@ -36,12 +32,16 @@
         flex-direction: column;
         gap: 20px;
       }
-    }
-    .subTitle {
-      font-size: 0.9rem;
-      color: var(--foreground-light);
-      font-weight: 400;
-      margin-bottom: 3px;
+      .subTitle {
+        font-size: 0.9rem;
+        color: var(--foreground-light);
+        font-weight: 400;
+        margin-bottom: 3px;
+      }
+      .heading {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
     }
   }
 }
