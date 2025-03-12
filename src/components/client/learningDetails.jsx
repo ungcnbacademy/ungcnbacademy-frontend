@@ -10,6 +10,8 @@ import ContentCardLesson from './atom/contentCardLesson';
 import { IoMdClose } from 'react-icons/io';
 import { ImArrowLeft } from 'react-icons/im';
 import { IoCloseCircleSharp } from 'react-icons/io5';
+import Button from '../ui/button/button';
+import { redirect } from 'next/navigation';
 
 export default function LearningDetails({ id }) {
   const [response, error, loading, axiosFetch] = useAxios();
@@ -214,6 +216,18 @@ export default function LearningDetails({ id }) {
                 ></div>
               )}
             </div>
+
+            {responseLesson?.data?.quizSettings?.required && (
+              <div className={styles.quizContainer}>
+                <h1 className={styles.heading}>Quiz</h1>
+                <p className={styles.text}>This lesson requires a quiz to be completed.</p>
+                <Button
+                  text="Take Quiz"
+                  onClick={() => redirect(`/client/my-courses/quiz/${id}/${responseLesson?.data?.module}/${responseLesson?.data?._id}`)}
+                />
+              </div>
+            )}
+
             <br />
             <br />
             <br />

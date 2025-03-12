@@ -74,6 +74,22 @@
       border-radius: var(--global-border-radius);
       font-size: 0.8rem;
     }
+    .quizContainer {
+      background-color: var(--background-dashboard);
+      padding: 20px;
+      border-radius: var(--global-border-radius);
+      font-size: 0.8rem;
+      > .heading {
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      > .text {
+        font-size: 0.8rem;
+        color: var(--foreground-light);
+        margin-bottom: 10px;
+      }
+    }
     .assets {
       background-color: var(--background-dashboard);
       padding: 20px;
