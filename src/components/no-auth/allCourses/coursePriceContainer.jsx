@@ -37,7 +37,7 @@ export default function CoursePriceContainer({ courseInfo }) {
   useEffect(() => {
     if (!response?.data) return;
     if (!response?.data?.enrollment?.type === 'module') return;
-    setEnrolledModulesIdArray(response?.data?.enrollment.enrolledModules.map((module) => module.module));
+    setEnrolledModulesIdArray(response?.data?.enrollment?.enrolledModules.map((module) => module.module));
   }, [response?.data]);
 
   const checkIfUserIsClient = () => {

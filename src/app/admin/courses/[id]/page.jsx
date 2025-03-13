@@ -167,7 +167,6 @@ export default function CourseDetails({ params }) {
                     setIsModalOpen(true);
                   },
                 },
-                
               ]}
             />
           </div>
