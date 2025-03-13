@@ -235,8 +235,18 @@ export default function LearningDetails({ id }) {
                 <p className={styles.noAssets}>No assets available.</p>
               )}
               <div className={styles.btnContainer}>
-                <Button text="Previous Lesson" variant="outLined" onClick={onPreviousLessonButtonClickHandler} disabled={!isPreviousLessonAvailable()} />
-                <Button text="Next Lesson" variant="primary" onClick={onNextLessonButtonClickHandler} disabled={!isNextLessonAvailable()} />
+                <Button
+                  text="Previous Lesson"
+                  variant="outLined"
+                  onClick={onPreviousLessonButtonClickHandler}
+                  disabled={!isPreviousLessonAvailable()}
+                />
+                <Button
+                  text="Next Lesson"
+                  variant="primary"
+                  onClick={onNextLessonButtonClickHandler}
+                  disabled={!isNextLessonAvailable()}
+                />
               </div>
             </div>
 
@@ -255,16 +265,16 @@ export default function LearningDetails({ id }) {
               </div>
             )}
 
-            <div className={styles.content}>
-              {responseLesson?.data?.details && (
+            {responseLesson?.data?.details && (
+              <div className={styles.content}>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: responseLesson?.data?.details,
                   }}
                   className={styles.longDescription}
                 ></div>
-              )}
-            </div>
+              </div>
+            )}
 
             {responseLesson?.data?.quizSettings?.required && (
               <div className={styles.quizContainer}>
@@ -272,14 +282,13 @@ export default function LearningDetails({ id }) {
                 <p className={styles.text}>This lesson requires a quiz to be completed.</p>
                 <Button
                   text="Take Quiz"
-                  onClick={() => redirect(`/client/my-courses/quiz/${id}/${responseLesson?.data?.module}/${responseLesson?.data?._id}`)}
+                  onClick={() =>
+                    redirect(`/client/my-courses/quiz/${id}/${responseLesson?.data?.module}/${responseLesson?.data?._id}`)
+                  }
                 />
               </div>
             )}
-
-            <br />
-            <br />
-            <br />
+            <br /> <br />
           </div>
         )}
       </>
