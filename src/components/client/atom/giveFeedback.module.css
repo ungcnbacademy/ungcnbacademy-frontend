@@ -1,0 +1,13 @@
+.main{
+  max-width: 1000px;
+  .text{
+    font-size: 0.9rem;
+    color: var(--foreground-light);
+    margin-bottom: 10px;
+  }
+  .form{
+    .button{
+      margin-top: 30px;
+    }
+  }
+}
