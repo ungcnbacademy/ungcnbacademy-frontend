@@ -220,7 +220,6 @@ export default function LearningDetails({ id }) {
               </p>
               <p className={styles.subtitle}>{responseLesson?.data?.description}</p>
             </div>
-
             <div className={styles.assets}>
               <h1 className={styles.heading}>Lesson assets</h1>
               {responseLesson?.data?.assets.length > 0 ? (
@@ -249,7 +248,6 @@ export default function LearningDetails({ id }) {
                 />
               </div>
             </div>
-
             {responseLesson?.data?.cloudflareVideoId && (
               <div className={styles.videoContainerWrapper}>
                 <div className={styles.videoContainer}>
@@ -264,7 +262,6 @@ export default function LearningDetails({ id }) {
                 </div>
               </div>
             )}
-
             {responseLesson?.data?.details && (
               <div className={styles.content}>
                 <div
@@ -275,7 +272,6 @@ export default function LearningDetails({ id }) {
                 ></div>
               </div>
             )}
-
             {responseLesson?.data?.quizSettings?.required && (
               <div className={styles.quizContainer}>
                 <h1 className={styles.heading}>Quiz</h1>
