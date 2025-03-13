@@ -9,7 +9,7 @@ export default function AllFeedbacks() {
         <h2 className={styles.title}>Feedbacks</h2>
       </div>
       <div className={styles.container}>
-        <AllFeedback />
+        {/* <AllFeedback /> */}
       </div>
     </div>
   );
