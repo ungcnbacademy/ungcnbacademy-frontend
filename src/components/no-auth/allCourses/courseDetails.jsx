@@ -7,9 +7,9 @@ import CoursePriceContainer from './coursePriceContainer';
 import { FaSquareXTwitter, FaLinkedin } from 'react-icons/fa6';
 import { FaGlobeAmericas } from 'react-icons/fa';
 import { formatDuration } from '@/utils/utils';
+import ViewTrailer from '@/components/admin/courses/trailer/viewTrailer';
 
 export default function CourseDetails({ response }) {
-
   return (
     <div className={styles.main}>
       <div
@@ -33,6 +33,13 @@ export default function CourseDetails({ response }) {
           <p className={styles.category}>Category: {response?.data?.category}</p>
           <p className={styles.description}>{response?.data?.description}</p>
 
+          {response?.data?.trailerCloudflareVideoId && (
+            <div>
+              <br />
+              <h3 className={styles.title}>Trailer</h3>
+              <ViewTrailer videoId={response?.data?.trailerCloudflareVideoId} />
+            </div>
+          )}
           <br />
           <div>
             {response?.data?.longDescription && (
