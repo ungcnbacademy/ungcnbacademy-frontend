@@ -146,6 +146,8 @@ export default function CreateCourse({ id = '' }) {
         />
 
         <p className={styles.subTitle}>Instructor:</p>
+        <p className={styles.label}>Instructor image</p>
+        <Input type="file" placeholder="Instructor Image" name="instructorImages" variant="secondary" />
         <p className={styles.label}>Instructor name</p>
         <Input
           type="text"

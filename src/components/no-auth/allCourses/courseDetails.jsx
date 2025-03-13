@@ -103,7 +103,7 @@ export default function CourseDetails({ response }) {
                   <Avatar
                     image={instructor?.image && instructor?.image}
                     name={!instructor?.image && instructor?.name}
-                    size={80}
+                    size={100}
                   />
                   <p className={styles.name}>{instructor?.name} </p>
                   <p> {instructor?.designation} </p>
