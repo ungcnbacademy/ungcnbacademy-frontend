@@ -56,6 +56,11 @@
     color: var(--foreground-light);
   }
 }
+.instructor{
+	.avatar{
+		margin-bottom: 10px;
+	}
+}
 .instructor > p {
   font-size: 0.85rem;
   margin-top: 5px;

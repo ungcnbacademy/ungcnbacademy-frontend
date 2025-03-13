@@ -14,6 +14,7 @@ import CreateModule from '@/components/admin/courses/modules/createModule';
 import { TbWorld } from 'react-icons/tb';
 import { IoLogoLinkedin } from 'react-icons/io';
 import { AiOutlineTwitter } from 'react-icons/ai';
+import Avatar from '@/components/ui/avatar/avatar';
 
 export default function CourseDetails({ params }) {
   const unwrappedParams = React.use(params);
@@ -66,6 +67,7 @@ export default function CourseDetails({ params }) {
         {response?.data?.instructors &&
           response?.data?.instructors?.map((instructor, i) => (
             <div key={i} className={styles.instructor}>
+              <Avatar name={instructor?.name} className={styles.avatar} />
               <p>Name: {instructor?.name}</p>
               <p>Designation: {instructor?.designation}</p>
               <p>Description: {instructor?.description}</p>
