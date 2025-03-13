@@ -10,7 +10,7 @@ import AddReview from './addReview';
 export default function ReviewDetails({ data }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [reviewQuestionId, setReviewQuestionId] = useState(null);
-console.log(data)
+
   const drawerOpenAddReview = () => {
     return (
       <>

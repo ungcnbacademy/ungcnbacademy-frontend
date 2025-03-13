@@ -35,7 +35,6 @@ export default function Modal({
   useEffect(() => {
     if (isModalOpen && mounted) {
       setIsVisible(true);
-      console.log('first');
       // Small delay to ensure visibility transition works properly
       setTimeout(() => {
         setIsOpen(true);

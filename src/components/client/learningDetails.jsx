@@ -12,6 +12,8 @@ import { ImArrowLeft } from 'react-icons/im';
 import { IoCloseCircleSharp } from 'react-icons/io5';
 import Button from '../ui/button/button';
 import { redirect } from 'next/navigation';
+import Modal from '../ui/modal/modal';
+import GiveFeedback from './atom/giveFeedback';
 
 export default function LearningDetails({ id }) {
   const [response, error, loading, axiosFetch] = useAxios();
@@ -19,6 +21,7 @@ export default function LearningDetails({ id }) {
   const [videoPlayerLoading, setVideoPlayerLoading] = useState(true);
   const [responseLesson, errorLesson, loadingLesson, axiosFetchLesson] = useAxios();
   const [showCourseContent, setShowCourseContent] = useState(true);
+  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
 
   useEffect(() => {
     axiosFetch({
@@ -155,6 +158,18 @@ export default function LearningDetails({ id }) {
     return previousLesson !== undefined;
   };
 
+  const feedBackModalRender = () => {
+    return(
+      <Modal
+        title="Feedback"
+        isModalOpen={isFeedbackModalOpen}
+        closeFunction={() => setIsFeedbackModalOpen(false)}
+      >
+       <GiveFeedback courseId={id} moduleId={selectedLesson?.moduleId} />
+      </Modal>
+    )
+  }
+
   const courseContentListViewRender = () => {
     return (
       <>
@@ -284,6 +299,11 @@ export default function LearningDetails({ id }) {
                 />
               </div>
             )}
+            <div className={styles.feedbackContainer}>
+              <h1 className={styles.heading}>Feedback</h1>
+              <p className={styles.text}>Leave a feedback below</p>
+              <Button text="Leave Feedback" variant='outLined' onClick={() => setIsFeedbackModalOpen(true)} />
+            </div>
             <br /> <br />
           </div>
         )}
@@ -293,6 +313,7 @@ export default function LearningDetails({ id }) {
 
   return (
     <div className={styles.main}>
+      {feedBackModalRender()}
       {loading && <LoadingDots />}
       {!loading && !error && (
         <>

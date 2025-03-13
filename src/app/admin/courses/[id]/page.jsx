@@ -163,7 +163,6 @@ export default function CourseDetails({ params }) {
                   title: 'Watch Trailer',
                   icon: <RiVideoAiLine />,
                   function: () => {
-                    console.log('clicked');
                     setIsModalOpen(true);
                   },
                 },

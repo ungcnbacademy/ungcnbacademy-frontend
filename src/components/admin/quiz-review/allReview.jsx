@@ -29,8 +29,6 @@ export default function AllReview() {
     getAllUsers();
   }, [refreshData]);
 
-  console.log(response);
-
   const columns = [
     {
       title: 'Quiz title',

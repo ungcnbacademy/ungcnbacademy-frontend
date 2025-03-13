@@ -84,14 +84,12 @@ export default function CreateQuiz({ courseId, moduleId, lessonId, update = fals
     }
 
     if (value === 'text' && type === 'select-one') {
-      console.log('first');
       //remove all options from questions
       const updatedQuestions = [...quiz.questions];
       delete updatedQuestions[index].options;
       setQuiz({ ...quiz, questions: updatedQuestions });
     }
     if (value === 'mcq' && type === 'select-one') {
-      console.log('second');
       //initiate options: [{ option: '', isCorrect: false }],
       const updatedQuestions = [...quiz.questions];
       updatedQuestions[index].options = [{ option: '', isCorrect: false }];
@@ -102,7 +100,7 @@ export default function CreateQuiz({ courseId, moduleId, lessonId, update = fals
   const handleSubmit = (e) => {
     e.preventDefault();
     setMessage({ text: '', type: '' });
-    console.log('Quiz Payload:', quiz);
+    
     axiosFetch({
       method: update ? 'PUT' : 'POST',
       url: configuration.courses + '/' + courseId + '/modules/' + moduleId + '/lessons/' + lessonId + '/quiz',

@@ -25,12 +25,6 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
   }, []);
 
   useEffect(() => {
-    if (response?.data?.questions) {
-      console.log(response.data);
-    }
-  }, [response]);
-
-  useEffect(() => {
     if (responseSubmit?.status === 'success') {
       setMessage({ text: 'Successfully submitted', type: 'success' });
       setBackBtnView(true);
