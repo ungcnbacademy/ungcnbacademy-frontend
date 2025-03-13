@@ -1,82 +1,82 @@
 .image {
-	width: 100%;
-	aspect-ratio: 16/9;
-	/* height: 340px; */
-	border-radius: var(--global-border-radius);
+  width: 100%;
+  aspect-ratio: 16/9;
+  /* height: 340px; */
+  border-radius: var(--global-border-radius);
 }
 .longDescriptionContainer {
-	.longDescription {
-		margin-top: 10px;
-		padding: 30px;
-		border-radius: var(--global-border-radius);
-		background-color: var(--background-dashboard);
-		font-size: 0.9rem;
-		color: var(--foreground-light);
-		text-align: justify;
-	}
-	.longDescription > h2 {
-		font-size: 1.2rem;
-		font-weight: 500;
-		margin-bottom: 10px;
-		color: var(--foreground);
-	}
-	.longDescription > h1 {
-		font-size: 1.3rem;
-		font-weight: 500;
-		margin-bottom: 10px;
-		color: var(--foreground);
-	}
+  .longDescription {
+    margin-top: 10px;
+    padding: 30px;
+    border-radius: var(--global-border-radius);
+    background-color: var(--background-dashboard);
+    font-size: 0.9rem;
+    color: var(--foreground-light);
+    text-align: justify;
+  }
+  .longDescription > h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--foreground);
+  }
+  .longDescription > h1 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--foreground);
+  }
 }
 .instructor {
-	background-color: var(--background-dashboard);
-	padding: 20px;
-	margin-block: 10px;
-	max-width: 800px;
-	border-radius: var(--global-border-radius);
-	.socialTitle {
-		margin-top: 15px;
-	}
-	.socialContent {
-		display: flex;
-		gap: 5px;
-		align-items: center;
-		margin-top: 5px;
-		font-size: 0.8rem;
-		.socialLink {
-			text-decoration: underline;
-			color: var(--accent2);
-			cursor: pointer;
-			transition: all 0.6s ease-in-out;
-			&:hover {
-				color: var(--accent3);
-			}
-		}
-	}
-	.socialContent > p {
-		color: var(--foreground-light);
-	}
+  background-color: var(--background-dashboard);
+  padding: 20px;
+  margin-block: 10px;
+  max-width: 800px;
+  border-radius: var(--global-border-radius);
+  .socialTitle {
+    margin-top: 15px;
+  }
+  .socialContent {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-top: 5px;
+    font-size: 0.8rem;
+    .socialLink {
+      text-decoration: underline;
+      color: var(--accent2);
+      cursor: pointer;
+      transition: all 0.6s ease-in-out;
+      &:hover {
+        color: var(--accent3);
+      }
+    }
+  }
+  .socialContent > p {
+    color: var(--foreground-light);
+  }
 }
 .instructor > p {
-	font-size: 0.85rem;
-	margin-top: 5px;
-	color: var(--foreground-light);
+  font-size: 0.85rem;
+  margin-top: 5px;
+  color: var(--foreground-light);
 }
 .header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-block: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: 10px;
 }
 .details {
-	max-width: 1000px;
+
 }
 .details > p {
-	font-size: 0.85rem;
-	margin-top: 5px;
-	color: var(--foreground-light);
-	font-weight: 400;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  color: var(--foreground-light);
+  font-weight: 400;
 }
 .title {
-	font-size: 1.2rem;
-	font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 500;
 }

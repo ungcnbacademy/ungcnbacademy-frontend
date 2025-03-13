@@ -147,13 +147,9 @@ export default function CourseDetails({ params }) {
               <br /> <br />
             </>
           )}
-
-          {courseDetailsRender()}
-          <br />
-          {courseModuleRender()}
-          <br />
-          {courseLongDescriptionRender()}
-          <br />
+          {courseDetailsRender()} <br />
+          {courseModuleRender()} <br />
+          {courseLongDescriptionRender()} <br />
           {courseInstructorRender()}
         </>
       )}
