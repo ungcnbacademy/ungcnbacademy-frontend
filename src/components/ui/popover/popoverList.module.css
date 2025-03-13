@@ -1,42 +1,69 @@
 .main {
-	position: relative;
-	padding: 2px 5px;
-
-	.threeDots {
-		cursor: pointer;
-	}
-
-	.container {
-		position: fixed;
+  position: relative;
+  /* padding: 4px 5px; */
+  > .topContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: var(--global-border-radius);
+  }
+  > .secondary {
+    border: solid 1px var(--accent2);
+    padding: 8px 15px;
+    background-color: var(--accent2);
+    color: var(--foreground-white);
+    font-size: 0.9rem;
+    gap: 5px;
+  }
+  > .primary {
+  }
+	>.outLined{
+		border: solid 1px var(--accent2);
+		padding: 8px 15px;
 		background-color: var(--background-dashboard);
-		min-width: fit-content;
-		box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.2);
-		border-radius: var(--global-border-radius);
-		padding: 5px;
-		z-index: 100;
-		transform: translate(-85%, 18px);
-	}
-
-	.buttonContainer {
-		display: flex;
-		align-items: center;
-		gap: 10px;
-		padding: 10px 15px;
-		cursor: pointer;
-		border-radius: var(--global-border-radius);
-		transition: all 0.3s ease-in-out;
-		&:hover {
-			background-color: #f0f0f0;
-		}
-	}
-
-	.button {
+		color: var(--foreground);
 		font-size: 0.9rem;
+		gap: 5px;
 	}
+  .threeDots {
+    cursor: pointer;
+  }
+  .dropDownContainer {
+    .container {
+      position: fixed;
+      background-color: var(--background-dashboard);
+      min-width: fit-content;
+      box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.2);
+      border-radius: var(--global-border-radius);
+      padding: 5px;
+      z-index: 100;
+      transform: translate(-85%, 18px);
+    }
 
-	&:hover {
-		.container {
-			display: block;
-		}
-	}
+    .buttonContainer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: var(--global-border-radius);
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+
+    .button {
+      font-size: 0.9rem;
+      width: fit-content;
+      white-space: nowrap;
+    }
+  }
+
+  &:hover {
+    .container {
+      display: block;
+    }
+  }
 }

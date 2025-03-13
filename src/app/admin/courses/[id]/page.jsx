@@ -15,12 +15,20 @@ import { TbWorld } from 'react-icons/tb';
 import { IoLogoLinkedin } from 'react-icons/io';
 import { AiOutlineTwitter } from 'react-icons/ai';
 import Avatar from '@/components/ui/avatar/avatar';
+import PopoverList from '@/components/ui/popover/popoverList';
+import { RiVideoAddLine, RiVideoAiLine, RiVideoOffLine } from 'react-icons/ri';
+import CreateTrailer from '@/components/admin/courses/trailer/createTrailer';
+import ViewTrailer from '@/components/admin/courses/trailer/viewTrailer';
+import Modal from '@/components/ui/modal/modal';
 
 export default function CourseDetails({ params }) {
   const unwrappedParams = React.use(params);
   const courseId = unwrappedParams.id;
   const [response, error, loading, axiosFetch] = useAxios();
   const [isDrawerOpenCreateModule, setIsDrawerOpenCreateModule] = useState(false);
+  const [isDrawerOpenAddTrailer, setIsDrawerOpenAddTrailer] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     axiosFetch({
       method: 'Get',
@@ -34,6 +42,18 @@ export default function CourseDetails({ params }) {
         {isDrawerOpenCreateModule && (
           <Drawer title="Create Module" closeFunction={() => setIsDrawerOpenCreateModule(false)}>
             <CreateModule courseId={courseId} />
+          </Drawer>
+        )}
+      </>
+    );
+  };
+
+  const drawerRenderAddTrailer = () => {
+    return (
+      <>
+        {isDrawerOpenAddTrailer && (
+          <Drawer title="Add Trailer" closeFunction={() => setIsDrawerOpenAddTrailer(false)}>
+            <CreateTrailer courseId={courseId} />
           </Drawer>
         )}
       </>
@@ -124,16 +144,45 @@ export default function CourseDetails({ params }) {
       <div>
         <div className={styles.header}>
           <h2 className={styles.title}>Modules</h2>
-          <Button text="Create Module" variant="primary" onClick={() => setIsDrawerOpenCreateModule(!isDrawerOpenCreateModule)} />
+          <div className={styles.buttonContainer}>
+            <Button
+              text="Create Module"
+              variant="primary"
+              onClick={() => setIsDrawerOpenCreateModule(!isDrawerOpenCreateModule)}
+            />
+            <PopoverList
+              text="Trailer"
+              variant="secondary"
+              data={[
+                {
+                  title: 'Add Trailer',
+                  icon: <RiVideoAddLine />,
+                  function: () => setIsDrawerOpenAddTrailer(!isDrawerOpenAddTrailer),
+                },
+                { title: 'Watch Trailer', icon: <RiVideoAiLine />, function: () => {setIsModalOpen(!isModalOpen)} },
+                { title: 'Delete Trailer', icon: <RiVideoOffLine />, function: () => {} },
+              ]}
+            />
+          </div>
         </div>
         <AllModules id={courseId} />
       </div>
     );
   };
 
+  const trailerModalRender = () => {
+    return (
+      <Modal isOpen={isModalOpen} title="Trailer" >
+        <ViewTrailer courseId={courseId} />
+      </Modal>
+    )
+  }
+
   return (
     <div>
       {drawerRenderCreateModule()}
+      {drawerRenderAddTrailer()}
+      {trailerModalRender()}
       {loading && <LoadingDots />}
       {!loading && !error && (
         <>
