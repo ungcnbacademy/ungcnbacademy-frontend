@@ -9,4 +9,8 @@
       width: 100%;
     }
   }
+  .noTrailer {
+    font-size: 0.9rem;
+    color: var(--foreground-light);
+  }
 }

@@ -159,8 +159,15 @@ export default function CourseDetails({ params }) {
                   icon: <RiVideoAddLine />,
                   function: () => setIsDrawerOpenAddTrailer(!isDrawerOpenAddTrailer),
                 },
-                { title: 'Watch Trailer', icon: <RiVideoAiLine />, function: () => {setIsModalOpen(!isModalOpen)} },
-                { title: 'Delete Trailer', icon: <RiVideoOffLine />, function: () => {} },
+                {
+                  title: 'Watch Trailer',
+                  icon: <RiVideoAiLine />,
+                  function: () => {
+                    console.log('clicked');
+                    setIsModalOpen(true);
+                  },
+                },
+                
               ]}
             />
           </div>
@@ -172,11 +179,11 @@ export default function CourseDetails({ params }) {
 
   const trailerModalRender = () => {
     return (
-      <Modal isOpen={isModalOpen} title="Trailer" >
+      <Modal title="Trailer" isModalOpen={isModalOpen} closeFunction={() => setIsModalOpen(false)}>
         <ViewTrailer courseId={courseId} />
       </Modal>
-    )
-  }
+    );
+  };
 
   return (
     <div>

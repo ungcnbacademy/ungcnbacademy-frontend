@@ -19,6 +19,7 @@ export default function ViewTrailer({ courseId, videoId = null }) {
 
   return (
     <div className={styles.main}>
+      {loading && <LoadingDots/>}
       {videoId ||
         (response?.data?.trailerCloudflareVideoId && (
           <div className={styles.videoContainer}>
@@ -32,6 +33,9 @@ export default function ViewTrailer({ courseId, videoId = null }) {
             />
           </div>
         ))}
+        {!videoId && !response?.data?.trailerCloudflareVideoId && !loading && (
+          <p className={styles.noTrailer}>No trailer available.</p>
+        )}
     </div>
   );
 }
