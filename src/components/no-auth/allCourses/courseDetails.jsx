@@ -7,7 +7,6 @@ import Avatar from '@/components/ui/avatar/avatar';
 import CoursePriceContainer from './coursePriceContainer';
 import { FaSquareXTwitter, FaLinkedin } from 'react-icons/fa6';
 import { FaGlobeAmericas } from 'react-icons/fa';
-import moment from 'moment';
 import { formatDuration } from '@/utils/utils';
 export default async function CourseDetails({ id }) {
   const response = await getFetchRequests.getCourseById(id);
@@ -19,15 +18,14 @@ export default async function CourseDetails({ id }) {
         style={response?.data?.thumbnail ? { backgroundImage: `url(${response?.data?.thumbnail})` } : {}}
       >
         <div className={styles.imageWrapper}>
-        <Image
-          src={response?.data?.thumbnail || '/assets/noImage.svg'}
-          alt={response?.data?.title || 'Course'}
-          width={500}
-          height={500}
-          className={styles.image}
-        />
+          <Image
+            src={response?.data?.thumbnail || '/assets/noImage.svg'}
+            alt={response?.data?.title || 'Course'}
+            width={500}
+            height={500}
+            className={styles.image}
+          />
         </div>
-
       </div>
 
       <div className={styles.container}>
