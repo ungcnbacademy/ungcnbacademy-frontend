@@ -43,7 +43,7 @@ export default function Profile() {
     return (
       <>
         {isDrawerOpenAddPicture && (
-          <Drawer title="Add Picture" closeFunction={() => setIsDrawerOpenAddPicture(false)}>
+          <Drawer title="Add Profile Picture" closeFunction={() => setIsDrawerOpenAddPicture(false)}>
             <AddProfilePicture refreshData={() => setRefreshData(!refreshData)} />
           </Drawer>
         )}
@@ -82,9 +82,9 @@ export default function Profile() {
                 <p className={styles.subTitle}>User since: {moment(response?.data?.createdAt).format('lll')}</p>
                 <br />
                 <div className={styles.btnContainer}>
-                  <Button text="Edit Profile" onClick={() => setIsDrawerOpenEditProfile(true)} />
-                  <Button text="Add picture" variant="outLined" onClick={() => setIsDrawerOpenAddPicture(true)} />
-                  <Button text="Logout" variant="dangerOutLined" onClick={() => redirect('/logout')} />
+                  <Button text="Edit profile" onClick={() => setIsDrawerOpenEditProfile(true)} />
+                  <Button text="Add profile picture" variant="outLined" onClick={() => setIsDrawerOpenAddPicture(true)} />
+                  {/* <Button text="Logout" variant="dangerOutLined" onClick={() => redirect('/logout')} /> */}
                 </div>
               </div>
             )}
