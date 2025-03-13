@@ -32,7 +32,11 @@
 .questions {
   margin: 10px 0 10px 0;
 }
-
+.email {
+  color: rgb(4, 104, 204);
+  cursor: pointer;
+  text-decoration: underline;
+}
 .questions li {
   color: dodgerblue;
   cursor: pointer;
