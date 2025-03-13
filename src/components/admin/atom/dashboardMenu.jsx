@@ -4,7 +4,7 @@ import styles from './dashboardMenu.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import { HiOutlineMenuAlt4 } from 'react-icons/hi';
-import { MdSpaceDashboard, MdRateReview } from 'react-icons/md';
+import { MdSpaceDashboard, MdRateReview, MdReviews } from 'react-icons/md';
 import { FaFileAlt } from 'react-icons/fa';
 import { useState } from 'react';
 import { RiAdminFill } from 'react-icons/ri';
@@ -35,6 +35,11 @@ export default function DashboardMenu() {
       name: 'Review',
       link: '/admin/quiz-review',
       icon: <MdRateReview />,
+    },
+    {
+      name: 'Feedbacks',
+      link: '/admin/all-feedbacks',
+      icon: <MdReviews />,
     },
     {
       name: 'Admins',
