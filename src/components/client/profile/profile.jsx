@@ -9,7 +9,6 @@ import LoadingDots from '../../ui/loading/loadingDots';
 import Button from '../../ui/button/button';
 import ProgressCard from '../atom/progressCard';
 import { redirect } from 'next/navigation';
-import AllCourses from '../../no-auth/allCourses/allCourses';
 import Drawer from '../../ui/drawer/drawer';
 import EditProfile from './editProfile';
 import AddProfilePicture from './addProfilePicture';
@@ -61,7 +60,7 @@ export default function Profile({ firstCourse }) {
       <div className={styles.main}>
         <div className={styles.container}>
           <div className={styles.left}>
-            {!loading && <h1 className={styles.heading}>Course Progress</h1>}
+            {!loading && !error && <h1 className={styles.heading}>Course Progress</h1>}
             <div className={styles.progressContainer}>
               {response?.data?.enrolledCourses.length < 1 && (
                 <>
@@ -77,7 +76,7 @@ export default function Profile({ firstCourse }) {
             {!loading && <h1 className={styles.heading}>My info</h1>}
             {response?.data && (
               <div className={styles.details}>
-                <Avatar image={response?.data?.profileImage} size={100} name={response?.data?.firstName} /> 
+                <Avatar image={response?.data?.profileImage} size={100} name={response?.data?.firstName} />
                 <p className={styles.title}>{response?.data?.firstName + ' ' + response?.data?.lastName}</p>
                 <p className={styles.subTitle}># {response?.data?._id}</p>
                 <p className={styles.subTitle}>{response?.data?.email}</p>
@@ -86,7 +85,6 @@ export default function Profile({ firstCourse }) {
                 <div className={styles.btnContainer}>
                   <Button text="Edit profile" onClick={() => setIsDrawerOpenEditProfile(true)} />
                   <Button text="Add profile picture" variant="outLined" onClick={() => setIsDrawerOpenAddPicture(true)} />
-                  {/* <Button text="Logout" variant="dangerOutLined" onClick={() => redirect('/logout')} /> */}
                 </div>
               </div>
             )}
