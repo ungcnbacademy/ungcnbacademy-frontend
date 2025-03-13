@@ -11,7 +11,14 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: response?.data?.title,
       description: response?.data?.description,
-      images: [response?.data?.thumbnail],
+      images: [
+        {
+          url: response?.data?.thumbnail,
+          width: 851,
+          height: 312,
+          alt: 'UNGCNB Academy',
+        },
+      ],
     },
   };
 }
