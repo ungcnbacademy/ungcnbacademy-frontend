@@ -4,7 +4,7 @@ import Navbar from '@/components/navbar/navbar';
 export default function Layout({ children }) {
 	return (
 		<>
-			<Navbar variant="white" />
+			<Navbar variant="transparent" />
 			{children}
 			<Footer />
 		</>
