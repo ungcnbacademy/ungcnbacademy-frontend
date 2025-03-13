@@ -159,16 +159,12 @@ export default function LearningDetails({ id }) {
   };
 
   const feedBackModalRender = () => {
-    return(
-      <Modal
-        title="Feedback"
-        isModalOpen={isFeedbackModalOpen}
-        closeFunction={() => setIsFeedbackModalOpen(false)}
-      >
-       <GiveFeedback courseId={id} moduleId={selectedLesson?.moduleId} />
+    return (
+      <Modal title="Feedback" isModalOpen={isFeedbackModalOpen} closeFunction={() => setIsFeedbackModalOpen(false)} size='sm'>
+        <GiveFeedback courseId={id} moduleId={selectedLesson?.moduleId} />
       </Modal>
-    )
-  }
+    );
+  };
 
   const courseContentListViewRender = () => {
     return (
@@ -299,11 +295,13 @@ export default function LearningDetails({ id }) {
                 />
               </div>
             )}
-            <div className={styles.feedbackContainer}>
-              <h1 className={styles.heading}>Feedback</h1>
-              <p className={styles.text}>Leave a feedback below</p>
-              <Button text="Leave Feedback" variant='outLined' onClick={() => setIsFeedbackModalOpen(true)} />
-            </div>
+            {!isNextLessonAvailable() && (
+              <div className={styles.feedbackContainer}>
+                <h1 className={styles.heading}>Feedback</h1>
+                <p className={styles.text}>Leave a feedback below</p>
+                <Button text="Leave Feedback" variant="outLined" onClick={() => setIsFeedbackModalOpen(true)} />
+              </div>
+            )}
             <br /> <br />
           </div>
         )}
