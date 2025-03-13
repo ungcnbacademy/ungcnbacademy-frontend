@@ -80,6 +80,7 @@ export default function Profile({ firstCourse }) {
                 <p className={styles.title}>{response?.data?.firstName + ' ' + response?.data?.lastName}</p>
                 <p className={styles.subTitle}># {response?.data?._id}</p>
                 <p className={styles.subTitle}>{response?.data?.email}</p>
+                {response?.data?.phoneNumber && <p className={styles.subTitle}>{response?.data?.phoneNumber}</p>}
                 <p className={styles.subTitle}>User since: {moment(response?.data?.createdAt).format('lll')}</p>
                 <br />
                 <div className={styles.btnContainer}>
