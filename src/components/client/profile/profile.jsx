@@ -12,10 +12,9 @@ import { redirect } from 'next/navigation';
 import Drawer from '../../ui/drawer/drawer';
 import EditProfile from './editProfile';
 import AddProfilePicture from './addProfilePicture';
-import CourseCard from '@/components/atom/courseCard';
-import { formatDuration } from '@/utils/utils';
+import FeaturedCourse from '../atom/featuredCourse';
 
-export default function Profile({ firstCourse }) {
+export default function Profile({ firstCourse = {} }) {
   const [response, error, loading, axiosFetch] = useAxios();
   const [isDrawerOpenEditProfile, setIsDrawerOpenEditProfile] = useState(false);
   const [isDrawerOpenAddPicture, setIsDrawerOpenAddPicture] = useState(false);
@@ -89,23 +88,8 @@ export default function Profile({ firstCourse }) {
                 </div>
               </div>
             )}
-            <div className={styles.sideBar}>
-              <h1 className={styles.heading}>Featured Course</h1>
-              <CourseCard
-                img={firstCourse?.thumbnail || '/assets/auth-bg.webp'}
-                title={firstCourse?.title || 'ESG Investing and Analysis'}
-                description={firstCourse?.description || 'Learn how to incorporate ESG factors into your investment strategy'}
-                startTime="Anytime"
-                duration={formatDuration(firstCourse?.statistics?.totalDuration) || ''}
-                totalLectures={
-                  `${firstCourse?.statistics?.totalModules || 0} modules and ${
-                    firstCourse?.statistics?.totalLessons || 0
-                  } lectures` || ''
-                }
-                id={firstCourse?._id}
-              />
-              <Button text={'Browser All Courses'} onClick={() => redirect('/courses')} className={styles.btn} />
-            </div>
+            <br />
+            <FeaturedCourse firstCourse={firstCourse} />
           </div>
         </div>
       </div>

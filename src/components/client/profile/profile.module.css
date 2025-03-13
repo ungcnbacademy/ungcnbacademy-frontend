@@ -16,25 +16,6 @@
       .right {
         flex: 1 300px;
         overflow: hidden;
-        .sideBar {
-          margin-top: 20px;
-          background-color: var(--background-dashboard);
-          border-radius: var(--global-border-radius);
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          padding: 20px;
-
-          .heading {
-            margin-bottom: 20px;
-          }
-          .btn {
-            margin-top: 20px;
-          }
-          @media screen and (max-width: 976px) {
-            display: none;
-          }
-        }
       }
       .details {
         background-color: var(--background-dashboard);

@@ -1,0 +1,20 @@
+.sideBar {
+  background-color: var(--background-dashboard);
+  border-radius: var(--global-border-radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+
+  .heading {
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+  .btn {
+    margin-top: 20px;
+  }
+  @media screen and (max-width: 976px) {
+    display: none;
+  }
+}
