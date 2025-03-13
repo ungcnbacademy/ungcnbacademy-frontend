@@ -6,7 +6,7 @@ import styles from './quizStart.module.css';
 import Button from '@/components/ui/button/button';
 import { IoCheckmarkCircle, IoCloseCircleSharp } from 'react-icons/io5';
 import LoadingDots from '@/components/ui/loading/loadingDots';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export default function QuizStart({ courseId, moduleId, lessonId }) {
   const [response, error, loading, axiosFetch] = useAxios();
@@ -38,7 +38,7 @@ export default function QuizStart({ courseId, moduleId, lessonId }) {
 
   const startQuizClickHAndler = () => {
     confirm('Are you sure you want to start the quiz?') &&
-      redirect(`/client/my-courses/quiz/attempts/${courseId}/${moduleId}/${lessonId}`);
+      router.push(`/client/my-courses/quiz/attempts/${courseId}/${moduleId}/${lessonId}`);
   };
 
   return (
@@ -61,7 +61,7 @@ export default function QuizStart({ courseId, moduleId, lessonId }) {
             during the quiz to maintain the integrity of your answers.
           </p>
           <div className={styles.buttonContainer}>
-            <Button text="Back" variant="outLined" loading={loading} onClick={() => redirect(`/client/my-courses/${courseId}`)} />
+            <Button text="Back" variant="outLined" loading={loading} onClick={() => router.push(`/client/my-courses/${courseId}`)} />
             <Button text="Start Quiz" disabled={!response?.data?.canTakeQuiz} loading={loading} onClick={startQuizClickHAndler} />
           </div>
         </div>

@@ -8,7 +8,7 @@ import moment from 'moment';
 import LoadingDots from '../../ui/loading/loadingDots';
 import Button from '../../ui/button/button';
 import ProgressCard from '../atom/progressCard';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Drawer from '../../ui/drawer/drawer';
 import EditProfile from './editProfile';
 import AddProfilePicture from './addProfilePicture';
@@ -19,6 +19,7 @@ export default function Profile({ firstCourse = {} }) {
   const [isDrawerOpenEditProfile, setIsDrawerOpenEditProfile] = useState(false);
   const [isDrawerOpenAddPicture, setIsDrawerOpenAddPicture] = useState(false);
   const [refreshData, setRefreshData] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     axiosFetch({
@@ -64,7 +65,7 @@ export default function Profile({ firstCourse = {} }) {
               {response?.data?.enrolledCourses.length < 1 && (
                 <>
                   <p className={styles.subTitle}>You have not enrolled in any course yet</p>
-                  <Button text="Browse All Courses" onClick={() => redirect('/courses')} />
+                  <Button text="Browse All Courses" onClick={() => router.push('/courses')} />
                 </>
               )}
               {response?.data?.enrolledCourses.length > 0 &&

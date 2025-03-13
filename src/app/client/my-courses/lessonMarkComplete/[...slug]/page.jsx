@@ -2,11 +2,11 @@
 import React, { use, useEffect, useState } from 'react';
 import styles from './page.module.css';
 import Button from '@/components/ui/button/button';
-import { redirect } from 'next/navigation';
 import useAxios from '@/hooks/useAxios';
 import { configuration } from '@/configuration/configuration';
 import Message from '@/components/ui/message/message';
 import Header from '@/components/atom/header';
+import { useRouter } from 'next/navigation';
 
 export default function MarkLessonComplete({ params }) {
   const unwrappedParams = use(params);
@@ -15,6 +15,7 @@ export default function MarkLessonComplete({ params }) {
   const lessonId = unwrappedParams.slug[2];
   const [response, error, loading, axiosFetch] = useAxios();
   const [message, setMessage] = useState('');
+  const router = useRouter();
   const markLessonCompleteHandler = () => {
     setMessage();
     axiosFetch({
@@ -48,7 +49,7 @@ export default function MarkLessonComplete({ params }) {
             <Button
               text="Back to Course"
               variant="outLined"
-              onClick={() => redirect(`/client/my-courses/${courseId}`)}
+              onClick={() => router.push(`/client/my-courses/${courseId}`)}
               disabled={loading}
             />
             <Button
@@ -60,7 +61,7 @@ export default function MarkLessonComplete({ params }) {
             />
           </div>
         </div>
-      </div>{' '}
+      </div>
     </>
   );
 }

@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './contentCardLesson.module.css';
 import { MdOutlineOndemandVideo, MdLock } from 'react-icons/md';
 import Button from '@/components/ui/button/button';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { formatDuration } from '@/utils/utils';
 
 export default function ContentCardLesson({
@@ -22,13 +22,14 @@ export default function ContentCardLesson({
   moduleId = '',
   lessonId = '',
 }) {
+  const router = useRouter();
   const quizButtonClickHandler = (event) => {
     event.stopPropagation();
-    redirect(`/client/my-courses/quiz/${courseId}/${moduleId}/${lessonId}`);
+    router.push(`/client/my-courses/quiz/${courseId}/${moduleId}/${lessonId}`);
   };
   const lessonMarkCompleteHandler = (event) => {
     event.stopPropagation();
-    redirect(`/client/my-courses/lessonMarkComplete/${courseId}/${moduleId}/${lessonId}`);
+    router.push(`/client/my-courses/lessonMarkComplete/${courseId}/${moduleId}/${lessonId}`);
   }
   return (
     <div className={styles.wrapper}>

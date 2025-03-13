@@ -11,7 +11,7 @@ import { IoMdClose } from 'react-icons/io';
 import { ImArrowLeft } from 'react-icons/im';
 import { IoCloseCircleSharp } from 'react-icons/io5';
 import Button from '../ui/button/button';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Modal from '../ui/modal/modal';
 import GiveFeedback from './atom/giveFeedback';
 
@@ -22,6 +22,7 @@ export default function LearningDetails({ id }) {
   const [responseLesson, errorLesson, loadingLesson, axiosFetchLesson] = useAxios();
   const [showCourseContent, setShowCourseContent] = useState(true);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     axiosFetch({
@@ -290,7 +291,7 @@ export default function LearningDetails({ id }) {
                 <Button
                   text="Take Quiz"
                   onClick={() =>
-                    redirect(`/client/my-courses/quiz/${id}/${responseLesson?.data?.module}/${responseLesson?.data?._id}`)
+                    router.push(`/client/my-courses/quiz/${id}/${responseLesson?.data?.module}/${responseLesson?.data?._id}`)
                   }
                 />
               </div>

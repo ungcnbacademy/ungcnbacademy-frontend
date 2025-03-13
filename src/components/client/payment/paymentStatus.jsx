@@ -5,7 +5,8 @@ import { IoCheckmarkCircle, IoCloseCircleSharp } from 'react-icons/io5';
 import { clientPaymentStatus } from '@/constants/constants';
 import { getAmountsWithCommas } from '@/utils/utils';
 import Button from '@/components/ui/button/button';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+
 export default function PaymentStatus({
 	status = '',
 	tranId = '',
@@ -15,6 +16,8 @@ export default function PaymentStatus({
 	const [icon, setIcon] = useState('');
 	const [text, setText] = useState('');
 	const [amountText, setAmountText] = useState('');
+	const router = useRouter();
+
 	useEffect(() => {
 		if (status === clientPaymentStatus.success) {
 			setStatusText('Successfully Purchased');
@@ -44,14 +47,14 @@ export default function PaymentStatus({
 						text="Home page"
 						variant="primary"
 						onClick={() => {
-							redirect('/');
+							router.push('/');
 						}}
 					/>
 					<Button
 						text="My Courses"
 						variant="outLined"
 						onClick={() => {
-							redirect('/client/my-courses');
+							router.push('/client/my-courses');
 						}}
 					/>
 				</div>

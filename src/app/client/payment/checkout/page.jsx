@@ -8,15 +8,16 @@ import { getAmountsWithCommas } from '@/utils/utils';
 import useAxios from '@/hooks/useAxios';
 import { configuration } from '@/configuration/configuration';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
 import Image from 'next/image';
 import Message from '@/components/ui/message/message';
 import Header from '@/components/atom/header';
+import { useRouter } from 'next/navigation';
 export default function Checkout() {
   const { globalCart } = useContext(CartContext);
   const [response, error, loading, axiosFetch] = useAxios();
   const [checkMark, setCheckMark] = useState(false);
   const [message, setMessage] = useState({ text: '', type: '' });
+  const router = useRouter();
 
   const checkoutClickHandler = (event) => {
     event.preventDefault();
@@ -70,7 +71,7 @@ export default function Checkout() {
 
   useEffect(() => {
     if (!globalCart) {
-      redirect('/courses');
+      router.replace('/courses');
     }
   }, [globalCart]);
 

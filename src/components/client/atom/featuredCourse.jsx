@@ -2,12 +2,12 @@
 import Button from '@/components/ui/button/button';
 import React from 'react';
 import styles from './featuredCourse.module.css';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import CourseCard from '@/components/atom/courseCard';
 import { formatDuration } from '@/utils/utils';
 
 export default function FeaturedCourse({ firstCourse }) {
-  
+  const router = useRouter();
   return (
     <div className={styles.sideBar}>
       <h1 className={styles.heading}>Featured Course</h1>
@@ -22,7 +22,7 @@ export default function FeaturedCourse({ firstCourse }) {
         }
         id={firstCourse?._id}
       />
-      <Button text={'Browser All Courses'} onClick={() => redirect('/courses')} className={styles.btn} />
+      <Button text={'Browser All Courses'} onClick={() => router.push('/courses')} className={styles.btn} />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './courseCard.module.css';
 import Image from 'next/image';
 import { FaRegCalendarAlt, FaRegFileAlt, FaArrowRight, FaRegClock } from 'react-icons/fa';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { formatDuration, truncateString } from '@/utils/utils';
 import useAxios from '@/hooks/useAxios';
 import { configuration } from '@/configuration/configuration';
@@ -25,6 +25,7 @@ export default function CourseCard({
 }) {
   const [courseImage, setCourseImage] = useState(img);
   const [response, error, loading, axiosFetch] = useAxios();
+  const router = useRouter();
 
   useEffect(() => {
     if (getMoreDetails) {
@@ -37,9 +38,9 @@ export default function CourseCard({
 
   const onclickCourseHandler = () => {
     if (onClickLink) {
-      redirect(onClickLink);
+      router.push(onClickLink);
     } else {
-      redirect(`/courses/${id}`);
+      router.push(`/courses/${id}`);
     }
   };
   const setDuration = () => {

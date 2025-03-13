@@ -3,11 +3,10 @@ import React, { useEffect, useState } from 'react';
 import styles from './lessonQuiz.module.css';
 import Timer from './timer';
 import Button from '@/components/ui/button/button';
-import QuizQuestion from '../atom/quizQuestion';
 import useAxios from '@/hooks/useAxios';
 import { configuration } from '@/configuration/configuration';
 import Message from '@/components/ui/message/message';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import QuizResult from './quizResult';
 import LoadingDots from '@/components/ui/loading/loadingDots';
 export default function LessonQuiz({ courseId, moduleId, lessonId }) {
@@ -16,6 +15,7 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
   const [responseSubmit, errorSubmit, loadingSubmit, axiosFetchSubmit] = useAxios();
   const [message, setMessage] = useState('');
   const [backBtnView, setBackBtnView] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     axiosFetch({
@@ -104,7 +104,7 @@ export default function LessonQuiz({ courseId, moduleId, lessonId }) {
               <Button text="Submit" variant="primary" type="submit" loading={loadingSubmit} disabled={loadingSubmit} />
             )}
             {backBtnView && (
-              <Button text="Back to Lesson" variant="secondary" onClick={() => redirect(`/client/my-courses/${courseId}`)} />
+              <Button text="Back to Lesson" variant="secondary" onClick={() => router.push(`/client/my-courses/${courseId}`)} />
             )}
           </div>
         </form>

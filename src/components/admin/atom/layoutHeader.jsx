@@ -8,13 +8,14 @@ import { IoHelp } from 'react-icons/io5';
 import Image from 'next/image';
 
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { userRoles } from '@/constants/constants';
 
 export default function LayoutHeader() {
   const [userDetails, setUserDetails] = useState({});
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setMounted(true);
@@ -47,7 +48,7 @@ export default function LayoutHeader() {
             <IoHelp className={styles.icon} />
             Help
           </div>
-          <div className={styles.item} onClick={() => redirect('/logout')}>
+          <div className={styles.item} onClick={() => router.push('/logout')}>
             <AiOutlineLogout className={styles.icon} /> Logout
           </div>
         </div>
