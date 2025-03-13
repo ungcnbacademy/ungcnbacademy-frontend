@@ -1,6 +1,6 @@
 .main {
   .top {
-    background-image: url('/assets/landing/bg3.webp');
+    background-image: url('/assets/about/bg2.webp');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -31,7 +31,7 @@
       .box:nth-child(1) {
         @media screen and (max-width: 899px) {
           background-color: black;
-          background-image: url('/assets/landing/bg3.webp');
+          background-image: url('/assets/about/bg2.webp');
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
