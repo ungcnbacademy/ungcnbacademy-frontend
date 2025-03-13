@@ -139,6 +139,11 @@
       }
     }
     @media screen and (max-width: 384px) {
+      .middle{
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+      }
       .right {
         flex: 1 300px;
       }
