@@ -20,10 +20,16 @@
           margin-top: 20px;
           background-color: var(--background-dashboard);
           border-radius: var(--global-border-radius);
-          height: 1000px;
-          overflow: auto;
-          @media screen and (max-width: 976px) {
-            display: none;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 20px;
+
+          .heading{
+            margin-bottom: 20px;
+          }
+          .btn{
+            margin-top: 20px;
           }
         }
       }
