@@ -6,6 +6,7 @@ import Section2 from '@/components/no-auth/aboutUs/section2';
 import Team from '@/components/no-auth/aboutUs/team';
 import Vision from '@/components/no-auth/aboutUs/vision';
 import React from 'react';
+export const metadata = { title: 'About Us' };
 
 export default function AboutUs() {
   return (

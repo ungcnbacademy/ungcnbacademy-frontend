@@ -1,4 +1,3 @@
-import { getFetchRequests } from '@/fetch ssr/getFetchRequests';
 import React from 'react';
 import styles from './courseDetails.module.css';
 import Image from 'next/image';
@@ -8,8 +7,8 @@ import CoursePriceContainer from './coursePriceContainer';
 import { FaSquareXTwitter, FaLinkedin } from 'react-icons/fa6';
 import { FaGlobeAmericas } from 'react-icons/fa';
 import { formatDuration } from '@/utils/utils';
-export default async function CourseDetails({ id }) {
-  const response = await getFetchRequests.getCourseById(id);
+
+export default function CourseDetails({ response }) {
 
   return (
     <div className={styles.main}>

@@ -1,5 +1,6 @@
 import { companyInfo } from "@/constants/constants";
 import styles from "./page.module.css";
+export const metadata = { title: 'Cookie Policy' };
 
 const page = () => {
 
