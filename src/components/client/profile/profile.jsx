@@ -91,7 +91,7 @@ export default function Profile({ firstCourse }) {
               </div>
             )}
             <div className={styles.sideBar}>
-            <h1 className={styles.heading}>Featured Course</h1>
+              <h1 className={styles.heading}>Featured Course</h1>
               <CourseCard
                 img={firstCourse?.thumbnail || '/assets/auth-bg.webp'}
                 title={firstCourse?.title || 'ESG Investing and Analysis'}
@@ -105,7 +105,7 @@ export default function Profile({ firstCourse }) {
                 }
                 id={firstCourse?._id}
               />
-              <Button text={"Browser All Courses"} onClick={() => redirect('/courses')} className={styles.btn} />
+              <Button text={'Browser All Courses'} onClick={() => redirect('/courses')} className={styles.btn} />
             </div>
           </div>
         </div>

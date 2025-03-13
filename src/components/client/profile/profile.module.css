@@ -25,11 +25,14 @@
           justify-content: center;
           padding: 20px;
 
-          .heading{
+          .heading {
             margin-bottom: 20px;
           }
-          .btn{
+          .btn {
             margin-top: 20px;
+          }
+          @media screen and (max-width: 976px) {
+            display: none;
           }
         }
       }
