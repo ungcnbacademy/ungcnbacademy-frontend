@@ -8,10 +8,10 @@ export const metadata = {
     default: 'UNGCNB Academy',
     template: '%s | UNGCNB Academy',
   },
-  description: "Educational resources from the world's leading experts on sustainable development",
+  description: "Learn from top professionals and sustainability specialists to make your journey more sustainable.",
   openGraph: {
 		title: 'UNGCNB Academy',
-		description: "Educational resources from the world's leading experts on sustainable development",
+		description: "Learn from top professionals and sustainability specialists to make your journey more sustainable.",
 		images: [
 			{
 				url: 'https://esgeducation.netlify.app/ogimage.png',
