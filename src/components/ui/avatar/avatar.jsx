@@ -16,12 +16,12 @@ export default function Avatar({ name, image, icon, size = 32, className='' }) {
 					/>
 				</div>
 			)}
-			{icon && (
+			{!image && icon && (
 				<div className={styles.iconWrapper}>
 					<HiUser className={styles.icon} />
 				</div>
 			)}
-			{name && <span className={styles.initials}>{name.charAt(0).toUpperCase()}</span>}
+			{!image && name && <span className={styles.initials}>{name.charAt(0).toUpperCase()}</span>}
 		</div>
 	);
 }

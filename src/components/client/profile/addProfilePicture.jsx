@@ -6,9 +6,10 @@ import useAxios from '@/hooks/useAxios';
 import Message from '@/components/ui/message/message';
 import { configuration } from '@/configuration/configuration';
 import styles from './addProfilePicture.module.css';
+import ProgressBar from '@/components/ui/progressBar/progressBar';
 
 export default function AddProfilePicture({refreshData = () => {}}) {
-  const [response, error, loading, axiosFetch] = useAxios();
+  const [response, error, loading, axiosFetch, progress] = useAxios();
   const formRef = useRef(null);
   const [message, setMessage] = useState({ text: '', type: '' });
   useEffect(() => {
@@ -29,13 +30,11 @@ export default function AddProfilePicture({refreshData = () => {}}) {
     event.preventDefault();
     setMessage({ text: '', type: '' });
     const formData = new FormData(event.target);
-    const payload = Object.fromEntries(formData);
-    setMessage({ text: 'This feature is under development', type: 'error' });
-    // axiosFetch({
-    // 	method: 'PUT',
-    // 	url: configuration.client.profile,
-    // 	requestConfig: payload,
-    // });
+    axiosFetch({
+    	method: 'POST',
+    	url: configuration.client.profile + '/image',
+    	requestConfig: formData,
+    });
   };
 
   return (
@@ -43,7 +42,8 @@ export default function AddProfilePicture({refreshData = () => {}}) {
       <form className={styles.form} onSubmit={onAddAdminSubmitHandler} ref={formRef}>
         <p className={styles.subTitle}>User details:</p>
         <p className={styles.label}>User profile picture</p>
-        <Input type="file" placeholder="Upload your profile picture" name="profilePicture" variant="secondary" required />
+        <Input type="file" placeholder="Upload your profile picture" name="image" variant="secondary" required />
+        <ProgressBar progress={progress} />
 
         <div className={styles.submitContainer}>
           <Message text={message.text} type={message.type} loading={loading} />

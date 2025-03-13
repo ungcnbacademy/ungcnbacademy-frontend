@@ -77,7 +77,7 @@ export default function Profile({ firstCourse }) {
             {!loading && <h1 className={styles.heading}>My info</h1>}
             {response?.data && (
               <div className={styles.details}>
-                <Avatar name={response?.data?.firstName} />
+                <Avatar image={response?.data?.profileImage} size={100} name={response?.data?.firstName} /> 
                 <p className={styles.title}>{response?.data?.firstName + ' ' + response?.data?.lastName}</p>
                 <p className={styles.subTitle}># {response?.data?._id}</p>
                 <p className={styles.subTitle}>{response?.data?.email}</p>
