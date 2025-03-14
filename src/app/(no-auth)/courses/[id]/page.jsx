@@ -45,8 +45,8 @@ export async function generateMetadata({ params }) {
         images: [
           {
             url: response.data.thumbnail,
-            width: 851,
-            height: 312,
+            width: 1200,
+            height: 630,
             alt: 'UNGCNB Academy',
           },
         ],

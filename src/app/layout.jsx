@@ -15,8 +15,8 @@ export const metadata = {
 		images: [
 			{
 				url: 'https://esgeducation.netlify.app/ogimage.png',
-				width: 851,
-				height: 312,
+				width: 1200,
+				height: 630,
 				alt: 'USGCNB Academy',
 			},
 		],
