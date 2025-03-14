@@ -39,21 +39,6 @@ export default function AllAdministration() {
 			dataIndex: 'email',
 		},
 		{
-			title: 'Verified',
-			dataIndex: 'isEmailVerified',
-			render: (isEmailVerified) => {
-				return (
-					<>
-						{isEmailVerified ? (
-							<p className={styles.verified}>Verified</p>
-						) : (
-							<p className={styles.notVerified}>Not Verified</p>
-						)}
-					</>
-				);
-			},
-		},
-		{
 			title: 'Role',
 			dataIndex: 'role',
 			render: (role) => {

@@ -39,7 +39,7 @@
 	width: fit-content;
 }
 .title {
-	color: var(--accent2);
+	color: var(--accent4);
 	display: flex;
 	gap: 5px;
 	cursor: pointer;
