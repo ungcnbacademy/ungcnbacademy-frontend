@@ -3,7 +3,8 @@ import { getFetchRequests } from '@/fetch ssr/getFetchRequests';
 import React from 'react';
 
 export async function generateMetadata({ params }) {
-  const courseId = (await params).id;
+  const resolvedParams = await params;
+  const courseId = resolvedParams.id;
   try {
     const response = await getFetchRequests.getCourseById(courseId);
     // Make sure we have valid data before returning metadata
