@@ -32,7 +32,10 @@ export async function generateMetadata({ params }) {
         siteName: 'USGCNB Academy',
         url: 'https://esgeducation.netlify.app',
         type: 'website',
-        logo: 'https://esgeducation.netlify.app/logo.png',
+        icons: {
+          icon: 'https://esgeducation.netlify.app/favicon.ico',
+          apple: 'https://esgeducation.netlify.app/apple-icon.png',
+        },
       },
       // Twitter card metadata for Twitter sharing
       twitter: {
