@@ -7,6 +7,7 @@ export const configuration = {
   changePassword: '/auth/change-password',
   courses: '/courses',
   certificate: '/final-cert',
+  enroll: '/test-enrollment/courses',
   admin: {
     admin: '/admin/users', //admin create, delete, update
     quizReview: '/admin/quizzes/ungraded',
@@ -19,5 +20,4 @@ export const configuration = {
     profile: '/users/profile',
     payment: '/payments/courses',
   },
-  enroll: '/test-enrollment/courses',
 };
