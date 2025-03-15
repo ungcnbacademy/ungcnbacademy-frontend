@@ -1,7 +1,8 @@
+import { companyInfo } from '@/constants/constants';
 import { getFetchRequests } from '@/fetch ssr/getFetchRequests';
 
 export default async function sitemap() {
-  const baseUrl = 'https://esgeducation.netlify.app';
+  const baseUrl = companyInfo.website;
   const response = await getFetchRequests.getAllCourses();
   const courses = response?.data?.courses.map((course) => ({
     url: `${baseUrl}/courses/${course._id}`,
