@@ -23,7 +23,8 @@ export async function generateMetadata({ params }) {
         description: response.data.description,
         images: [
           {
-            url: response.data.thumbnail,
+            //url: response.data.thumbnail,
+            url: new URL(response.data.thumbnail, 'https://esgeducation.netlify.app/ogimage.png').toString(),
             width: 1200,
             height: 630,
             alt: 'UNGCNB Academy',
@@ -42,8 +43,8 @@ export async function generateMetadata({ params }) {
   } catch (error) {
     console.error('Error generating metadata:', error);
     return {
-      title: 'Course Details',
-      description: 'Learn more about our courses',
+      title: 'Course Not Found',
+      description: 'The requested course could not be found',
     };
   }
 }
