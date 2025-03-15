@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import CourseDetails from '@/components/no-auth/allCourses/courseDetails';
 import { getFetchRequests } from '@/fetch ssr/getFetchRequests';
 import React from 'react';
