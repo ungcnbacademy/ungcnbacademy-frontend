@@ -3,7 +3,10 @@ import { configuration } from '@/configuration/configuration';
 export const getFetchRequests = {
   getAllCourses: async () => {
     try {
-      const response = await fetch(`${configuration.baseUrl}${configuration.courses}`, { cache: 'no-store' });
+      const response = await fetch(`${configuration.baseUrl}${configuration.courses}`, {
+        next: { revalidate: 60 },
+        //cache: 'no-store',
+      });
       const data = await response.json();
       return data;
     } catch (error) {
@@ -12,7 +15,10 @@ export const getFetchRequests = {
   },
   getCourseById: async (id) => {
     try {
-      const response = await fetch(`${configuration.baseUrl}${configuration.courses}/${id}`, { cache: 'no-store' });
+      const response = await fetch(`${configuration.baseUrl}${configuration.courses}/${id}`, {
+        next: { revalidate: 60 },
+        //cache: 'no-store',
+      });
       const data = await response.json();
       return data;
     } catch (error) {
@@ -21,7 +27,10 @@ export const getFetchRequests = {
   },
   getFeaturedCourses: async () => {
     try {
-      const response = await fetch(`${configuration.baseUrl}${configuration.courses}/public?featured=true`, { cache: 'no-store' });
+      const response = await fetch(`${configuration.baseUrl}${configuration.courses}/public?featured=true`, {
+        next: { revalidate: 60 },
+        //cache: 'no-store',
+      });
       const data = await response.json();
       return data;
     } catch (error) {
