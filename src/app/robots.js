@@ -7,6 +7,6 @@ export default function robots() {
       allow: ['/', '/courses/'],
       disallow: ['/admin/', '/client/'],
     },
-    sitemap: companyInfo.sitemap,
+    sitemap: companyInfo?.sitemap,
   };
 }
