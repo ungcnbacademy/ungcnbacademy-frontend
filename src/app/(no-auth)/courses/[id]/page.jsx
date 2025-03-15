@@ -25,14 +25,16 @@ export async function generateMetadata({ params }) {
         description: response.data.description,
         images: [
           {
-            //url: response.data.thumbnail,
             url: new URL(response.data.thumbnail, 'https://esgeducation.netlify.app/ogimage.png').toString(),
             width: 1200,
             height: 630,
             alt: 'UNGCNB Academy',
           },
         ],
+        siteName: 'USGCNB Academy',
+        url: 'https://esgeducation.netlify.app',
         type: 'website',
+        logo: 'https://esgeducation.netlify.app/logo.png',
       },
       // Twitter card metadata for Twitter sharing
       twitter: {

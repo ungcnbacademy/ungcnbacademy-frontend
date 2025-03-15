@@ -23,6 +23,7 @@ export const metadata = {
 		siteName: 'USGCNB Academy',
 		url: 'https://esgeducation.netlify.app',
 		type: 'website',
+		logo: 'https://esgeducation.netlify.app/logo.png',
 	}
 };
 
