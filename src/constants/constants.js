@@ -24,11 +24,11 @@ export const userRoles = {
 
 export const allAdminRoles = [userRoles.admin.admin.role, userRoles.admin.subAdmin.role, userRoles.admin.moderator.role];
 
-// export const clientPaymentStatus = {
-//   success: 'success',
-//   failed: 'failed',
-//   cancelled: 'cancelled',
-// };
+export const clientPaymentStatus = {
+  success: 'success',
+  failed: 'failed',
+  cancelled: 'cancelled',
+};
 
 export const companyInfo = {
   companyName: 'UNGCNB Academy',
