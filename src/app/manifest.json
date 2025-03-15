@@ -1,6 +1,11 @@
 {
   "name": "UNGCNB Academy",
   "short_name": "UNGCNB",
+  "description": "Learn from top professionals and sustainability specialists to make your journey more sustainable.",
+  "start_url": "/",
+  "theme_color": "#23324e",
+  "background_color": "#23324e",
+  "display": "standalone",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -14,8 +19,5 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ],
-  "theme_color": "#23324e",
-  "background_color": "#23324e",
-  "display": "standalone"
+  ]
 }
