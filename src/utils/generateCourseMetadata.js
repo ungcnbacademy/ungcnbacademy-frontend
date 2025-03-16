@@ -1,4 +1,3 @@
-// utils/generateMetadata.js
 import { getFetchRequests } from '@/fetch ssr/getFetchRequests';
 
 export async function generateCourseMetadata(courseId) {
