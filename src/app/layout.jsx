@@ -28,6 +28,7 @@ export const metadata = {
 			icon: 'https://esgeducation.netlify.app/favicon.ico',
 			apple: 'https://esgeducation.netlify.app/apple-icon.png',
 		},
+		logo: 'https://esgeducation.netlify.app/logo.png',
   },
   robots: {
     index: true,

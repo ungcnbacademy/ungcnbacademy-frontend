@@ -36,6 +36,7 @@ export async function generateMetadata({ params }) {
           icon: 'https://esgeducation.netlify.app/favicon.ico',
           apple: 'https://esgeducation.netlify.app/apple-icon.png',
         },
+        logo: 'https://esgeducation.netlify.app/logo.png',
       },
       // Twitter card metadata for Twitter sharing
       twitter: {
