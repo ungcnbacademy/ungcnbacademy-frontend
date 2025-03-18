@@ -11,9 +11,7 @@ export default function Hero() {
         <h1 className={styles.title}>
           YOUR IMPACT, <br /> YOUR ACADEMY.
         </h1>
-        <p className={styles.description}>
-          Learn from top professionals and sustainability specialists to make your journey more sustainable.
-        </p>
+        <p className={styles.description}>Learn from top professionals and become a specialist in corporate sustainability.</p>
         <Link href="/courses" className={styles.link}>
           <Button variant="outLined" className={styles.button} text="Browse All Courses" />
         </Link>

@@ -36,7 +36,7 @@ export const companyInfo = {
   name: 'UNGCNB Academy',
   address: '6th Floor, BIMS Bhaban, 3 Progoti Sharani, Dhaka 1212, Bangladesh',
   phone: '+8801671978757',
-  email: 'info@ungcnbacademy.com',
+  email: 'info@globalcompactbd.org',
   website: 'https://esgeducation.netlify.app',
   sitemap: 'https://esgeducation.netlify.app/sitemap.xml',
   googleMapAddress:
