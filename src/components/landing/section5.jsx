@@ -16,9 +16,10 @@ export default function Section5() {
       </div>
       <div className={styles.right}>
         <div className={styles.container}>
-          <h1 className={styles.title}>Join the Movement. Learn from the Best.</h1>
+          <h1 className={styles.title}>Join the Movement. Make an Impact today.</h1>
           <p className={styles.description}>
-            At {companyInfo.name}, our courses and programs are led by top academics, industry experts, and global leaders. Be part of a learning journey that creates real impact.
+            At UNGCNB Academy, our courses and programs are led by industry experts, academics and civil society leaders. Be part
+            of a learning journey that creates real impact.
           </p>
           <br />
           <Link href="/courses" className={styles.link}>

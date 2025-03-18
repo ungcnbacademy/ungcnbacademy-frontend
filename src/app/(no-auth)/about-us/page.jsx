@@ -11,7 +11,12 @@ export const metadata = { title: 'About Us' };
 export default function AboutUs() {
   return (
     <div>
-			<Header title={'About UNGCNB Academy'} description={'The UNGCNB Academy represents the education and training portfolio of the UN Sustainable Development Solutions Network.'} />
+      <Header
+        title={'About UNGCNB Academy'}
+        description={
+          'The UNGCNB Academy represents the education and training portfolio of the Bangladesh Network of the United Nations Global Compact.'
+        }
+      />
       <Info />
       <Mission />
       <Vision />

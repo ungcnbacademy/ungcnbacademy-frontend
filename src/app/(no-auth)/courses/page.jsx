@@ -8,7 +8,7 @@ export default function Courses() {
     <div>
       <Header
         title={'All Courses'}
-        description={"Educational resources from the world's leading experts on sustainable development"}
+        description={'Educational resources from leading experts on corporate sustainability.'}
         image={'/assets/course-bg.webp'}
       />
       <AllCourses />

@@ -10,8 +10,12 @@ export default function Section4() {
     <div className={styles.main}>
       <div className={styles.left}>
         <p className={styles.text}>
-          The {companyInfo.name} is a program of the Sustainable Development Solutions Network, a global initiative for the United
-          Nations supporting the Sustainable Development Goals.
+          The UNGCNB Academy is an initiative of the Bangladesh Network of the United Nations Global Compact – the world’s largest
+          corporate sustainability initiative.
+          <br />
+          The UNGCNB Academy provides business leaders and practitioners with the skills and knowledge they need to advance their
+          companies in implementing the Ten Principles of the UN Global Compact, ESG Principles, and the Sustainable Development
+          Goals.
         </p>
         <Link href="/about-us">
           <Button text="About Us" variant="outLined" className={styles.button} />

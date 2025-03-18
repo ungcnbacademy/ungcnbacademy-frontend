@@ -10,10 +10,7 @@ export default async function MyProfile() {
 
   return (
     <>
-      <Header
-        title={'My Profile'}
-        description={'Passionate about transforming education through innovative technology solutions.'}
-      />
+      <Header title={'My Profile'} description={'Dashboard for your corporate sustainability learning journey.'} />
       <Profile firstCourse={firstCourse} />
     </>
   );

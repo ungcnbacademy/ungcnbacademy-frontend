@@ -17,14 +17,15 @@ export default async function Section3() {
           <div className={styles.container}>
             <h1 className={styles.title}>Our Courses</h1>
             <p className={styles.description}>
-              Our learning portfolio offers a diverse range of free online courses led by experts from global institutions,
-              academia, and industry leaders. These courses feature insights from professionals at the United Nations,
-              international financial institutions, renowned universities, and leading sustainability organizations.
+              Our learning portfolio offers a diverse range of online courses led by experts from national & global institutions,
+              industry leaders, and academia. These courses feature insights into Bangladeshi and global perspectives from
+              professionals representing UN agencies, international financial institutions, renowned universities, and leading
+              sustainability organizations.
             </p>{' '}
             <p className={styles.description}>
-              Additionally, our UNGCNB Academy Library provides a comprehensive collection of educational resources, offering
-              on-demand access to expert-led lectures, case studies, and training materials designed to support lifelong learning
-              in ESG, corporate sustainability, and responsible business practices.
+              The UNGCNB Impact Academy Library provides a comprehensive collection of educational resources, offering on-demand
+              access to expert-led lectures, case studies, and training materials designed to support lifelong learning in
+              corporate sustainability, ESG, and responsible business practices.
             </p>
             <br />
             <Link href="/courses" className={styles.link}>
