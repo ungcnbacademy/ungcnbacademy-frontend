@@ -3,7 +3,7 @@
   flex-wrap: wrap;
 
   .left {
-    flex: 1 500px;
+    flex: 1 600px;
     background: rgba(0, 0, 0, 0) linear-gradient(-221deg, #0062c8 14%, #51adbe 50%, #6bc988 98%) repeat scroll 0 0 !important;
     display: flex;
     gap: 20px;
@@ -13,7 +13,7 @@
     padding-block: 80px;
     .text {
       color: var(--foreground-white);
-      font-size: 1.4rem;
+      font-size: clamp(1.2rem, 1vw, 1.4rem);
       line-height: 2.5rem;
       font-weight: 400;
     }
@@ -25,7 +25,7 @@
     }
   }
   .right {
-    flex: 1 500px;
+    flex: 1 600px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: fit-content;

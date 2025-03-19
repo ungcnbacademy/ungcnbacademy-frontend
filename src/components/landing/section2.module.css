@@ -119,7 +119,7 @@
       .box:nth-child(3) {
         background-color: black;
         background-image: url('/assets/about/team1.webp');
-        background-position: center;
+        background-position: center top;
         background-repeat: no-repeat;
         background-size: cover;
       }

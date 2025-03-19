@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   min-height: fit-content;
   align-items: center;
+  gap: 20px;
   height: 100vh;
   max-height: 900px;
   padding-inline: var(--global-padding-inline);
@@ -20,7 +21,7 @@
     padding-block: 50px;
     padding-inline: 10px;
     .container {
-      min-width: 300px;
+      min-width: fit-content;
       max-width: 500px;
       .title {
         font-size: 2rem;
