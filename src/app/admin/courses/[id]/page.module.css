@@ -27,6 +27,12 @@
     color: var(--foreground);
   }
 }
+.instructorHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: 10px;
+}
 .instructor {
   background-color: var(--background-dashboard);
   padding: 20px;

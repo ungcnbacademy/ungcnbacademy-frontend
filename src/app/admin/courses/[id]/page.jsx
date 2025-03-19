@@ -20,6 +20,7 @@ import { RiVideoAddLine, RiVideoAiLine, RiVideoOffLine } from 'react-icons/ri';
 import CreateTrailer from '@/components/admin/courses/trailer/createTrailer';
 import ViewTrailer from '@/components/admin/courses/trailer/viewTrailer';
 import Modal from '@/components/ui/modal/modal';
+import AddInstructor from '@/components/admin/courses/addInstructor';
 
 export default function CourseDetails({ params }) {
   const unwrappedParams = React.use(params);
@@ -27,6 +28,7 @@ export default function CourseDetails({ params }) {
   const [response, error, loading, axiosFetch] = useAxios();
   const [isDrawerOpenCreateModule, setIsDrawerOpenCreateModule] = useState(false);
   const [isDrawerOpenAddTrailer, setIsDrawerOpenAddTrailer] = useState(false);
+  const [isDrawerOpenAddInstructor, setIsDrawerOpenAddInstructor] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -60,6 +62,18 @@ export default function CourseDetails({ params }) {
     );
   };
 
+  const drawerRenderAddInstructor = () => {
+    return (
+      <>
+        {isDrawerOpenAddInstructor && (
+          <Drawer title="Add Instructor" closeFunction={() => setIsDrawerOpenAddInstructor(false)}>
+            <AddInstructor id={courseId} />
+          </Drawer>
+        )}
+      </>
+    );
+  };
+
   const courseDetailsRender = () => {
     return (
       <div>
@@ -83,11 +97,15 @@ export default function CourseDetails({ params }) {
   const courseInstructorRender = () => {
     return (
       <div>
-        <h2 className={styles.title}>Instructors</h2>
+        <div className={styles.instructorHeader}>
+          <h2 className={styles.title}>Instructors</h2>
+          <Button text="Add Instructor" variant="primary" onClick={() => setIsDrawerOpenAddInstructor(true)} />
+        </div>
+
         {response?.data?.instructors &&
           response?.data?.instructors?.map((instructor, i) => (
             <div key={i} className={styles.instructor}>
-              <Avatar name={instructor?.name} className={styles.avatar} />
+              <Avatar name={instructor?.name} className={styles.avatar} image={instructor?.image} size={100} />
               <p>Name: {instructor?.name}</p>
               <p>Designation: {instructor?.designation}</p>
               <p>Description: {instructor?.description}</p>
@@ -187,6 +205,7 @@ export default function CourseDetails({ params }) {
     <div>
       {drawerRenderCreateModule()}
       {drawerRenderAddTrailer()}
+      {drawerRenderAddInstructor()}
       {trailerModalRender()}
       {loading && <LoadingDots />}
       {!loading && !error && (
