@@ -1,8 +1,8 @@
 import Header from '@/components/atom/header';
 import Info from '@/components/no-auth/aboutUs/info';
 import Mission from '@/components/no-auth/aboutUs/mission';
-import Section1 from '@/components/no-auth/aboutUs/section1';
-import Section2 from '@/components/no-auth/aboutUs/section2';
+// import Section1 from '@/components/no-auth/aboutUs/section1';
+// import Section2 from '@/components/no-auth/aboutUs/section2';
 import Team from '@/components/no-auth/aboutUs/team';
 import Vision from '@/components/no-auth/aboutUs/vision';
 import React from 'react';
@@ -20,9 +20,12 @@ export default function AboutUs() {
       <Info />
       <Mission />
       <Vision />
-      <Section1 />
+      {/* <Section1 /> */}
       <Team />
-      <Section2 />
+      <br />
+      <br />
+      <br />
+      {/* <Section2 /> */}
     </div>
   );
 }

@@ -7,13 +7,11 @@ export default function Vision() {
     <div className={styles.main}>
       <p className={styles.title}>Our Vision</p>
       <p className={styles.text}>
-        Our vision is to foster a sustainable future where the{' '}
-        <span className={styles.span}>17 Sustainable Development Goals (SDGs)</span> are realized through the collective efforts
-        of educators, policymakers, practitioners, and citizens. The <span className={styles.span}> UNGCNB Academy </span> will
-        serve as a platform for learning, collaboration, and partnership, uniting global communities to advance sustainable
-        development. By partnering with businesses, academic institutions, trainers, researchers, and other stakeholders, we aim
-        to build an ESG-responsible world for the next generation, enhancing our knowledge and networks to drive meaningful change
-        in sustainability.
+        Our vision is a sustainable future where the 17 SDGs are realized through collective learning, collaboration, and action.
+        UNGCNB Academy will be a catalyst for change, uniting businesses, educators, policymakers, and practitioners to advance
+        ESG principles and responsible business practices. By fostering partnerships and localized solutions, we aim to build an
+        ESG-responsible world for future generations, equipping stakeholders with the knowledge and networks to drive meaningful
+        impact.
       </p>
       <Button
         text="Learn More"

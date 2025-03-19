@@ -73,7 +73,7 @@ export default function Profile({ firstCourse = {} }) {
             </div>
           </div>
           <div className={styles.right}>
-            {!loading && <h1 className={styles.heading}>My info</h1>}
+            {!loading && response?.data && <h1 className={styles.heading}>My info</h1>}
             {response?.data && (
               <div className={styles.details}>
                 <Avatar image={response?.data?.profileImage} size={100} name={response?.data?.firstName} />

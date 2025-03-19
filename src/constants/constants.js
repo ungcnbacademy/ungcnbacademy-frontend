@@ -31,10 +31,10 @@ export const clientPaymentStatus = {
 };
 
 export const companyInfo = {
-  companyName: 'UNGCNB Academy',
-  websiteName: 'UNGCNB Academy',
-  name: 'UNGCNB Academy',
-  address: '6th Floor, BIMS Bhaban, 3 Progoti Sharani, Dhaka 1212, Bangladesh',
+  companyName: 'UNGCNB Impact Academy',
+  websiteName: 'UNGCNB Impact Academy',
+  name: 'UNGCNB Impact Academy',
+  address: 'House: 11, Road: 14, Gulshan 1, Dhaka 1212, Bangladesh.',
   phone: '+8801671978757',
   email: 'info@globalcompactbd.org',
   website: 'https://esgeducation.netlify.app',
