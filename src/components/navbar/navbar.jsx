@@ -8,7 +8,7 @@ import { allAdminRoles, userRoles } from '@/constants/constants';
 import { IoMenuSharp } from 'react-icons/io5';
 import Drawer from '../ui/drawer/drawer';
 
-export default function Navbar({ variant = 'transparent' }) {
+export default function Navbar({ variant = 'transparent', stickyNav = true }) {
   //const variant = ['transparent', 'accentColor', 'white'];
   const pathParam = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -29,7 +29,8 @@ export default function Navbar({ variant = 'transparent' }) {
       let currentScrollPos = window.scrollY;
       if (window.scrollY > 20) {
         if (currentScrollPos > prevScrollPos) {
-          setScrolled(false);
+          !stickyNav && setScrolled(false);
+          stickyNav && setScrolled(true);
         } else {
           if (currentScrollPos > 200) {
             setScrolled(true);
@@ -37,8 +38,6 @@ export default function Navbar({ variant = 'transparent' }) {
             setScrolled(false);
           }
         }
-      } else {
-        setScrolled(false);
       }
       prevScrollPos = currentScrollPos;
     };
