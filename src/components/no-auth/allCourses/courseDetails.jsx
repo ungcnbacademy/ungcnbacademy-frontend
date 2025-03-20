@@ -11,7 +11,7 @@ import ViewTrailer from '@/components/admin/courses/trailer/viewTrailer';
 import Carousel from '@/components/ui/carousel/carousel';
 
 export default function CourseDetails({ response }) {
-  const carouselSlides = response?.data?.instructors?.map((instructor, i) => (
+  const instructorsCarouselSlides = response?.data?.instructors?.map((instructor, i) => (
     <div key={i} className={styles.instructor}>
       <Avatar image={instructor?.image && instructor?.image} name={!instructor?.image && instructor?.name} size={100} />
       <p className={styles.name}>{instructor?.name} </p>
@@ -124,7 +124,7 @@ export default function CourseDetails({ response }) {
           <br />
           <div>
             <h3 className={styles.title}>Instructors</h3>
-            {response?.data?.instructors && <Carousel slides={carouselSlides || []} height={'460px'} />}
+            {response?.data?.instructors && <Carousel slides={instructorsCarouselSlides || []} minHeight={'460px'} />}
           </div>
         </div>
         <div className={styles.right}>

@@ -8,7 +8,7 @@ export default function Carousel({
   interval = 3000,
   showDots = true,
   showArrows = false,
-  height = '400px',
+  minHeight = '400px',
   pauseOnHover = true,
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -44,7 +44,7 @@ export default function Carousel({
           </div>
         )}
         {slides.map((item, index) => (
-          <div key={index} className={`${styles.item} ${index === activeIndex && styles.active}`} style={{ minHeight: height }}>
+          <div key={index} className={`${styles.item} ${index === activeIndex && styles.active}`} style={{ minHeight: minHeight }}>
             {item}
           </div>
         ))}
