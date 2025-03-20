@@ -34,7 +34,12 @@ export default function LessonDetails({ params }) {
       <>
         {isDrawerOpenCreateAssets && (
           <Drawer title="Create Assets" closeFunction={() => setIsDrawerOpenCreateAssets(false)}>
-            <CreateAssets courseId={courseId} moduleId={moduleId} lessonId={lessonId} />
+            <CreateAssets
+              courseId={courseId}
+              moduleId={moduleId}
+              lessonId={lessonId}
+              refreshData={() => setRefreshData(!refreshData)}
+            />
           </Drawer>
         )}
       </>
@@ -46,7 +51,12 @@ export default function LessonDetails({ params }) {
       <>
         {isDrawerOpenUploadVideo && (
           <Drawer title="Upload Video" closeFunction={() => setIsDrawerOpenUploadVideo(false)}>
-            <UploadVideo courseId={courseId} moduleId={moduleId} lessonId={lessonId} />
+            <UploadVideo
+              courseId={courseId}
+              moduleId={moduleId}
+              lessonId={lessonId}
+              refreshData={() => setRefreshData(!refreshData)}
+            />
           </Drawer>
         )}
       </>
@@ -81,9 +91,7 @@ export default function LessonDetails({ params }) {
       <div className={styles.details}>
         <h2 className={styles.title}>{`Lesson ${response?.data?.order}: ${response?.data?.title}`}</h2>
         <p className={styles.subtitle}># {response?.data?._id}</p>
-        {response?.data?.duration && (
-          <p className={styles.subtitle}>Duration: {formatDuration(response?.data?.duration)}</p>
-        )}
+        {response?.data?.duration && <p className={styles.subtitle}>Duration: {formatDuration(response?.data?.duration)}</p>}
         <p className={styles.subtitle}>Description: {response?.data?.description}</p>
         <p className={styles.subtitle}>Created at: {moment(response?.data?.createdAt).format('lll')}</p>
       </div>
@@ -110,15 +118,19 @@ export default function LessonDetails({ params }) {
   };
   const courseLongDescriptionRender = () => {
     return (
-      <div className={styles.longDescriptionContainer}>
-        <h2 className={styles.title}>Long Description</h2>
-        <div
-          className={styles.longDescription}
-          dangerouslySetInnerHTML={{
-            __html: response?.data?.details,
-          }}
-        ></div>
-      </div>
+      <>
+        {response?.data?.details && (
+          <div className={styles.longDescriptionContainer}>
+            <h2 className={styles.title}>Long Description</h2>
+            <div
+              className={styles.longDescription}
+              dangerouslySetInnerHTML={{
+                __html: response?.data?.details,
+              }}
+            ></div>
+          </div>
+        )}
+      </>
     );
   };
 
@@ -147,7 +159,7 @@ export default function LessonDetails({ params }) {
               <div className={styles.btnContainer}>
                 <Button text="Upload Video" onClick={() => setIsDrawerOpenUploadVideo(true)} variant="outLined" />
                 <Button text="Create Assets" onClick={() => setIsDrawerOpenCreateAssets(true)} />
-                <Button text="Create Quiz" variant="secondary" onClick={() => setIsDrawerOpenCreateQuiz(true)} />
+                {/* <Button text="Create Quiz" variant="secondary" onClick={() => setIsDrawerOpenCreateQuiz(true)} /> */}
               </div>
             </div>
           </div>

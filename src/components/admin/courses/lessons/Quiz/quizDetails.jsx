@@ -44,6 +44,7 @@ export default function QuizDetails({ courseId, moduleId, lessonId }) {
               moduleId={moduleId}
               lessonId={lessonId}
               update={response?.data?.quiz ? true : false}
+              refreshData={() => setRefreshData(!refreshData)}
             />
           </Drawer>
         )}
@@ -115,8 +116,13 @@ export default function QuizDetails({ courseId, moduleId, lessonId }) {
           <Tooltip content="Refresh" placement="top">
             <BiRefresh className={styles.refreshIcon} onClick={() => setRefreshData(!refreshData)} />
           </Tooltip>
-          <Button text={'Delete Quiz'} variant={'dangerOutLined'} onClick={() => deleteQuizHandler()} loading={loadingDelete} />
-          <Button text={response?.data?.quiz ? 'Update Quiz' : 'Create Quiz'} onClick={() => setDrawerOpenUpdateQuiz(!drawerOpenUpdateQuiz)} />
+          {response?.data?.quiz && (
+            <Button text={'Delete Quiz'} variant={'dangerOutLined'} onClick={() => deleteQuizHandler()} loading={loadingDelete} />
+          )}
+          <Button
+            text={response?.data?.quiz ? 'Update Quiz' : 'Create Quiz'}
+            onClick={() => setDrawerOpenUpdateQuiz(!drawerOpenUpdateQuiz)}
+          />
         </div>
       </div>
       {loading && <LoadingDots />}

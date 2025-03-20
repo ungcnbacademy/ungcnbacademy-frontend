@@ -9,7 +9,7 @@ import { configuration } from '@/configuration/configuration';
 import styles from './createAssets.module.css';
 import ProgressBar from '@/components/ui/progressBar/progressBar';
 
-export default function CreateAssets({ courseId, moduleId, lessonId }) {
+export default function CreateAssets({ courseId, moduleId, lessonId, refreshData = () => {} }) {
   const [response, error, loading, axiosFetch, progress] = useAxios();
   const formRef = useRef(null);
   const [message, setMessage] = useState({ text: '', type: '' });
@@ -17,6 +17,7 @@ export default function CreateAssets({ courseId, moduleId, lessonId }) {
   useEffect(() => {
     if (response?.message) {
       setMessage({ text: response?.message, type: 'success' });
+      refreshData();
     }
     if (error?.message) {
       setMessage({ text: error?.message, type: 'error' });

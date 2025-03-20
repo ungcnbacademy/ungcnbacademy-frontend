@@ -9,7 +9,7 @@ import { configuration } from '@/configuration/configuration';
 import Message from '@/components/ui/message/message';
 import LoadingDots from '@/components/ui/loading/loadingDots';
 
-export default function CreateQuiz({ courseId, moduleId, lessonId, update = false }) {
+export default function CreateQuiz({ courseId, moduleId, lessonId, update = false, refreshData = () => {} }) {
   const [response, error, loading, axiosFetch] = useAxios();
   const [responseGetQuiz, errorGetQuiz, loadingGetQuiz, axiosFetchGetQuiz] = useAxios();
   const [message, setMessage] = useState({ text: '', type: '' });
@@ -100,7 +100,7 @@ export default function CreateQuiz({ courseId, moduleId, lessonId, update = fals
   const handleSubmit = (e) => {
     e.preventDefault();
     setMessage({ text: '', type: '' });
-    
+
     axiosFetch({
       method: update ? 'PUT' : 'POST',
       url: configuration.courses + '/' + courseId + '/modules/' + moduleId + '/lessons/' + lessonId + '/quiz',
@@ -111,6 +111,7 @@ export default function CreateQuiz({ courseId, moduleId, lessonId, update = fals
   useEffect(() => {
     if (response?.message) {
       setMessage({ text: response.message, type: 'success' });
+      refreshData();
     }
     if (error?.message) {
       setMessage({ text: error.message, type: 'error' });
