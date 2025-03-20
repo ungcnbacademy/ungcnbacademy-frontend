@@ -8,7 +8,7 @@ export default function Faculties() {
   return (
     <div>
       <Header title={'All Faculties'} description={'All available faculties'} />
-      <Carousel data={[{ children: <div>qqq</div> }, { children: <div>asdfg</div> }, { children: <div>kjhgfds</div> }]} />
+      <Carousel slides={[{ children: <div>qqq</div> }, { children: <div>asdfg</div> }, { children: <div>kjhgfds</div> }]} />
     </div>
   );
 }
