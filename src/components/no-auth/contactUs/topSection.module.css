@@ -46,7 +46,8 @@
 }
 .container > p > a {
   transition: all 0.6s ease-in-out;
-
+  font-size: 0.9rem;
+  font-weight: 600;
   &:hover {
     text-decoration: underline;
     color: var(--foreground);

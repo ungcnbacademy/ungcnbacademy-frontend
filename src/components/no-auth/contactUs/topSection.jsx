@@ -13,13 +13,13 @@ export default function TopSection() {
       <div className={styles.container}>
         <p>CONNECT WITH US!</p>
         <p>
-          x: <a href={companyInfo.socials.twitter}>{companyInfo.socials.twitter}</a>
+          x: <br /> <a href={companyInfo.socials.twitter}>{companyInfo.socials.twitter}</a>
         </p>
         <p>
-          Facebook: <a href={companyInfo.socials.facebook}>{companyInfo.socials.facebook}</a>{' '}
+          Facebook: <br /> <a href={companyInfo.socials.facebook}>{companyInfo.socials.facebook}</a>{' '}
         </p>
         <p>
-          Linkedin: <a href={companyInfo.socials.linkedin}>{companyInfo.socials.linkedin}</a>{' '}
+          Linkedin: <br /> <a href={companyInfo.socials.linkedin}>{companyInfo.socials.linkedin}</a>{' '}
         </p>
       </div>
     </div>
