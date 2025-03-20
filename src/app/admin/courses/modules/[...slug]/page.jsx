@@ -11,6 +11,7 @@ export default function ModuleDetails({ params }) {
   const unwrappedParams = React.use(params);
   const courseId = unwrappedParams.slug[0];
   const moduleId = unwrappedParams.slug[1];
+  const [refreshData, setRefreshData] = useState(false);
 
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
   const drawerRender = () => {
@@ -18,7 +19,7 @@ export default function ModuleDetails({ params }) {
       <>
         {isOpenDrawer && (
           <Drawer title="Create Lesson" closeFunction={() => setIsOpenDrawer(false)} size="lg">
-            <CreateLesson courseId={courseId} moduleId={moduleId} />
+            <CreateLesson courseId={courseId} moduleId={moduleId} refreshData={() => setRefreshData(!refreshData)} />
           </Drawer>
         )}
       </>
@@ -34,7 +35,7 @@ export default function ModuleDetails({ params }) {
         <Button text="Create Lesson" variant="primary" onClick={() => setIsOpenDrawer(!isOpenDrawer)} />
       </div>
       <div className={styles.container}>
-        <AllLessons courseId={courseId} moduleId={moduleId} />
+        <AllLessons courseId={courseId} moduleId={moduleId}  refresh={refreshData}/>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ import Select from '@/components/ui/select/select';
 import styles from './createLesson.module.css';
 import TextEditor from '../../atom/textEditor';
 import LoadingDots from '@/components/ui/loading/loadingDots';
-export default function CreateLesson({ courseId, moduleId, lessonId = '' }) {
+export default function CreateLesson({ courseId, moduleId, lessonId = '', refreshData = () => {} }) {
   const [response, error, loading, axiosFetch] = useAxios();
   const [responseGetInfo, errorGetInfo, loadingGetInfo, axiosFetchGetInfo] = useAxios();
   const [longDetails, setLongDetails] = useState('');
@@ -18,6 +18,7 @@ export default function CreateLesson({ courseId, moduleId, lessonId = '' }) {
   useEffect(() => {
     if (response?.message) {
       setMessage({ text: response?.message, type: 'success' });
+      refreshData();
     }
     if (error?.message) {
       setMessage({ text: error?.message, type: 'error' });

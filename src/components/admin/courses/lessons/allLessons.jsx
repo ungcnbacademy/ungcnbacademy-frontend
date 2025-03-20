@@ -18,7 +18,7 @@ import Toast from '@/components/ui/toast/toast';
 import Drawer from '@/components/ui/drawer/drawer';
 import CreateLesson from './createLesson';
 import PopoverList from '@/components/ui/popover/popoverList';
-export default function AllLessons({ courseId, moduleId }) {
+export default function AllLessons({ courseId, moduleId, refresh }) {
   const [response, error, loading, axiosFetch] = useAxios();
   const [responseDelete, errorDelete, loadingDelete, axiosDelete] = useAxios();
   const [refreshData, setRefreshData] = useState(false);
@@ -37,7 +37,7 @@ export default function AllLessons({ courseId, moduleId }) {
 
   useEffect(() => {
     getAllLessons();
-  }, [refreshData]);
+  }, [refreshData, refresh]);
 
   const onClickDeleteHandler = (lessonId) => {
     setMessage();
