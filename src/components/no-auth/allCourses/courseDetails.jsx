@@ -8,8 +8,35 @@ import { FaSquareXTwitter, FaLinkedin } from 'react-icons/fa6';
 import { FaGlobeAmericas } from 'react-icons/fa';
 import { formatDuration } from '@/utils/utils';
 import ViewTrailer from '@/components/admin/courses/trailer/viewTrailer';
+import Carousel from '@/components/ui/carousel/carousel';
 
 export default function CourseDetails({ response }) {
+  const carouselSlides = response?.data?.instructors?.map((instructor, i) => (
+    <div key={i} className={styles.instructor}>
+      <Avatar image={instructor?.image && instructor?.image} name={!instructor?.image && instructor?.name} size={100} />
+      <p className={styles.name}>{instructor?.name} </p>
+      <p> {instructor?.designation} </p>
+      <p className={styles.bio}>{instructor?.bio} </p>
+      <div className={styles.socialLinks}>
+        {instructor?.socialLinks?.linkedin && (
+          <a className={styles.socialLink} href={instructor?.socialLinks?.linkedin} target="_blank">
+            <FaLinkedin /> Linkedin
+          </a>
+        )}
+        {instructor?.socialLinks?.twitter && (
+          <a className={styles.socialLink} href={instructor?.socialLinks?.twitter} target="_blank">
+            <FaSquareXTwitter /> Twitter
+          </a>
+        )}
+        {instructor?.socialLinks?.website && (
+          <a className={styles.socialLink} href={instructor?.socialLinks?.website} target="_blank">
+            <FaGlobeAmericas /> Website
+          </a>
+        )}
+      </div>
+    </div>
+  ));
+
   return (
     <div className={styles.main}>
       <div
@@ -97,36 +124,7 @@ export default function CourseDetails({ response }) {
           <br />
           <div>
             <h3 className={styles.title}>Instructors</h3>
-            {response?.data?.instructors &&
-              response?.data?.instructors?.map((instructor, i) => (
-                <div key={i} className={styles.instructor}>
-                  <Avatar
-                    image={instructor?.image && instructor?.image}
-                    name={!instructor?.image && instructor?.name}
-                    size={100}
-                  />
-                  <p className={styles.name}>{instructor?.name} </p>
-                  <p> {instructor?.designation} </p>
-                  <p className={styles.bio}>{instructor?.bio} </p>
-                  <div className={styles.socialLinks}>
-                    {instructor?.socialLinks?.linkedin && (
-                      <a className={styles.socialLink} href={instructor?.socialLinks?.linkedin} target="_blank">
-                        <FaLinkedin /> Linkedin
-                      </a>
-                    )}
-                    {instructor?.socialLinks?.twitter && (
-                      <a className={styles.socialLink} href={instructor?.socialLinks?.twitter} target="_blank">
-                        <FaSquareXTwitter /> Twitter
-                      </a>
-                    )}
-                    {instructor?.socialLinks?.website && (
-                      <a className={styles.socialLink} href={instructor?.socialLinks?.website} target="_blank">
-                        <FaGlobeAmericas /> Website
-                      </a>
-                    )}
-                  </div>
-                </div>
-              ))}
+            {response?.data?.instructors && <Carousel slides={carouselSlides || []} height={'460px'} />}
           </div>
         </div>
         <div className={styles.right}>

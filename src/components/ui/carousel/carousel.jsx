@@ -1,25 +1,27 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import styles from './carousel.module.css';
-import Button from '../button/button';
 
 export default function Carousel({
-  slides = [{ children }],
+  slides = [],
   autoPlay = true,
-  interval = 1000,
+  interval = 3000,
   showDots = true,
-  showArrows = true,
+  showArrows = false,
+  height = '400px',
+  pauseOnHover = true,
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    if (autoPlay) {
+    if (autoPlay && !isPaused) {
       const intervalId = setInterval(() => {
         setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length);
       }, interval);
       return () => clearInterval(intervalId);
     }
-  }, [autoPlay, interval, slides.length]);
+  }, [autoPlay, interval, slides.length, isPaused]);
 
   const prevSlide = () => {
     setActiveIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
@@ -31,15 +33,19 @@ export default function Carousel({
 
   return (
     <div className={styles.overlay}>
-      <div className={styles.main}>
+      <div
+        className={styles.main}
+        onMouseEnter={pauseOnHover ? () => setIsPaused(true) : undefined}
+        onMouseLeave={pauseOnHover ? () => setIsPaused(false) : undefined}
+      >
         {showArrows && (
           <div className={styles.previousBtn} onClick={prevSlide}>
             &#10094;
           </div>
         )}
         {slides.map((item, index) => (
-          <div key={index} className={`${styles.item} ${index === activeIndex && styles.active}`}>
-            {item.children}
+          <div key={index} className={`${styles.item} ${index === activeIndex && styles.active}`} style={{ minHeight: height }}>
+            {item}
           </div>
         ))}
         {showArrows && (

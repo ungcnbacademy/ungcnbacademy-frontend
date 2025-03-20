@@ -2,12 +2,11 @@
   position: relative;
   margin: auto;
   overflow: hidden;
-  width: 80%;
+  width: 100%;
 }
 
 .main {
   display: flex;
-  align-items: center;
   position: relative;
 }
 
@@ -43,7 +42,7 @@
 .item {
   width: 100%;
   display: none;
-  height: 200px;
+  flex-grow: 1;
 }
 
 .item.active {
