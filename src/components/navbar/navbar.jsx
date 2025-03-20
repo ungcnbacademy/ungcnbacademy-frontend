@@ -242,6 +242,7 @@ export default function Navbar({ variant = 'transparent', stickyNav = true }) {
             width={120}
             height={50}
             priority={true}
+            className={styles.logo}
           />
         </Link>
       </div>

@@ -12,6 +12,10 @@
     font-size: 0.8rem;
     .card {
       flex: 1 200px;
+      .logo{
+        width: auto;
+        height: 70px;
+      }
       .title {
         margin-bottom: 15px;
         font-size: 1rem;
