@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './topSection.module.css';
 import { companyInfo } from '@/constants/constants';
+import { FaSquareXTwitter, FaSquareFacebook, FaLinkedin } from 'react-icons/fa6';
 
 export default function TopSection() {
   return (
@@ -11,16 +12,18 @@ export default function TopSection() {
         </h1>
       </div>
       <div className={styles.container}>
-        <p>CONNECT WITH US!</p>
-        <p>
-          x: <br /> <a href={companyInfo.socials.twitter}>{companyInfo.socials.twitter}</a>
-        </p>
-        <p>
-          Facebook: <br /> <a href={companyInfo.socials.facebook}>{companyInfo.socials.facebook}</a>{' '}
-        </p>
-        <p>
-          Linkedin: <br /> <a href={companyInfo.socials.linkedin}>{companyInfo.socials.linkedin}</a>{' '}
-        </p>
+        <p className={styles.text}>CONNECT WITH US!</p>
+        <div className={styles.socials}>
+          <a href={companyInfo.socials.twitter} target="_blank">
+            <FaSquareXTwitter className={styles.icon} />
+          </a>
+          <a href={companyInfo.socials.facebook} target="_blank">
+            <FaSquareFacebook className={styles.icon} />
+          </a>{' '}
+          <a href={companyInfo.socials.linkedin} target="_blank">
+            <FaLinkedin className={styles.icon} />
+          </a>{' '}
+        </div>
       </div>
     </div>
   );
