@@ -96,7 +96,7 @@ export default function CourseDetails({ response }) {
           </div>
           <br />
           <div>
-            <h3 className={styles.title}>Instructor</h3>
+            <h3 className={styles.title}>Instructors</h3>
             {response?.data?.instructors &&
               response?.data?.instructors?.map((instructor, i) => (
                 <div key={i} className={styles.instructor}>
