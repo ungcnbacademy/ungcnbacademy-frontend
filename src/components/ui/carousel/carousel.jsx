@@ -44,7 +44,11 @@ export default function Carousel({
           </div>
         )}
         {slides.map((item, index) => (
-          <div key={index} className={`${styles.item} ${index === activeIndex && styles.active}`} style={{ minHeight: minHeight }}>
+          <div
+            key={index}
+            className={`${styles.item} ${index === activeIndex && styles.active}`}
+            style={slides.length > 1 ? { minHeight: minHeight } : {}}
+          >
             {item}
           </div>
         ))}
@@ -53,7 +57,7 @@ export default function Carousel({
             &#10095;
           </div>
         )}
-        {showDots && (
+        {showDots && slides.length > 1 && (
           <div className={styles.dots}>
             {slides.map((_, index) => (
               <div
