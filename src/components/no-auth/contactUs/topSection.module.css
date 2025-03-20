@@ -38,7 +38,7 @@
   }
 }
 .container > p {
-  color: var(--foreground-white);
+  color: var(--foreground);
   font-size: 1.2rem;
   font-weight: 600;
   word-wrap: break-word;
