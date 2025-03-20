@@ -173,10 +173,9 @@ export default function CourseDetails({ params }) {
                   ]}
                 />
               </div>
-              <p>Name: {instructor?.name}</p>
-              <p>Designation: {instructor?.designation}</p>
-              <p>Description: {instructor?.description}</p>
-              <p>Bio: {instructor?.bio}</p>
+              <p><b>Name:</b> {instructor?.name}</p>
+              <p> <b>Designation:</b> {instructor?.designation}</p>
+              <p> <b>Bio:</b> {instructor?.bio}</p>
               <h5 className={styles.socialTitle}>Social Links</h5>
               <div className={styles.socialContent}>
                 <TbWorld />
