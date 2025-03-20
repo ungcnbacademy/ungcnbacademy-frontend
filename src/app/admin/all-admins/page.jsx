@@ -7,6 +7,7 @@ import AllAdministration from '@/components/admin/admininstrators/allAdministrat
 import CreateAdmin from '@/components/admin/admininstrators/createAdmin';
 export default function AllAdmins() {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+	const [refreshData, setRefreshData] = useState(false);
   const drawerRender = () => {
 		return (
 			<>
@@ -15,7 +16,7 @@ export default function AllAdmins() {
 						title="Create Admin"
 						closeFunction={() => setIsOpenDrawer(false)}
 					>
-						<CreateAdmin/>
+						<CreateAdmin refresh={() => setRefreshData(!refreshData)}/>
 					</Drawer>
 				)}
 			</>
@@ -33,7 +34,7 @@ export default function AllAdmins() {
 				/>
 			</div>
 			<div className={styles.container}>
-				<AllAdministration/>
+				<AllAdministration refresh={refreshData}/>
 			</div>
 		</div>
   )

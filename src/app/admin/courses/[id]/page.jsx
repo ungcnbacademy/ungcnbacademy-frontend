@@ -97,11 +97,12 @@ export default function CourseDetails({ params }) {
 
   const deleteInstructor = (instructorId) => {
     const data = { instructorId };
-    axiosFetchDelete({
-      method: 'DELETE',
-      url: `${configuration.courses}/${courseId}/instructors`,
-      requestConfig: { data },
-    });
+    confirm('Are you sure you want to delete this instructor?') &&
+      axiosFetchDelete({
+        method: 'DELETE',
+        url: `${configuration.courses}/${courseId}/instructors`,
+        requestConfig: { data },
+      });
   };
 
   useEffect(() => {

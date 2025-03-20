@@ -8,13 +8,14 @@ import { configuration } from '@/configuration/configuration';
 import Select from '@/components/ui/select/select';
 import styles from './createAdmin.module.css';
 import { allAdminRoles, userRoles } from '@/constants/constants';
-export default function CreateAdmin() {
+export default function CreateAdmin({refresh = () => {}}) {
 	const [response, error, loading, axiosFetch] = useAxios();
 	const formRef = useRef(null);
 	const [message, setMessage] = useState({ text: '', type: '' });
 	useEffect(() => {
 		if (response?.message) {
 			setMessage({ text: response?.message, type: 'success' });
+			refresh();
 		}
 		if (error?.message) {
 			setMessage({ text: error?.message, type: 'error' });
