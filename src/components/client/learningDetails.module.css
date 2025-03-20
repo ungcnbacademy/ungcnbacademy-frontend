@@ -4,10 +4,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  --scrollable-height: calc(100vh - 100px);
 
   .left {
     flex: 1 300px;
-    height: calc(100vh - 85px);
+    height: var(--scrollable-height);
     overflow-y: auto;
     .lessonDetails {
       display: flex;
@@ -145,7 +146,7 @@
     flex: 1 300px;
     max-width: 350px;
     background-color: var(--background-dashboard);
-    height: calc(100vh - 85px);
+    height: var(--scrollable-height);
     overflow-y: auto;
     .courseContentHeader {
       padding: 15px;
