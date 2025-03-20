@@ -16,11 +16,15 @@ import { IoLogoLinkedin } from 'react-icons/io';
 import { AiOutlineTwitter } from 'react-icons/ai';
 import Avatar from '@/components/ui/avatar/avatar';
 import PopoverList from '@/components/ui/popover/popoverList';
-import { RiVideoAddLine, RiVideoAiLine, RiVideoOffLine } from 'react-icons/ri';
+import { RiVideoAddLine, RiVideoAiLine } from 'react-icons/ri';
+import { MdDeleteOutline } from 'react-icons/md';
+import { LiaEdit } from 'react-icons/lia';
 import CreateTrailer from '@/components/admin/courses/trailer/createTrailer';
 import ViewTrailer from '@/components/admin/courses/trailer/viewTrailer';
 import Modal from '@/components/ui/modal/modal';
 import AddInstructor from '@/components/admin/courses/addInstructor';
+import UpdateSingleInstructor from '@/components/admin/courses/updateSingleInstructor';
+import Toast from '@/components/ui/toast/toast';
 
 export default function CourseDetails({ params }) {
   const unwrappedParams = React.use(params);
@@ -29,21 +33,26 @@ export default function CourseDetails({ params }) {
   const [isDrawerOpenCreateModule, setIsDrawerOpenCreateModule] = useState(false);
   const [isDrawerOpenAddTrailer, setIsDrawerOpenAddTrailer] = useState(false);
   const [isDrawerOpenAddInstructor, setIsDrawerOpenAddInstructor] = useState(false);
+  const [isDrawerOpenUpdateInstructor, setIsDrawerOpenUpdateInstructor] = useState(false);
+  const [selectedInstructor, setSelectedInstructor] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [message, setMessage] = useState({ text: '', variant: '' });
+  const [responseDelete, errorDelete, loadingDelete, axiosFetchDelete] = useAxios();
+  const [refreshData, setRefreshData] = useState(false);
 
   useEffect(() => {
     axiosFetch({
       method: 'Get',
       url: `${configuration.courses}/${courseId}`,
     });
-  }, [courseId]);
+  }, [courseId, refreshData]);
 
   const drawerRenderCreateModule = () => {
     return (
       <>
         {isDrawerOpenCreateModule && (
           <Drawer title="Create Module" closeFunction={() => setIsDrawerOpenCreateModule(false)}>
-            <CreateModule courseId={courseId} />
+            <CreateModule courseId={courseId} refresh={() => setRefreshData(!refreshData)} />
           </Drawer>
         )}
       </>
@@ -67,12 +76,46 @@ export default function CourseDetails({ params }) {
       <>
         {isDrawerOpenAddInstructor && (
           <Drawer title="Add Instructor" closeFunction={() => setIsDrawerOpenAddInstructor(false)}>
-            <AddInstructor id={courseId} />
+            <AddInstructor courseId={courseId} refresh={() => setRefreshData(!refreshData)} />
           </Drawer>
         )}
       </>
     );
   };
+
+  const drawerRenderUpdateInstructor = () => {
+    return (
+      <>
+        {isDrawerOpenUpdateInstructor && (
+          <Drawer title="Update Instructor" closeFunction={() => setIsDrawerOpenUpdateInstructor(false)}>
+            <UpdateSingleInstructor courseId={courseId} data={selectedInstructor} refresh={() => setRefreshData(!refreshData)} />
+          </Drawer>
+        )}
+      </>
+    );
+  };
+
+  const deleteInstructor = (instructorId) => {
+    const data = { instructorId };
+    axiosFetchDelete({
+      method: 'DELETE',
+      url: `${configuration.courses}/${courseId}/instructors`,
+      requestConfig: { data },
+    });
+  };
+
+  useEffect(() => {
+    if (responseDelete?.message) {
+      setMessage({ text: responseDelete?.message, variant: 'success' });
+      setRefreshData(!refreshData);
+    }
+    if (errorDelete?.message) {
+      setMessage({ text: errorDelete?.message, variant: 'error' });
+    }
+    if (loadingDelete) {
+      setMessage({ text: 'Deleting...', variant: 'info' });
+    }
+  }, [responseDelete, errorDelete, loadingDelete]);
 
   const courseDetailsRender = () => {
     return (
@@ -105,7 +148,30 @@ export default function CourseDetails({ params }) {
         {response?.data?.instructors &&
           response?.data?.instructors?.map((instructor, i) => (
             <div key={i} className={styles.instructor}>
-              <Avatar name={instructor?.name} className={styles.avatar} image={instructor?.image} size={100} />
+              <div className={styles.topContainer}>
+                <Avatar name={instructor?.name} className={styles.avatar} image={instructor?.image} size={100} />
+                <PopoverList
+                  variant="secondary"
+                  text="Action"
+                  data={[
+                    {
+                      title: 'Edit Instructor',
+                      icon: <LiaEdit />,
+                      function: () => {
+                        setSelectedInstructor(instructor);
+                        setIsDrawerOpenUpdateInstructor(true);
+                      },
+                    },
+                    {
+                      title: 'Delete Instructor',
+                      icon: <MdDeleteOutline />,
+                      function: () => {
+                        deleteInstructor(instructor?._id);
+                      },
+                    },
+                  ]}
+                />
+              </div>
               <p>Name: {instructor?.name}</p>
               <p>Designation: {instructor?.designation}</p>
               <p>Description: {instructor?.description}</p>
@@ -203,9 +269,11 @@ export default function CourseDetails({ params }) {
 
   return (
     <div>
+      <Toast text={message?.text} variant={message?.type} />
       {drawerRenderCreateModule()}
       {drawerRenderAddTrailer()}
       {drawerRenderAddInstructor()}
+      {drawerRenderUpdateInstructor()}
       {trailerModalRender()}
       {loading && <LoadingDots />}
       {!loading && !error && (

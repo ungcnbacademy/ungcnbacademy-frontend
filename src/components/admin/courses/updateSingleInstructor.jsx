@@ -5,9 +5,10 @@ import Button from '@/components/ui/button/button';
 import useAxios from '@/hooks/useAxios';
 import Message from '@/components/ui/message/message';
 import { configuration } from '@/configuration/configuration';
-import styles from './addInstructor.module.css';
+import styles from './updateSingleInstructor.module.css';
+import Avatar from '@/components/ui/avatar/avatar';
 
-export default function AddInstructor({ courseId = '', refresh = () => {} }) {
+export default function UpdateSingleInstructor({ courseId = '', data = {}, refresh = () => {} }) {
   const [response, error, loading, axiosFetch] = useAxios();
   const formRef = useRef(null);
   const [message, setMessage] = useState({ text: '', type: '' });
@@ -40,26 +41,25 @@ export default function AddInstructor({ courseId = '', refresh = () => {} }) {
     formData.delete('twitter');
     formData.delete('website');
 
-    const courseData = {
-      instructors: [
-        {
-          name: formDataObject.instructorName,
-          designation: formDataObject.instructorDesignation,
-          bio: formDataObject.bio,
-          socialLinks: {
-            linkedin: formDataObject.linkedin,
-            twitter: formDataObject.twitter,
-            website: formDataObject.website,
-          },
+    const instructorData = {
+      instructorId: data._id,
+      instructor: {
+        name: formDataObject.instructorName,
+        designation: formDataObject.instructorDesignation,
+        bio: formDataObject.bio,
+        socialLinks: {
+          linkedin: formDataObject.linkedin,
+          twitter: formDataObject.twitter,
+          website: formDataObject.website,
         },
-      ],
+      },
     };
 
-    formData.append('courseData', JSON.stringify(courseData));
+    formData.append('instructorData', JSON.stringify(instructorData));
 
     axiosFetch({
-      method: 'PUT',
-      url: configuration.courses + '/' + courseId,
+      method: 'PATCH',
+      url: configuration.courses + '/' + courseId + '/instructors',
       requestConfig: formData,
     });
   };
@@ -67,23 +67,44 @@ export default function AddInstructor({ courseId = '', refresh = () => {} }) {
   return (
     <div className={styles.main}>
       <form className={styles.form} onSubmit={onAddInstructorSubmitHandler} ref={formRef}>
+        <Avatar name={data?.name} image={data?.image} size={100} />
         <p className={styles.subTitle}>Instructor:</p>
         <p className={styles.label}>Instructor image</p>
-        <Input type="file" placeholder="Instructor Image" name="instructorImages" variant="secondary" />
+        <Input type="file" placeholder="Instructor Image" name="instructorImage" variant="secondary" />
         <p className={styles.label}>Instructor name</p>
-        <Input type="text" placeholder="Instructor Name" name="instructorName" variant="secondary" required />
+        <Input
+          type="text"
+          placeholder="Instructor Name"
+          name="instructorName"
+          variant="secondary"
+          required
+          defaultValue={data?.name}
+        />
         <p className={styles.label}>Instructor designation</p>
-        <Input type="text" placeholder="Instructor Designation" name="instructorDesignation" variant="secondary" required />
+        <Input
+          type="text"
+          placeholder="Instructor Designation"
+          name="instructorDesignation"
+          variant="secondary"
+          required
+          defaultValue={data?.designation}
+        />
         <p className={styles.label}>Instructor bio</p>
-        <Input type="text" placeholder="Instructor Bio" name="bio" variant="secondary" required />
+        <Input type="text" placeholder="Instructor Bio" name="bio" variant="secondary" required defaultValue={data?.bio} />
 
         <p className={styles.subTitle}>Instructor Social Links:</p>
         <p className={styles.label}>Linkedin</p>
-        <Input type="text" placeholder="Linkedin" name="linkedin" variant="secondary" />
+        <Input
+          type="text"
+          placeholder="Linkedin"
+          name="linkedin"
+          variant="secondary"
+          defaultValue={data?.socialLinks?.linkedin}
+        />
         <p className={styles.label}>Twitter</p>
-        <Input type="text" placeholder="Twitter" name="twitter" variant="secondary" />
+        <Input type="text" placeholder="Twitter" name="twitter" variant="secondary" defaultValue={data?.socialLinks?.twitter} />
         <p className={styles.label}>Website</p>
-        <Input type="text" placeholder="Website" name="website" variant="secondary" />
+        <Input type="text" placeholder="Website" name="website" variant="secondary" defaultValue={data?.socialLinks?.website} />
 
         <div className={styles.submitContainer}>
           <Message text={message.text} type={message.type} loading={loading} />
