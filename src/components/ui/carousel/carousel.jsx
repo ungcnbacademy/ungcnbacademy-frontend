@@ -8,14 +8,13 @@ export default function Carousel({
   interval = 3000,
   showDots = true,
   showArrows = false,
-  minHeight = '400px',
   pauseOnHover = true,
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    if (autoPlay && !isPaused) {
+    if (autoPlay && !isPaused && slides.length > 1) {
       const intervalId = setInterval(() => {
         setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length);
       }, interval);
@@ -31,28 +30,36 @@ export default function Carousel({
     setActiveIndex((prevIndex) => (prevIndex === slides.length - 1 ? 0 : prevIndex + 1));
   };
 
+  // Don't render anything if there are no slides
+  if (slides.length === 0) {
+    return null;
+  }
+
   return (
     <div className={styles.overlay}>
       <div
         className={styles.main}
         onMouseEnter={pauseOnHover ? () => setIsPaused(true) : undefined}
         onMouseLeave={pauseOnHover ? () => setIsPaused(false) : undefined}
+        style={slides.length > 1 && showArrows ? {margin: '10px'} : {}}
       >
-        {showArrows && (
+        {showArrows && slides.length > 1 && (
           <div className={styles.previousBtn} onClick={prevSlide}>
             &#10094;
           </div>
         )}
-        {slides.map((item, index) => (
-          <div
-            key={index}
-            className={`${styles.item} ${index === activeIndex && styles.active}`}
-            style={slides.length > 1 ? { minHeight: minHeight } : {}}
-          >
-            {item}
-          </div>
-        ))}
-        {showArrows && (
+        <div className={styles.container}>
+          {slides.map((item, index) => (
+            <div
+              key={index}
+              className={`${styles.item} ${index === activeIndex && styles.active }`}
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+
+        {showArrows && slides.length > 1 && (
           <div className={styles.nextBtn} onClick={nextSlide}>
             &#10095;
           </div>

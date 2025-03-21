@@ -124,9 +124,7 @@ export default function CourseDetails({ response }) {
           <br />
           <div>
             <h3 className={styles.title}>Instructors</h3>
-            {response?.data?.instructors && (
-              <Carousel slides={instructorsCarouselSlides || []} minHeight={'460px'} showArrows={false} />
-            )}
+            {response?.data?.instructors && <Carousel slides={instructorsCarouselSlides || []} showArrows={false} />}
           </div>
         </div>
         <div className={styles.right}>
