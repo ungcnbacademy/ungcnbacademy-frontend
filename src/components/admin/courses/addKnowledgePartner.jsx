@@ -49,6 +49,7 @@ export default function AddKnowledgePartner({ courseId, refreshData = () => {} }
         <p className={styles.label}>Second partner</p>
         <Input type="file" placeholder="Upload knowledge partner" name="knowledgePartImage2" variant="secondary" />
         <p className={styles.label}>Third partner</p>
+        <Input type="file" placeholder="Upload knowledge partner" name="knowledgePartImage3" variant="secondary" />
         <ProgressBar progress={progress} />
         <div className={styles.submitContainer}>
           <Message text={message.text} type={message.type} loading={loading} />
