@@ -72,7 +72,8 @@
     margin-block: 5px 15px;
     color: var(--foreground-light);
   }
-  .instructor { width: 100%;
+  .instructor {
+    width: 100%;
     margin-top: 10px;
     font-size: 0.9rem;
     color: var(--foreground-light);
@@ -112,7 +113,7 @@
   }
 }
 .longDescription {
-  margin-top: 20px;
+  margin-block: 10px;
   font-size: 0.9rem;
   color: var(--foreground-dark);
   text-align: justify;
@@ -138,4 +139,15 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 5px;
+}
+
+.knowledgePartner {
+  margin-block: 20px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  .partnerImage {
+    width: auto;
+    height: 50px;
+  }
 }

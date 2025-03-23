@@ -154,7 +154,13 @@ export default function CourseDetails({ params }) {
       <>
         {isDrawerOpenKnowledgePartners && (
           <Drawer title="Knowledge Partners" closeFunction={() => setIsDrawerOpenKnowledgePartners(false)}>
-            <AddKnowledgePartner courseId={courseId} refresh={() => setRefreshData(!refreshData)} />
+            <AddKnowledgePartner
+              courseId={courseId}
+              refreshData={() => {
+                console.log('first');
+                setRefreshData(!refreshData);
+              }}
+            />
           </Drawer>
         )}
       </>
@@ -371,8 +377,20 @@ export default function CourseDetails({ params }) {
           <Button text="Add Knowledge Partner" variant="primary" onClick={() => setIsDrawerOpenKnowledgePartners(true)} />
         </div>
         <div className={styles.knowledgePartners}>
-          <Image src={response?.data?.knowledgePartImage1 || '/assets/noImage.svg'} alt="knowledge partner image" width={200} height={100} className={styles.knowledgeImg}/>
-          <Image src={response?.data?.knowledgePartImage2 || '/assets/noImage.svg'} alt="knowledge partner image" width={200} height={100} className={styles.knowledgeImg}/>
+          <Image
+            src={response?.data?.knowledgePartImage1 || '/assets/noImage.svg'}
+            alt="knowledge partner image"
+            width={200}
+            height={100}
+            className={styles.knowledgeImg}
+          />
+          <Image
+            src={response?.data?.knowledgePartImage2 || '/assets/noImage.svg'}
+            alt="knowledge partner image"
+            width={200}
+            height={100}
+            className={styles.knowledgeImg}
+          />
         </div>
       </>
     );

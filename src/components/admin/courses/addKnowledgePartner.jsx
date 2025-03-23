@@ -12,6 +12,7 @@ export default function AddKnowledgePartner({ courseId, refreshData = () => {} }
   const [response, error, loading, axiosFetch, progress] = useAxios();
   const formRef = useRef(null);
   const [message, setMessage] = useState({ text: '', type: '' });
+
   useEffect(() => {
     if (response?.message) {
       setMessage({ text: response?.message, type: 'success' });
@@ -20,7 +21,8 @@ export default function AddKnowledgePartner({ courseId, refreshData = () => {} }
     if (error?.message) {
       setMessage({ text: error?.message, type: 'error' });
     }
-  }, [response, error]);
+  }, [response?.message, error?.message]);
+
   const onClearHandler = () => {
     setMessage({ text: '', type: '' });
     formRef.current.reset();
@@ -45,7 +47,7 @@ export default function AddKnowledgePartner({ courseId, refreshData = () => {} }
         <p className={styles.label}>First knowledge partner  </p>
         <Input type="file" placeholder="Upload knowledge partner" name="knowledgePartImage1" variant="secondary" required />
         <p className={styles.label}>Second knowledge partner</p>
-        <Input type="file" placeholder="Upload knowledge partner" name="knowledgePartImage2" variant="secondary" required />
+        <Input type="file" placeholder="Upload knowledge partner" name="knowledgePartImage2" variant="secondary" />
         <ProgressBar progress={progress} />
         <div className={styles.submitContainer}>
           <Message text={message.text} type={message.type} loading={loading} />

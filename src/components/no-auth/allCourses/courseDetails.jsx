@@ -9,6 +9,7 @@ import { FaGlobeAmericas } from 'react-icons/fa';
 import { formatDuration } from '@/utils/utils';
 import ViewTrailer from '@/components/admin/courses/trailer/viewTrailer';
 import Carousel from '@/components/ui/carousel/carousel';
+import Tabs from '@/components/ui/tabs/tabs';
 
 export default function CourseDetails({ response }) {
   const instructorsCarouselSlides = response?.data?.instructors?.map((instructor, i) => (
@@ -36,6 +37,49 @@ export default function CourseDetails({ response }) {
       </div>
     </div>
   ));
+
+  const courseWysiwygRender = (content) => {
+    return (
+      <div>
+        {content && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: content,
+            }}
+            className={styles.longDescription}
+          ></div>
+        )}
+      </div>
+    );
+  };
+
+  const courseKnowledgePartnersRender = () => {
+    return (
+      <div>
+        <h3 className={styles.title}>Knowledge partners</h3>
+        <div className={styles.knowledgePartner}>
+          {response?.data?.knowledgePartImage1 && (
+            <Image
+              src={response?.data?.knowledgePartImage1}
+              alt="course image"
+              width={100}
+              height={100}
+              className={styles.partnerImage}
+            />
+          )}
+          {response?.data?.knowledgePartImage2 && (
+            <Image
+              src={response?.data?.knowledgePartImage2}
+              alt="course image"
+              width={100}
+              height={100}
+              className={styles.partnerImage}
+            />
+          )}
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className={styles.main}>
@@ -68,16 +112,22 @@ export default function CourseDetails({ response }) {
             </div>
           )}
           <br />
-          <div>
-            {response?.data?.longDescription && (
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: response?.data?.longDescription,
-                }}
-                className={styles.longDescription}
-              ></div>
-            )}
-          </div>
+          <Tabs
+            items={[
+              { title: 'Description', content: courseWysiwygRender(response?.data?.longDescription) },
+              {
+                title: 'Overview',
+                content: response?.data?.courseOverview ? courseWysiwygRender(response?.data?.courseOverview) : '',
+              },
+              { title: 'Learning', content: response?.data?.learning ? courseWysiwygRender(response?.data?.learning) : '' },
+              { title: 'Requirements', content: response?.data?.courseReq ? courseWysiwygRender(response?.data?.courseReq) : '' },
+              {
+                title: 'Benefits',
+                content: response?.data?.courseBenefit ? courseWysiwygRender(response?.data?.courseBenefit) : '',
+              },
+              { title: 'Why Choose', content: response?.data?.whyChoose ? courseWysiwygRender(response?.data?.whyChoose) : '' },
+            ]}
+          />
           <br />
           <div>
             <h3 className={styles.title}>Course content</h3>
@@ -126,6 +176,8 @@ export default function CourseDetails({ response }) {
             <h3 className={styles.title}>Instructors</h3>
             {response?.data?.instructors && <Carousel slides={instructorsCarouselSlides || []} showArrows={false} />}
           </div>
+          <br />
+          {(response?.data?.knowledgePartImage1 || response?.data?.knowledgePartImage2) && courseKnowledgePartnersRender()}
         </div>
         <div className={styles.right}>
           <CoursePriceContainer courseInfo={response?.data} />
