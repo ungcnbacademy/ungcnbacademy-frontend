@@ -123,7 +123,7 @@ export default function CourseDetails({ response }) {
           <br />
           <Tabs
             items={[
-              { title: 'Description', content: courseWysiwygRender(response?.data?.longDescription) },
+
               {
                 title: 'Overview',
                 content: response?.data?.courseOverview ? courseWysiwygRender(response?.data?.courseOverview) : '',
@@ -135,6 +135,7 @@ export default function CourseDetails({ response }) {
                 content: response?.data?.courseBenefit ? courseWysiwygRender(response?.data?.courseBenefit) : '',
               },
               { title: 'Why Choose', content: response?.data?.whyChoose ? courseWysiwygRender(response?.data?.whyChoose) : '' },
+              { title: 'Description', content: courseWysiwygRender(response?.data?.longDescription) },
             ]}
           />
           <br />
