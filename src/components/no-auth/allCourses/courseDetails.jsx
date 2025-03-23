@@ -56,7 +56,7 @@ export default function CourseDetails({ response }) {
   const courseKnowledgePartnersRender = () => {
     return (
       <div>
-        <h3 className={styles.title}>Knowledge partners</h3>
+        <h3 className={styles.title}>Our partners</h3>
         <div className={styles.knowledgePartner}>
           {response?.data?.knowledgePartImage1 && (
             <Image
@@ -70,6 +70,15 @@ export default function CourseDetails({ response }) {
           {response?.data?.knowledgePartImage2 && (
             <Image
               src={response?.data?.knowledgePartImage2}
+              alt="course image"
+              width={100}
+              height={100}
+              className={styles.partnerImage}
+            />
+          )}
+          {response?.data?.knowledgePartImage3 && (
+            <Image
+              src={response?.data?.knowledgePartImage3}
               alt="course image"
               width={100}
               height={100}
