@@ -28,11 +28,15 @@ import Toast from '@/components/ui/toast/toast';
 import Tabs from '@/components/ui/tabs/tabs';
 import AddCourseDescription from '@/components/admin/courses/addCourseDescription';
 import AddKnowledgePartner from '@/components/admin/courses/addKnowledgePartner';
+import { IoMdCloseCircle } from 'react-icons/io';
 
 export default function CourseDetails({ params }) {
   const unwrappedParams = React.use(params);
   const courseId = unwrappedParams.id;
   const [response, error, loading, axiosFetch] = useAxios();
+  const [responseDelete, errorDelete, loadingDelete, axiosFetchDelete] = useAxios();
+  const [responseDeleteKnowledgeImg, errorDeleteKnowledgeImg, loadingDeleteKnowledgeImg, axiosFetchDeleteKnowledgeImg] =
+    useAxios();
   const [isDrawerOpenCreateModule, setIsDrawerOpenCreateModule] = useState(false);
   const [isDrawerOpenAddTrailer, setIsDrawerOpenAddTrailer] = useState(false);
   const [isDrawerOpenAddInstructor, setIsDrawerOpenAddInstructor] = useState(false);
@@ -42,7 +46,6 @@ export default function CourseDetails({ params }) {
   const [selectedInstructor, setSelectedInstructor] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [message, setMessage] = useState({ text: '', variant: '' });
-  const [responseDelete, errorDelete, loadingDelete, axiosFetchDelete] = useAxios();
   const [refreshData, setRefreshData] = useState(false);
 
   useEffect(() => {
@@ -60,10 +63,24 @@ export default function CourseDetails({ params }) {
     if (errorDelete?.message) {
       setMessage({ text: errorDelete?.message, variant: 'error' });
     }
-    if (loadingDelete) {
+    if (loadingDelete || loadingDeleteKnowledgeImg) {
       setMessage({ text: 'Deleting...', variant: 'info' });
     }
-  }, [responseDelete, errorDelete, loadingDelete]);
+    if (responseDeleteKnowledgeImg?.message) {
+      setMessage({ text: responseDeleteKnowledgeImg?.message, variant: 'success' });
+      setRefreshData(!refreshData);
+    }
+    if (errorDeleteKnowledgeImg?.message) {
+      setMessage({ text: errorDeleteKnowledgeImg?.message, variant: 'error' });
+    }
+  }, [
+    responseDelete,
+    errorDelete,
+    loadingDelete,
+    responseDeleteKnowledgeImg,
+    errorDeleteKnowledgeImg,
+    loadingDeleteKnowledgeImg,
+  ]);
 
   // utility functions
 
@@ -85,6 +102,14 @@ export default function CourseDetails({ params }) {
         </div>
       </>
     );
+  };
+
+  const deleteKnowledgePartner = (knowledgePartnerId) => {
+    confirm('Are you sure you want to delete this knowledge partner?') &&
+      axiosFetchDelete({
+        method: 'DELETE',
+        url: `${configuration.courses}/${courseId}/knowledge-images/${knowledgePartnerId}`,
+      });
   };
 
   //drawer render functions
@@ -377,27 +402,51 @@ export default function CourseDetails({ params }) {
           <Button text="Add Knowledge Partner" variant="primary" onClick={() => setIsDrawerOpenKnowledgePartners(true)} />
         </div>
         <div className={styles.knowledgePartners}>
-          <Image
-            src={response?.data?.knowledgePartImage1 || '/assets/noImage.svg'}
-            alt="knowledge partner image"
-            width={200}
-            height={100}
-            className={styles.knowledgeImg}
-          />
-          <Image
-            src={response?.data?.knowledgePartImage2 || '/assets/noImage.svg'}
-            alt="knowledge partner image"
-            width={200}
-            height={100}
-            className={styles.knowledgeImg}
-          />
-          <Image
-            src={response?.data?.knowledgePartImage3 || '/assets/noImage.svg'}
-            alt="knowledge partner image"
-            width={200}
-            height={100}
-            className={styles.knowledgeImg}
-          />
+          <div className={styles.knowledgeImgContainer}>
+            <IoMdCloseCircle
+              className={styles.closeIcon}
+              onClick={() => {
+                deleteKnowledgePartner(1);
+              }}
+            />
+            <Image
+              src={response?.data?.knowledgePartImage1 || '/assets/noImage.svg'}
+              alt="knowledge partner image"
+              width={200}
+              height={100}
+              className={styles.knowledgeImg}
+            />
+          </div>
+          <div className={styles.knowledgeImgContainer}>
+            <IoMdCloseCircle
+              className={styles.closeIcon}
+              onClick={() => {
+                deleteKnowledgePartner(2);
+              }}
+            />
+            <Image
+              src={response?.data?.knowledgePartImage2 || '/assets/noImage.svg'}
+              alt="knowledge partner image"
+              width={200}
+              height={100}
+              className={styles.knowledgeImg}
+            />
+          </div>
+          <div className={styles.knowledgeImgContainer}>
+            <IoMdCloseCircle
+              className={styles.closeIcon}
+              onClick={() => {
+                deleteKnowledgePartner(3);
+              }}
+            />
+            <Image
+              src={response?.data?.knowledgePartImage3 || '/assets/noImage.svg'}
+              alt="knowledge partner image"
+              width={200}
+              height={100}
+              className={styles.knowledgeImg}
+            />
+          </div>
         </div>
       </>
     );
