@@ -391,6 +391,13 @@ export default function CourseDetails({ params }) {
             height={100}
             className={styles.knowledgeImg}
           />
+          <Image
+            src={response?.data?.knowledgePartImage3 || '/assets/noImage.svg'}
+            alt="knowledge partner image"
+            width={200}
+            height={100}
+            className={styles.knowledgeImg}
+          />
         </div>
       </>
     );
