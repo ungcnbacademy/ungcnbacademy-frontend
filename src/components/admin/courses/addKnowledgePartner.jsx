@@ -45,7 +45,7 @@ export default function AddKnowledgePartner({ courseId, refreshData = () => {} }
       <form className={styles.form} onSubmit={onAddAdminSubmitHandler} ref={formRef}>
         <p className={styles.subTitle}>Our Partner details:</p>
         <p className={styles.label}>First partner  </p>
-        <Input type="file" placeholder="Upload knowledge partner" name="knowledgePartImage1" variant="secondary" required />
+        <Input type="file" placeholder="Upload knowledge partner" name="knowledgePartImage1" variant="secondary" />
         <p className={styles.label}>Second partner</p>
         <Input type="file" placeholder="Upload knowledge partner" name="knowledgePartImage2" variant="secondary" />
         <p className={styles.label}>Third partner</p>
