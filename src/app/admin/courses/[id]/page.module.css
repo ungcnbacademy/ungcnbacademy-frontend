@@ -27,7 +27,7 @@
     color: var(--foreground);
   }
 }
-.instructorHeader{
+.instructorHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,7 +38,7 @@
   padding: 20px;
   margin-block: 10px;
   border-radius: var(--global-border-radius);
-  .topContainer{
+  .topContainer {
     display: flex;
     justify-content: space-between;
     gap: 10px;
@@ -66,10 +66,10 @@
     color: var(--foreground-light);
   }
 }
-.instructor{
-	.avatar{
-		margin-bottom: 10px;
-	}
+.instructor {
+  .avatar {
+    margin-bottom: 10px;
+  }
 }
 .instructor > p {
   font-size: 0.85rem;
@@ -83,14 +83,13 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-block: 10px;
-  .buttonContainer{
+  .buttonContainer {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
   }
 }
 .details {
-
 }
 .details > p {
   font-size: 0.85rem;
@@ -101,4 +100,18 @@
 .title {
   font-size: 1.2rem;
   font-weight: 500;
+}
+
+.knowledgePartners {
+  padding: 20px;
+  background-color: var(--background-dashboard);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  border-radius: var(--global-border-radius);
+  .knowledgeImg {
+    width: auto;
+    height: 70px;
+  }
 }
