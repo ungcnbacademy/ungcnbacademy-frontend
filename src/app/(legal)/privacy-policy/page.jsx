@@ -139,8 +139,8 @@ const page = () => {
           4. Objecting to or restricting data processing. <br />
           5. Data portability for transferring personal data. <br />
           6. To exercise these rights, contact{' '}
-          <a className={styles.email} href={`mailto:info@unglobalcompact.org`}>
-            info@unglobalcompact.org
+          <a className={styles.email} href={`mailto:${companyInfo.email}`}>
+          {companyInfo.email}
           </a>{' '}
           <br />
         </p>
