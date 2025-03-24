@@ -155,8 +155,7 @@ const page = () => {
           For questions or concerns regarding this privacy policy, contact us at{' '}
           <a className={styles.email} href={`mailto:${companyInfo.email}`}>
             {companyInfo.email}
-          </a>{' '}
-          .
+          </a>
         </p>
       </div>
     </>
