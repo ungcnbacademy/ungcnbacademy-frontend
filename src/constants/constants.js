@@ -47,7 +47,7 @@ export const companyInfo = {
     instagram: 'https://www.instagram.com/',
     linkedin: 'https://www.linkedin.com/company/global-compact-network-bangladesh/',
     youtube: 'https://www.youtube.com/',
-    whatsapp: 'https://wa.me/8801626658248',
+    whatsapp: 'https://wa.me/8801671978757',
   },
   developer: {
     company: 'ContentPro.',
