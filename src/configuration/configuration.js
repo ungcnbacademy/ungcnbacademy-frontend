@@ -1,5 +1,6 @@
 export const configuration = {
-  baseUrl: 'https://ungcnbacademy-api-production.up.railway.app',
+  //baseUrl: 'https://education-platform-api-production.up.railway.app/api',
+  baseUrl: 'https://ungcnbacademy-api-production.up.railway.app/api',
   login: '/auth/login',
   verifyEmail: '/auth/verify-email',
   requestOTP: '/auth/forgot-password',

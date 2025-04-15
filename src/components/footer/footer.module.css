@@ -75,9 +75,8 @@
     .left,
     .middle,
     .right {
-      width: 413px;
+      flex: 1;
       display: flex;
-      justify-content: space-between;
       flex-wrap: wrap;
       gap: 20px;
       align-items: center;
@@ -92,29 +91,44 @@
       width: auto;
     }
     .sslLogo {
-      width: 160px;
+      width: 180px;
       height: auto;
+      margin-top: 15px;
     }
     .ungcLogo {
       height: 55px;
       width: auto;
     }
-
     .middle {
       justify-content: center;
     }
     .right {
       justify-content: flex-end;
     }
-    @media screen and (max-width: 1375px) {
-      .left, .middle, .right {
+    @media screen and (max-width: 1365px) {
+      .left,
+      .middle,
+      .right {
         flex-direction: column;
+        flex: 1;
       }
-      .left{
+      .left {
         align-items: flex-start;
       }
-      .right{
+      .right {
         align-items: flex-end;
+        justify-content: flex-start;
+      }
+    }
+    @media screen and (max-width: 601px) {
+      .right {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        .sslLogo {
+          margin-top: 0px;
+        }
       }
     }
   }
