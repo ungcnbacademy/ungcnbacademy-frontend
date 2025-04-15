@@ -27,8 +27,8 @@ export const legalMenu = [
     link: '/terms-of-sale',
   },
   {
-    name: 'Cookies Policy',
-    link: '/cookie-policy',
+    name: 'Refund Policy',
+    link: '/refund-policy',
   },
   // {
   //   name: 'Terms & Use',
