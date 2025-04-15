@@ -93,7 +93,7 @@
     .sslLogo {
       width: 180px;
       height: auto;
-      margin-top: 15px;
+
     }
     .ungcLogo {
       height: 55px;
@@ -118,6 +118,9 @@
       .right {
         align-items: flex-end;
         justify-content: flex-start;
+        .sslLogo{
+          margin-top: 15px;
+        }
       }
     }
     @media screen and (max-width: 601px) {
