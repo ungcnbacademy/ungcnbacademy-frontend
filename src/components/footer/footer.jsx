@@ -72,17 +72,25 @@ export default function Footer() {
           <Image src={'/ungc.png'} alt="Logo" width={200} height={50} className={styles.ungcLogo} />
         </div>
         <div className={styles.middle}>
-          <p className={styles.text}>Knowledge <br /> partner</p>
+          <p className={styles.text}>
+            Knowledge <br /> partner
+          </p>
           <Image src={'/esg-logo.png'} alt="Logo" width={200} height={50} className={styles.esgLogo} />
         </div>
         <div className={styles.right}>
-          <div className={styles.social}>
-            <FaFacebookSquare className={styles.icon} onClick={() => window.open(companyInfo.socials.facebook)} />
-            <FaSquareXTwitter className={styles.icon} onClick={() => window.open(companyInfo.socials.twitter)} />
-            <FaLinkedin className={styles.icon} onClick={() => window.open(companyInfo.socials.linkedin)} />
-          </div>
+          <p className={styles.text}>
+            Payment <br /> partner
+          </p>
+          <Image src={'/assets/payment/1.png'} alt="Logo" width={170} height={30} className={styles.sslLogo} />
         </div>
       </div>
+
+      <div className={styles.social}>
+        <FaFacebookSquare className={styles.icon} onClick={() => window.open(companyInfo.socials.facebook)} />
+        <FaSquareXTwitter className={styles.icon} onClick={() => window.open(companyInfo.socials.twitter)} />
+        <FaLinkedin className={styles.icon} onClick={() => window.open(companyInfo.socials.linkedin)} />
+      </div>
+
       <div>
         <p className={styles.copyright}>
           Copyright &copy; {new Date().getFullYear()} {companyInfo.name}. All rights reserved.

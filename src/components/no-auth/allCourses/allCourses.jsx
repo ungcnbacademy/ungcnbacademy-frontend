@@ -50,32 +50,37 @@ export default function AllCourses({ showSearch = true }) {
           )}
         </div>
         {loading && <LoadingDots />}
-        <div className={styles.container}>
-          {response?.data?.courses.map((course, i) => (
-            <CourseCard
-              key={i}
-              img={course?.thumbnail || '/assets/noImage.svg'}
-              title={course?.title || ''}
-              description={course?.description || ''}
-              startTime="Anytime"
-              duration={formatDuration(course?.statistics?.totalDuration)}
-              totalLectures={`${course?.statistics?.totalModules || 0} modules and ${
-                course?.statistics?.totalLessons || 0
-              } lectures`}
-              id={course._id}
-              maxWidth="none"
+        {response?.data && (
+          <div className={styles.container}>
+            {response?.data?.courses.map((course, i) => (
+              <CourseCard
+                key={i}
+                img={course?.thumbnail || '/assets/noImage.svg'}
+                title={course?.title || ''}
+                description={course?.description || ''}
+                startTime="Anytime"
+                duration={formatDuration(course?.statistics?.totalDuration)}
+                totalLectures={`${course?.statistics?.totalModules || 0} modules and ${
+                  course?.statistics?.totalLessons || 0
+                } lectures`}
+                id={course._id}
+                maxWidth="none"
+              />
+            ))}
+          </div>
+        )}
+        {response?.data && response?.data?.courses?.length != 0 && (
+          <div className={styles.pagination}>
+            <Pagination
+              currentPage={response?.data?.pagination?.currentPage || 1}
+              totalPage={response?.data?.pagination?.totalPages || 1}
+              setCurrentPage={(page) => {
+                getAllCoursesHandler(page, tableDefaultItemLimit);
+              }}
             />
-          ))}
-        </div>
-        <div className={styles.pagination}>
-          <Pagination
-            currentPage={response?.data?.pagination?.currentPage || 1}
-            totalPage={response?.data?.pagination?.totalPages || 1}
-            setCurrentPage={(page) => {
-              getAllCoursesHandler(page, tableDefaultItemLimit);
-            }}
-          />
-        </div>
+          </div>
+        )}
+        {(!response?.data || response?.data?.courses?.length === 0) && <small> No course found</small>}
       </div>
     </div>
   );

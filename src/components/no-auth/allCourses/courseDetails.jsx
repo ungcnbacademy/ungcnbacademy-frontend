@@ -10,8 +10,10 @@ import { formatDuration } from '@/utils/utils';
 import ViewTrailer from '@/components/admin/courses/trailer/viewTrailer';
 import Carousel from '@/components/ui/carousel/carousel';
 import Tabs from '@/components/ui/tabs/tabs';
+import Header from '@/components/atom/header';
 
 export default function CourseDetails({ response }) {
+  console.log(response);
   const instructorsCarouselSlides = response?.data?.instructors?.map((instructor, i) => (
     <div key={i} className={styles.instructor}>
       <Avatar image={instructor?.image && instructor?.image} name={!instructor?.image && instructor?.name} size={100} />
@@ -90,114 +92,128 @@ export default function CourseDetails({ response }) {
     );
   };
 
-  return (
-    <div className={styles.main}>
-      <div
-        className={styles.imageContainer}
-        style={response?.data?.thumbnail ? { backgroundImage: `url(${response?.data?.thumbnail})` } : {}}
-      >
-        <div className={styles.imageWrapper}>
-          <Image
-            src={response?.data?.thumbnail || '/assets/noImage.svg'}
-            alt={response?.data?.title || 'Course'}
-            width={500}
-            height={500}
-            className={styles.image}
-          />
+  const courseDetailsRender = () => {
+    return (
+      <>
+        <div
+          className={styles.imageContainer}
+          style={response?.data?.thumbnail ? { backgroundImage: `url(${response?.data?.thumbnail})` } : {}}
+        >
+          <div className={styles.imageWrapper}>
+            <Image
+              src={response?.data?.thumbnail || '/assets/noImage.svg'}
+              alt={response?.data?.title || 'Course'}
+              width={500}
+              height={500}
+              className={styles.image}
+            />
+          </div>
         </div>
-      </div>
 
-      <div className={styles.container}>
-        <div className={styles.left}>
-          <h1 className={styles.courseTitle}>{response?.data?.title}</h1>
-          <p className={styles.category}>Category: {response?.data?.category}</p>
-          <p className={styles.description}>{response?.data?.description}</p>
+        <div className={styles.container}>
+          <div className={styles.left}>
+            <h1 className={styles.courseTitle}>{response?.data?.title}</h1>
+            <p className={styles.category}>Category: {response?.data?.category}</p>
+            <p className={styles.description}>{response?.data?.description}</p>
 
-          {response?.data?.trailerCloudflareVideoId && (
+            {response?.data?.trailerCloudflareVideoId && (
+              <div>
+                <br />
+                <h3 className={styles.title}>Trailer</h3>
+                <ViewTrailer videoId={response?.data?.trailerCloudflareVideoId} />
+              </div>
+            )}
+            <br />
+            <Tabs
+              items={[
+                {
+                  title: 'Overview',
+                  content: response?.data?.courseOverview ? courseWysiwygRender(response?.data?.courseOverview) : '',
+                },
+                { title: 'Learning', content: response?.data?.learning ? courseWysiwygRender(response?.data?.learning) : '' },
+                {
+                  title: 'Requirements',
+                  content: response?.data?.courseReq ? courseWysiwygRender(response?.data?.courseReq) : '',
+                },
+                {
+                  title: 'Benefits',
+                  content: response?.data?.courseBenefit ? courseWysiwygRender(response?.data?.courseBenefit) : '',
+                },
+                { title: 'Why Choose', content: response?.data?.whyChoose ? courseWysiwygRender(response?.data?.whyChoose) : '' },
+                { title: 'Description', content: courseWysiwygRender(response?.data?.longDescription) },
+              ]}
+            />
+            <br />
             <div>
-              <br />
-              <h3 className={styles.title}>Trailer</h3>
-              <ViewTrailer videoId={response?.data?.trailerCloudflareVideoId} />
+              <h3 className={styles.title}>Course content</h3>
+              <p className={styles.subtitle}>
+                {response?.data?.statistics?.totalModules} Modules, {response?.data?.statistics?.totalLessons} Lessons,{' '}
+                {formatDuration(response?.data?.statistics?.totalDuration)} Duration, {response?.data?.statistics?.totalQuizzes}{' '}
+                Quizzes
+              </p>
+              {response?.data?.modules?.length > 0 &&
+                response?.data?.modules?.map((module, i) => (
+                  <Collapse
+                    key={i}
+                    data={[
+                      {
+                        title: `Module ${module.order}: ${module.title}`,
+                        description: module.description,
+                        children:
+                          module?.lessons?.length > 0 &&
+                          module?.lessons?.map((lesson, i) => (
+                            <Collapse
+                              key={i}
+                              variant="secondary"
+                              data={[
+                                {
+                                  title: `Lesson ${lesson.order}: ${lesson.title}`,
+                                  description: lesson.description,
+                                  children: (
+                                    <div className={styles.lessonAssets}>
+                                      {lesson?.duration > 0 && lesson?.duration && (
+                                        <label>Duration {formatDuration(lesson?.duration)},</label>
+                                      )}
+                                      {lesson?.totalAssets > 0 && <label>Total Assets {lesson?.totalAssets}</label>}
+                                    </div>
+                                  ),
+                                },
+                              ]}
+                            />
+                          )),
+                      },
+                    ]}
+                  />
+                ))}
             </div>
-          )}
-          <br />
-          <Tabs
-            items={[
+            <br />
+            <div>
+              <h3 className={styles.title}>Instructors</h3>
+              {response?.data?.instructors && <Carousel slides={instructorsCarouselSlides || []} showArrows={false} />}
+            </div>
+            <br />
+            {(response?.data?.knowledgePartImage1 || response?.data?.knowledgePartImage2) && courseKnowledgePartnersRender()}
+          </div>
+          <div className={styles.right}>
+            <CoursePriceContainer courseInfo={response?.data} />
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+      </>
+    );
+  };
 
-              {
-                title: 'Overview',
-                content: response?.data?.courseOverview ? courseWysiwygRender(response?.data?.courseOverview) : '',
-              },
-              { title: 'Learning', content: response?.data?.learning ? courseWysiwygRender(response?.data?.learning) : '' },
-              { title: 'Requirements', content: response?.data?.courseReq ? courseWysiwygRender(response?.data?.courseReq) : '' },
-              {
-                title: 'Benefits',
-                content: response?.data?.courseBenefit ? courseWysiwygRender(response?.data?.courseBenefit) : '',
-              },
-              { title: 'Why Choose', content: response?.data?.whyChoose ? courseWysiwygRender(response?.data?.whyChoose) : '' },
-              { title: 'Description', content: courseWysiwygRender(response?.data?.longDescription) },
-            ]}
-          />
-          <br />
-          <div>
-            <h3 className={styles.title}>Course content</h3>
-            <p className={styles.subtitle}>
-              {response?.data?.statistics?.totalModules} Modules, {response?.data?.statistics?.totalLessons} Lessons,{' '}
-              {formatDuration(response?.data?.statistics?.totalDuration)} Duration, {response?.data?.statistics?.totalQuizzes}{' '}
-              Quizzes
-            </p>
-            {response?.data?.modules?.length > 0 &&
-              response?.data?.modules?.map((module, i) => (
-                <Collapse
-                  key={i}
-                  data={[
-                    {
-                      title: `Module ${module.order}: ${module.title}`,
-                      description: module.description,
-                      children:
-                        module?.lessons?.length > 0 &&
-                        module?.lessons?.map((lesson, i) => (
-                          <Collapse
-                            key={i}
-                            variant="secondary"
-                            data={[
-                              {
-                                title: `Lesson ${lesson.order}: ${lesson.title}`,
-                                description: lesson.description,
-                                children: (
-                                  <div className={styles.lessonAssets}>
-                                    {lesson?.duration > 0 && lesson?.duration && (
-                                      <label>Duration {formatDuration(lesson?.duration)},</label>
-                                    )}
-                                    {lesson?.totalAssets > 0 && <label>Total Assets {lesson?.totalAssets}</label>}
-                                  </div>
-                                ),
-                              },
-                            ]}
-                          />
-                        )),
-                    },
-                  ]}
-                />
-              ))}
-          </div>
-          <br />
-          <div>
-            <h3 className={styles.title}>Instructors</h3>
-            {response?.data?.instructors && <Carousel slides={instructorsCarouselSlides || []} showArrows={false} />}
-          </div>
-          <br />
-          {(response?.data?.knowledgePartImage1 || response?.data?.knowledgePartImage2) && courseKnowledgePartnersRender()}
-        </div>
-        <div className={styles.right}>
-          <CoursePriceContainer courseInfo={response?.data} />
-        </div>
+  const noCourseDataFound = () => {
+    return (
+      <div>
+        <Header title="No course found" description="This course does not exist" />
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-    </div>
-  );
+    );
+  };
+
+  return <div className={styles.main}>{response?.data ? courseDetailsRender() : noCourseDataFound()}</div>;
 }

@@ -35,20 +35,22 @@ export default async function Section3() {
           </div>
         </div>
         <div className={styles.right}>
-          <CourseCard
-            img={firstCourse?.thumbnail || '/assets/auth-bg.webp'}
-            title={firstCourse?.title || 'ESG Investing and Analysis'}
-            description={firstCourse?.description || 'Learn how to incorporate ESG factors into your investment strategy'}
-            startTime="Anytime"
-            duration={formatDuration(firstCourse?.statistics?.totalDuration) || ''}
-            totalLectures={
-              `${firstCourse?.statistics?.totalModules || 0} modules and ${
-                firstCourse?.statistics?.totalLessons || 0
-              } lectures` || ''
-            }
-            id={firstCourse?._id}
-            maxWidth="300px"
-          />
+          {firstCourse && (
+            <CourseCard
+              img={firstCourse?.thumbnail || '/assets/auth-bg.webp'}
+              title={firstCourse?.title || 'ESG Investing and Analysis'}
+              description={firstCourse?.description || 'Learn how to incorporate ESG factors into your investment strategy'}
+              startTime="Anytime"
+              duration={formatDuration(firstCourse?.statistics?.totalDuration) || ''}
+              totalLectures={
+                `${firstCourse?.statistics?.totalModules || 0} modules and ${
+                  firstCourse?.statistics?.totalLessons || 0
+                } lectures` || ''
+              }
+              id={firstCourse?._id}
+              maxWidth="300px"
+            />
+          )}
         </div>
       </div>
     </div>
