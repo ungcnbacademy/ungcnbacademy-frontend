@@ -92,9 +92,17 @@ export default function Checkout() {
           <div className={styles.checkContainer}>
             <Input type="checkbox" name="check" className={styles.check} onChange={(e) => setCheckMark(e.target.checked)} />
             <label className={styles.checkLabel}>
-              Please agree to our terms and conditions &nbsp;
+              By continuing, you acknowledge and agree to our &nbsp;
               <Link href="/terms-of-sale" className={styles.link}>
-                Terms and condition
+                Terms and condition,
+              </Link>
+              &nbsp;
+              <Link href="/privacy-policy" className={styles.link}>
+                Privacy Policy,
+              </Link>
+              &nbsp; and &nbsp;
+              <Link href="/refund-policy" className={styles.link}>
+                Refund Policy
               </Link>
             </label>
           </div>
@@ -132,6 +140,7 @@ export default function Checkout() {
         <br />
         <h2 className={styles.title}>Payment </h2>
         <div className={styles.paymentContainer}>
+          <Image src="/assets/payment/ssl.png" alt="Empty" width={1000} height={117} className={styles.paymentProcess} />
           <p className={styles.paymentText}>Powered by</p>
           <Image src="/assets/payment/1.png" alt="Empty" width={180} height={35} className={styles.paymentIcon} />
         </div>

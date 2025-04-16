@@ -79,16 +79,18 @@ export default function Footer() {
         </div>
         <div className={styles.right}>
           <p className={styles.text}>
-            Payment <br /> partner
+            Follow our <br /> social media
           </p>
-          <Image src={'/assets/payment/1.png'} alt="Logo" width={170} height={30} className={styles.sslLogo} />
+          <div className={styles.social}>
+            <FaFacebookSquare className={styles.icon} onClick={() => window.open(companyInfo.socials.facebook)} />
+            <FaSquareXTwitter className={styles.icon} onClick={() => window.open(companyInfo.socials.twitter)} />
+            <FaLinkedin className={styles.icon} onClick={() => window.open(companyInfo.socials.linkedin)} />
+          </div>
         </div>
       </div>
 
-      <div className={styles.social}>
-        <FaFacebookSquare className={styles.icon} onClick={() => window.open(companyInfo.socials.facebook)} />
-        <FaSquareXTwitter className={styles.icon} onClick={() => window.open(companyInfo.socials.twitter)} />
-        <FaLinkedin className={styles.icon} onClick={() => window.open(companyInfo.socials.linkedin)} />
+      <div className={styles.paymentContainer}>
+        <Image src={'/assets/payment/ssl.png'} alt="paymentBanner" width={1000} height={117} className={styles.sslBanner} />
       </div>
 
       <div>

@@ -97,6 +97,10 @@
 				width: 180px;
 				height: auto;
 			}
+			>.paymentProcess{
+				width: clamp(200px, 100%, 100%);
+				height: auto;
+			}
 		}
 	}
 }
