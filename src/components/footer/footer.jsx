@@ -95,7 +95,7 @@ export default function Footer() {
 
       <div>
         <p className={styles.copyright}>
-          Copyright &copy; {new Date().getFullYear()} {companyInfo.name}. All rights reserved.
+          Copyright &copy; {new Date().getFullYear()} {companyInfo.name}, Registration No.: 3396. All rights reserved.
         </p>
       </div>
     </div>
