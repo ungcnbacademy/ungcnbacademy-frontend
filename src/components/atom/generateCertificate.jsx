@@ -57,11 +57,11 @@ export default function GenerateCertificate({ name = '', title = '', date = '', 
           </div>
           <div className={styles.bottom}>
             <div className={styles.signatureContainer}>
-              <img src="/assets/certificate/signature.png" alt="Logo" width={190} height={70} className={styles.signature} />
-              <p className={styles.name}>David J. Malan</p>
-              <p className={styles.designation}>Vice President, CBEC.</p>
+              <img src="/assets/certificate/signature.png" alt="Logo" width={300} height={44} className={styles.signature} />
+              <p className={styles.name}>Shahamin S. Zaman</p>
+              <p className={styles.designation}>Executive Director, Global Compact Network Bangladesh.</p>
             </div>
-            <img src="/assets/certificate/stamp.png" alt="Logo" width={149} height={149} />
+            {/* <img src="/assets/certificate/stamp.png" alt="Logo" width={149} height={149} /> */}
             <div className={styles.qrContainer}>
               <div className={styles.qr}></div>
               <p className={styles.qrText}>https://esgeducation.netlify.app/verify/{certificateId}</p>
