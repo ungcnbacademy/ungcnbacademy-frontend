@@ -156,12 +156,17 @@
       flex-direction: column;
     }
   }
-
-  .sslBanner {
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
+  .paymentContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    .sslBanner {
+      width: clamp(200px, 100%, 1000px);
+      height: auto;
+    }
   }
+
   .copyright {
     font-size: 0.7rem;
     text-align: center;
