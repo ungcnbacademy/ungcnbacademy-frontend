@@ -164,6 +164,7 @@ export default function CreateCourse({ id = '' }) {
           name="instructorDesignation"
           defaultValue={responseGetInfo?.data?.instructors[0]?.designation}
           variant="secondary"
+          required
         />
         <p className={styles.label}>Instructor bio</p>
         <Input
@@ -172,6 +173,7 @@ export default function CreateCourse({ id = '' }) {
           name="bio"
           defaultValue={responseGetInfo?.data?.instructors[0]?.bio}
           variant="secondary"
+          required
         />
 
         <p className={styles.subTitle}>Instructor Social Links:</p>
