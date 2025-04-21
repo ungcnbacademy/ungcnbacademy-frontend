@@ -9,7 +9,7 @@ export default function Hero() {
     <div className={styles.main}>
       <div className={styles.left}>
         <h1 className={styles.title}>
-          YOUR IMPACT, <br /> YOUR ACADEMY.
+          YOUR ACADEMY, <br /> YOUR IMPACT.
         </h1>
         <p className={styles.description}>Learn from top professionals and become a specialist in corporate sustainability.</p>
         <Link href="/courses" className={styles.link}>

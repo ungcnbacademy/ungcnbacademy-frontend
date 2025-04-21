@@ -23,7 +23,7 @@ export default async function Section3() {
               sustainability organizations.
             </p>{' '}
             <p className={styles.description}>
-              The UNGCNB Impact Academy Library provides a comprehensive collection of educational resources, offering on-demand
+              The UNGCNB Impact Academy provides a comprehensive collection of educational resources, offering on-demand
               access to expert-led lectures, case studies, and training materials designed to support lifelong learning in
               corporate sustainability, ESG, and responsible business practices.
             </p>
