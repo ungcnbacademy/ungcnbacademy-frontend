@@ -13,7 +13,6 @@ import Tabs from '@/components/ui/tabs/tabs';
 import Header from '@/components/atom/header';
 
 export default function CourseDetails({ response }) {
-  console.log(response);
   const instructorsCarouselSlides = response?.data?.instructors?.map((instructor, i) => (
     <div key={i} className={styles.instructor}>
       <Avatar image={instructor?.image && instructor?.image} name={!instructor?.image && instructor?.name} size={100} />

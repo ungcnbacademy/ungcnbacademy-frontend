@@ -110,7 +110,7 @@ export default function CoursePriceContainer({ courseInfo }) {
       <div className={styles.priceContainer}>
         <p className={styles.text}>Enroll in all modules at once for</p>
         <p className={styles.price}>{getAmountsWithCommas(courseInfo?.price)}</p>
-        <p className={styles.previousPrice}>{getAmountsWithCommas(courseInfo?.price * 1.3)}</p>
+        {/* <p className={styles.previousPrice}>{getAmountsWithCommas(courseInfo?.price * 1.3)}</p> */}
       </div>
       <Message text={message.text} type={message.type} />
       <div className={styles.enrollContainer}>
