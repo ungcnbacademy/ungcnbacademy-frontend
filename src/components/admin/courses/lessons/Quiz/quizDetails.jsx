@@ -106,6 +106,20 @@ export default function QuizDetails({ courseId, moduleId, lessonId }) {
     );
   };
 
+  const quizInfoRender = () => {
+    return (
+      <div className={styles.infoContainer}>
+        <div className={styles.info}>
+          <p>Total Questions: {response?.data?.quiz?.questions?.length}</p>
+          <p>Quiz Time: {response?.data?.quiz?.quizTime} min</p>
+          <p>Total Marks: {response?.data?.quiz?.totalMarks}</p>
+          <p>Passing Marks: {response?.data?.quiz?.passingScore}</p>
+          <p>Max Attempts: {response?.data?.quiz?.maxAttempts}</p>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className={styles.main}>
       {updateQuizDrawerRender()}
@@ -126,7 +140,8 @@ export default function QuizDetails({ courseId, moduleId, lessonId }) {
         </div>
       </div>
       {loading && <LoadingDots />}
-      {!loading && !error && response?.data && questionContainerRender()}
+      {!loading && !error && response?.data && quizInfoRender()}
+      {!loading && !error && response?.data?.quiz && questionContainerRender()}
       {!loading && !response?.data && <p className={styles.notAvailable}>Not available.</p>}
     </div>
   );

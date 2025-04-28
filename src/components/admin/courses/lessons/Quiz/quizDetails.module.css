@@ -64,3 +64,35 @@
   color: var(--foreground-light);
   margin-top: 10px;
 }
+.infoContainer {
+  margin-top: 10px;
+  background-color: var(--background-dashboard);
+  padding: 20px;
+  border-radius: var(--global-border-radius);
+  .info {
+    font-size: 0.85rem;
+    color: var(--foreground-dark);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .info > p {
+    border-radius: var(--global-border-radius);
+    padding: 10px;
+    &:nth-child(1) {
+      background-color: #e6faf4;
+    }
+    &:nth-child(2) {
+      background-color: #fcefef;
+    }
+    &:nth-child(3) {
+      background-color: #fdfbe9;
+    }
+    &:nth-child(4) {
+      background-color: #ebfcfd;
+    }
+    &:nth-child(5) {
+      background-color: #fef0fd;
+    }
+  }
+}
