@@ -1,0 +1,28 @@
+.main {
+  background-color: var(--background-dashboard);
+  padding: 30px;
+  border-radius: var(--global-border-radius);
+  margin-top: 30px;
+  margin-bottom: 100px;
+}
+.title {
+  margin-bottom: 10px;
+}
+.score {
+  display: flex;
+  align-items: center;
+}
+.passed {
+  color: var(--accent-action);
+  background-color: rgb(230, 250, 230);
+  padding: 5px 20px;
+  border-radius: var(--global-border-radius);
+  margin-left: 10px;
+}
+.failed {
+  color: var(--danger);
+  background-color: rgb(250, 230, 230);
+  padding: 5px 20px;
+  border-radius: var(--global-border-radius);
+  margin-left: 10px;
+}
