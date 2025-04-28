@@ -110,11 +110,21 @@ export default function QuizDetails({ courseId, moduleId, lessonId }) {
     return (
       <div className={styles.infoContainer}>
         <div className={styles.info}>
-          <p>Total Questions: {response?.data?.quiz?.questions?.length}</p>
-          <p>Quiz Time: {response?.data?.quiz?.quizTime} min</p>
-          <p>Total Marks: {response?.data?.quiz?.totalMarks}</p>
-          <p>Passing Marks: {response?.data?.quiz?.passingScore}</p>
-          <p>Max Attempts: {response?.data?.quiz?.maxAttempts}</p>
+          <p>
+            Total Questions: <b> {response?.data?.quiz?.questions?.length}</b>
+          </p>
+          <p>
+            Quiz Time: <b>{response?.data?.quiz?.quizTime} min </b>{' '}
+          </p>
+          <p>
+            Total Marks: <b>{response?.data?.quiz?.totalMarks} </b>{' '}
+          </p>
+          <p>
+            Passing Marks: <b>{response?.data?.quiz?.passingScore}</b>{' '}
+          </p>
+          <p>
+            Max Attempts: <b>{response?.data?.quiz?.maxAttempts}</b>{' '}
+          </p>
         </div>
       </div>
     );
