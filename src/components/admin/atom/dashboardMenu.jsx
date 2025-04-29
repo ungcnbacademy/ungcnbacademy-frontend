@@ -21,11 +21,11 @@ export default function DashboardMenu() {
   };
 
   const dashboardLinks = [
-    {
-      name: 'Dashboard',
-      link: '/admin/dashboard',
-      icon: <MdSpaceDashboard />,
-    },
+    // {
+    //   name: 'Dashboard',
+    //   link: '/admin/dashboard',
+    //   icon: <MdSpaceDashboard />,
+    // },
     {
       name: 'Courses',
       link: '/admin/courses',

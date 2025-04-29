@@ -183,8 +183,8 @@ export default function Navbar({ variant = 'transparent', stickyNav = true }) {
     },
     {
       name: 'Dashboard',
-      link: '/admin/dashboard',
-      active: pathParam === '/admin/dashboard',
+      link: '/admin/courses',
+      active: pathParam === '/admin/courses',
     },
     {
       name: 'Logout',

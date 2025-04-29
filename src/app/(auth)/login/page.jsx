@@ -58,7 +58,7 @@ export default function Login() {
 		if (userDetails.data?.role === userRoles.client.role) {
 			redirect('/client/profile');
 		} else if (allAdminRoles.includes(userDetails.data?.role)) {
-			redirect('/admin/dashboard');
+			redirect('/admin/courses');
 		} else {
 			redirect('/');
 		}
