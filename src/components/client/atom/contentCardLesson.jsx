@@ -30,7 +30,11 @@ export default function ContentCardLesson({
   const lessonMarkCompleteHandler = (event) => {
     event.stopPropagation();
     router.push(`/client/my-courses/lessonMarkComplete/${courseId}/${moduleId}/${lessonId}`);
-  }
+  };
+  const lockedButtonClickedHandler = (event) => {
+    event.stopPropagation();
+    alert('Please buy this module or the whole course');
+  };
   return (
     <div className={styles.wrapper}>
       <div className={styles.LessonContainer}>
@@ -57,14 +61,21 @@ export default function ContentCardLesson({
                   onClick={(event) => quizButtonClickHandler(event)}
                 />
               )}
-              {!isQuizRequired && <Button text="Mark Complete" className={styles.button} variant="outLined" onClick={(event) => lessonMarkCompleteHandler(event)}/>}
+              {!isQuizRequired && (
+                <Button
+                  text="Mark Complete"
+                  className={styles.button}
+                  variant="outLined"
+                  onClick={(event) => lessonMarkCompleteHandler(event)}
+                />
+              )}
             </div>
           </div>
         </div>
       </div>
       {isLocked && (
         <div className={styles.locked}>
-          <div className={styles.lockContainer}>
+          <div className={styles.lockContainer} onClick={(event) => lockedButtonClickedHandler(event)}>
             <MdLock className={styles.lockIcon} />
             <p className={styles.lockText}>{lockMessage}</p>
           </div>
