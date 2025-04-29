@@ -10,8 +10,13 @@ import { useRouter } from 'next/navigation';
 
 export default function QuizStart({ courseId, moduleId, lessonId }) {
   const [response, error, loading, axiosFetch] = useAxios();
+  const [responseLesson, errorLesson, loadingLesson, axiosFetchLesson] = useAxios();
   const router = useRouter();
   useEffect(() => {
+    axiosFetchLesson({
+      method: 'Get',
+      url: `${configuration.courses}/${courseId}/modules/${moduleId}/lessons/${lessonId}`,
+    });
     axiosFetch({
       method: 'Get',
       url: `${configuration.courses}/${courseId}/modules/${moduleId}/lessons/${lessonId}/quiz`,
@@ -19,7 +24,7 @@ export default function QuizStart({ courseId, moduleId, lessonId }) {
   }, []);
 
   const checkEligibilityForQuizRender = () => {
-    if (response?.data?.canTakeQuiz) {
+    if (response?.data?.canTakeQuiz && responseLesson?.data) {
       return (
         <>
           <IoCheckmarkCircle className={styles.iconOk} />
@@ -41,6 +46,16 @@ export default function QuizStart({ courseId, moduleId, lessonId }) {
       router.push(`/client/my-courses/quiz/attempts/${courseId}/${moduleId}/${lessonId}`);
   };
 
+  const attemptLeftCalculation = ( )=> {
+    let attemptLeft = response?.data?.quiz?.maxAttempts - response?.data?.completedAttemptsCount;
+    if (attemptLeft <= 0) {
+      return 0;
+    } else {
+      return attemptLeft;
+    }
+    return attemptLeft;
+  }
+
   return (
     <div className={styles.main}>
       {loading && <LoadingDots />}
@@ -49,8 +64,10 @@ export default function QuizStart({ courseId, moduleId, lessonId }) {
           {checkEligibilityForQuizRender()}
           <p className={styles.title}>Title: {response?.data?.quiz?.title}</p>
           <p>
-            Maximum Attempts: {response?.data?.quiz?.maxAttempts}, Time: {response?.data?.quiz?.quizTime} minutes
+            Maximum Attempts: {response?.data?.quiz?.maxAttempts}, Your Attempts: {response?.data?.completedAttemptsCount},
+            Attempt left: {attemptLeftCalculation()}
           </p>
+          <p>Time: {response?.data?.quiz?.quizTime} minutes</p>
           <p>
             Total Questions: {response?.data?.quiz?.questionCount}, Total Marks: {response?.data?.quiz?.totalMarks}, Passing
             Score: {response?.data?.quiz?.passingScore}
@@ -61,8 +78,18 @@ export default function QuizStart({ courseId, moduleId, lessonId }) {
             during the quiz to maintain the integrity of your answers.
           </p>
           <div className={styles.buttonContainer}>
-            <Button text="Back" variant="outLined" loading={loading} onClick={() => router.push(`/client/my-courses/${courseId}`)} />
-            <Button text="Start Quiz" disabled={!response?.data?.canTakeQuiz} loading={loading} onClick={startQuizClickHAndler} />
+            <Button
+              text="Back"
+              variant="outLined"
+              loading={loading}
+              onClick={() => router.push(`/client/my-courses/${courseId}`)}
+            />
+            <Button
+              text="Start Quiz"
+              disabled={!response?.data?.canTakeQuiz || !responseLesson?.data}
+              loading={loading}
+              onClick={startQuizClickHAndler}
+            />
           </div>
         </div>
       )}
