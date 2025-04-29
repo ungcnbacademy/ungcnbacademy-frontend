@@ -128,7 +128,7 @@ export default function CreateQuiz({ courseId, moduleId, lessonId, update = fals
         <label>Quiz Time (minutes):</label>
         <Input type="number" name="quizTime" value={quiz.quizTime} onChange={handleInputChange} variant="secondary" />
 
-        <label>Passing Score:</label>
+        <label>Passing Score (percentage):</label>
         <Input type="number" name="passingScore" value={quiz.passingScore} onChange={handleInputChange} variant="secondary" />
 
         <label>Max Attempts:</label>

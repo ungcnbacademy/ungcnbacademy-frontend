@@ -120,7 +120,7 @@ export default function QuizDetails({ courseId, moduleId, lessonId }) {
             Total Marks: <b>{response?.data?.quiz?.totalMarks} </b>{' '}
           </p>
           <p>
-            Passing Marks: <b>{response?.data?.quiz?.passingScore}</b>{' '}
+            Passing Marks: <b>{response?.data?.quiz?.passingScore} %</b>{' '}
           </p>
           <p>
             Max Attempts: <b>{response?.data?.quiz?.maxAttempts}</b>{' '}
