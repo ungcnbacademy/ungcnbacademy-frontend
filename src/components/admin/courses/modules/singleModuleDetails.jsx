@@ -19,7 +19,7 @@ export default function SingleModuleDetails({ courseId, moduleId }) {
 			{response?.data && !loading && !error && (
 				<>
 					<h2 className={styles.title}>Module Details:</h2>
-					<p>Title: {response?.data?.title}</p>
+					<p className={styles.subtitle}> <b> Module {response?.data?.order} : {response?.data?.title}</b></p>
 					<p># {response?.data?._id}</p>
 					<p>
 						Created at:{' '}
