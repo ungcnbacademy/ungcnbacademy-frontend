@@ -40,6 +40,18 @@ export default function CoursePriceContainer({ courseInfo }) {
     setEnrolledModulesIdArray(response?.data?.enrollment?.enrolledModules.map((module) => module.module));
   }, [response?.data]);
 
+  const calculatedTotalPrice = () => {
+    if (!enrolledModulesIdArray?.length) return courseInfo?.price;
+    if (enrolledModulesIdArray.length === courseInfo?.modules?.length) return courseInfo?.price;
+    let totalEnrolledPrice = 0;
+    courseInfo?.modules.forEach((module) => {
+      if (enrolledModulesIdArray?.includes(module._id)) {
+        totalEnrolledPrice += module.price;
+      }
+    });
+    return courseInfo?.price - totalEnrolledPrice;
+  };
+
   const checkIfUserIsClient = () => {
     if (!userDetails) {
       router.push('/login');
@@ -61,7 +73,7 @@ export default function CoursePriceContainer({ courseInfo }) {
       type: 'Full Course',
       courseTitle: courseInfo?.title,
       courseId: courseInfo?._id,
-      price: courseInfo?.price,
+      price: calculatedTotalPrice(),
       allModules: courseInfo?.modules,
     });
     router.push('/client/payment/checkout');
@@ -109,7 +121,7 @@ export default function CoursePriceContainer({ courseInfo }) {
 
       <div className={styles.priceContainer}>
         <p className={styles.text}>Enroll in all modules at once for</p>
-        <p className={styles.price}>{getAmountsWithCommas(courseInfo?.price)}</p>
+        <p className={styles.price}>{getAmountsWithCommas(calculatedTotalPrice())}</p>
         {/* <p className={styles.previousPrice}>{getAmountsWithCommas(courseInfo?.price * 1.3)}</p> */}
       </div>
       <Message text={message.text} type={message.type} />
