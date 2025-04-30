@@ -29,6 +29,10 @@
         height: 75px;
       }
       .logo2 {
+        width: auto;
+        height: 70px;
+      }
+      .logo3 {
         width: 100px;
         height: auto;
       }
@@ -38,6 +42,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      align-items: center;
       .name {
         font-size: 1.5rem;
         font-weight: 500;
@@ -45,17 +50,18 @@
         margin-block: 10px 50px;
       }
       .subtitle {
-        font-size: 0.9rem;
+        font-size: 1rem;
         font-weight: 300;
-        color: var(--foreground-light);
+        color: var(--foreground-dark);
       }
     }
     .middle {
       flex-grow: 1;
+      text-align: center;
       .subtitle {
-        font-size: 0.9rem;
+        font-size: 1rem;
         font-weight: 300;
-        color: var(--foreground-light);
+        color: var(--foreground-dark);
       }
       .title {
         font-size: 1.3rem;
@@ -67,15 +73,18 @@
 
     .bottom {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
+      flex-direction: column;
       .signatureContainer {
+        text-align: center;
         .name {
-          font-size: 0.9rem;
-          color: var(--foreground-light);
+          font-size: 1.1rem;
+          font-weight: 500;
+          color: var(--foreground-dark);
         }
         .designation {
-          font-size: 0.8rem;
+          font-size: 0.9rem;
           margin-top: 5px;
           color: var(--foreground-light);
         }

@@ -44,7 +44,8 @@ export default function GenerateCertificate({ name = '', title = '', date = '', 
         <div className={styles.certificateContainer} ref={containerRef}>
           <div className={styles.logoContainer}>
             <img src="/logoBlack.svg" alt="Logo" className={styles.logo1} />
-            <img src="/assets/certificate/logo.png" alt="Logo" className={styles.logo2} />
+            <img src="/assets/certificate/gcnb.png" alt="Logo" className={styles.logo2} />
+            <img src="/assets/certificate/logo.png" alt="Logo" className={styles.logo3} />
           </div>
           <div className={styles.top}>
             <p className={styles.subtitle}>We hereby certify that,</p>
@@ -64,7 +65,7 @@ export default function GenerateCertificate({ name = '', title = '', date = '', 
             {/* <img src="/assets/certificate/stamp.png" alt="Logo" width={149} height={149} /> */}
             <div className={styles.qrContainer}>
               <div className={styles.qr}></div>
-              <p className={styles.qrText}>https://esgeducation.netlify.app/verify/{certificateId}</p>
+              <p className={styles.qrText}>https://ungcnbacademy.org/verify/{certificateId}</p>
             </div>
           </div>
         </div>
