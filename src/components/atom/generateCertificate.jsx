@@ -5,11 +5,19 @@ import * as htmlToImage from 'html-to-image';
 import { toPng } from 'html-to-image';
 import Button from '../ui/button/button';
 import LoadingDots from '../ui/loading/loadingDots';
+import generatePDF from 'react-to-pdf';
 
 export default function GenerateCertificate({ name = '', title = '', date = '', certificateId = '' }) {
   const containerRef = useRef(null);
   const [imageSrc, setImageSrc] = useState(null);
   const [loading, setLoading] = useState(true);
+  const options = {
+    filename: 'certificate.pdf',
+    page: {
+      format: 'A4',
+      orientation: 'landscape',
+    },
+  };
 
   const handleCapture = async () => {
     if (!containerRef.current) return;
@@ -74,13 +82,14 @@ export default function GenerateCertificate({ name = '', title = '', date = '', 
       <div className={styles.container}>
         {imageSrc && <img src={imageSrc} alt="Generated Certificate" width={500} className={styles.certificateImage} />}
         <div className={styles.buttonSection}>
-          {!imageSrc && <Button text="Generate Certificate" onClick={handleCapture} loading={loading} variant='outLined' />}
-          {imageSrc && !loading && (
+          {!imageSrc && <Button text="Generate Certificate" onClick={handleCapture} loading={loading} variant="outLined" />}
+          {/* {imageSrc && !loading && (
             <a href={imageSrc} download="certificate.png">
               {' '}
-              <Button text="Download Certificate" />
+              <Button text="Download as PNG" />
             </a>
-          )}
+          )} */}
+          {imageSrc && !loading && <Button onClick={() => generatePDF(containerRef, options)} text="Download Certificate" />}
         </div>
       </div>
     </div>

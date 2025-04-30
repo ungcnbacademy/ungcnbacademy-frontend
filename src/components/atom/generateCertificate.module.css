@@ -30,7 +30,7 @@
       }
       .logo2 {
         width: auto;
-        height: 72px;
+        height: 70px;
       }
       .logo3 {
         width: 100px;
@@ -47,7 +47,7 @@
         font-size: 1.5rem;
         font-weight: 500;
         color: var(--foreground);
-        margin-block: 10px 50px;
+        margin-block: 10px 40px;
       }
       .subtitle {
         font-size: 1rem;
@@ -123,6 +123,7 @@
       display: flex;
       justify-content: center;
       margin-top: 20px;
+      gap: 10px;
     }
   }
 }
