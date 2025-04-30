@@ -22,6 +22,15 @@ export default function CoursePriceContainer({ courseInfo }) {
   //calling the same api again to get the enrollment information
   const [response, error, loading, axiosFetch] = useAxios();
   const [enrolledModulesIdArray, setEnrolledModulesIdArray] = useState([]);
+  const [allModulePrice, setAllModulePrice] = useState(0); //summation of all module prices
+
+  useEffect(() => {
+    let total = 0;
+    courseInfo?.modules.forEach((module) => {
+      total += module.price;
+    });
+    setAllModulePrice(total);
+  }, [courseInfo?.modules]);
 
   useEffect(() => {
     axiosFetch({
@@ -122,7 +131,7 @@ export default function CoursePriceContainer({ courseInfo }) {
       <div className={styles.priceContainer}>
         <p className={styles.text}>Enroll in all modules at once for</p>
         <p className={styles.price}>{getAmountsWithCommas(calculatedTotalPrice())}</p>
-        {/* <p className={styles.previousPrice}>{getAmountsWithCommas(courseInfo?.price * 1.3)}</p> */}
+        {allModulePrice > courseInfo?.price && <p className={styles.previousPrice}>{getAmountsWithCommas(allModulePrice)}</p>}
       </div>
       <Message text={message.text} type={message.type} />
       <div className={styles.enrollContainer}>
