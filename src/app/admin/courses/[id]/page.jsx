@@ -199,13 +199,20 @@ export default function CourseDetails({ params }) {
       <>
         {response?.data?.thumbnail && (
           <>
+            <div
+          className={styles.imageContainer}
+          style={response?.data?.thumbnail ? { backgroundImage: `url(${response?.data?.thumbnail})` } : {}}
+        >
+          <div className={styles.imageWrapper}>
             <Image
               src={response?.data?.thumbnail || '/assets/noImage.svg'}
-              alt="course image"
-              width={820}
-              height={360}
+              alt={response?.data?.title || 'Course'}
+              width={500}
+              height={500}
               className={styles.image}
             />
+          </div>
+        </div>
             <br /> <br />
           </>
         )}

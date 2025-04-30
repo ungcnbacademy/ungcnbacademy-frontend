@@ -1,9 +1,32 @@
-.image {
-  width: 100%;
-  aspect-ratio: 16/9;
-  /* height: 340px; */
-  border-radius: var(--global-border-radius);
-}
+  .imageContainer {
+    --max-height: 70vh;
+    width: 100%;
+    height: auto;
+    max-width: 100vw;
+    max-height: var(--max-height);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    border-radius: var(--global-border-radius);
+    .imageWrapper {
+      width: 100%;
+      height: fit-content;
+      backdrop-filter: blur(15px);
+      background-color: rgba(0, 0, 0, 0.099);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .image {
+        width: 100%;
+        height: auto;
+        max-height: var(--max-height);
+        object-fit: contain;
+        border-radius: var(--global-border-radius);
+        box-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
 .longDescriptionContainer {
   .longDescription {
     margin-top: 10px;
