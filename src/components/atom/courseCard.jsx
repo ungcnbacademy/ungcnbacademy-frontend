@@ -8,7 +8,7 @@ import { formatDuration, truncateString } from '@/utils/utils';
 import useAxios from '@/hooks/useAxios';
 import { configuration } from '@/configuration/configuration';
 import { RiProgress2Line } from 'react-icons/ri';
-import { AiOutlineQuestionCircle } from "react-icons/ai";
+import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
 export default function CourseCard({
   img = '/assets/noImage.svg',
@@ -17,6 +17,7 @@ export default function CourseCard({
   startTime = 'Anytime',
   duration = '',
   totalLectures = '',
+  manualTime,
   id,
   onClickLink,
   maxWidth = '400px',
@@ -93,10 +94,18 @@ export default function CourseCard({
           <FaRegCalendarAlt />
           <p>{startTime}</p>
         </div>
-        <div className={styles.content}>
-          <FaRegClock />
-          <p> {setDuration()}</p>
-        </div>
+        {duration && (
+          <div className={styles.content}>
+            <FaRegClock />
+            <p> {setDuration()}</p>
+          </div>
+        )}
+        {manualTime && (
+          <div className={styles.content}>
+            <FaRegClock />
+            <p> {manualTime}</p>
+          </div>
+        )}
         <div className={styles.content}>
           <FaRegFileAlt />
           <p>{setTotalLectures()}</p>

@@ -59,12 +59,13 @@ export default function AllCourses({ showSearch = true }) {
                 title={course?.title || ''}
                 description={course?.description || ''}
                 startTime="Anytime"
-                duration={formatDuration(course?.statistics?.totalDuration)}
+                //duration={formatDuration(course?.statistics?.totalDuration)}
                 totalLectures={`${course?.statistics?.totalModules || 0} modules and ${
                   course?.statistics?.totalLessons || 0
                 } lectures`}
                 id={course._id}
                 maxWidth="none"
+                manualTime={course?.courseTimeManual}
               />
             ))}
           </div>

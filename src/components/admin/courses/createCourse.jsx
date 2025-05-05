@@ -46,6 +46,7 @@ export default function CreateCourse({ id = '' }) {
     const formDataObject = Object.fromEntries(formData);
 
     formData.delete('title');
+    formData.delete('courseTimeManual');
     formData.delete('description');
     formData.delete('category');
     formData.delete('price');
@@ -60,6 +61,7 @@ export default function CreateCourse({ id = '' }) {
     const courseData = {
       title: formDataObject.title,
       description: formDataObject.description,
+      courseTimeManual: formDataObject.courseTimeManual,
       longDescription: longDescription, // Use the longDescription state
       category: formDataObject.category,
       price: formDataObject.price,
@@ -109,6 +111,14 @@ export default function CreateCourse({ id = '' }) {
           variant="secondary"
           defaultValue={responseGetInfo?.data?.description}
           required
+        />
+        <p className={styles.label}>Course Time Manual</p>
+        <Input
+          type="text"
+          placeholder="Course Time Manual"
+          name="courseTimeManual"
+          variant="secondary"
+          defaultValue={responseGetInfo?.data?.courseTimeManual}
         />
         <p className={styles.label}>Long Description</p>
         <TextEditor setData={setLongDescription} defaultValue={responseGetInfo?.data?.longDescription} />

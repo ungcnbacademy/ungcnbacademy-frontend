@@ -147,7 +147,9 @@ export default function CourseDetails({ response }) {
               <h3 className={styles.title}>Course content</h3>
               <p className={styles.subtitle}>
                 {response?.data?.statistics?.totalModules} Modules, {response?.data?.statistics?.totalLessons} Lessons,{' '}
-                {formatDuration(response?.data?.statistics?.totalDuration)} Duration, {response?.data?.statistics?.totalQuizzes}{' '}
+                {/* {formatDuration(response?.data?.statistics?.totalDuration)} Duration, */}
+                {response?.data?.courseTimeManual} Duration,
+                {response?.data?.statistics?.totalQuizzes}{' '}
                 Quizzes
               </p>
               {response?.data?.modules?.length > 0 &&

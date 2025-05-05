@@ -41,7 +41,8 @@ export default async function Section3() {
               title={firstCourse?.title || 'ESG Investing and Analysis'}
               description={firstCourse?.description || 'Learn how to incorporate ESG factors into your investment strategy'}
               startTime="Anytime"
-              duration={formatDuration(firstCourse?.statistics?.totalDuration) || ''}
+              //duration={formatDuration(firstCourse?.statistics?.totalDuration) || ''}
+              manualTime={firstCourse?.courseTimeManual}
               totalLectures={
                 `${firstCourse?.statistics?.totalModules || 0} modules and ${
                   firstCourse?.statistics?.totalLessons || 0
