@@ -62,7 +62,7 @@ export default function GenerateCertificate({ name = '', title = '', date = '', 
           <div className={styles.middle}>
             <p className={styles.subtitle}>has successfully completed and received a passing grade in </p>
             <p className={styles.title}>{title}</p>
-            <p className={styles.subtitle}>an online non credit course offered through ESGeducation on {date}. </p>
+            <p className={styles.subtitle}>an online non credit course offered through UNGCNB Impact Academy on {date}. </p>
           </div>
           <div className={styles.bottom}>
             <div className={styles.signatureContainer}>
